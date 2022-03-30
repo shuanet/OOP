@@ -1,0 +1,2787 @@
+<?xml version='1.0' ?>
+
+
+<sectors>
+ <sector name="TN" acc="paris" floor="0" ceiling="265" >
+  <slice floor="0" ceiling="265" >
+   <centre lat="50.3333" lon="1.3167" />
+   <vertex lat="51.0000" lon="1.4667" />
+   <vertex lat="50.6667" lon="1.4667" />
+   <vertex lat="50.4464" lon="0.8875" />
+   <vertex lat="49.1681" lon="2.3697" />
+   <vertex lat="49.0778" lon="2.4694" />
+   <vertex lat="49.1111" lon="2.8358" />
+   <vertex lat="50.7167" lon="2.0000" />
+  </slice>
+ </sector>
+
+
+ <sector name="TB" acc="paris" floor="0" ceiling="265" >
+  <slice floor="0" ceiling="265" >
+   <centre lat="50.8167" lon="2.0000" />
+   <vertex lat="51.0889" lon="2.5531" />
+   <vertex lat="50.9597" lon="2.6300" />
+   <vertex lat="50.9597" lon="2.6300" />
+   <vertex lat="50.9000" lon="2.5897" />
+   <vertex lat="50.8300" lon="2.6097" />
+   <vertex lat="50.8300" lon="2.7000" />
+   <vertex lat="50.8100" lon="2.7600" />
+   <vertex lat="50.7200" lon="2.7997" />
+   <vertex lat="50.7200" lon="2.9300" />
+   <vertex lat="50.7200" lon="2.9300" />
+   <vertex lat="50.7700" lon="3.0097" />
+   <vertex lat="50.8100" lon="3.1500" />
+   <vertex lat="50.7097" lon="3.2597" />
+   <vertex lat="50.5000" lon="3.3197" />
+   <vertex lat="50.5097" lon="3.4300" />
+   <vertex lat="50.5097" lon="3.4300" />
+   <vertex lat="50.5400" lon="3.5000" />
+   <vertex lat="50.5297" lon="3.5597" />
+   <vertex lat="50.4900" lon="3.5297" />
+   <vertex lat="50.4900" lon="3.6097" />
+   <vertex lat="50.4500" lon="3.6800" />
+   <vertex lat="50.3400" lon="3.7000" />
+   <vertex lat="50.3300" lon="3.7400" />
+   <vertex lat="50.3519" lon="3.7928" />
+   <vertex lat="49.4569" lon="3.2003" />
+   <vertex lat="49.1667" lon="3.2997" />
+   <vertex lat="49.1269" lon="3.0128" />
+   <vertex lat="49.1111" lon="2.8358" />
+   <vertex lat="50.7167" lon="2.0000" />
+   <vertex lat="51.0000" lon="1.4667" />
+   <vertex lat="51.1167" lon="2.0000" />
+  </slice>
+ </sector>
+
+
+ <sector name="LN" acc="paris" floor="0" ceiling="145" >
+  <slice floor="0" ceiling="55" >
+   <centre lat="49.8333" lon="-0.1667" />
+   <vertex lat="50.0000" lon="-0.2500" />
+   <vertex lat="50.4500" lon="0.8833" />
+   <vertex lat="49.8333" lon="1.6000" />
+   <vertex lat="49.1667" lon="2.3500" />
+   <vertex lat="49.1167" lon="2.4000" />
+   <vertex lat="49.0000" lon="2.5333" />
+   <vertex lat="49.0000" lon="2.0000" />
+   <vertex lat="48.7833" lon="1.7000" />
+   <vertex lat="48.7333" lon="1.7500" />
+   <vertex lat="48.6667" lon="1.2000" />
+   <vertex lat="48.6333" lon="0.8333" />
+   <vertex lat="48.6167" lon="0.8167" />
+   <vertex lat="47.9500" lon="-0.2500" />
+   <vertex lat="49.1667" lon="-0.2500" />
+  </slice>
+
+  <slice floor="55" ceiling="145" >
+   <centre lat="49.8333" lon="-0.1667" />
+   <vertex lat="50.0000" lon="-0.2500" />
+   <vertex lat="50.4500" lon="0.8833" />
+   <vertex lat="49.8333" lon="1.6000" />
+   <vertex lat="49.8333" lon="1.2667" />
+   <vertex lat="49.1167" lon="0.8500" />
+   <vertex lat="49.0833" lon="1.2667" />
+   <vertex lat="49.1667" lon="2.3500" />
+   <vertex lat="49.1167" lon="2.4000" />
+   <vertex lat="49.0000" lon="2.5333" />
+   <vertex lat="49.0000" lon="2.0000" />
+   <vertex lat="48.7833" lon="1.7000" />
+   <vertex lat="48.7333" lon="1.7500" />
+   <vertex lat="48.6667" lon="1.2000" />
+   <vertex lat="48.6333" lon="0.8333" />
+   <vertex lat="48.6167" lon="0.8167" />
+   <vertex lat="47.9500" lon="-0.2500" />
+   <vertex lat="49.1667" lon="-0.2500" />
+  </slice>
+ </sector>
+
+
+ <sector name="TP" acc="paris" floor="65" ceiling="265" >
+  <slice floor="65" ceiling="145" >
+   <centre lat="49.5000" lon="1.4333" />
+   <vertex lat="49.8333" lon="1.2667" />
+   <vertex lat="49.8333" lon="1.6000" />
+   <vertex lat="49.1667" lon="2.3500" />
+   <vertex lat="49.0833" lon="1.2667" />
+   <vertex lat="49.1167" lon="0.8500" />
+  </slice>
+
+  <slice floor="145" ceiling="195" >
+   <centre lat="49.5000" lon="0.1500" />
+   <vertex lat="50.4500" lon="0.8833" />
+   <vertex lat="50.0000" lon="-0.2500" />
+   <vertex lat="49.1667" lon="-0.2500" />
+   <vertex lat="49.1167" lon="0.8500" />
+   <vertex lat="49.0833" lon="1.2667" />
+   <vertex lat="49.1667" lon="2.3500" />
+   <vertex lat="49.8333" lon="1.6000" />
+  </slice>
+
+  <slice floor="195" ceiling="245" >
+   <centre lat="49.2667" lon="0.0028" />
+   <vertex lat="49.2667" lon="-0.2500" />
+   <vertex lat="49.1667" lon="-0.2500" />
+   <vertex lat="49.1000" lon="1.0833" />
+   <vertex lat="49.0833" lon="1.2667" />
+   <vertex lat="49.1667" lon="2.3500" />
+   <vertex lat="49.2833" lon="2.2333" />
+   <vertex lat="49.7833" lon="1.6500" />
+   <vertex lat="50.4500" lon="0.8833" />
+   <vertex lat="50.2833" lon="0.4333" />
+   <vertex lat="49.8333" lon="0.9500" />
+   <vertex lat="49.6500" lon="0.5667" />
+  </slice>
+
+  <slice floor="245" ceiling="265" >
+   <centre lat="50.1167" lon="0.6833" />
+   <vertex lat="50.4500" lon="0.8833" />
+   <vertex lat="50.2833" lon="0.4333" />
+   <vertex lat="49.8333" lon="0.9500" />
+   <vertex lat="49.5833" lon="1.2167" />
+   <vertex lat="49.7833" lon="1.6500" />
+  </slice>
+ </sector>
+
+
+ <sector name="TH" acc="paris" floor="145" ceiling="245" >
+  <slice floor="145" ceiling="245" >
+   <centre lat="48.8500" lon="0.0667" />
+   <vertex lat="49.1667" lon="-0.2500" />
+   <vertex lat="47.9500" lon="-0.2500" />
+   <vertex lat="48.6333" lon="0.8333" />
+   <vertex lat="48.7333" lon="1.7500" />
+   <vertex lat="48.7833" lon="1.7000" />
+   <vertex lat="49.0000" lon="2.0000" />
+   <vertex lat="49.0000" lon="2.5333" />
+   <vertex lat="49.1667" lon="2.3500" />
+   <vertex lat="49.0833" lon="1.2667" />
+  </slice>
+ </sector>
+
+
+ <sector name="LU" acc="paris" floor="0" ceiling="145" >
+  <slice floor="0" ceiling="65" >
+   <centre lat="48.3667" lon="1.0833" />
+   <vertex lat="47.9500" lon="-0.2500" />
+   <vertex lat="48.6333" lon="0.8333" />
+   <vertex lat="48.7333" lon="1.7500" />
+   <vertex lat="48.5833" lon="1.8667" />
+   <vertex lat="48.1333" lon="1.9000" />
+   <vertex lat="48.0833" lon="1.7500" />
+   <vertex lat="47.1667" lon="1.6167" />
+   <vertex lat="47.0833" lon="1.5833" />
+   <vertex lat="47.1667" lon="1.4500" />
+   <vertex lat="47.1667" lon="-0.2500" />
+  </slice>
+
+  <slice floor="65" ceiling="115" >
+   <centre lat="47.9500" lon="-0.0167" />
+   <vertex lat="47.9500" lon="-0.2500" />
+   <vertex lat="48.6167" lon="0.8167" />
+   <vertex lat="47.9500" lon="1.3333" />
+   <vertex lat="48.1333" lon="1.9000" />
+   <vertex lat="48.0833" lon="1.7500" />
+   <vertex lat="47.1667" lon="1.6167" />
+   <vertex lat="47.0833" lon="1.5833" />
+   <vertex lat="47.1667" lon="1.4500" />
+   <vertex lat="47.1667" lon="-0.2500" />
+  </slice>
+
+  <slice floor="115" ceiling="145" >
+   <centre lat="47.9500" lon="-0.0167" />
+   <vertex lat="47.9500" lon="-0.2500" />
+   <vertex lat="48.6167" lon="0.8167" />
+   <vertex lat="47.9500" lon="1.3333" />
+   <vertex lat="48.0833" lon="1.7500" />
+   <vertex lat="47.1667" lon="1.6167" />
+   <vertex lat="47.0833" lon="1.5833" />
+   <vertex lat="47.1667" lon="1.4500" />
+   <vertex lat="47.1667" lon="-0.2500" />
+  </slice>
+ </sector>
+
+
+ <sector name="TW" acc="paris" floor="65" ceiling="245" >
+  <slice floor="65" ceiling="145" >
+   <centre lat="48.2500" lon="1.2000" />
+   <vertex lat="48.6333" lon="0.8333" />
+   <vertex lat="48.7333" lon="1.7500" />
+   <vertex lat="48.5833" lon="1.8667" />
+   <vertex lat="48.1333" lon="1.9000" />
+   <vertex lat="48.0833" lon="1.7500" />
+   <vertex lat="47.9500" lon="1.3333" />
+   <vertex lat="48.6167" lon="0.8167" />
+  </slice>
+
+  <slice floor="145" ceiling="195" >
+   <centre lat="48.2500" lon="1.0833" />
+   <vertex lat="47.9500" lon="-0.2500" />
+   <vertex lat="48.6333" lon="0.8333" />
+   <vertex lat="48.7333" lon="1.7500" />
+   <vertex lat="48.5833" lon="1.8667" />
+   <vertex lat="48.1333" lon="1.9000" />
+   <vertex lat="47.1667" lon="1.6167" />
+   <vertex lat="47.0833" lon="1.5833" />
+   <vertex lat="47.1667" lon="1.4500" />
+   <vertex lat="47.1667" lon="-0.2500" />
+  </slice>
+
+  <slice floor="195" ceiling="245" >
+   <centre lat="48.3667" lon="1.0833" />
+   <vertex lat="47.9500" lon="-0.2500" />
+   <vertex lat="48.6333" lon="0.8333" />
+   <vertex lat="48.7333" lon="1.7500" />
+   <vertex lat="48.5833" lon="1.8667" />
+   <vertex lat="48.1333" lon="1.7703" />
+   <vertex lat="47.1667" lon="1.4667" />
+   <vertex lat="47.4167" lon="1.0833" />
+   <vertex lat="47.4167" lon="-0.2500" />
+  </slice>
+ </sector>
+
+
+ <sector name="TE" acc="paris" floor="0" ceiling="265" >
+  <slice floor="0" ceiling="265" >
+   <centre lat="49.3167" lon="3.2833" />
+   <vertex lat="50.3300" lon="3.7400" />
+   <vertex lat="50.3600" lon="3.7897" />
+   <vertex lat="50.3400" lon="4.0000" />
+   <vertex lat="50.3497" lon="4.0300" />
+   <vertex lat="50.2400" lon="4.1397" />
+   <vertex lat="50.2297" lon="4.1397" />
+   <vertex lat="50.1597" lon="4.1300" />
+   <vertex lat="50.1597" lon="4.1300" />
+   <vertex lat="50.0997" lon="4.2300" />
+   <vertex lat="50.0000" lon="4.1597" />
+   <vertex lat="50.0000" lon="4.1500" />
+   <vertex lat="49.9797" lon="4.2197" />
+   <vertex lat="49.9797" lon="4.3000" />
+   <vertex lat="49.9597" lon="4.4400" />
+   <vertex lat="49.9597" lon="4.4400" />
+   <vertex lat="49.9500" lon="4.4297" />
+   <vertex lat="50.0200" lon="4.6597" />
+   <vertex lat="50.0200" lon="4.6597" />
+   <vertex lat="50.0900" lon="4.6997" />
+   <vertex lat="50.1500" lon="4.8200" />
+   <vertex lat="50.1597" lon="4.8200" />
+   <vertex lat="50.1500" lon="4.8800" />
+   <vertex lat="49.9700" lon="4.8097" />
+   <vertex lat="49.9500" lon="4.8697" />
+   <vertex lat="49.9097" lon="4.9000" />
+   <vertex lat="49.8197" lon="4.8697" />
+   <vertex lat="49.8197" lon="4.8697" />
+   <vertex lat="49.7997" lon="4.9697" />
+   <vertex lat="49.7997" lon="4.9600" />
+   <vertex lat="49.7997" lon="5.0100" />
+   <vertex lat="49.7797" lon="5.1100" />
+   <vertex lat="49.7097" lon="5.1900" />
+   <vertex lat="49.7000" lon="5.2897" />
+   <vertex lat="49.6300" lon="5.3497" />
+   <vertex lat="49.6197" lon="5.4000" />
+   <vertex lat="49.6197" lon="5.4097" />
+   <vertex lat="49.5997" lon="5.4697" />
+   <vertex lat="49.5681" lon="5.4422" />
+   <vertex lat="49.2667" lon="4.0500" />
+   <vertex lat="49.1667" lon="3.2997" />
+   <vertex lat="49.4569" lon="3.2003" />
+  </slice>
+ </sector>
+
+
+ <sector name="TM" acc="paris" floor="0" ceiling="265" >
+  <slice floor="0" ceiling="265" >
+   <centre lat="49.0833" lon="4.7500" />
+   <vertex lat="49.5681" lon="5.4422" />
+   <vertex lat="49.5097" lon="5.5197" />
+   <vertex lat="49.5200" lon="5.5100" />
+   <vertex lat="49.5497" lon="5.8097" />
+   <vertex lat="49.5297" lon="5.8600" />
+   <vertex lat="49.5297" lon="5.8600" />
+   <vertex lat="49.5000" lon="5.8497" />
+   <vertex lat="49.4797" lon="5.9497" />
+   <vertex lat="49.4533" lon="6.0075" />
+   <vertex lat="48.9500" lon="4.8000" />
+   <vertex lat="49.0211" lon="3.1928" />
+   <vertex lat="49.1269" lon="3.0128" />
+   <vertex lat="49.1667" lon="3.2997" />
+   <vertex lat="49.2667" lon="4.0500" />
+  </slice>
+ </sector>
+
+
+ <sector name="TS" acc="paris" floor="115" ceiling="245" >
+  <slice floor="115" ceiling="125" >
+   <centre lat="48.1667" lon="2.1667" />
+   <vertex lat="49.0000" lon="2.0000" />
+   <vertex lat="49.0000" lon="2.5333" />
+   <vertex lat="48.6667" lon="2.8833" />
+   <vertex lat="48.4500" lon="2.6833" />
+   <vertex lat="47.5403" lon="3.2950" />
+   <vertex lat="47.5403" lon="2.8333" />
+   <vertex lat="47.3333" lon="2.8333" />
+   <vertex lat="48.0833" lon="1.7500" />
+   <vertex lat="48.1333" lon="1.9000" />
+   <vertex lat="48.5833" lon="1.8667" />
+   <vertex lat="48.7833" lon="1.7000" />
+  </slice>
+
+  <slice floor="125" ceiling="145" >
+   <centre lat="48.1667" lon="2.1667" />
+   <vertex lat="49.0000" lon="2.0000" />
+   <vertex lat="49.0000" lon="2.5333" />
+   <vertex lat="48.6667" lon="2.8833" />
+   <vertex lat="48.4500" lon="2.6833" />
+   <vertex lat="47.5403" lon="3.2950" />
+   <vertex lat="47.5403" lon="2.8333" />
+   <vertex lat="47.3333" lon="2.8333" />
+   <vertex lat="47.1667" lon="2.0000" />
+   <vertex lat="47.1667" lon="1.6167" />
+   <vertex lat="48.0833" lon="1.7500" />
+   <vertex lat="48.1333" lon="1.9000" />
+   <vertex lat="48.5833" lon="1.8667" />
+   <vertex lat="48.7833" lon="1.7000" />
+  </slice>
+
+  <slice floor="145" ceiling="195" >
+   <centre lat="48.1667" lon="2.1667" />
+   <vertex lat="49.0000" lon="2.0000" />
+   <vertex lat="49.0000" lon="2.5333" />
+   <vertex lat="48.6667" lon="2.8833" />
+   <vertex lat="48.4500" lon="2.6833" />
+   <vertex lat="47.5403" lon="3.2950" />
+   <vertex lat="47.5403" lon="2.8333" />
+   <vertex lat="47.3333" lon="2.8333" />
+   <vertex lat="47.1667" lon="2.0000" />
+   <vertex lat="47.1667" lon="1.6167" />
+   <vertex lat="48.1333" lon="1.9000" />
+   <vertex lat="48.5833" lon="1.8667" />
+   <vertex lat="48.7833" lon="1.7000" />
+  </slice>
+
+  <slice floor="195" ceiling="245" >
+   <centre lat="48.3333" lon="2.2500" />
+   <vertex lat="49.0000" lon="2.0000" />
+   <vertex lat="49.0000" lon="2.5333" />
+   <vertex lat="48.6667" lon="2.8833" />
+   <vertex lat="48.5833" lon="3.0167" />
+   <vertex lat="48.3500" lon="2.7500" />
+   <vertex lat="47.5333" lon="3.3000" />
+   <vertex lat="47.5333" lon="2.8667" />
+   <vertex lat="48.1333" lon="2.5000" />
+   <vertex lat="48.1333" lon="1.7703" />
+   <vertex lat="48.5833" lon="1.8667" />
+   <vertex lat="48.7833" lon="1.7000" />
+  </slice>
+ </sector>
+
+
+ <sector name="DS" acc="paris" floor="0" ceiling="115" >
+  <slice floor="0" ceiling="115" >
+   <centre lat="48.8000" lon="2.0667" />
+   <vertex lat="49.0000" lon="2.0000" />
+   <vertex lat="49.0000" lon="2.5333" />
+   <vertex lat="48.6667" lon="2.8833" />
+   <vertex lat="48.4500" lon="2.6833" />
+   <vertex lat="47.5403" lon="3.2950" />
+   <vertex lat="47.5403" lon="2.8333" />
+   <vertex lat="47.3333" lon="2.8333" />
+   <vertex lat="48.0833" lon="1.7500" />
+   <vertex lat="48.1333" lon="1.9000" />
+   <vertex lat="48.5833" lon="1.8667" />
+   <vertex lat="48.7833" lon="1.7000" />
+  </slice>
+ </sector>
+
+
+ <sector name="S" acc="paris" floor="0" ceiling="195" >
+  <slice floor="0" ceiling="125" >
+   <centre lat="47.3000" lon="3.1333" />
+   <vertex lat="47.3333" lon="2.8333" />
+   <vertex lat="47.5403" lon="2.8333" />
+   <vertex lat="47.5403" lon="3.2950" />
+   <vertex lat="47.5403" lon="3.3333" />
+   <vertex lat="47.4167" lon="4.3333" />
+   <vertex lat="46.5000" lon="4.8333" />
+   <vertex lat="46.5000" lon="3.2667" />
+   <vertex lat="46.3333" lon="2.9167" />
+   <vertex lat="46.7500" lon="2.8333" />
+   <vertex lat="47.1667" lon="2.0000" />
+   <vertex lat="47.1667" lon="1.6167" />
+   <vertex lat="48.0833" lon="1.7500" />
+  </slice>
+
+  <slice floor="125" ceiling="195" >
+   <centre lat="47.3000" lon="3.1333" />
+   <vertex lat="47.3333" lon="2.8333" />
+   <vertex lat="47.5403" lon="2.8333" />
+   <vertex lat="47.5403" lon="3.2950" />
+   <vertex lat="47.5403" lon="3.3333" />
+   <vertex lat="47.4167" lon="4.3333" />
+   <vertex lat="46.5000" lon="4.8333" />
+   <vertex lat="46.5000" lon="3.2667" />
+   <vertex lat="46.3333" lon="2.9167" />
+   <vertex lat="46.7500" lon="2.8333" />
+   <vertex lat="47.1667" lon="2.0000" />
+  </slice>
+ </sector>
+
+
+ <sector name="TL" acc="paris" floor="0" ceiling="265" >
+  <slice floor="0" ceiling="195" >
+   <centre lat="48.8333" lon="3.5000" />
+   <vertex lat="48.9500" lon="4.8000" />
+   <vertex lat="49.0211" lon="3.1928" />
+   <vertex lat="49.1269" lon="3.0128" />
+   <vertex lat="49.1111" lon="2.8358" />
+   <vertex lat="49.0778" lon="2.4694" />
+   <vertex lat="49.0000" lon="2.5578" />
+   <vertex lat="48.6667" lon="2.8833" />
+   <vertex lat="48.7167" lon="3.1167" />
+   <vertex lat="48.7500" lon="3.2000" />
+   <vertex lat="48.7000" lon="3.5000" />
+   <vertex lat="48.0167" lon="5.0000" />
+   <vertex lat="48.1667" lon="5.1667" />
+   <vertex lat="48.2500" lon="5.7333" />
+  </slice>
+
+  <slice floor="195" ceiling="265" >
+   <centre lat="48.8333" lon="3.5000" />
+   <vertex lat="48.9500" lon="4.8000" />
+   <vertex lat="49.0211" lon="3.1928" />
+   <vertex lat="49.1269" lon="3.0128" />
+   <vertex lat="49.1111" lon="2.8358" />
+   <vertex lat="49.0778" lon="2.4694" />
+   <vertex lat="49.0000" lon="2.5578" />
+   <vertex lat="48.6667" lon="2.8833" />
+   <vertex lat="48.5833" lon="3.0167" />
+   <vertex lat="48.6667" lon="3.1167" />
+   <vertex lat="48.7000" lon="3.5000" />
+   <vertex lat="48.5000" lon="3.9667" />
+   <vertex lat="48.2667" lon="4.4500" />
+   <vertex lat="47.9667" lon="4.9500" />
+   <vertex lat="48.1667" lon="5.1667" />
+   <vertex lat="48.2500" lon="5.7333" />
+  </slice>
+ </sector>
+
+
+ <sector name="UT" acc="paris" floor="195" ceiling="320" >
+  <slice floor="195" ceiling="320" >
+   <centre lat="46.9667" lon="4.0000" />
+   <vertex lat="47.1667" lon="3.8500" />
+   <vertex lat="47.2667" lon="4.1667" />
+   <vertex lat="47.4167" lon="4.4167" />
+   <vertex lat="46.7000" lon="5.1833" />
+   <vertex lat="46.2500" lon="5.1333" />
+   <vertex lat="46.2833" lon="4.0500" />
+  </slice>
+ </sector>
+
+
+ <sector name="TU" acc="paris" floor="320" ceiling="990" >
+  <slice floor="320" ceiling="990" >
+   <centre lat="46.9667" lon="4.0000" />
+   <vertex lat="47.1667" lon="3.8500" />
+   <vertex lat="47.2667" lon="4.1667" />
+   <vertex lat="47.4167" lon="4.4167" />
+   <vertex lat="46.7000" lon="5.1833" />
+   <vertex lat="46.2500" lon="5.1333" />
+   <vertex lat="46.2833" lon="4.0500" />
+  </slice>
+ </sector>
+
+
+ <sector name="UP" acc="paris" floor="195" ceiling="990" >
+  <slice floor="195" ceiling="245" >
+   <centre lat="46.8833" lon="3.4833" />
+   <vertex lat="47.5333" lon="2.8667" />
+   <vertex lat="47.5333" lon="3.3000" />
+   <vertex lat="47.1667" lon="3.5500" />
+   <vertex lat="47.1667" lon="3.8500" />
+   <vertex lat="46.2833" lon="4.0500" />
+   <vertex lat="46.2833" lon="3.6833" />
+  </slice>
+
+  <slice floor="245" ceiling="990" >
+   <centre lat="47.8333" lon="2.7500" />
+   <vertex lat="47.5333" lon="2.8333" />
+   <vertex lat="48.1333" lon="2.5000" />
+   <vertex lat="48.3500" lon="2.7500" />
+   <vertex lat="47.5333" lon="3.3000" />
+   <vertex lat="47.1667" lon="3.5500" />
+   <vertex lat="47.1667" lon="3.8500" />
+   <vertex lat="46.2833" lon="4.0500" />
+   <vertex lat="46.2833" lon="3.6833" />
+  </slice>
+ </sector>
+
+
+ <sector name="AO" acc="paris" floor="0" ceiling="285" >
+  <slice floor="0" ceiling="195" >
+   <centre lat="48.3167" lon="2.8500" />
+   <vertex lat="48.6667" lon="2.8833" />
+   <vertex lat="48.4500" lon="2.6833" />
+   <vertex lat="47.5403" lon="3.2958" />
+   <vertex lat="47.5403" lon="3.3333" />
+   <vertex lat="47.4167" lon="4.3333" />
+   <vertex lat="47.6000" lon="4.5333" />
+   <vertex lat="47.9500" lon="3.8167" />
+   <vertex lat="48.7167" lon="3.1167" />
+  </slice>
+
+  <slice floor="195" ceiling="285" >
+   <centre lat="48.1500" lon="2.9667" />
+   <vertex lat="48.3500" lon="2.7500" />
+   <vertex lat="47.5333" lon="3.3000" />
+   <vertex lat="47.1667" lon="3.5500" />
+   <vertex lat="47.1667" lon="3.8500" />
+   <vertex lat="47.2667" lon="4.1667" />
+   <vertex lat="47.4167" lon="4.4167" />
+   <vertex lat="47.5833" lon="4.6667" />
+   <vertex lat="48.4000" lon="3.5000" />
+   <vertex lat="48.6667" lon="3.1167" />
+  </slice>
+ </sector>
+
+
+ <sector name="SU" acc="paris" floor="285" ceiling="990" >
+  <slice floor="285" ceiling="990" >
+   <centre lat="48.1500" lon="2.9667" />
+   <vertex lat="48.3500" lon="2.7500" />
+   <vertex lat="47.5333" lon="3.3000" />
+   <vertex lat="47.1667" lon="3.5500" />
+   <vertex lat="47.1667" lon="3.8500" />
+   <vertex lat="47.2667" lon="4.1667" />
+   <vertex lat="47.4167" lon="4.4167" />
+   <vertex lat="47.5833" lon="4.6667" />
+   <vertex lat="48.4000" lon="3.5000" />
+   <vertex lat="48.5000" lon="3.9667" />
+   <vertex lat="48.7000" lon="3.5000" />
+   <vertex lat="48.6667" lon="3.1167" />
+  </slice>
+ </sector>
+
+
+ <sector name="AR" acc="paris" floor="0" ceiling="990" >
+  <slice floor="0" ceiling="195" >
+   <centre lat="48.1667" lon="4.1667" />
+   <vertex lat="48.7167" lon="3.1167" />
+   <vertex lat="47.9500" lon="3.8167" />
+   <vertex lat="47.6000" lon="4.5333" />
+   <vertex lat="48.0167" lon="5.0000" />
+   <vertex lat="48.7000" lon="3.5000" />
+   <vertex lat="48.7500" lon="3.2000" />
+  </slice>
+
+  <slice floor="195" ceiling="285" >
+   <centre lat="48.1667" lon="4.1667" />
+   <vertex lat="48.6667" lon="3.1167" />
+   <vertex lat="48.7000" lon="3.5000" />
+   <vertex lat="48.5000" lon="3.9667" />
+   <vertex lat="48.2667" lon="4.4500" />
+   <vertex lat="47.9667" lon="4.9500" />
+   <vertex lat="47.8500" lon="5.1500" />
+   <vertex lat="47.5833" lon="4.6667" />
+   <vertex lat="48.4000" lon="3.5000" />
+  </slice>
+
+  <slice floor="285" ceiling="990" >
+   <centre lat="48.1667" lon="4.1667" />
+   <vertex lat="48.4000" lon="3.5000" />
+   <vertex lat="47.5833" lon="4.6667" />
+   <vertex lat="47.8500" lon="5.1500" />
+   <vertex lat="47.9667" lon="4.9500" />
+   <vertex lat="48.2667" lon="4.4500" />
+   <vertex lat="48.5000" lon="3.9667" />
+  </slice>
+ </sector>
+
+
+ <sector name="UJ" acc="paris" floor="195" ceiling="990" >
+  <slice floor="195" ceiling="990" >
+   <centre lat="47.5000" lon="5.0833" />
+   <vertex lat="46.9667" lon="5.9167" />
+   <vertex lat="46.7000" lon="5.5833" />
+   <vertex lat="46.7000" lon="5.1833" />
+   <vertex lat="47.4167" lon="4.4167" />
+   <vertex lat="47.5833" lon="4.6667" />
+   <vertex lat="47.8500" lon="5.1500" />
+   <vertex lat="47.4667" lon="5.7833" />
+   <vertex lat="46.9833" lon="5.9500" />
+  </slice>
+ </sector>
+
+
+ <sector name="UZ" acc="paris" floor="195" ceiling="285" >
+  <slice floor="195" ceiling="245" >
+   <centre lat="50.0167" lon="0.2833" />
+   <vertex lat="49.8333" lon="0.9500" />
+   <vertex lat="50.2833" lon="0.4333" />
+   <vertex lat="50.1333" lon="0.1000" />
+   <vertex lat="49.6500" lon="0.5667" />
+  </slice>
+
+  <slice floor="245" ceiling="265" >
+   <centre lat="49.5000" lon="0.7500" />
+   <vertex lat="50.2833" lon="0.4333" />
+   <vertex lat="50.1333" lon="0.1000" />
+   <vertex lat="49.6500" lon="0.5667" />
+   <vertex lat="49.1000" lon="1.0833" />
+   <vertex lat="48.6667" lon="1.2000" />
+   <vertex lat="48.1333" lon="1.7703" />
+   <vertex lat="48.1333" lon="2.5000" />
+   <vertex lat="48.3500" lon="2.7500" />
+   <vertex lat="48.4167" lon="2.8167" />
+   <vertex lat="48.5833" lon="3.0167" />
+   <vertex lat="49.0000" lon="2.5333" />
+   <vertex lat="49.1167" lon="2.4000" />
+   <vertex lat="49.1667" lon="2.3500" />
+   <vertex lat="49.2833" lon="2.2333" />
+   <vertex lat="49.7833" lon="1.6500" />
+   <vertex lat="49.5833" lon="1.2167" />
+   <vertex lat="49.8333" lon="0.9500" />
+  </slice>
+
+  <slice floor="265" ceiling="285" >
+   <centre lat="49.5000" lon="0.7500" />
+   <vertex lat="50.2833" lon="0.4333" />
+   <vertex lat="50.1333" lon="0.1000" />
+   <vertex lat="49.6500" lon="0.5667" />
+   <vertex lat="49.1000" lon="1.0833" />
+   <vertex lat="48.6667" lon="1.2000" />
+   <vertex lat="48.1333" lon="1.7703" />
+   <vertex lat="48.1333" lon="2.5000" />
+   <vertex lat="48.3500" lon="2.7500" />
+   <vertex lat="48.4167" lon="2.8167" />
+   <vertex lat="48.5833" lon="3.0167" />
+   <vertex lat="49.0000" lon="2.5333" />
+   <vertex lat="49.1167" lon="2.4000" />
+   <vertex lat="49.1667" lon="2.3500" />
+   <vertex lat="49.2833" lon="2.2333" />
+   <vertex lat="49.7833" lon="1.6500" />
+   <vertex lat="50.4500" lon="0.8833" />
+  </slice>
+ </sector>
+
+
+ <sector name="UK" acc="paris" floor="195" ceiling="285" >
+  <slice floor="195" ceiling="245" >
+   <centre lat="49.8000" lon="-0.1667" />
+   <vertex lat="50.0000" lon="-0.2500" />
+   <vertex lat="50.1333" lon="0.1000" />
+   <vertex lat="49.6500" lon="0.5667" />
+   <vertex lat="49.2667" lon="-0.2500" />
+  </slice>
+
+  <slice floor="245" ceiling="285" >
+   <centre lat="49.8000" lon="-0.1667" />
+   <vertex lat="50.0000" lon="-0.2500" />
+   <vertex lat="50.1333" lon="0.1000" />
+   <vertex lat="49.6500" lon="0.5667" />
+   <vertex lat="49.1000" lon="1.0833" />
+   <vertex lat="48.6667" lon="1.2000" />
+   <vertex lat="48.6333" lon="0.8333" />
+   <vertex lat="47.9500" lon="-0.2500" />
+   <vertex lat="48.1667" lon="-0.2500" />
+   <vertex lat="49.1667" lon="-0.2500" />
+   <vertex lat="49.2667" lon="-0.2500" />
+  </slice>
+ </sector>
+
+
+ <sector name="UX" acc="paris" floor="245" ceiling="285" >
+  <slice floor="245" ceiling="285" >
+   <centre lat="48.2667" lon="0.7667" />
+   <vertex lat="47.9500" lon="-0.2500" />
+   <vertex lat="48.6333" lon="0.8333" />
+   <vertex lat="48.6667" lon="1.2000" />
+   <vertex lat="48.1333" lon="1.7703" />
+   <vertex lat="47.1667" lon="1.4667" />
+   <vertex lat="47.4167" lon="1.0833" />
+   <vertex lat="47.4167" lon="-0.2500" />
+  </slice>
+ </sector>
+ 
+ <sector name="RD" acc="paris" floor="0" ceiling="285" >
+  <slice floor="0" ceiling="285" >
+   <centre lat="49.0000" lon="2.5000" />
+	<vertex lat="48.7298" lon="3.49861" />
+	<vertex lat="48.7298" lon="3.49861" />
+	<vertex lat="48.6927" lon="3.62189" />
+	<vertex lat="48.5874" lon="3.79025" />
+	<vertex lat="48.0884" lon="3.20679" />
+	<vertex lat="48.0924" lon="3.05782" />
+	<vertex lat="48.2632" lon="2.89324" />
+	<vertex lat="48.2837" lon="1.89617" />
+	<vertex lat="48.1026" lon="1.76525" />
+	<vertex lat="48.0215" lon="1.61356" />
+	<vertex lat="48.0558" lon="1.54009" />
+	<vertex lat="48.0558" lon="1.54009" />
+	<vertex lat="48.124" lon="1.41773" />
+	<vertex lat="48.326" lon="1.22349" />
+	<vertex lat="48.4938" lon="1.10221" />
+	<vertex lat="48.5268" lon="1.12798" />
+	<vertex lat="48.6431" lon="1.15566" />
+	<vertex lat="48.657" lon="1.40728" />
+	<vertex lat="48.6903" lon="1.40819" />
+	<vertex lat="48.5712" lon="1.60565" />
+	<vertex lat="48.4173" lon="1.87605" />
+	<vertex lat="48.3915" lon="2.37523" />
+	<vertex lat="48.4011" lon="2.70083" />
+	<vertex lat="48.624" lon="3.11451" />
+	<vertex lat="48.7037" lon="3.24517" />
+	<vertex lat="48.6965" lon="3.49634" />
+	<vertex lat="48.7298" lon="3.49861" />     <vertex lat="49.5006" lon="2.6831" />
+     <vertex lat="49.5006" lon="2.6831" />
+     <vertex lat="49.4228" lon="3.13833" />
+     <vertex lat="49.3722" lon="3.16068" />
+     <vertex lat="48.8375" lon="3.22843" />
+     <vertex lat="48.8415" lon="3.0773" />
+     <vertex lat="48.7776" lon="2.97265" />
+     <vertex lat="48.6464" lon="2.88965" />
+     <vertex lat="48.5146" lon="2.83212" />
+     <vertex lat="48.4682" lon="2.6793" />
+     <vertex lat="48.4893" lon="2.47995" />
+     <vertex lat="48.3915" lon="2.37523" />
+     <vertex lat="48.4292" lon="2.15174" />
+     <vertex lat="48.4498" lon="1.9273" />
+     <vertex lat="48.569" lon="1.75612" />
+     <vertex lat="48.6201" lon="1.68252" />
+     <vertex lat="48.7858" lon="1.73836" />
+     <vertex lat="48.8852" lon="1.76699" />
+     <vertex lat="49.0191" lon="1.72102" />
+     <vertex lat="49.3828" lon="1.88641" />
+     <vertex lat="49.2616" lon="2.16165" />
+     <vertex lat="49.3115" lon="2.16379" />
+     <vertex lat="49.3267" lon="2.24085" />
+     <vertex lat="49.3902" lon="2.39668" />
+     <vertex lat="49.4219" lon="2.47475" />
+     <vertex lat="49.4696" lon="2.57927" />
+     <vertex lat="49.5006" lon="2.6831" />
+  </slice>
+ </sector>
+
+ <sector name="RA" acc="paris" floor="0" ceiling="285" >
+  <slice floor="0" ceiling="285" >
+   <centre lat="49.0000" lon="2.5000" />
+     <vertex lat="49.5006" lon="2.6831" />
+     <vertex lat="49.5006" lon="2.6831" />
+     <vertex lat="49.4228" lon="3.13833" />
+     <vertex lat="49.3722" lon="3.16068" />
+     <vertex lat="48.8375" lon="3.22843" />
+     <vertex lat="48.8415" lon="3.0773" />
+     <vertex lat="48.7776" lon="2.97265" />
+     <vertex lat="48.6464" lon="2.88965" />
+     <vertex lat="48.5146" lon="2.83212" />
+     <vertex lat="48.4682" lon="2.6793" />
+     <vertex lat="48.4893" lon="2.47995" />
+     <vertex lat="48.3915" lon="2.37523" />
+     <vertex lat="48.4292" lon="2.15174" />
+     <vertex lat="48.4498" lon="1.9273" />
+     <vertex lat="48.569" lon="1.75612" />
+     <vertex lat="48.6201" lon="1.68252" />
+     <vertex lat="48.7858" lon="1.73836" />
+     <vertex lat="48.8852" lon="1.76699" />
+     <vertex lat="49.0191" lon="1.72102" />
+     <vertex lat="49.3828" lon="1.88641" />
+     <vertex lat="49.2616" lon="2.16165" />
+     <vertex lat="49.3115" lon="2.16379" />
+     <vertex lat="49.3267" lon="2.24085" />
+     <vertex lat="49.3902" lon="2.39668" />
+     <vertex lat="49.4219" lon="2.47475" />
+     <vertex lat="49.4696" lon="2.57927" />
+     <vertex lat="49.5006" lon="2.6831" />
+  </slice>
+ </sector>
+
+<sector name="OA" acc="paris" floor="0" ceiling="285" >
+  <slice floor="0" ceiling="285" >
+   <centre lat="49.0000" lon="2.5000" />
+	<vertex lat="48.7298" lon="3.49861" />
+	<vertex lat="48.7298" lon="3.49861" />
+	<vertex lat="48.6927" lon="3.62189" />
+	<vertex lat="48.5874" lon="3.79025" />
+	<vertex lat="48.0884" lon="3.20679" />
+	<vertex lat="48.0924" lon="3.05782" />
+	<vertex lat="48.2632" lon="2.89324" />
+	<vertex lat="48.2837" lon="1.89617" />
+	<vertex lat="48.1026" lon="1.76525" />
+	<vertex lat="48.0215" lon="1.61356" />
+	<vertex lat="48.0558" lon="1.54009" />
+	<vertex lat="48.0558" lon="1.54009" />
+	<vertex lat="48.124" lon="1.41773" />
+	<vertex lat="48.326" lon="1.22349" />
+	<vertex lat="48.4938" lon="1.10221" />
+	<vertex lat="48.5268" lon="1.12798" />
+	<vertex lat="48.6431" lon="1.15566" />
+	<vertex lat="48.657" lon="1.40728" />
+	<vertex lat="48.6903" lon="1.40819" />
+	<vertex lat="48.5712" lon="1.60565" />
+	<vertex lat="48.4173" lon="1.87605" />
+	<vertex lat="48.3915" lon="2.37523" />
+	<vertex lat="48.4011" lon="2.70083" />
+	<vertex lat="48.624" lon="3.11451" />
+	<vertex lat="48.7037" lon="3.24517" />
+	<vertex lat="48.6965" lon="3.49634" />
+	<vertex lat="48.7298" lon="3.49861" />
+  </slice>
+ </sector>
+
+
+ <sector name="E" acc="reims" floor="0" ceiling="195" >
+  <slice floor="0" ceiling="195" >
+   <centre lat="49.1000" lon="5.9333" />
+   <vertex lat="49.4500" lon="6.0100" />
+   <vertex lat="49.4500" lon="6.0797" />
+   <vertex lat="49.5000" lon="6.1900" />
+   <vertex lat="49.4597" lon="6.3497" />
+   <vertex lat="49.4597" lon="6.4297" />
+   <vertex lat="49.3800" lon="6.5900" />
+   <vertex lat="49.1897" lon="6.7197" />
+   <vertex lat="49.1697" lon="6.8400" />
+   <vertex lat="49.2297" lon="6.9297" />
+   <vertex lat="49.2297" lon="6.9297" />
+   <vertex lat="49.2200" lon="7.0197" />
+   <vertex lat="49.1300" lon="7.0700" />
+   <vertex lat="49.1100" lon="7.2800" />
+   <vertex lat="49.1397" lon="7.3400" />
+   <vertex lat="49.1697" lon="7.3497" />
+   <vertex lat="49.1697" lon="7.3497" />
+   <vertex lat="49.1800" lon="7.4697" />
+   <vertex lat="49.1397" lon="7.4897" />
+   <vertex lat="49.0997" lon="7.6197" />
+   <vertex lat="49.0697" lon="7.6500" />
+   <vertex lat="49.0497" lon="7.7500" />
+   <vertex lat="49.0697" lon="7.7897" />
+   <vertex lat="49.0497" lon="7.8800" />
+   <vertex lat="49.0497" lon="7.8800" />
+   <vertex lat="49.0600" lon="7.9097" />
+   <vertex lat="48.9797" lon="8.1997" />
+   <vertex lat="48.9097" lon="8.1097" />
+   <vertex lat="48.8100" lon="8.0500" />
+   <vertex lat="48.7500" lon="7.9297" />
+   <vertex lat="48.7500" lon="7.9297" />
+   <vertex lat="48.7000" lon="7.9200" />
+   <vertex lat="48.6100" lon="7.8200" />
+   <vertex lat="48.5200" lon="7.8097" />
+   <vertex lat="48.5097" lon="7.8097" />
+   <vertex lat="48.3197" lon="7.7397" />
+   <vertex lat="48.2900" lon="7.6900" />
+   <vertex lat="48.1897" lon="7.6500" />
+   <vertex lat="48.1397" lon="7.5797" />
+   <vertex lat="47.9700" lon="7.6100" />
+   <vertex lat="48.0000" lon="5.9667" />
+   <vertex lat="48.0833" lon="5.9333" />
+   <vertex lat="48.2333" lon="5.7500" />
+   <vertex lat="48.9500" lon="4.8000" />
+  </slice>
+ </sector>
+
+
+ <sector name="SE" acc="reims" floor="0" ceiling="195" >
+  <slice floor="0" ceiling="195" >
+   <centre lat="47.8000" lon="5.2167" />
+   <vertex lat="48.0000" lon="5.9667" />
+   <vertex lat="48.0833" lon="5.9333" />
+   <vertex lat="48.2500" lon="5.7333" />
+   <vertex lat="48.1667" lon="5.1667" />
+   <vertex lat="47.4167" lon="4.3333" />
+   <vertex lat="46.5000" lon="4.8333" />
+   <vertex lat="46.5000" lon="5.6000" />
+   <vertex lat="46.6833" lon="5.4167" />
+   <vertex lat="46.7833" lon="5.6500" />
+   <vertex lat="46.9333" lon="5.8667" />
+   <vertex lat="46.7700" lon="6.4200" />
+   <vertex lat="46.9000" lon="6.4497" />
+   <vertex lat="46.9397" lon="6.4297" />
+   <vertex lat="46.9797" lon="6.5000" />
+   <vertex lat="46.9797" lon="6.5000" />
+   <vertex lat="47.0000" lon="6.6597" />
+   <vertex lat="47.0800" lon="6.6997" />
+   <vertex lat="47.0900" lon="6.6997" />
+   <vertex lat="47.1500" lon="6.8400" />
+   <vertex lat="47.3300" lon="6.9897" />
+   <vertex lat="47.3300" lon="7.0300" />
+   <vertex lat="47.3600" lon="7.0500" />
+   <vertex lat="47.3697" lon="6.9200" />
+   <vertex lat="47.4397" lon="6.9800" />
+   <vertex lat="47.4900" lon="6.9800" />
+   <vertex lat="47.4900" lon="7.1397" />
+   <vertex lat="47.4500" lon="7.1597" />
+   <vertex lat="47.4597" lon="7.4097" />
+   <vertex lat="47.5900" lon="7.5797" />
+   <vertex lat="47.5900" lon="7.6700" />
+   <vertex lat="47.5997" lon="7.6700" />
+   <vertex lat="47.6100" lon="7.6700" />
+   <vertex lat="47.6197" lon="7.5797" />
+   <vertex lat="47.7097" lon="7.5500" />
+   <vertex lat="47.7700" lon="7.5597" />
+   <vertex lat="47.7797" lon="7.5397" />
+   <vertex lat="47.8400" lon="7.5797" />
+   <vertex lat="47.8497" lon="7.5700" />
+   <vertex lat="47.9700" lon="7.6100" />
+  </slice>
+ </sector>
+
+
+ <sector name="UE" acc="reims" floor="195" ceiling="990" >
+  <slice floor="195" ceiling="990" >
+   <centre lat="49.1000" lon="5.9333" />
+   <vertex lat="49.4500" lon="6.0100" />
+   <vertex lat="49.4500" lon="6.0797" />
+   <vertex lat="49.5000" lon="6.1900" />
+   <vertex lat="49.4597" lon="6.3497" />
+   <vertex lat="49.4597" lon="6.4297" />
+   <vertex lat="49.3800" lon="6.5900" />
+   <vertex lat="49.1897" lon="6.7197" />
+   <vertex lat="49.1697" lon="6.8400" />
+   <vertex lat="49.2297" lon="6.9297" />
+   <vertex lat="49.2297" lon="6.9297" />
+   <vertex lat="49.2200" lon="7.0197" />
+   <vertex lat="49.1300" lon="7.0700" />
+   <vertex lat="49.1100" lon="7.2800" />
+   <vertex lat="49.1397" lon="7.3400" />
+   <vertex lat="49.1697" lon="7.3497" />
+   <vertex lat="49.1697" lon="7.3497" />
+   <vertex lat="49.1800" lon="7.4697" />
+   <vertex lat="49.1397" lon="7.4897" />
+   <vertex lat="49.0997" lon="7.6197" />
+   <vertex lat="49.0697" lon="7.6500" />
+   <vertex lat="49.0497" lon="7.7500" />
+   <vertex lat="49.0697" lon="7.7897" />
+   <vertex lat="49.0497" lon="7.8800" />
+   <vertex lat="49.0497" lon="7.8800" />
+   <vertex lat="49.0600" lon="7.9097" />
+   <vertex lat="48.9797" lon="8.1997" />
+   <vertex lat="48.9097" lon="8.1097" />
+   <vertex lat="48.8100" lon="8.0500" />
+   <vertex lat="48.7500" lon="7.9297" />
+   <vertex lat="48.7500" lon="7.9297" />
+   <vertex lat="48.7000" lon="7.9200" />
+   <vertex lat="48.6100" lon="7.8200" />
+   <vertex lat="48.5200" lon="7.8097" />
+   <vertex lat="48.5097" lon="7.8097" />
+   <vertex lat="48.3197" lon="7.7397" />
+   <vertex lat="48.2900" lon="7.6900" />
+   <vertex lat="48.1897" lon="7.6500" />
+   <vertex lat="48.1397" lon="7.5797" />
+   <vertex lat="47.9700" lon="7.6100" />
+   <vertex lat="47.8497" lon="7.5700" />
+   <vertex lat="47.8400" lon="7.5797" />
+   <vertex lat="47.8333" lon="7.5500" />
+   <vertex lat="48.0000" lon="6.6000" />
+   <vertex lat="47.9167" lon="6.5000" />
+   <vertex lat="47.9833" lon="6.0000" />
+   <vertex lat="48.2500" lon="5.7333" />
+   <vertex lat="48.9500" lon="4.8000" />
+  </slice>
+ </sector>
+
+
+ <sector name="UH" acc="reims" floor="195" ceiling="320" >
+  <slice floor="195" ceiling="320" >
+   <centre lat="47.5500" lon="6.0667" />
+   <vertex lat="47.0800" lon="6.6997" />
+   <vertex lat="47.0900" lon="6.6997" />
+   <vertex lat="47.1500" lon="6.8400" />
+   <vertex lat="47.3300" lon="6.9897" />
+   <vertex lat="47.3300" lon="7.0300" />
+   <vertex lat="47.3600" lon="7.0500" />
+   <vertex lat="47.3697" lon="6.9200" />
+   <vertex lat="47.4397" lon="6.9800" />
+   <vertex lat="47.4900" lon="6.9800" />
+   <vertex lat="47.4900" lon="7.1397" />
+   <vertex lat="47.4500" lon="7.1597" />
+   <vertex lat="47.4597" lon="7.4097" />
+   <vertex lat="47.5900" lon="7.5797" />
+   <vertex lat="47.5900" lon="7.6700" />
+   <vertex lat="47.5997" lon="7.6700" />
+   <vertex lat="47.6100" lon="7.6700" />
+   <vertex lat="47.6197" lon="7.5797" />
+   <vertex lat="47.7097" lon="7.5500" />
+   <vertex lat="47.7700" lon="7.5597" />
+   <vertex lat="47.7797" lon="7.5397" />
+   <vertex lat="47.8400" lon="7.5797" />
+   <vertex lat="47.8333" lon="7.5500" />
+   <vertex lat="48.0000" lon="6.6000" />
+   <vertex lat="47.9167" lon="6.5000" />
+   <vertex lat="47.9833" lon="6.0000" />
+   <vertex lat="47.4500" lon="5.7500" />
+   <vertex lat="46.9833" lon="5.9667" />
+   <vertex lat="47.0667" lon="6.3000" />
+   <vertex lat="47.0667" lon="6.6833" />
+  </slice>
+ </sector>
+
+
+ <sector name="XH" acc="reims" floor="320" ceiling="990" >
+  <slice floor="320" ceiling="990" >
+   <centre lat="47.5500" lon="6.0667" />
+   <vertex lat="47.0800" lon="6.6997" />
+   <vertex lat="47.0900" lon="6.6997" />
+   <vertex lat="47.1500" lon="6.8400" />
+   <vertex lat="47.3300" lon="6.9897" />
+   <vertex lat="47.3300" lon="7.0300" />
+   <vertex lat="47.3600" lon="7.0500" />
+   <vertex lat="47.3697" lon="6.9200" />
+   <vertex lat="47.4397" lon="6.9800" />
+   <vertex lat="47.4900" lon="6.9800" />
+   <vertex lat="47.4900" lon="7.1397" />
+   <vertex lat="47.4500" lon="7.1597" />
+   <vertex lat="47.4597" lon="7.4097" />
+   <vertex lat="47.5900" lon="7.5797" />
+   <vertex lat="47.5900" lon="7.6700" />
+   <vertex lat="47.5997" lon="7.6700" />
+   <vertex lat="47.6100" lon="7.6700" />
+   <vertex lat="47.6197" lon="7.5797" />
+   <vertex lat="47.7097" lon="7.5500" />
+   <vertex lat="47.7700" lon="7.5597" />
+   <vertex lat="47.7797" lon="7.5397" />
+   <vertex lat="47.8400" lon="7.5797" />
+   <vertex lat="47.8333" lon="7.5500" />
+   <vertex lat="48.0000" lon="6.6000" />
+   <vertex lat="47.9167" lon="6.5000" />
+   <vertex lat="47.9833" lon="6.0000" />
+   <vertex lat="47.4500" lon="5.7500" />
+   <vertex lat="46.9833" lon="5.9667" />
+   <vertex lat="47.0667" lon="6.3000" />
+   <vertex lat="47.0667" lon="6.6833" />
+  </slice>
+ </sector>
+
+
+ <sector name="UF" acc="reims" floor="195" ceiling="990" >
+  <slice floor="195" ceiling="265" >
+   <centre lat="48.0000" lon="5.5000" />
+   <vertex lat="48.2500" lon="5.7333" />
+   <vertex lat="48.1667" lon="5.1667" />
+   <vertex lat="47.9667" lon="4.9500" />
+   <vertex lat="47.8500" lon="5.1500" />
+   <vertex lat="47.4667" lon="5.7833" />
+   <vertex lat="47.9833" lon="6.0000" />
+  </slice>
+
+  <slice floor="265" ceiling="990" >
+   <centre lat="48.0000" lon="5.5000" />
+   <vertex lat="48.2500" lon="5.7333" />
+   <vertex lat="48.9500" lon="4.8000" />
+   <vertex lat="48.9500" lon="4.1667" />
+   <vertex lat="48.7000" lon="3.5000" />
+   <vertex lat="48.5000" lon="3.9667" />
+   <vertex lat="48.2667" lon="4.4500" />
+   <vertex lat="47.9667" lon="4.9500" />
+   <vertex lat="47.8500" lon="5.1500" />
+   <vertex lat="47.4667" lon="5.7833" />
+   <vertex lat="47.9833" lon="6.0000" />
+  </slice>
+ </sector>
+
+
+ <sector name="UR" acc="reims" floor="265" ceiling="300" >
+  <slice floor="265" ceiling="300" >
+   <centre lat="49.8000" lon="3.6333" />
+   <vertex lat="48.9500" lon="4.8000" />
+   <vertex lat="48.9500" lon="4.1667" />
+   <vertex lat="48.7000" lon="3.5000" />
+   <vertex lat="48.6667" lon="3.1167" />
+   <vertex lat="48.6667" lon="3.0833" />
+   <vertex lat="48.5833" lon="3.0167" />
+   <vertex lat="48.6667" lon="2.8833" />
+   <vertex lat="49.2667" lon="2.2000" />
+   <vertex lat="49.5167" lon="3.0167" />
+   <vertex lat="50.4333" lon="3.6333" />
+   <vertex lat="50.3300" lon="3.7400" />
+   <vertex lat="50.3600" lon="3.7897" />
+   <vertex lat="50.3400" lon="4.0000" />
+   <vertex lat="50.3497" lon="4.0300" />
+   <vertex lat="50.2400" lon="4.1397" />
+   <vertex lat="50.2297" lon="4.1397" />
+   <vertex lat="50.1597" lon="4.1300" />
+   <vertex lat="50.1597" lon="4.1300" />
+   <vertex lat="50.0997" lon="4.2300" />
+   <vertex lat="50.0000" lon="4.1597" />
+   <vertex lat="50.0000" lon="4.1500" />
+   <vertex lat="49.9797" lon="4.2197" />
+   <vertex lat="49.9797" lon="4.3000" />
+   <vertex lat="49.9597" lon="4.4400" />
+   <vertex lat="49.9597" lon="4.4400" />
+   <vertex lat="49.9500" lon="4.4297" />
+   <vertex lat="50.0200" lon="4.6597" />
+   <vertex lat="50.0200" lon="4.6597" />
+   <vertex lat="50.0900" lon="4.6997" />
+   <vertex lat="50.1500" lon="4.8200" />
+   <vertex lat="50.1597" lon="4.8200" />
+   <vertex lat="50.1500" lon="4.8800" />
+   <vertex lat="49.9700" lon="4.8097" />
+   <vertex lat="49.9500" lon="4.8697" />
+   <vertex lat="49.9097" lon="4.9000" />
+   <vertex lat="49.8197" lon="4.8697" />
+   <vertex lat="49.8197" lon="4.8697" />
+   <vertex lat="49.7997" lon="4.9697" />
+   <vertex lat="49.7997" lon="4.9600" />
+   <vertex lat="49.7997" lon="5.0100" />
+   <vertex lat="49.7797" lon="5.1100" />
+   <vertex lat="49.7097" lon="5.1900" />
+   <vertex lat="49.7000" lon="5.2897" />
+   <vertex lat="49.6300" lon="5.3497" />
+   <vertex lat="49.6197" lon="5.4000" />
+   <vertex lat="49.6197" lon="5.4097" />
+   <vertex lat="49.5997" lon="5.4697" />
+   <vertex lat="49.5097" lon="5.5197" />
+   <vertex lat="49.5200" lon="5.5100" />
+   <vertex lat="49.5497" lon="5.8097" />
+   <vertex lat="49.5297" lon="5.8600" />
+   <vertex lat="49.5297" lon="5.8600" />
+   <vertex lat="49.5000" lon="5.8497" />
+   <vertex lat="49.4797" lon="5.9497" />
+   <vertex lat="49.4500" lon="6.0100" />
+  </slice>
+ </sector>
+
+
+ <sector name="XR" acc="reims" floor="300" ceiling="340" >
+  <slice floor="300" ceiling="340" >
+   <centre lat="49.8000" lon="3.6333" />
+   <vertex lat="48.9500" lon="4.8000" />
+   <vertex lat="48.9500" lon="4.1667" />
+   <vertex lat="48.7000" lon="3.5000" />
+   <vertex lat="48.6667" lon="3.1167" />
+   <vertex lat="48.6667" lon="3.0833" />
+   <vertex lat="48.5833" lon="3.0167" />
+   <vertex lat="48.6667" lon="2.8833" />
+   <vertex lat="49.2667" lon="2.2000" />
+   <vertex lat="49.5167" lon="3.0167" />
+   <vertex lat="50.4333" lon="3.6333" />
+   <vertex lat="50.3300" lon="3.7400" />
+   <vertex lat="50.3600" lon="3.7897" />
+   <vertex lat="50.3400" lon="4.0000" />
+   <vertex lat="50.3497" lon="4.0300" />
+   <vertex lat="50.2400" lon="4.1397" />
+   <vertex lat="50.2297" lon="4.1397" />
+   <vertex lat="50.1597" lon="4.1300" />
+   <vertex lat="50.1597" lon="4.1300" />
+   <vertex lat="50.0997" lon="4.2300" />
+   <vertex lat="50.0000" lon="4.1597" />
+   <vertex lat="50.0000" lon="4.1500" />
+   <vertex lat="49.9797" lon="4.2197" />
+   <vertex lat="49.9797" lon="4.3000" />
+   <vertex lat="49.9597" lon="4.4400" />
+   <vertex lat="49.9597" lon="4.4400" />
+   <vertex lat="49.9500" lon="4.4297" />
+   <vertex lat="50.0200" lon="4.6597" />
+   <vertex lat="50.0200" lon="4.6597" />
+   <vertex lat="50.0900" lon="4.6997" />
+   <vertex lat="50.1500" lon="4.8200" />
+   <vertex lat="50.1597" lon="4.8200" />
+   <vertex lat="50.1500" lon="4.8800" />
+   <vertex lat="49.9700" lon="4.8097" />
+   <vertex lat="49.9500" lon="4.8697" />
+   <vertex lat="49.9097" lon="4.9000" />
+   <vertex lat="49.8197" lon="4.8697" />
+   <vertex lat="49.8197" lon="4.8697" />
+   <vertex lat="49.7997" lon="4.9697" />
+   <vertex lat="49.7997" lon="4.9600" />
+   <vertex lat="49.7997" lon="5.0100" />
+   <vertex lat="49.7797" lon="5.1100" />
+   <vertex lat="49.7097" lon="5.1900" />
+   <vertex lat="49.7000" lon="5.2897" />
+   <vertex lat="49.6300" lon="5.3497" />
+   <vertex lat="49.6197" lon="5.4000" />
+   <vertex lat="49.6197" lon="5.4097" />
+   <vertex lat="49.5997" lon="5.4697" />
+   <vertex lat="49.5097" lon="5.5197" />
+   <vertex lat="49.5200" lon="5.5100" />
+   <vertex lat="49.5497" lon="5.8097" />
+   <vertex lat="49.5297" lon="5.8600" />
+   <vertex lat="49.5297" lon="5.8600" />
+   <vertex lat="49.5000" lon="5.8497" />
+   <vertex lat="49.4797" lon="5.9497" />
+   <vertex lat="49.4500" lon="6.0100" />
+  </slice>
+ </sector>
+
+
+ <sector name="UY" acc="reims" floor="340" ceiling="990" >
+  <slice floor="340" ceiling="990" >
+   <centre lat="49.8000" lon="3.6333" />
+   <vertex lat="48.9500" lon="4.8000" />
+   <vertex lat="48.9500" lon="4.1667" />
+   <vertex lat="48.7000" lon="3.5000" />
+   <vertex lat="48.6667" lon="3.1167" />
+   <vertex lat="48.6667" lon="3.0833" />
+   <vertex lat="48.5833" lon="3.0167" />
+   <vertex lat="48.6667" lon="2.8833" />
+   <vertex lat="49.2667" lon="2.2000" />
+   <vertex lat="49.5167" lon="3.0167" />
+   <vertex lat="50.4333" lon="3.6333" />
+   <vertex lat="50.3300" lon="3.7400" />
+   <vertex lat="50.3600" lon="3.7897" />
+   <vertex lat="50.3400" lon="4.0000" />
+   <vertex lat="50.3497" lon="4.0300" />
+   <vertex lat="50.2400" lon="4.1397" />
+   <vertex lat="50.2297" lon="4.1397" />
+   <vertex lat="50.1597" lon="4.1300" />
+   <vertex lat="50.1597" lon="4.1300" />
+   <vertex lat="50.0997" lon="4.2300" />
+   <vertex lat="50.0000" lon="4.1597" />
+   <vertex lat="50.0000" lon="4.1500" />
+   <vertex lat="49.9797" lon="4.2197" />
+   <vertex lat="49.9797" lon="4.3000" />
+   <vertex lat="49.9597" lon="4.4400" />
+   <vertex lat="49.9597" lon="4.4400" />
+   <vertex lat="49.9500" lon="4.4297" />
+   <vertex lat="50.0200" lon="4.6597" />
+   <vertex lat="50.0200" lon="4.6597" />
+   <vertex lat="50.0900" lon="4.6997" />
+   <vertex lat="50.1500" lon="4.8200" />
+   <vertex lat="50.1597" lon="4.8200" />
+   <vertex lat="50.1500" lon="4.8800" />
+   <vertex lat="49.9700" lon="4.8097" />
+   <vertex lat="49.9500" lon="4.8697" />
+   <vertex lat="49.9097" lon="4.9000" />
+   <vertex lat="49.8197" lon="4.8697" />
+   <vertex lat="49.8197" lon="4.8697" />
+   <vertex lat="49.7997" lon="4.9697" />
+   <vertex lat="49.7997" lon="4.9600" />
+   <vertex lat="49.7997" lon="5.0100" />
+   <vertex lat="49.7797" lon="5.1100" />
+   <vertex lat="49.7097" lon="5.1900" />
+   <vertex lat="49.7000" lon="5.2897" />
+   <vertex lat="49.6300" lon="5.3497" />
+   <vertex lat="49.6197" lon="5.4000" />
+   <vertex lat="49.6197" lon="5.4097" />
+   <vertex lat="49.5997" lon="5.4697" />
+   <vertex lat="49.5097" lon="5.5197" />
+   <vertex lat="49.5200" lon="5.5100" />
+   <vertex lat="49.5497" lon="5.8097" />
+   <vertex lat="49.5297" lon="5.8600" />
+   <vertex lat="49.5297" lon="5.8600" />
+   <vertex lat="49.5000" lon="5.8497" />
+   <vertex lat="49.4797" lon="5.9497" />
+   <vertex lat="49.4500" lon="6.0100" />
+  </slice>
+ </sector>
+
+
+ <sector name="UN" acc="reims" floor="265" ceiling="320" >
+  <slice floor="265" ceiling="320" >
+   <centre lat="50.8000" lon="1.8167" />
+   <vertex lat="49.7833" lon="1.6500" />
+   <vertex lat="50.4500" lon="0.8833" />
+   <vertex lat="50.6667" lon="1.4667" />
+   <vertex lat="51.0000" lon="1.4667" />
+   <vertex lat="51.1167" lon="2.0000" />
+   <vertex lat="51.0828" lon="2.5167" />
+   <vertex lat="50.9597" lon="2.6300" />
+   <vertex lat="50.9597" lon="2.6300" />
+   <vertex lat="50.9000" lon="2.5897" />
+   <vertex lat="50.8300" lon="2.6097" />
+   <vertex lat="50.8300" lon="2.7000" />
+   <vertex lat="50.8100" lon="2.7600" />
+   <vertex lat="50.7200" lon="2.7997" />
+   <vertex lat="50.7200" lon="2.9300" />
+   <vertex lat="50.7200" lon="2.9300" />
+   <vertex lat="50.7700" lon="3.0097" />
+   <vertex lat="50.8100" lon="3.1500" />
+   <vertex lat="50.7097" lon="3.2597" />
+   <vertex lat="50.5000" lon="3.3197" />
+   <vertex lat="50.5097" lon="3.4300" />
+   <vertex lat="50.5097" lon="3.4300" />
+   <vertex lat="50.5400" lon="3.5000" />
+   <vertex lat="50.5297" lon="3.5597" />
+   <vertex lat="50.4900" lon="3.5297" />
+   <vertex lat="50.4900" lon="3.6097" />
+   <vertex lat="50.4500" lon="3.6800" />
+   <vertex lat="50.4333" lon="3.6333" />
+   <vertex lat="49.5167" lon="3.0167" />
+   <vertex lat="49.2667" lon="2.2000" />
+  </slice>
+ </sector>
+
+
+ <sector name="XN" acc="reims" floor="320" ceiling="990" >
+  <slice floor="320" ceiling="990" >
+   <centre lat="50.8000" lon="1.8167" />
+   <vertex lat="49.7833" lon="1.6500" />
+   <vertex lat="50.4500" lon="0.8833" />
+   <vertex lat="50.6667" lon="1.4667" />
+   <vertex lat="51.0000" lon="1.4667" />
+   <vertex lat="51.1167" lon="2.0000" />
+   <vertex lat="51.0828" lon="2.5167" />
+   <vertex lat="50.9597" lon="2.6300" />
+   <vertex lat="50.9597" lon="2.6300" />
+   <vertex lat="50.9000" lon="2.5897" />
+   <vertex lat="50.8300" lon="2.6097" />
+   <vertex lat="50.8300" lon="2.7000" />
+   <vertex lat="50.8100" lon="2.7600" />
+   <vertex lat="50.7200" lon="2.7997" />
+   <vertex lat="50.7200" lon="2.9300" />
+   <vertex lat="50.7200" lon="2.9300" />
+   <vertex lat="50.7700" lon="3.0097" />
+   <vertex lat="50.8100" lon="3.1500" />
+   <vertex lat="50.7097" lon="3.2597" />
+   <vertex lat="50.5000" lon="3.3197" />
+   <vertex lat="50.5097" lon="3.4300" />
+   <vertex lat="50.5097" lon="3.4300" />
+   <vertex lat="50.5400" lon="3.5000" />
+   <vertex lat="50.5297" lon="3.5597" />
+   <vertex lat="50.4900" lon="3.5297" />
+   <vertex lat="50.4900" lon="3.6097" />
+   <vertex lat="50.4500" lon="3.6800" />
+   <vertex lat="50.4333" lon="3.6333" />
+   <vertex lat="49.5167" lon="3.0167" />
+   <vertex lat="49.2667" lon="2.2000" />
+  </slice>
+ </sector>
+
+
+ <sector name="ZU" acc="brest" floor="335" ceiling="990" >
+  <slice floor="335" ceiling="990" >
+   <centre lat="49.5000" lon="1.3333" />
+   <vertex lat="50.1333" lon="0.1000" />
+   <vertex lat="50.4500" lon="0.8833" />
+   <vertex lat="49.2833" lon="2.2333" />
+   <vertex lat="48.5833" lon="3.0167" />
+   <vertex lat="48.1333" lon="2.5000" />
+   <vertex lat="48.1333" lon="1.7667" />
+   <vertex lat="48.6667" lon="1.2000" />
+   <vertex lat="49.1000" lon="1.0833" />
+  </slice>
+ </sector>
+
+
+ <sector name="ZS" acc="brest" floor="285" ceiling="335" >
+  <slice floor="285" ceiling="335" >
+   <centre lat="49.5000" lon="1.3333" />
+   <vertex lat="50.1333" lon="0.1000" />
+   <vertex lat="50.4500" lon="0.8833" />
+   <vertex lat="49.2833" lon="2.2333" />
+   <vertex lat="48.5833" lon="3.0167" />
+   <vertex lat="48.1333" lon="2.5000" />
+   <vertex lat="48.1333" lon="1.7667" />
+   <vertex lat="48.6667" lon="1.2000" />
+   <vertex lat="49.1000" lon="1.0833" />
+  </slice>
+ </sector>
+
+
+ <sector name="ID" acc="brest" floor="0" ceiling="245" >
+  <slice floor="0" ceiling="245" >
+   <centre lat="48.6833" lon="-2.7667" />
+   <vertex lat="49.4333" lon="-5.0803" />
+   <vertex lat="49.8000" lon="-3.1750" />
+   <vertex lat="50.0000" lon="-2.0000" />
+   <vertex lat="50.0000" lon="-0.2500" />
+   <vertex lat="48.2253" lon="-0.2500" />
+   <vertex lat="48.0083" lon="-2.6931" />
+   <vertex lat="47.6739" lon="-3.2519" />
+   <vertex lat="47.3203" lon="-3.2525" />
+   <vertex lat="47.5050" lon="-5.5000" />
+  </slice>
+ </sector>
+
+
+ <sector name="IN" acc="brest" floor="0" ceiling="245" >
+  <slice floor="0" ceiling="195" >
+   <centre lat="47.1000" lon="-3.0667" />
+   <vertex lat="47.6739" lon="-3.2519" />
+   <vertex lat="48.0083" lon="-2.6931" />
+   <vertex lat="48.2253" lon="-0.2500" />
+   <vertex lat="46.5000" lon="-0.2500" />
+   <vertex lat="46.5000" lon="-1.6333" />
+   <vertex lat="45.9833" lon="-1.6500" />
+   <vertex lat="46.1833" lon="-2.5500" />
+   <vertex lat="46.3556" lon="-3.2539" />
+  </slice>
+
+  <slice floor="195" ceiling="245" >
+   <centre lat="47.1000" lon="-3.0667" />
+   <vertex lat="47.6739" lon="-3.2519" />
+   <vertex lat="48.0083" lon="-2.6931" />
+   <vertex lat="48.2253" lon="-0.2500" />
+   <vertex lat="46.4500" lon="-0.2000" />
+   <vertex lat="46.2000" lon="-0.3331" />
+   <vertex lat="45.9833" lon="-1.6500" />
+   <vertex lat="46.1833" lon="-2.5500" />
+   <vertex lat="46.3556" lon="-3.2539" />
+  </slice>
+ </sector>
+
+
+ <sector name="NS" acc="brest" floor="195" ceiling="335" >
+  <slice floor="245" ceiling="335" >
+   <centre lat="47.5000" lon="-2.0000" />
+   <vertex lat="47.3203" lon="-3.2525" />
+   <vertex lat="47.6739" lon="-3.2519" />
+   <vertex lat="48.3017" lon="-2.2092" />
+   <vertex lat="48.3617" lon="-0.2500" />
+   <vertex lat="46.5000" lon="-0.2500" />
+   <vertex lat="46.2000" lon="-0.3333" />
+   <vertex lat="45.9833" lon="-1.6667" />
+   <vertex lat="46.2486" lon="-2.8311" />
+   <vertex lat="46.3556" lon="-3.2539" />
+  </slice>
+ </sector>
+
+
+ <sector name="NU" acc="brest" floor="335" ceiling="990" >
+  <slice floor="335" ceiling="990" >
+   <centre lat="47.5000" lon="-2.0000" />
+   <vertex lat="47.3203" lon="-3.2525" />
+   <vertex lat="47.6739" lon="-3.2519" />
+   <vertex lat="48.3017" lon="-2.2092" />
+   <vertex lat="48.3617" lon="-0.2500" />
+   <vertex lat="46.5000" lon="-0.2500" />
+   <vertex lat="46.2000" lon="-0.3333" />
+   <vertex lat="45.9833" lon="-1.6667" />
+   <vertex lat="46.2486" lon="-2.8311" />
+   <vertex lat="46.3556" lon="-3.2539" />
+  </slice>
+ </sector>
+
+
+ <sector name="QS" acc="brest" floor="195" ceiling="335" >
+  <slice floor="245" ceiling="335" >
+   <centre lat="49.0000" lon="-4.0000" />
+   <vertex lat="49.4825" lon="-5.0708" />
+   <vertex lat="49.4778" lon="-4.9533" />
+   <vertex lat="49.7825" lon="-3.2750" />
+   <vertex lat="48.3833" lon="-2.2072" />
+   <vertex lat="48.3017" lon="-2.2092" />
+   <vertex lat="47.6739" lon="-3.2519" />
+   <vertex lat="47.3203" lon="-3.2525" />
+   <vertex lat="47.5000" lon="-5.5000" />
+  </slice>
+ </sector>
+
+
+ <sector name="QU" acc="brest" floor="335" ceiling="990" >
+  <slice floor="335" ceiling="990" >
+   <centre lat="49.0000" lon="-4.0000" />
+   <vertex lat="49.4825" lon="-5.0708" />
+   <vertex lat="49.4778" lon="-4.9533" />
+   <vertex lat="49.7825" lon="-3.2750" />
+   <vertex lat="48.3833" lon="-2.2072" />
+   <vertex lat="48.3017" lon="-2.2092" />
+   <vertex lat="47.6739" lon="-3.2519" />
+   <vertex lat="47.3203" lon="-3.2525" />
+   <vertex lat="47.5000" lon="-5.5000" />
+  </slice>
+ </sector>
+
+
+ <sector name="OS" acc="brest" floor="0" ceiling="335" >
+  <slice floor="0" ceiling="335" >
+   <centre lat="48.3333" lon="-6.5000" />
+   <vertex lat="48.5000" lon="-8.0000" />
+   <vertex lat="49.5561" lon="-6.9342" />
+   <vertex lat="49.4825" lon="-5.0708" />
+   <vertex lat="47.5000" lon="-5.5000" />
+   <vertex lat="47.5000" lon="-8.7500" />
+   <vertex lat="48.5744" lon="-8.7500" />
+  </slice>
+ </sector>
+
+
+ <sector name="OU" acc="brest" floor="335" ceiling="990" >
+  <slice floor="335" ceiling="990" >
+   <centre lat="48.3333" lon="-6.5000" />
+   <vertex lat="48.5000" lon="-8.0000" />
+   <vertex lat="49.5561" lon="-6.9342" />
+   <vertex lat="49.4825" lon="-5.0708" />
+   <vertex lat="47.5000" lon="-5.5000" />
+   <vertex lat="47.5000" lon="-8.7500" />
+   <vertex lat="48.5744" lon="-8.7500" />
+  </slice>
+ </sector>
+
+
+ <sector name="JS" acc="brest" floor="245" ceiling="335" >
+  <slice floor="245" ceiling="335" >
+   <centre lat="49.7500" lon="-2.0000" />
+   <vertex lat="49.7825" lon="-3.2750" />
+   <vertex lat="50.0000" lon="-2.0000" />
+   <vertex lat="50.0000" lon="-0.2500" />
+   <vertex lat="48.3617" lon="-0.2500" />
+   <vertex lat="48.3017" lon="-2.2092" />
+   <vertex lat="48.3833" lon="-2.2072" />
+  </slice>
+ </sector>
+
+
+ <sector name="JU" acc="brest" floor="335" ceiling="990" >
+  <slice floor="335" ceiling="990" >
+   <centre lat="49.7500" lon="-2.0000" />
+   <vertex lat="49.7825" lon="-3.2750" />
+   <vertex lat="50.0000" lon="-2.0000" />
+   <vertex lat="50.0000" lon="-0.2500" />
+   <vertex lat="48.3617" lon="-0.2500" />
+   <vertex lat="48.3017" lon="-2.2092" />
+   <vertex lat="48.3833" lon="-2.2072" />
+  </slice>
+ </sector>
+
+
+ <sector name="AS" acc="brest" floor="0" ceiling="335" >
+  <slice floor="0" ceiling="335" >
+   <centre lat="46.5000" lon="-5.5000" />
+   <vertex lat="47.5000" lon="-8.7500" />
+   <vertex lat="47.5000" lon="-5.5000" />
+   <vertex lat="47.3203" lon="-3.2525" />
+   <vertex lat="46.3556" lon="-3.2539" />
+   <vertex lat="46.2486" lon="-2.8311" />
+   <vertex lat="45.4578" lon="-3.7461" />
+   <vertex lat="44.4433" lon="-4.6069" />
+   <vertex lat="45.0000" lon="-8.0000" />
+   <vertex lat="45.0000" lon="-8.7500" />
+  </slice>
+ </sector>
+
+
+ <sector name="AU" acc="brest" floor="335" ceiling="990" >
+  <slice floor="335" ceiling="990" >
+   <centre lat="46.5000" lon="-5.5000" />
+   <vertex lat="47.5000" lon="-8.7500" />
+   <vertex lat="47.5000" lon="-5.5000" />
+   <vertex lat="47.3203" lon="-3.2525" />
+   <vertex lat="46.3556" lon="-3.2539" />
+   <vertex lat="46.2486" lon="-2.8311" />
+   <vertex lat="45.4578" lon="-3.7461" />
+   <vertex lat="44.4433" lon="-4.6069" />
+   <vertex lat="45.0000" lon="-8.0000" />
+   <vertex lat="45.0000" lon="-8.7500" />
+  </slice>
+ </sector>
+
+
+ <sector name="GS" acc="brest" floor="0" ceiling="335" >
+  <slice floor="0" ceiling="335" >
+   <centre lat="45.1667" lon="-2.5000" />
+   <vertex lat="46.2486" lon="-2.8311" />
+   <vertex lat="45.9833" lon="-1.6667" />
+   <vertex lat="44.8167" lon="-1.7500" />
+   <vertex lat="44.0444" lon="-1.7714" />
+   <vertex lat="43.6803" lon="-2.0703" />
+   <vertex lat="44.3333" lon="-4.0000" />
+   <vertex lat="44.4433" lon="-4.6069" />
+   <vertex lat="45.4578" lon="-3.7461" />
+  </slice>
+ </sector>
+
+
+ <sector name="GU" acc="brest" floor="335" ceiling="990" >
+  <slice floor="335" ceiling="990" >
+   <centre lat="45.1667" lon="-2.5000" />
+   <vertex lat="46.2486" lon="-2.8311" />
+   <vertex lat="45.9833" lon="-1.6667" />
+   <vertex lat="44.8167" lon="-1.7500" />
+   <vertex lat="44.0444" lon="-1.7714" />
+   <vertex lat="43.6803" lon="-2.0703" />
+   <vertex lat="44.3333" lon="-4.0000" />
+   <vertex lat="44.4433" lon="-4.6069" />
+   <vertex lat="45.4578" lon="-3.7461" />
+  </slice>
+ </sector>
+
+
+ <sector name="XU" acc="brest" floor="335" ceiling="990" >
+  <slice floor="335" ceiling="990" >
+   <centre lat="48.2667" lon="0.7667" />
+   <vertex lat="50.0000" lon="-0.2500" />
+   <vertex lat="50.1333" lon="0.1000" />
+   <vertex lat="49.1000" lon="1.0833" />
+   <vertex lat="48.6667" lon="1.2000" />
+   <vertex lat="48.1333" lon="1.7667" />
+   <vertex lat="47.1667" lon="1.4667" />
+   <vertex lat="47.4167" lon="1.0833" />
+   <vertex lat="47.4167" lon="-0.2500" />
+  </slice>
+ </sector>
+
+
+ <sector name="XS" acc="brest" floor="285" ceiling="335" >
+  <slice floor="285" ceiling="335" >
+   <centre lat="48.2667" lon="0.7667" />
+   <vertex lat="50.0000" lon="-0.2500" />
+   <vertex lat="50.1333" lon="0.1000" />
+   <vertex lat="49.1000" lon="1.0833" />
+   <vertex lat="48.6667" lon="1.2000" />
+   <vertex lat="48.1333" lon="1.7667" />
+   <vertex lat="47.1667" lon="1.4667" />
+   <vertex lat="47.4167" lon="1.0833" />
+   <vertex lat="47.4167" lon="-0.2500" />
+  </slice>
+ </sector>
+
+
+ <sector name="BN" acc="bordeaux" floor="0" ceiling="195" >
+  <slice floor="0" ceiling="195" >
+   <centre lat="46.1667" lon="-1.2833" />
+   <vertex lat="46.5000" lon="-1.6333" />
+   <vertex lat="46.5000" lon="-0.7000" />
+   <vertex lat="45.8833" lon="-0.0167" />
+   <vertex lat="45.3833" lon="0.4167" />
+   <vertex lat="45.1333" lon="0.1667" />
+   <vertex lat="44.8333" lon="-0.7167" />
+   <vertex lat="44.8167" lon="-1.7500" />
+   <vertex lat="45.9833" lon="-1.6667" />
+  </slice>
+ </sector>
+
+
+ <sector name="NL" acc="bordeaux" floor="0" ceiling="195" >
+  <slice floor="0" ceiling="195" >
+   <centre lat="46.9000" lon="0.1667" />
+   <vertex lat="47.1667" lon="-0.2500" />
+   <vertex lat="47.1667" lon="1.4500" />
+   <vertex lat="47.0833" lon="1.5833" />
+   <vertex lat="47.1667" lon="1.6167" />
+   <vertex lat="47.1667" lon="2.0000" />
+   <vertex lat="46.7500" lon="2.8333" />
+   <vertex lat="46.3333" lon="2.9167" />
+   <vertex lat="46.0833" lon="2.9500" />
+   <vertex lat="45.8833" lon="0.8833" />
+   <vertex lat="45.8833" lon="-0.0167" />
+   <vertex lat="46.5000" lon="-0.7000" />
+   <vertex lat="46.5000" lon="-0.2500" />
+  </slice>
+ </sector>
+
+
+ <sector name="BS" acc="bordeaux" floor="0" ceiling="195" >
+  <slice floor="0" ceiling="195" >
+   <centre lat="44.5333" lon="-1.3167" />
+   <vertex lat="43.5833" lon="-1.7833" />
+   <vertex lat="44.8167" lon="-1.7500" />
+   <vertex lat="44.8333" lon="-0.7167" />
+   <vertex lat="45.1333" lon="0.1667" />
+   <vertex lat="45.3833" lon="0.4167" />
+   <vertex lat="44.6667" lon="0.5000" />
+   <vertex lat="43.6667" lon="-0.2000" />
+   <vertex lat="42.7700" lon="-0.1500" />
+   <vertex lat="42.8300" lon="-0.2900" />
+   <vertex lat="42.7900" lon="-0.4200" />
+   <vertex lat="42.8100" lon="-0.5000" />
+   <vertex lat="42.7597" lon="-0.5500" />
+   <vertex lat="42.8600" lon="-0.6800" />
+   <vertex lat="42.8800" lon="-0.7300" />
+   <vertex lat="42.9300" lon="-0.7300" />
+   <vertex lat="42.9500" lon="-0.7600" />
+   <vertex lat="42.9300" lon="-0.8200" />
+   <vertex lat="42.9197" lon="-0.9400" />
+   <vertex lat="43.0000" lon="-1.0700" />
+   <vertex lat="42.9900" lon="-1.1200" />
+   <vertex lat="43.0297" lon="-1.2000" />
+   <vertex lat="43.0297" lon="-1.2597" />
+   <vertex lat="43.0497" lon="-1.2897" />
+   <vertex lat="43.0900" lon="-1.2997" />
+   <vertex lat="43.0997" lon="-1.3200" />
+   <vertex lat="43.0097" lon="-1.3500" />
+   <vertex lat="43.0200" lon="-1.4297" />
+   <vertex lat="43.0697" lon="-1.4800" />
+   <vertex lat="43.0900" lon="-1.4197" />
+   <vertex lat="43.2200" lon="-1.3800" />
+   <vertex lat="43.2500" lon="-1.4800" />
+   <vertex lat="43.2597" lon="-1.4900" />
+   <vertex lat="43.2297" lon="-1.5700" />
+   <vertex lat="43.2297" lon="-1.6200" />
+   <vertex lat="43.2797" lon="-1.6400" />
+   <vertex lat="43.2997" lon="-1.7200" />
+   <vertex lat="43.3469" lon="-1.7953" />
+  </slice>
+ </sector>
+
+
+ <sector name="SL" acc="bordeaux" floor="0" ceiling="195" >
+  <slice floor="0" ceiling="195" >
+   <centre lat="44.8667" lon="0.8167" />
+   <vertex lat="45.8833" lon="-0.0167" />
+   <vertex lat="45.8833" lon="0.8833" />
+   <vertex lat="46.0833" lon="2.9500" />
+   <vertex lat="45.7167" lon="3.0000" />
+   <vertex lat="45.7000" lon="3.0000" />
+   <vertex lat="44.7167" lon="3.0333" />
+   <vertex lat="44.6667" lon="1.2667" />
+   <vertex lat="44.6667" lon="0.5000" />
+   <vertex lat="45.3833" lon="0.4167" />
+  </slice>
+ </sector>
+
+
+ <sector name="TA" acc="bordeaux" floor="0" ceiling="195" >
+  <slice floor="0" ceiling="195" >
+   <centre lat="44.3500" lon="0.6167" />
+   <vertex lat="44.6667" lon="0.5000" />
+   <vertex lat="44.6667" lon="1.2667" />
+   <vertex lat="43.6833" lon="1.3167" />
+   <vertex lat="43.4833" lon="1.4833" />
+   <vertex lat="42.6100" lon="1.6200" />
+   <vertex lat="42.6197" lon="1.5000" />
+   <vertex lat="42.5900" lon="1.5000" />
+   <vertex lat="42.5800" lon="1.4600" />
+   <vertex lat="42.7000" lon="1.3600" />
+   <vertex lat="42.7097" lon="1.3600" />
+   <vertex lat="42.6897" lon="1.2697" />
+   <vertex lat="42.7000" lon="1.2697" />
+   <vertex lat="42.6897" lon="1.1797" />
+   <vertex lat="42.7597" lon="1.0900" />
+   <vertex lat="42.7597" lon="1.0800" />
+   <vertex lat="42.7700" lon="1.0497" />
+   <vertex lat="42.7900" lon="0.9700" />
+   <vertex lat="42.7700" lon="0.9500" />
+   <vertex lat="42.8197" lon="0.8600" />
+   <vertex lat="42.8400" lon="0.7000" />
+   <vertex lat="42.7700" lon="0.6800" />
+   <vertex lat="42.6697" lon="0.7400" />
+   <vertex lat="42.6597" lon="0.7200" />
+   <vertex lat="42.6800" lon="0.6700" />
+   <vertex lat="42.6800" lon="0.5400" />
+   <vertex lat="42.6697" lon="0.5297" />
+   <vertex lat="42.6800" lon="0.4400" />
+   <vertex lat="42.7000" lon="0.4100" />
+   <vertex lat="42.6897" lon="0.3600" />
+   <vertex lat="42.6697" lon="0.3600" />
+   <vertex lat="42.6597" lon="0.3300" />
+   <vertex lat="42.7097" lon="0.2700" />
+   <vertex lat="42.7200" lon="0.2300" />
+   <vertex lat="42.7200" lon="0.2300" />
+   <vertex lat="42.6697" lon="0.0100" />
+   <vertex lat="42.6897" lon="-0.0200" />
+   <vertex lat="42.7097" lon="-0.0700" />
+   <vertex lat="42.7700" lon="-0.1200" />
+   <vertex lat="42.7700" lon="-0.1500" />
+   <vertex lat="43.6667" lon="-0.2000" />
+  </slice>
+ </sector>
+
+
+ <sector name="TG" acc="bordeaux" floor="0" ceiling="195" >
+  <slice floor="0" ceiling="195" >
+   <centre lat="44.3333" lon="1.6833" />
+   <vertex lat="44.6667" lon="1.2667" />
+   <vertex lat="44.7167" lon="3.0333" />
+   <vertex lat="44.6167" lon="3.0333" />
+   <vertex lat="44.2500" lon="2.9167" />
+   <vertex lat="43.7667" lon="2.7500" />
+   <vertex lat="43.1833" lon="2.7500" />
+   <vertex lat="43.2667" lon="2.5667" />
+   <vertex lat="43.0000" lon="2.2833" />
+   <vertex lat="42.6500" lon="2.6500" />
+   <vertex lat="42.3833" lon="2.6500" />
+   <vertex lat="42.3300" lon="2.6097" />
+   <vertex lat="42.3197" lon="2.5100" />
+   <vertex lat="42.3800" lon="2.4100" />
+   <vertex lat="42.4197" lon="2.2500" />
+   <vertex lat="42.3497" lon="2.0397" />
+   <vertex lat="42.3400" lon="2.0297" />
+   <vertex lat="42.3600" lon="1.9700" />
+   <vertex lat="42.4197" lon="1.9400" />
+   <vertex lat="42.4300" lon="1.8900" />
+   <vertex lat="42.4900" lon="1.7997" />
+   <vertex lat="42.5600" lon="1.8300" />
+   <vertex lat="42.5497" lon="1.7897" />
+   <vertex lat="42.5497" lon="1.7800" />
+   <vertex lat="42.5697" lon="1.7300" />
+   <vertex lat="42.5697" lon="1.7300" />
+   <vertex lat="42.5900" lon="1.7400" />
+   <vertex lat="42.6197" lon="1.6200" />
+   <vertex lat="42.6100" lon="1.6200" />
+   <vertex lat="43.4833" lon="1.4833" />
+   <vertex lat="43.6833" lon="1.3167" />
+  </slice>
+ </sector>
+
+
+ <sector name="Z1" acc="bordeaux" floor="195" ceiling="320" >
+  <slice floor="195" ceiling="320" >
+   <centre lat="44.5500" lon="-1.4000" />
+   <vertex lat="43.3961" lon="-1.7819" />
+   <vertex lat="43.3500" lon="-1.7667" />
+   <vertex lat="43.2997" lon="-1.7200" />
+   <vertex lat="43.2797" lon="-1.6400" />
+   <vertex lat="43.2297" lon="-1.6200" />
+   <vertex lat="43.2297" lon="-1.5700" />
+   <vertex lat="43.2597" lon="-1.4900" />
+   <vertex lat="43.2500" lon="-1.4800" />
+   <vertex lat="43.2200" lon="-1.3800" />
+   <vertex lat="43.0900" lon="-1.4197" />
+   <vertex lat="43.0697" lon="-1.4800" />
+   <vertex lat="43.0200" lon="-1.4297" />
+   <vertex lat="43.0097" lon="-1.3500" />
+   <vertex lat="43.0997" lon="-1.3200" />
+   <vertex lat="43.0900" lon="-1.2997" />
+   <vertex lat="43.0497" lon="-1.2897" />
+   <vertex lat="43.0297" lon="-1.2597" />
+   <vertex lat="43.0297" lon="-1.2000" />
+   <vertex lat="42.9900" lon="-1.1200" />
+   <vertex lat="43.0000" lon="-1.0700" />
+   <vertex lat="42.9197" lon="-0.9400" />
+   <vertex lat="42.9300" lon="-0.8200" />
+   <vertex lat="42.9500" lon="-0.7600" />
+   <vertex lat="42.9300" lon="-0.7300" />
+   <vertex lat="42.8800" lon="-0.7300" />
+   <vertex lat="42.8600" lon="-0.6800" />
+   <vertex lat="42.7597" lon="-0.5500" />
+   <vertex lat="42.8100" lon="-0.5000" />
+   <vertex lat="42.7900" lon="-0.4200" />
+   <vertex lat="42.8300" lon="-0.2900" />
+   <vertex lat="42.7700" lon="-0.1500" />
+   <vertex lat="42.7700" lon="-0.1200" />
+   <vertex lat="42.7097" lon="-0.0700" />
+   <vertex lat="42.6897" lon="-0.0200" />
+   <vertex lat="42.6697" lon="0.0100" />
+   <vertex lat="42.7200" lon="0.2300" />
+   <vertex lat="42.7097" lon="0.2700" />
+   <vertex lat="42.6597" lon="0.3300" />
+   <vertex lat="42.6697" lon="0.3600" />
+   <vertex lat="42.6897" lon="0.3600" />
+   <vertex lat="42.7008" lon="0.4403" />
+   <vertex lat="43.4922" lon="0.6475" />
+   <vertex lat="44.3967" lon="0.0242" />
+   <vertex lat="44.3992" lon="-0.2167" />
+   <vertex lat="44.8269" lon="-0.7231" />
+   <vertex lat="44.8167" lon="-1.7500" />
+   <vertex lat="44.0444" lon="-1.7714" />
+   <vertex lat="43.6803" lon="-2.0703" />
+  </slice>
+ </sector>
+
+
+ <sector name="Z2" acc="bordeaux" floor="320" ceiling="990" >
+  <slice floor="320" ceiling="990" >
+   <centre lat="44.5500" lon="-1.4000" />
+   <vertex lat="43.3961" lon="-1.7819" />
+   <vertex lat="43.3500" lon="-1.7667" />
+   <vertex lat="43.2997" lon="-1.7200" />
+   <vertex lat="43.2797" lon="-1.6400" />
+   <vertex lat="43.2297" lon="-1.6200" />
+   <vertex lat="43.2297" lon="-1.5700" />
+   <vertex lat="43.2597" lon="-1.4900" />
+   <vertex lat="43.2500" lon="-1.4800" />
+   <vertex lat="43.2200" lon="-1.3800" />
+   <vertex lat="43.0900" lon="-1.4197" />
+   <vertex lat="43.0697" lon="-1.4800" />
+   <vertex lat="43.0200" lon="-1.4297" />
+   <vertex lat="43.0097" lon="-1.3500" />
+   <vertex lat="43.0997" lon="-1.3200" />
+   <vertex lat="43.0900" lon="-1.2997" />
+   <vertex lat="43.0497" lon="-1.2897" />
+   <vertex lat="43.0297" lon="-1.2597" />
+   <vertex lat="43.0297" lon="-1.2000" />
+   <vertex lat="42.9900" lon="-1.1200" />
+   <vertex lat="43.0000" lon="-1.0700" />
+   <vertex lat="42.9197" lon="-0.9400" />
+   <vertex lat="42.9300" lon="-0.8200" />
+   <vertex lat="42.9500" lon="-0.7600" />
+   <vertex lat="42.9300" lon="-0.7300" />
+   <vertex lat="42.8800" lon="-0.7300" />
+   <vertex lat="42.8600" lon="-0.6800" />
+   <vertex lat="42.7597" lon="-0.5500" />
+   <vertex lat="42.8100" lon="-0.5000" />
+   <vertex lat="42.7900" lon="-0.4200" />
+   <vertex lat="42.8300" lon="-0.2900" />
+   <vertex lat="42.7700" lon="-0.1500" />
+   <vertex lat="42.7700" lon="-0.1200" />
+   <vertex lat="42.7097" lon="-0.0700" />
+   <vertex lat="42.6897" lon="-0.0200" />
+   <vertex lat="42.6697" lon="0.0100" />
+   <vertex lat="42.7200" lon="0.2300" />
+   <vertex lat="42.7097" lon="0.2700" />
+   <vertex lat="42.6597" lon="0.3300" />
+   <vertex lat="42.6697" lon="0.3600" />
+   <vertex lat="42.6897" lon="0.3600" />
+   <vertex lat="42.7008" lon="0.4403" />
+   <vertex lat="43.4922" lon="0.6475" />
+   <vertex lat="44.3967" lon="0.0242" />
+   <vertex lat="44.3992" lon="-0.2167" />
+   <vertex lat="44.8269" lon="-0.7231" />
+   <vertex lat="44.8167" lon="-1.7500" />
+   <vertex lat="44.0444" lon="-1.7714" />
+   <vertex lat="43.6803" lon="-2.0703" />
+  </slice>
+ </sector>
+
+
+ <sector name="C1" acc="bordeaux" floor="195" ceiling="320" >
+  <slice floor="195" ceiling="320" >
+   <centre lat="45.7667" lon="-1.3167" />
+   <vertex lat="44.3992" lon="-0.2167" />
+   <vertex lat="44.3967" lon="0.0242" />
+   <vertex lat="45.2875" lon="0.9172" />
+   <vertex lat="45.8244" lon="0.7644" />
+   <vertex lat="46.2000" lon="-0.3331" />
+   <vertex lat="45.9833" lon="-1.6667" />
+   <vertex lat="44.8167" lon="-1.7206" />
+   <vertex lat="44.8269" lon="-0.7231" />
+  </slice>
+ </sector>
+
+
+ <sector name="C2" acc="bordeaux" floor="320" ceiling="990" >
+  <slice floor="320" ceiling="990" >
+   <centre lat="45.7667" lon="-1.3167" />
+   <vertex lat="44.3992" lon="-0.2167" />
+   <vertex lat="44.3967" lon="0.0242" />
+   <vertex lat="45.2875" lon="0.9172" />
+   <vertex lat="45.8244" lon="0.7644" />
+   <vertex lat="46.2000" lon="-0.3331" />
+   <vertex lat="45.9833" lon="-1.6667" />
+   <vertex lat="44.8167" lon="-1.7206" />
+   <vertex lat="44.8269" lon="-0.7231" />
+  </slice>
+ </sector>
+
+
+ <sector name="X1" acc="bordeaux" floor="195" ceiling="320" >
+  <slice floor="195" ceiling="320" >
+   <centre lat="44.5000" lon="1.0000" />
+   <vertex lat="45.2875" lon="0.9172" />
+   <vertex lat="44.3967" lon="0.0242" />
+   <vertex lat="43.4922" lon="0.6475" />
+   <vertex lat="44.5167" lon="2.6250" />
+   <vertex lat="44.7000" lon="2.4417" />
+  </slice>
+ </sector>
+
+
+ <sector name="X2" acc="bordeaux" floor="320" ceiling="990" >
+  <slice floor="320" ceiling="990" >
+   <centre lat="44.5000" lon="1.0000" />
+   <vertex lat="45.2875" lon="0.9172" />
+   <vertex lat="44.3967" lon="0.0242" />
+   <vertex lat="43.4922" lon="0.6475" />
+   <vertex lat="44.5167" lon="2.6250" />
+   <vertex lat="44.7000" lon="2.4417" />
+  </slice>
+ </sector>
+
+
+ <sector name="L1" acc="bordeaux" floor="195" ceiling="320" >
+  <slice floor="195" ceiling="320" >
+   <centre lat="46.3500" lon="1.8333" />
+   <vertex lat="47.1667" lon="1.4667" />
+   <vertex lat="46.6914" lon="2.1497" />
+   <vertex lat="46.2200" lon="2.4497" />
+   <vertex lat="44.7000" lon="2.4417" />
+   <vertex lat="45.2875" lon="0.9172" />
+   <vertex lat="45.8244" lon="0.7644" />
+  </slice>
+ </sector>
+
+
+ <sector name="L2" acc="bordeaux" floor="320" ceiling="990" >
+  <slice floor="320" ceiling="990" >
+   <centre lat="46.3500" lon="1.8333" />
+   <vertex lat="47.1667" lon="1.4667" />
+   <vertex lat="46.6914" lon="2.1497" />
+   <vertex lat="46.2200" lon="2.4497" />
+   <vertex lat="44.7000" lon="2.4417" />
+   <vertex lat="45.2875" lon="0.9172" />
+   <vertex lat="45.8244" lon="0.7644" />
+   <vertex lat="47.4278" lon="0.7644" />
+   <vertex lat="47.4289" lon="1.0644" />
+  </slice>
+ </sector>
+
+
+ <sector name="R1" acc="bordeaux" floor="195" ceiling="320" >
+  <slice floor="195" ceiling="320" >
+   <centre lat="47.0000" lon="-0.0000" />
+   <vertex lat="45.8244" lon="0.7644" />
+   <vertex lat="46.2000" lon="-0.3331" />
+   <vertex lat="46.4661" lon="-0.2394" />
+   <vertex lat="47.4167" lon="-0.2500" />
+   <vertex lat="47.4289" lon="1.0644" />
+   <vertex lat="47.1667" lon="1.4667" />
+  </slice>
+ </sector>
+
+
+ <sector name="R2" acc="bordeaux" floor="320" ceiling="990" >
+  <slice floor="320" ceiling="990" >
+   <centre lat="47.0000" lon="-0.0000" />
+   <vertex lat="45.8244" lon="0.7644" />
+   <vertex lat="46.2000" lon="-0.3331" />
+   <vertex lat="46.4661" lon="-0.2394" />
+   <vertex lat="47.4167" lon="-0.2500" />
+   <vertex lat="47.4278" lon="0.7644" />
+  </slice>
+ </sector>
+
+
+ <sector name="N1" acc="bordeaux" floor="195" ceiling="320" >
+  <slice floor="195" ceiling="320" >
+   <centre lat="43.2500" lon="1.0000" />
+   <vertex lat="42.7008" lon="0.4403" />
+   <vertex lat="42.6833" lon="0.4500" />
+   <vertex lat="42.6667" lon="0.5333" />
+   <vertex lat="42.6833" lon="0.5500" />
+   <vertex lat="42.6750" lon="0.6833" />
+   <vertex lat="42.6667" lon="0.7333" />
+   <vertex lat="42.6806" lon="0.7611" />
+   <vertex lat="42.7750" lon="0.6833" />
+   <vertex lat="42.8500" lon="0.7167" />
+   <vertex lat="42.8333" lon="0.8667" />
+   <vertex lat="42.7806" lon="0.9667" />
+   <vertex lat="42.8000" lon="0.9833" />
+   <vertex lat="42.7667" lon="1.1000" />
+   <vertex lat="42.7000" lon="1.2000" />
+   <vertex lat="42.7167" lon="1.2806" />
+   <vertex lat="42.7000" lon="1.2833" />
+   <vertex lat="42.7167" lon="1.3667" />
+   <vertex lat="42.7000" lon="1.3667" />
+   <vertex lat="42.5833" lon="1.4667" />
+   <vertex lat="42.6000" lon="1.5000" />
+   <vertex lat="42.6333" lon="1.5000" />
+   <vertex lat="42.6125" lon="1.6333" />
+   <vertex lat="42.6167" lon="1.6333" />
+   <vertex lat="42.6175" lon="1.6783" />
+   <vertex lat="43.9194" lon="1.4722" />
+   <vertex lat="43.4922" lon="0.6475" />
+  </slice>
+ </sector>
+
+
+ <sector name="N2" acc="bordeaux" floor="320" ceiling="990" >
+  <slice floor="320" ceiling="990" >
+   <centre lat="43.2500" lon="1.0000" />
+   <vertex lat="42.7008" lon="0.4403" />
+   <vertex lat="42.6833" lon="0.4500" />
+   <vertex lat="42.6667" lon="0.5333" />
+   <vertex lat="42.6833" lon="0.5500" />
+   <vertex lat="42.6750" lon="0.6833" />
+   <vertex lat="42.6667" lon="0.7333" />
+   <vertex lat="42.6806" lon="0.7611" />
+   <vertex lat="42.7750" lon="0.6833" />
+   <vertex lat="42.8500" lon="0.7167" />
+   <vertex lat="42.8333" lon="0.8667" />
+   <vertex lat="42.7806" lon="0.9667" />
+   <vertex lat="42.8000" lon="0.9833" />
+   <vertex lat="42.7667" lon="1.1000" />
+   <vertex lat="42.7000" lon="1.2000" />
+   <vertex lat="42.7167" lon="1.2806" />
+   <vertex lat="42.7000" lon="1.2833" />
+   <vertex lat="42.7167" lon="1.3667" />
+   <vertex lat="42.7000" lon="1.3667" />
+   <vertex lat="42.5833" lon="1.4667" />
+   <vertex lat="42.6000" lon="1.5000" />
+   <vertex lat="42.6333" lon="1.5000" />
+   <vertex lat="42.6125" lon="1.6333" />
+   <vertex lat="42.6167" lon="1.6333" />
+   <vertex lat="42.6175" lon="1.6783" />
+   <vertex lat="43.9194" lon="1.4722" />
+   <vertex lat="43.4922" lon="0.6475" />
+  </slice>
+ </sector>
+
+
+ <sector name="H1" acc="bordeaux" floor="195" ceiling="320" >
+  <slice floor="195" ceiling="320" >
+   <centre lat="43.3333" lon="2.0833" />
+   <vertex lat="42.6175" lon="1.6783" />
+   <vertex lat="42.6000" lon="1.7333" />
+   <vertex lat="42.5833" lon="1.7500" />
+   <vertex lat="42.5667" lon="1.7333" />
+   <vertex lat="42.5500" lon="1.7833" />
+   <vertex lat="42.5500" lon="1.8000" />
+   <vertex lat="42.5667" lon="1.8333" />
+   <vertex lat="42.5000" lon="1.8167" />
+   <vertex lat="42.4667" lon="1.8667" />
+   <vertex lat="42.4333" lon="1.9000" />
+   <vertex lat="42.4167" lon="1.9500" />
+   <vertex lat="42.3667" lon="1.9833" />
+   <vertex lat="42.3500" lon="2.0333" />
+   <vertex lat="42.3625" lon="2.0500" />
+   <vertex lat="42.4333" lon="2.2667" />
+   <vertex lat="42.3833" lon="2.4000" />
+   <vertex lat="42.3333" lon="2.5000" />
+   <vertex lat="42.3361" lon="2.5333" />
+   <vertex lat="42.3417" lon="2.5500" />
+   <vertex lat="42.3458" lon="2.5833" />
+   <vertex lat="42.3458" lon="2.6167" />
+   <vertex lat="42.3417" lon="2.6500" />
+   <vertex lat="42.3333" lon="2.6833" />
+   <vertex lat="42.3167" lon="2.7167" />
+   <vertex lat="42.3833" lon="2.7500" />
+   <vertex lat="42.3897" lon="2.8497" />
+   <vertex lat="42.4300" lon="2.9100" />
+   <vertex lat="42.4500" lon="3.0497" />
+   <vertex lat="42.4500" lon="3.0497" />
+   <vertex lat="42.4097" lon="3.0997" />
+   <vertex lat="42.4322" lon="3.1283" />
+   <vertex lat="43.6031" lon="3.8419" />
+   <vertex lat="44.0850" lon="4.2219" />
+   <vertex lat="44.4317" lon="4.2731" />
+   <vertex lat="44.8589" lon="3.3692" />
+   <vertex lat="44.5167" lon="2.6250" />
+   <vertex lat="43.9194" lon="1.4722" />
+  </slice>
+ </sector>
+
+
+ <sector name="H2" acc="bordeaux" floor="320" ceiling="990" >
+  <slice floor="320" ceiling="990" >
+   <centre lat="43.3333" lon="2.0833" />
+   <vertex lat="42.6175" lon="1.6783" />
+   <vertex lat="42.6000" lon="1.7333" />
+   <vertex lat="42.5833" lon="1.7500" />
+   <vertex lat="42.5667" lon="1.7333" />
+   <vertex lat="42.5500" lon="1.7833" />
+   <vertex lat="42.5500" lon="1.8000" />
+   <vertex lat="42.5667" lon="1.8333" />
+   <vertex lat="42.5000" lon="1.8167" />
+   <vertex lat="42.4667" lon="1.8667" />
+   <vertex lat="42.4333" lon="1.9000" />
+   <vertex lat="42.4167" lon="1.9500" />
+   <vertex lat="42.3667" lon="1.9833" />
+   <vertex lat="42.3500" lon="2.0333" />
+   <vertex lat="42.3625" lon="2.0500" />
+   <vertex lat="42.4333" lon="2.2667" />
+   <vertex lat="42.3833" lon="2.4000" />
+   <vertex lat="42.3333" lon="2.5000" />
+   <vertex lat="42.3361" lon="2.5333" />
+   <vertex lat="42.3417" lon="2.5500" />
+   <vertex lat="42.3458" lon="2.5833" />
+   <vertex lat="42.3458" lon="2.6167" />
+   <vertex lat="42.3417" lon="2.6500" />
+   <vertex lat="42.3333" lon="2.6833" />
+   <vertex lat="42.3167" lon="2.7167" />
+   <vertex lat="42.3833" lon="2.7500" />
+   <vertex lat="42.3897" lon="2.8497" />
+   <vertex lat="42.4300" lon="2.9100" />
+   <vertex lat="42.4500" lon="3.0497" />
+   <vertex lat="42.4500" lon="3.0497" />
+   <vertex lat="42.4097" lon="3.0997" />
+   <vertex lat="42.4322" lon="3.1283" />
+   <vertex lat="43.6031" lon="3.8419" />
+   <vertex lat="44.0850" lon="4.2219" />
+   <vertex lat="44.4317" lon="4.2731" />
+   <vertex lat="44.8589" lon="3.3692" />
+   <vertex lat="44.5167" lon="2.6250" />
+   <vertex lat="43.9194" lon="1.4722" />
+  </slice>
+ </sector>
+
+
+ <sector name="P1" acc="bordeaux" floor="195" ceiling="320" >
+  <slice floor="195" ceiling="320" >
+   <centre lat="47.3167" lon="1.9667" />
+   <vertex lat="48.1361" lon="1.7703" />
+   <vertex lat="48.1331" lon="2.2500" />
+   <vertex lat="47.5831" lon="2.3831" />
+   <vertex lat="46.6908" lon="2.5856" />
+   <vertex lat="46.3647" lon="2.8767" />
+   <vertex lat="46.2200" lon="2.4497" />
+   <vertex lat="46.6914" lon="2.1497" />
+   <vertex lat="47.1667" lon="1.4667" />
+   <vertex lat="47.9483" lon="1.7119" />
+  </slice>
+ </sector>
+
+
+ <sector name="P2" acc="bordeaux" floor="320" ceiling="990" >
+  <slice floor="320" ceiling="990" >
+   <centre lat="47.3167" lon="1.9667" />
+   <vertex lat="48.1361" lon="1.7703" />
+   <vertex lat="48.1331" lon="2.2500" />
+   <vertex lat="47.5831" lon="2.3831" />
+   <vertex lat="46.6908" lon="2.5856" />
+   <vertex lat="46.3647" lon="2.8767" />
+   <vertex lat="46.2200" lon="2.4497" />
+   <vertex lat="46.6914" lon="2.1497" />
+   <vertex lat="47.1667" lon="1.4667" />
+   <vertex lat="47.9483" lon="1.7119" />
+  </slice>
+ </sector>
+
+
+ <sector name="V1" acc="bordeaux" floor="195" ceiling="320" >
+  <slice floor="195" ceiling="320" >
+   <centre lat="46.8333" lon="2.9167" />
+   <vertex lat="48.1331" lon="2.2500" />
+   <vertex lat="48.1331" lon="2.5000" />
+   <vertex lat="47.5831" lon="2.8331" />
+   <vertex lat="46.5694" lon="3.4931" />
+   <vertex lat="46.3647" lon="2.8767" />
+   <vertex lat="46.6908" lon="2.5856" />
+   <vertex lat="47.5831" lon="2.3831" />
+  </slice>
+ </sector>
+
+
+ <sector name="V2" acc="bordeaux" floor="320" ceiling="990" >
+  <slice floor="320" ceiling="990" >
+   <centre lat="46.8333" lon="2.9167" />
+   <vertex lat="48.1331" lon="2.2500" />
+   <vertex lat="48.1331" lon="2.5000" />
+   <vertex lat="47.5831" lon="2.8331" />
+   <vertex lat="46.5694" lon="3.4931" />
+   <vertex lat="46.3647" lon="2.8767" />
+   <vertex lat="46.6908" lon="2.5856" />
+   <vertex lat="47.5831" lon="2.3831" />
+  </slice>
+ </sector>
+
+
+ <sector name="T1" acc="bordeaux" floor="195" ceiling="320" >
+  <slice floor="195" ceiling="320" >
+   <centre lat="45.0000" lon="3.0000" />
+   <vertex lat="44.5167" lon="2.6250" />
+   <vertex lat="44.7000" lon="2.4417" />
+   <vertex lat="46.2200" lon="2.4497" />
+   <vertex lat="46.5172" lon="3.3378" />
+   <vertex lat="45.7797" lon="3.6553" />
+   <vertex lat="45.6894" lon="4.2294" />
+   <vertex lat="45.3583" lon="4.4917" />
+  </slice>
+ </sector>
+
+
+ <sector name="T2" acc="bordeaux" floor="320" ceiling="990" >
+  <slice floor="320" ceiling="990" >
+   <centre lat="45.0000" lon="3.0000" />
+   <vertex lat="44.5167" lon="2.6250" />
+   <vertex lat="44.7000" lon="2.4417" />
+   <vertex lat="46.2200" lon="2.4497" />
+   <vertex lat="46.5172" lon="3.3378" />
+   <vertex lat="45.7797" lon="3.6553" />
+   <vertex lat="45.6894" lon="4.2294" />
+   <vertex lat="45.3583" lon="4.4917" />
+  </slice>
+ </sector>
+
+
+ <sector name="LE" acc="marseille" floor="0" ceiling="195" >
+  <slice floor="0" ceiling="195" >
+   <centre lat="46.1833" lon="4.7667" />
+   <vertex lat="46.5000" lon="4.4000" />
+   <vertex lat="46.5000" lon="5.6000" />
+   <vertex lat="46.4136" lon="5.6644" />
+   <vertex lat="46.3633" lon="5.4078" />
+   <vertex lat="46.1714" lon="5.6561" />
+   <vertex lat="46.0833" lon="5.5500" />
+   <vertex lat="46.0000" lon="5.5667" />
+   <vertex lat="45.9167" lon="5.6833" />
+   <vertex lat="45.6833" lon="5.5000" />
+   <vertex lat="45.6500" lon="5.9167" />
+   <vertex lat="45.9333" lon="6.1833" />
+   <vertex lat="45.3167" lon="7.1167" />
+   <vertex lat="45.2900" lon="7.1300" />
+   <vertex lat="45.2297" lon="7.1397" />
+   <vertex lat="45.1300" lon="6.8400" />
+   <vertex lat="45.1500" lon="6.7800" />
+   <vertex lat="45.1100" lon="6.6500" />
+   <vertex lat="45.0297" lon="6.6797" />
+   <vertex lat="45.0200" lon="6.7600" />
+   <vertex lat="45.0000" lon="6.7800" />
+   <vertex lat="44.9700" lon="6.7500" />
+   <vertex lat="44.9197" lon="6.7397" />
+   <vertex lat="44.8400" lon="6.8800" />
+   <vertex lat="44.7167" lon="6.0000" />
+   <vertex lat="44.7167" lon="5.6667" />
+   <vertex lat="45.8167" lon="5.0000" />
+  </slice>
+ </sector>
+
+
+ <sector name="LO" acc="marseille" floor="0" ceiling="195" >
+  <slice floor="0" ceiling="195" >
+   <centre lat="46.1667" lon="3.5000" />
+   <vertex lat="45.3983" lon="3.0153" />
+   <vertex lat="45.7167" lon="3.0000" />
+   <vertex lat="46.0667" lon="2.9500" />
+   <vertex lat="46.3333" lon="2.9167" />
+   <vertex lat="46.5000" lon="3.2667" />
+   <vertex lat="46.5000" lon="4.4000" />
+   <vertex lat="45.8167" lon="5.0000" />
+   <vertex lat="45.3617" lon="4.2311" />
+   <vertex lat="45.7428" lon="4.0314" />
+   <vertex lat="45.7961" lon="3.5644" />
+   <vertex lat="45.7217" lon="3.2611" />
+  </slice>
+ </sector>
+
+
+ <sector name="LS" acc="marseille" floor="0" ceiling="195" >
+  <slice floor="0" ceiling="195" >
+   <centre lat="45.0000" lon="4.0000" />
+   <vertex lat="44.2500" lon="2.9167" />
+   <vertex lat="44.6167" lon="3.0333" />
+   <vertex lat="44.6667" lon="3.0333" />
+   <vertex lat="45.0500" lon="3.0167" />
+   <vertex lat="45.3983" lon="3.0153" />
+   <vertex lat="45.7217" lon="3.2611" />
+   <vertex lat="45.7961" lon="3.5644" />
+   <vertex lat="45.7428" lon="4.0314" />
+   <vertex lat="45.3617" lon="4.2311" />
+   <vertex lat="45.8167" lon="5.0000" />
+   <vertex lat="44.7167" lon="5.6667" />
+   <vertex lat="44.7167" lon="3.7167" />
+   <vertex lat="44.2500" lon="3.5833" />
+  </slice>
+ </sector>
+
+
+ <sector name="MO" acc="marseille" floor="0" ceiling="195" >
+  <slice floor="0" ceiling="195" >
+   <centre lat="44.3333" lon="4.1667" />
+   <vertex lat="44.2500" lon="3.5833" />
+   <vertex lat="44.7167" lon="3.7167" />
+   <vertex lat="44.7167" lon="5.6667" />
+   <vertex lat="44.2500" lon="5.8167" />
+   <vertex lat="43.4667" lon="5.4833" />
+   <vertex lat="43.4667" lon="4.8667" />
+   <vertex lat="43.6333" lon="4.1500" />
+   <vertex lat="43.8667" lon="3.8833" />
+  </slice>
+ </sector>
+
+
+ <sector name="ML" acc="marseille" floor="0" ceiling="195" >
+  <slice floor="0" ceiling="195" >
+   <centre lat="44.0000" lon="3.0500" />
+   <vertex lat="43.4667" lon="5.4833" />
+   <vertex lat="43.4667" lon="4.8667" />
+   <vertex lat="43.6333" lon="4.1500" />
+   <vertex lat="43.8667" lon="3.8833" />
+   <vertex lat="44.2500" lon="3.5833" />
+   <vertex lat="44.2500" lon="2.9167" />
+   <vertex lat="43.7167" lon="2.7333" />
+   <vertex lat="43.1833" lon="2.7333" />
+   <vertex lat="43.2667" lon="2.5667" />
+   <vertex lat="43.0000" lon="2.2833" />
+   <vertex lat="42.6500" lon="2.6500" />
+   <vertex lat="42.3833" lon="2.6500" />
+   <vertex lat="42.3300" lon="2.6097" />
+   <vertex lat="42.3197" lon="2.7100" />
+   <vertex lat="42.3897" lon="2.7400" />
+   <vertex lat="42.3897" lon="2.8497" />
+   <vertex lat="42.4300" lon="2.9100" />
+   <vertex lat="42.4500" lon="3.0497" />
+   <vertex lat="42.4500" lon="3.0497" />
+   <vertex lat="42.4097" lon="3.0997" />
+   <vertex lat="42.3989" lon="3.1639" />
+   <vertex lat="42.4497" lon="3.2117" />
+   <vertex lat="42.0000" lon="4.6667" />
+   <vertex lat="41.4167" lon="4.6667" />
+   <vertex lat="41.2833" lon="5.7500" />
+   <vertex lat="42.5000" lon="6.0000" />
+   <vertex lat="43.0000" lon="5.7333" />
+  </slice>
+ </sector>
+
+
+ <sector name="ST" acc="marseille" floor="0" ceiling="195" >
+  <slice floor="0" ceiling="195" >
+   <centre lat="44.0333" lon="5.9167" />
+   <vertex lat="44.7167" lon="6.0000" />
+   <vertex lat="44.7167" lon="5.6667" />
+   <vertex lat="44.2500" lon="5.8167" />
+   <vertex lat="43.4667" lon="5.4833" />
+   <vertex lat="43.0000" lon="5.7333" />
+   <vertex lat="43.0500" lon="7.3833" />
+   <vertex lat="43.5000" lon="7.3000" />
+   <vertex lat="43.5333" lon="6.8333" />
+  </slice>
+ </sector>
+
+
+ <sector name="MN" acc="marseille" floor="0" ceiling="195" >
+  <slice floor="0" ceiling="195" >
+   <centre lat="44.5333" lon="6.3000" />
+   <vertex lat="43.5000" lon="7.3000" />
+   <vertex lat="43.5333" lon="6.8333" />
+   <vertex lat="44.7167" lon="6.0000" />
+   <vertex lat="44.8400" lon="6.8800" />
+   <vertex lat="44.8497" lon="6.8800" />
+   <vertex lat="44.8497" lon="6.9600" />
+   <vertex lat="44.8300" lon="7.0100" />
+   <vertex lat="44.6697" lon="7.1197" />
+   <vertex lat="44.6897" lon="7.0597" />
+   <vertex lat="44.6597" lon="7.0000" />
+   <vertex lat="44.6197" lon="7.0000" />
+   <vertex lat="44.5297" lon="6.9097" />
+   <vertex lat="44.4900" lon="6.9000" />
+   <vertex lat="44.4300" lon="6.9600" />
+   <vertex lat="44.3800" lon="6.9297" />
+   <vertex lat="44.2797" lon="7.0300" />
+   <vertex lat="44.2097" lon="7.0300" />
+   <vertex lat="44.1197" lon="7.2197" />
+   <vertex lat="44.0900" lon="7.4497" />
+   <vertex lat="44.1300" lon="7.6597" />
+   <vertex lat="44.0697" lon="7.7397" />
+   <vertex lat="43.9700" lon="7.6700" />
+   <vertex lat="43.8800" lon="7.5397" />
+   <vertex lat="43.7667" lon="7.5833" />
+   <vertex lat="43.7333" lon="7.5167" />
+   <vertex lat="43.7333" lon="7.5667" />
+   <vertex lat="43.7500" lon="7.6500" />
+   <vertex lat="43.6167" lon="8.3167" />
+  </slice>
+ </sector>
+
+
+ <sector name="CO" acc="marseille" floor="0" ceiling="195" >
+  <slice floor="0" ceiling="195" >
+   <centre lat="42.7500" lon="6.1667" />
+   <vertex lat="43.5000" lon="7.3000" />
+   <vertex lat="43.6167" lon="8.3167" />
+   <vertex lat="43.1667" lon="9.7500" />
+   <vertex lat="41.3333" lon="9.7500" />
+   <vertex lat="41.3333" lon="8.3333" />
+   <vertex lat="41.0000" lon="8.0000" />
+   <vertex lat="41.2833" lon="5.7500" />
+   <vertex lat="42.5000" lon="6.0000" />
+   <vertex lat="43.0000" lon="5.7333" />
+   <vertex lat="43.0500" lon="7.3833" />
+  </slice>
+ </sector>
+
+
+ <sector name="Y1" acc="marseille" floor="195" ceiling="320" >
+  <slice floor="195" ceiling="320" >
+   <centre lat="45.3333" lon="5.5000" />
+   <vertex lat="44.5022" lon="6.3669" />
+   <vertex lat="45.2917" lon="4.6667" />
+   <vertex lat="46.0311" lon="5.8131" />
+   <vertex lat="45.8500" lon="6.0500" />
+   <vertex lat="45.5833" lon="6.3333" />
+   <vertex lat="44.9903" lon="6.6625" />
+  </slice>
+ </sector>
+
+
+ <sector name="Y2" acc="marseille" floor="320" ceiling="990" >
+  <slice floor="320" ceiling="990" >
+   <centre lat="45.3333" lon="5.5000" />
+   <vertex lat="44.5022" lon="6.3669" />
+   <vertex lat="45.2917" lon="4.6667" />
+   <vertex lat="46.0311" lon="5.8131" />
+   <vertex lat="45.8500" lon="6.0500" />
+   <vertex lat="45.5833" lon="6.3333" />
+   <vertex lat="44.9903" lon="6.6625" />
+  </slice>
+ </sector>
+
+
+ <sector name="M1" acc="marseille" floor="195" ceiling="320" >
+  <slice floor="195" ceiling="320" >
+   <centre lat="43.1667" lon="4.5000" />
+   <vertex lat="42.4322" lon="3.1283" />
+   <vertex lat="42.0992" lon="4.3506" />
+   <vertex lat="43.4000" lon="5.9167" />
+   <vertex lat="43.4750" lon="5.9250" />
+   <vertex lat="43.9500" lon="5.1750" />
+   <vertex lat="43.9500" lon="4.1167" />
+   <vertex lat="43.6031" lon="3.8419" />
+  </slice>
+ </sector>
+
+
+ <sector name="M2" acc="marseille" floor="320" ceiling="990" >
+  <slice floor="320" ceiling="990" >
+   <centre lat="43.1667" lon="4.5000" />
+   <vertex lat="42.4322" lon="3.1283" />
+   <vertex lat="42.0992" lon="4.3506" />
+   <vertex lat="43.4000" lon="5.9167" />
+   <vertex lat="43.4750" lon="5.9250" />
+   <vertex lat="43.9500" lon="5.1750" />
+   <vertex lat="43.9500" lon="4.1167" />
+   <vertex lat="43.6031" lon="3.8419" />
+  </slice>
+ </sector>
+
+
+ <sector name="E1" acc="marseille" floor="195" ceiling="320" >
+  <slice floor="195" ceiling="320" >
+   <centre lat="43.0000" lon="8.0000" />
+   <vertex lat="42.2833" lon="6.3667" />
+   <vertex lat="42.4917" lon="6.4833" />
+   <vertex lat="42.8500" lon="6.1833" />
+   <vertex lat="43.4250" lon="6.1917" />
+   <vertex lat="43.4750" lon="6.7417" />
+   <vertex lat="44.0000" lon="7.6667" />
+   <vertex lat="44.1333" lon="8.1667" />
+   <vertex lat="43.9667" lon="8.2667" />
+   <vertex lat="43.7083" lon="7.7917" />
+   <vertex lat="43.4314" lon="8.7969" />
+   <vertex lat="42.2219" lon="8.1150" />
+   <vertex lat="41.8375" lon="8.0700" />
+  </slice>
+ </sector>
+
+
+ <sector name="E2" acc="marseille" floor="320" ceiling="990" >
+  <slice floor="320" ceiling="990" >
+   <centre lat="43.0000" lon="8.0000" />
+   <vertex lat="42.2833" lon="6.3667" />
+   <vertex lat="42.4917" lon="6.4833" />
+   <vertex lat="42.8500" lon="6.1833" />
+   <vertex lat="43.4250" lon="6.1917" />
+   <vertex lat="43.4750" lon="6.7417" />
+   <vertex lat="44.0000" lon="7.6667" />
+   <vertex lat="44.1333" lon="8.1667" />
+   <vertex lat="43.9667" lon="8.2667" />
+   <vertex lat="43.7083" lon="7.7917" />
+   <vertex lat="43.4314" lon="8.7969" />
+   <vertex lat="42.2219" lon="8.1150" />
+   <vertex lat="41.8375" lon="8.0700" />
+  </slice>
+ </sector>
+
+
+ <sector name="K1" acc="marseille" floor="195" ceiling="320" >
+  <slice floor="195" ceiling="320" >
+   <centre lat="42.2500" lon="9.0000" />
+   <vertex lat="41.3333" lon="9.7500" />
+   <vertex lat="41.3333" lon="8.3333" />
+   <vertex lat="41.7667" lon="8.3333" />
+   <vertex lat="41.8375" lon="8.0700" />
+   <vertex lat="42.2219" lon="8.1150" />
+   <vertex lat="43.4314" lon="8.7969" />
+   <vertex lat="43.1667" lon="9.7500" />
+  </slice>
+ </sector>
+
+
+ <sector name="K2" acc="marseille" floor="320" ceiling="990" >
+  <slice floor="320" ceiling="990" >
+   <centre lat="42.2500" lon="9.0000" />
+   <vertex lat="41.3333" lon="9.7500" />
+   <vertex lat="41.3333" lon="8.3333" />
+   <vertex lat="41.7667" lon="8.3333" />
+   <vertex lat="41.8375" lon="8.0700" />
+   <vertex lat="42.2219" lon="8.1150" />
+   <vertex lat="43.4314" lon="8.7969" />
+   <vertex lat="43.1667" lon="9.7500" />
+  </slice>
+ </sector>
+
+
+ <sector name="D1" acc="marseille" floor="0" ceiling="320" >
+  <slice floor="0" ceiling="195" >
+   <centre lat="41.0000" lon="6.0000" />
+   <vertex lat="39.0000" lon="8.0000" />
+   <vertex lat="39.0000" lon="4.6667" />
+   <vertex lat="41.4167" lon="4.6667" />
+   <vertex lat="41.0000" lon="8.0000" />
+  </slice>
+
+  <slice floor="195" ceiling="320" >
+   <centre lat="41.0000" lon="6.0000" />
+   <vertex lat="39.0000" lon="8.0000" />
+   <vertex lat="39.0000" lon="4.6667" />
+   <vertex lat="41.4167" lon="4.6667" />
+   <vertex lat="41.9917" lon="6.1833" />
+   <vertex lat="42.2833" lon="6.3667" />
+   <vertex lat="41.7667" lon="8.3333" />
+   <vertex lat="41.3333" lon="8.3333" />
+   <vertex lat="41.0000" lon="8.0000" />
+  </slice>
+ </sector>
+
+
+ <sector name="D2" acc="marseille" floor="320" ceiling="990" >
+  <slice floor="320" ceiling="990" >
+   <centre lat="41.0000" lon="6.0000" />
+   <vertex lat="39.0000" lon="8.0000" />
+   <vertex lat="39.0000" lon="4.6667" />
+   <vertex lat="41.4167" lon="4.6667" />
+   <vertex lat="41.9917" lon="6.1833" />
+   <vertex lat="42.2833" lon="6.3667" />
+   <vertex lat="41.7667" lon="8.3333" />
+   <vertex lat="41.3333" lon="8.3333" />
+   <vertex lat="41.0000" lon="8.0000" />
+  </slice>
+ </sector>
+
+
+ <sector name="A1" acc="marseille" floor="195" ceiling="320" >
+  <slice floor="195" ceiling="320" >
+   <centre lat="44.3333" lon="5.5000" />
+   <vertex lat="43.4750" lon="5.9250" />
+   <vertex lat="43.9500" lon="5.1750" />
+   <vertex lat="44.6500" lon="5.0417" />
+   <vertex lat="44.9417" lon="5.4333" />
+   <vertex lat="44.5022" lon="6.3669" />
+   <vertex lat="43.8417" lon="5.9750" />
+  </slice>
+ </sector>
+
+
+ <sector name="A2" acc="marseille" floor="320" ceiling="990" >
+  <slice floor="320" ceiling="990" >
+   <centre lat="44.3333" lon="5.5000" />
+   <vertex lat="43.4750" lon="5.9250" />
+   <vertex lat="43.9500" lon="5.1750" />
+   <vertex lat="44.6500" lon="5.0417" />
+   <vertex lat="44.9417" lon="5.4333" />
+   <vertex lat="44.5022" lon="6.3669" />
+   <vertex lat="43.8417" lon="5.9750" />
+  </slice>
+ </sector>
+
+
+ <sector name="B1" acc="marseille" floor="195" ceiling="320" >
+  <slice floor="195" ceiling="320" >
+   <centre lat="44.0000" lon="6.6667" />
+   <vertex lat="44.0000" lon="7.6667" />
+   <vertex lat="43.4750" lon="6.7417" />
+   <vertex lat="43.4000" lon="5.9167" />
+   <vertex lat="43.8417" lon="5.9750" />
+   <vertex lat="44.9903" lon="6.6625" />
+   <vertex lat="44.8000" lon="6.7667" />
+   <vertex lat="44.8083" lon="7.1583" />
+   <vertex lat="44.1917" lon="7.3417" />
+   <vertex lat="44.1417" lon="7.6333" />
+  </slice>
+ </sector>
+
+
+ <sector name="B2" acc="marseille" floor="320" ceiling="990" >
+  <slice floor="320" ceiling="990" >
+   <centre lat="44.0000" lon="6.6667" />
+   <vertex lat="44.0000" lon="7.6667" />
+   <vertex lat="43.4750" lon="6.7417" />
+   <vertex lat="43.4000" lon="5.9167" />
+   <vertex lat="43.8417" lon="5.9750" />
+   <vertex lat="44.9903" lon="6.6625" />
+   <vertex lat="44.8000" lon="6.7667" />
+   <vertex lat="44.8083" lon="7.1583" />
+   <vertex lat="44.1917" lon="7.3417" />
+   <vertex lat="44.1417" lon="7.6333" />
+  </slice>
+ </sector>
+
+
+ <sector name="F1" acc="marseille" floor="195" ceiling="320" >
+  <slice floor="195" ceiling="320" >
+   <centre lat="42.1667" lon="5.0000" />
+   <vertex lat="41.9917" lon="6.1833" />
+   <vertex lat="41.4167" lon="4.6667" />
+   <vertex lat="42.0000" lon="4.6667" />
+   <vertex lat="42.0992" lon="4.3506" />
+   <vertex lat="43.4000" lon="5.9167" />
+   <vertex lat="43.4250" lon="6.1917" />
+   <vertex lat="42.8500" lon="6.1833" />
+   <vertex lat="42.4917" lon="6.4833" />
+  </slice>
+ </sector>
+
+
+ <sector name="F2" acc="marseille" floor="320" ceiling="990" >
+  <slice floor="320" ceiling="990" >
+   <centre lat="42.1667" lon="5.0000" />
+   <vertex lat="41.9917" lon="6.1833" />
+   <vertex lat="41.4167" lon="4.6667" />
+   <vertex lat="42.0000" lon="4.6667" />
+   <vertex lat="42.0992" lon="4.3506" />
+   <vertex lat="43.4000" lon="5.9167" />
+   <vertex lat="43.4250" lon="6.1917" />
+   <vertex lat="42.8500" lon="6.1833" />
+   <vertex lat="42.4917" lon="6.4833" />
+  </slice>
+ </sector>
+
+
+ <sector name="G1" acc="marseille" floor="195" ceiling="320" >
+  <slice floor="195" ceiling="320" >
+   <centre lat="46.0000" lon="4.5000" />
+   <vertex lat="45.2917" lon="4.6667" />
+   <vertex lat="45.3583" lon="4.4917" />
+   <vertex lat="45.6894" lon="4.2294" />
+   <vertex lat="45.7797" lon="3.6553" />
+   <vertex lat="46.5172" lon="3.3378" />
+   <vertex lat="46.5667" lon="3.5000" />
+   <vertex lat="46.2908" lon="3.6833" />
+   <vertex lat="46.2431" lon="5.0928" />
+   <vertex lat="46.2333" lon="5.1333" />
+   <vertex lat="46.1167" lon="5.7000" />
+   <vertex lat="46.0311" lon="5.8131" />
+  </slice>
+ </sector>
+
+
+ <sector name="G2" acc="marseille" floor="320" ceiling="990" >
+  <slice floor="320" ceiling="990" >
+   <centre lat="46.0000" lon="4.5000" />
+   <vertex lat="45.2917" lon="4.6667" />
+   <vertex lat="45.3583" lon="4.4917" />
+   <vertex lat="45.6894" lon="4.2294" />
+   <vertex lat="45.7797" lon="3.6553" />
+   <vertex lat="46.5172" lon="3.3378" />
+   <vertex lat="46.5667" lon="3.5000" />
+   <vertex lat="46.2908" lon="3.6833" />
+   <vertex lat="46.2431" lon="5.0928" />
+   <vertex lat="46.2333" lon="5.1333" />
+   <vertex lat="46.1167" lon="5.7000" />
+   <vertex lat="46.0311" lon="5.8131" />
+  </slice>
+ </sector>
+
+
+ <sector name="W1" acc="marseille" floor="195" ceiling="320" >
+  <slice floor="195" ceiling="320" >
+   <centre lat="44.5000" lon="4.3333" />
+   <vertex lat="43.9500" lon="5.1750" />
+   <vertex lat="44.6500" lon="5.0333" />
+   <vertex lat="44.9417" lon="5.4333" />
+   <vertex lat="45.2917" lon="4.6667" />
+   <vertex lat="45.3583" lon="4.4917" />
+   <vertex lat="44.8589" lon="3.3692" />
+   <vertex lat="44.4317" lon="4.2731" />
+   <vertex lat="44.0850" lon="4.2219" />
+   <vertex lat="43.9500" lon="4.1167" />
+  </slice>
+ </sector>
+
+
+ <sector name="W2" acc="marseille" floor="320" ceiling="990" >
+  <slice floor="320" ceiling="990" >
+   <centre lat="44.5000" lon="4.3333" />
+   <vertex lat="43.9500" lon="5.1750" />
+   <vertex lat="44.6500" lon="5.0333" />
+   <vertex lat="44.9417" lon="5.4333" />
+   <vertex lat="45.2917" lon="4.6667" />
+   <vertex lat="45.3583" lon="4.4917" />
+   <vertex lat="44.8589" lon="3.3692" />
+   <vertex lat="44.4317" lon="4.2731" />
+   <vertex lat="44.0850" lon="4.2219" />
+   <vertex lat="43.9500" lon="4.1167" />
+  </slice>
+ </sector>
+
+
+ <sector name="OL" acc="LYON" floor="0" ceiling="115" >
+  <slice floor="0" ceiling="115" >
+   <centre lat="45.7500" lon="4.5833" />
+   <vertex lat="46.4333" lon="4.8167" />
+   <vertex lat="45.5564" lon="4.8833" />
+   <vertex lat="44.9333" lon="5.2833" />
+   <vertex lat="44.6667" lon="5.0233" />
+   <vertex lat="44.6667" lon="4.8514" />
+   <vertex lat="45.2667" lon="4.5333" />
+   <vertex lat="45.2000" lon="4.3167" />
+   <vertex lat="45.7833" lon="4.0083" />
+   <vertex lat="45.8583" lon="4.3250" />
+   <vertex lat="46.1125" lon="4.1897" />
+   <vertex lat="46.1000" lon="4.5917" />
+  </slice>
+ </sector>
+
+
+ <sector name="EL" acc="LYON" floor="0" ceiling="115" >
+  <slice floor="0" ceiling="115" >
+   <centre lat="45.7500" lon="5.2500" />
+   <vertex lat="46.4333" lon="4.8167" />
+   <vertex lat="45.5564" lon="4.8833" />
+   <vertex lat="44.9333" lon="5.2833" />
+   <vertex lat="45.6417" lon="5.9083" />
+   <vertex lat="45.6833" lon="5.4667" />
+   <vertex lat="45.9278" lon="5.6667" />
+   <vertex lat="45.9722" lon="5.5997" />
+   <vertex lat="46.1714" lon="5.6561" />
+   <vertex lat="46.3633" lon="5.4061" />
+  </slice>
+ </sector>
+</sectors>

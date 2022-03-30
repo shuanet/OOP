@@ -1,0 +1,10 @@
+include MANIFEST.in
+include LICENCE
+include README.md
+include data/*
+include tests.py
+recursive-include pyrejeutest *
+recursive-include utils *
+recursive-include docs/src *
+recursive-include docs/html *
+recursive-include .vscode *

@@ -1,0 +1,302 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pyrejeu.handlers.flight &#8212; PyRejeu 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="top" title="PyRejeu 0.1.0 documentation" href="../../../index.html" />
+    <link rel="up" title="pyrejeu" href="../../pyrejeu.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PyRejeu 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../../pyrejeu.html" accesskey="U">pyrejeu</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for pyrejeu.handlers.flight</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># PyRejeu, an air traffic replay tool</span>
+<span class="c1"># Copyright (C) 2017 Mickael Royer &lt;mickael.royer@enac.fr&gt;</span>
+<span class="c1">#</span>
+<span class="c1"># This program is free software; you can redistribute it and/or modify</span>
+<span class="c1"># it under the terms of the GNU General Public License as published by</span>
+<span class="c1"># the Free Software Foundation; either version 2 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># This program is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span>
+<span class="c1"># GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License along</span>
+<span class="c1"># with this program; if not, write to the Free Software Foundation, Inc.,</span>
+<span class="c1"># 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="k">import</span> <span class="n">func</span>
+<span class="kn">from</span> <span class="nn">pyrejeu.db.models</span> <span class="k">import</span> <span class="n">Flight</span>
+<span class="kn">from</span> <span class="nn">pyrejeu.db.models</span> <span class="k">import</span> <span class="n">FlightPlan</span>
+<span class="kn">from</span> <span class="nn">pyrejeu.db.models</span> <span class="k">import</span> <span class="n">FlightPlanBeacon</span>
+<span class="kn">from</span> <span class="nn">pyrejeu.db.models</span> <span class="k">import</span> <span class="n">Cone</span>
+<span class="kn">from</span> <span class="nn">pyrejeu</span> <span class="k">import</span> <span class="n">rpc_decorator</span>
+<span class="kn">from</span> <span class="nn">pyrejeu.format</span> <span class="k">import</span> <span class="n">RpcListResult</span><span class="p">,</span> <span class="n">RpcResult</span>
+<span class="kn">from</span> <span class="nn">pyrejeu.handlers.base</span> <span class="k">import</span> <span class="n">BaseHandler</span>
+<span class="kn">from</span> <span class="nn">pyrejeu.utils</span> <span class="k">import</span> <span class="n">str_to_sec</span>
+<span class="kn">from</span> <span class="nn">pyrejeu.utils</span> <span class="k">import</span> <span class="n">sec_to_str</span>
+
+
+<div class="viewcode-block" id="FlightHandler"><a class="viewcode-back" href="../../../api.html#pyrejeu.handlers.flight.FlightHandler">[docs]</a><span class="k">class</span> <span class="nc">FlightHandler</span><span class="p">(</span><span class="n">BaseHandler</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;this class handles the commands requesting information about a flight&quot;&quot;&quot;</span>
+    <span class="n">NAME</span> <span class="o">=</span> <span class="s2">&quot;flight&quot;</span>
+
+<div class="viewcode-block" id="FlightHandler.subscribe"><a class="viewcode-back" href="../../../api.html#pyrejeu.handlers.flight.FlightHandler.subscribe">[docs]</a>    <span class="k">def</span> <span class="nf">subscribe</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Subscribe to commands requesting a flight information&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_subscriptions</span><span class="p">([</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;GetPosition&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;callback&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_position</span><span class="p">,</span>
+                <span class="s2">&quot;ivyMsgId&quot;</span><span class="p">:</span> <span class="s2">&quot;MsgName&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Flight&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span><span class="p">},</span>
+                    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">}</span>
+                <span class="p">]</span>
+            <span class="p">},</span> <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;GetPln&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;callback&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_pln</span><span class="p">,</span>
+                <span class="s2">&quot;ivyMsgId&quot;</span><span class="p">:</span> <span class="s2">&quot;MsgName&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Flight&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span><span class="p">},</span>
+                    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;From&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">}</span>
+                <span class="p">]</span>
+            <span class="p">},</span> <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;GetSectorsInfos&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;callback&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_sectors_infos</span><span class="p">,</span>
+                <span class="s2">&quot;ivyMsgId&quot;</span><span class="p">:</span> <span class="s2">&quot;MsgName&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Flight&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span><span class="p">}</span>
+                <span class="p">]</span>
+            <span class="p">},</span> <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;GetTrajectory&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;callback&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_trajectory</span><span class="p">,</span>
+                <span class="s2">&quot;ivyMsgId&quot;</span><span class="p">:</span> <span class="s2">&quot;MsgName&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Flight&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span><span class="p">},</span>
+                    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;From&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">}</span>
+                <span class="p">]</span>
+            <span class="p">},</span> <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;GetTrack&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;callback&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_track</span><span class="p">,</span>
+                <span class="s2">&quot;ivyMsgId&quot;</span><span class="p">:</span> <span class="s2">&quot;MsgName&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Flight&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span><span class="p">},</span>
+                    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;From&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">}</span>
+                <span class="p">]</span>
+            <span class="p">},</span> <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;GetRange&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;callback&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_range</span><span class="p">,</span>
+                <span class="s2">&quot;ivyMsgId&quot;</span><span class="p">:</span> <span class="s2">&quot;MsgName&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Flight&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">}</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">])</span></div>
+
+    <span class="nd">@rpc_decorator</span><span class="p">(</span><span class="n">require_flight</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">get_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">msg_name</span><span class="p">,</span> <span class="n">flight</span><span class="p">,</span> <span class="n">c_time</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the position of a flight at the given time (GetPosition command)</span>
+
+<span class="sd">        :param session: the current sqlalchemy session</span>
+<span class="sd">        :param msg_name: the message identifier</span>
+<span class="sd">        :param flight: selected flight</span>
+<span class="sd">        :param time: time at which the position is requested</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;^\d</span><span class="si">{2}</span><span class="s2">:\d</span><span class="si">{2}</span><span class="s2">:\d</span><span class="si">{2}</span><span class="s2">$&quot;</span><span class="p">,</span> <span class="n">c_time</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg_name</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> is not a time following &quot;</span>
+                                        <span class="s2">&quot;format HH:MM:SS&quot;</span> <span class="o">%</span> <span class="n">c_time</span><span class="p">)</span>
+
+        <span class="n">s_time</span> <span class="o">=</span> <span class="n">str_to_sec</span><span class="p">(</span><span class="n">c_time</span><span class="p">)</span>
+        <span class="n">cone</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Cone</span><span class="p">)</span>\
+                      <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">Cone</span><span class="o">.</span><span class="n">flight_id</span> <span class="o">==</span> <span class="n">flight</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>\
+                      <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">Cone</span><span class="o">.</span><span class="n">hour</span> <span class="o">&gt;=</span> <span class="n">s_time</span><span class="p">,</span> <span class="n">Cone</span><span class="o">.</span><span class="n">hour</span> <span class="o">&lt;</span> <span class="n">s_time</span><span class="o">+</span><span class="mi">30</span><span class="p">)</span>\
+                      <span class="o">.</span><span class="n">first</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cone</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">RpcResult</span><span class="p">(</span><span class="n">msg_name</span><span class="p">,</span> <span class="s2">&quot;Position&quot;</span><span class="p">,</span> <span class="n">cone</span><span class="o">.</span><span class="n">get_position_attrs</span><span class="p">())</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">err</span> <span class="o">=</span> <span class="s2">&quot;No position found for flight </span><span class="si">%s</span><span class="s2"> at </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">flight</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">c_time</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg_name</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span>
+
+    <span class="nd">@rpc_decorator</span><span class="p">(</span><span class="n">require_flight</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">get_pln</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">msg_name</span><span class="p">,</span> <span class="n">flight</span><span class="p">,</span> <span class="n">from_type</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the flight plan (GetPln command)</span>
+
+<span class="sd">        :param session: the current sqlalchemy session</span>
+<span class="sd">        :param msg_name: the message identifier</span>
+<span class="sd">        :param flight: flight object</span>
+<span class="sd">        :param from_type: origin|now|time|beacon_name</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_origin</span><span class="p">(</span><span class="n">from_type</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">start</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># try to interpret from_type as beacon</span>
+            <span class="n">beacon</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">FlightPlanBeacon</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">FlightPlan</span><span class="p">)</span>\
+                            <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">FlightPlan</span><span class="o">.</span><span class="n">flight_id</span> <span class="o">==</span> <span class="n">flight</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                                    <span class="n">FlightPlanBeacon</span><span class="o">.</span><span class="n">beacon_name</span> <span class="o">==</span> <span class="n">from_type</span><span class="p">)</span>\
+                            <span class="o">.</span><span class="n">first</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">beacon</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg_name</span><span class="p">,</span> <span class="s2">&quot;GetPln: From has bad format&quot;</span><span class="p">)</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="n">beacon</span><span class="o">.</span><span class="n">hour</span>
+
+        <span class="k">return</span> <span class="n">RpcResult</span><span class="p">(</span><span class="n">msg_name</span><span class="p">,</span> <span class="s2">&quot;Pln&quot;</span><span class="p">,</span> <span class="p">[</span>
+            <span class="p">(</span><span class="s2">&quot;Flight&quot;</span><span class="p">,</span> <span class="n">flight</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clock</span><span class="o">.</span><span class="n">get_current_time</span><span class="p">()),</span>
+        <span class="p">]</span> <span class="o">+</span> <span class="n">flight</span><span class="o">.</span><span class="n">get_pln_attrs</span><span class="p">(</span><span class="n">start</span><span class="p">))</span>
+
+    <span class="nd">@rpc_decorator</span><span class="p">(</span><span class="n">require_flight</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">get_sectors_infos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">msg_name</span><span class="p">,</span> <span class="n">flight</span><span class="p">):</span>
+        <span class="c1"># this command is not handled for the moment</span>
+        <span class="k">return</span> <span class="n">RpcResult</span><span class="p">(</span><span class="n">msg_name</span><span class="p">,</span> <span class="s2">&quot;SectorInfos&quot;</span><span class="p">,</span> <span class="p">[</span>
+            <span class="p">(</span><span class="s2">&quot;Flight&quot;</span><span class="p">,</span> <span class="n">flight</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">&quot;List&quot;</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">),</span>
+        <span class="p">])</span>
+
+    <span class="nd">@rpc_decorator</span><span class="p">(</span><span class="n">require_flight</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">get_range</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">msg_name</span><span class="p">,</span> <span class="n">flight_id</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the time interval of a flight and its visibility (GetRange command)</span>
+
+<span class="sd">        :param session: the current sqlalchemy session</span>
+<span class="sd">        :param msg_name: the message identifier</span>
+<span class="sd">        :param flight_id: id of the flight, ALL for all flight</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">Cone</span><span class="o">.</span><span class="n">hour</span><span class="p">),</span> <span class="n">func</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">Cone</span><span class="o">.</span><span class="n">hour</span><span class="p">))</span>
+        <span class="n">visible</span> <span class="o">=</span> <span class="s2">&quot;N/A&quot;</span>
+
+        <span class="k">if</span> <span class="n">flight_id</span> <span class="o">!=</span> <span class="s2">&quot;ALL&quot;</span><span class="p">:</span>
+            <span class="n">flight</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Flight</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">flight_id</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">flight</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">err</span> <span class="o">=</span> <span class="s2">&quot;Unable to find flight </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">flight_id</span><span class="p">)</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg_name</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span>
+            <span class="n">visible</span> <span class="o">=</span> <span class="n">flight</span><span class="o">.</span><span class="n">enabled</span> <span class="ow">and</span> <span class="s2">&quot;yes&quot;</span> <span class="ow">or</span> <span class="s2">&quot;no&quot;</span>
+            <span class="n">query</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Flight</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">Cone</span><span class="o">.</span><span class="n">flight_id</span> <span class="o">==</span> <span class="n">flight_id</span><span class="p">)</span>
+        <span class="n">f_time</span><span class="p">,</span> <span class="n">l_time</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">one</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">RpcResult</span><span class="p">(</span><span class="n">msg_name</span><span class="p">,</span> <span class="s2">&quot;Range&quot;</span><span class="p">,</span> <span class="p">[</span>
+            <span class="p">(</span><span class="s2">&quot;FirstTime&quot;</span><span class="p">,</span> <span class="n">sec_to_str</span><span class="p">(</span><span class="n">f_time</span><span class="p">)),</span>
+            <span class="p">(</span><span class="s2">&quot;LastTime&quot;</span><span class="p">,</span> <span class="n">sec_to_str</span><span class="p">(</span><span class="n">l_time</span><span class="p">)),</span>
+            <span class="p">(</span><span class="s2">&quot;Visible&quot;</span><span class="p">,</span> <span class="n">visible</span><span class="p">),</span>
+        <span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">__gen_trajectory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">msg_name</span><span class="p">,</span> <span class="n">flight_id</span><span class="p">,</span> <span class="n">from_type</span><span class="p">,</span>
+                         <span class="n">slice_size</span><span class="p">,</span> <span class="n">msg_prefix</span><span class="p">,</span> <span class="n">full</span><span class="p">):</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_origin</span><span class="p">(</span><span class="n">from_type</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">start</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">err</span> <span class="o">=</span> <span class="s2">&quot;From value </span><span class="si">%s</span><span class="s2"> is not supported&quot;</span> <span class="o">%</span> <span class="n">from_type</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg_name</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span>
+        <span class="n">cones</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Cone</span><span class="p">)</span>\
+                       <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Cone</span><span class="o">.</span><span class="n">flight</span><span class="p">)</span>\
+                       <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">Cone</span><span class="o">.</span><span class="n">flight_id</span> <span class="o">==</span> <span class="n">flight_id</span><span class="p">,</span> <span class="n">Cone</span><span class="o">.</span><span class="n">hour</span> <span class="o">&gt;</span> <span class="n">start</span><span class="p">)</span>\
+                       <span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">Cone</span><span class="o">.</span><span class="n">hour</span><span class="p">)</span>\
+                       <span class="o">.</span><span class="n">all</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">RpcListResult</span><span class="p">(</span><span class="n">msg_name</span><span class="p">,</span> <span class="n">msg_prefix</span><span class="p">,</span>
+                             <span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">full</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cones</span><span class="p">])</span>
+
+    <span class="nd">@rpc_decorator</span><span class="p">(</span><span class="n">require_flight</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">get_trajectory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">msg_name</span><span class="p">,</span> <span class="n">flight_id</span><span class="p">,</span> <span class="n">from_type</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the trajectory of a flight (GetTrajectory command)</span>
+
+<span class="sd">        :param session: the current sqlalchemy session</span>
+<span class="sd">        :param msg_name: the message identifier</span>
+<span class="sd">        :param flight_id: id of the flight</span>
+<span class="sd">        :param from_type: origin|now|HH:MM:SS</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__gen_trajectory</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">msg_name</span><span class="p">,</span> <span class="n">flight_id</span><span class="p">,</span> <span class="n">from_type</span><span class="p">,</span>
+                                     <span class="mi">30</span><span class="p">,</span> <span class="s2">&quot;Trajectory&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
+    <span class="nd">@rpc_decorator</span><span class="p">(</span><span class="n">require_flight</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">get_track</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">msg_name</span><span class="p">,</span> <span class="n">flight_id</span><span class="p">,</span> <span class="n">from_type</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the full track of a flight (GetTrack command)</span>
+
+<span class="sd">        :param session: the current sqlalchemy session</span>
+<span class="sd">        :param msg_name: the message identifier</span>
+<span class="sd">        :param flight_id: id of the flight</span>
+<span class="sd">        :param from_type: origin|now|HH:MM:SS</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__gen_trajectory</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">msg_name</span><span class="p">,</span> <span class="n">flight_id</span><span class="p">,</span> <span class="n">from_type</span><span class="p">,</span>
+                                     <span class="mi">20</span><span class="p">,</span> <span class="s2">&quot;Track&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span></div>
+
+
+<span class="n">handler</span> <span class="o">=</span> <span class="n">FlightHandler</span>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PyRejeu 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../../pyrejeu.html" >pyrejeu</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Mickael Royer.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

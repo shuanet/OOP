@@ -1,0 +1,65 @@
+h1,h2,h3
+{
+font-family:  times, 'sans serif'; 
+/* font-family: "comic sans ms", arial, 'sans serif';*/ 
+}
+
+
+/*
+h2
+{
+font-size: large;
+}
+
+h1
+{
+font-size: x-large;
+}
+*/
+
+tt
+{
+font-family: courier;
+/* font-size: 100%;*/
+}
+
+p,table,address
+{
+font-family:  times, 'sans serif'; 
+font-size: 100%;
+/* font-family: "comic sans ms", arial, 'sans serif'; */ 
+margin-left: 10pt;
+}
+
+/*
+p,li,th,td
+{
+font-size: 75%;
+}
+*/
+
+
+h1,h2,h3,hr
+{
+color:saddlebrown;
+}
+
+/* cadre pour les exemples de messages sur le bus */
+table.ex
+{
+/* background-color: #FAEBD7;*/
+background-color: #F0E8D8;
+}
+
+
+a:link     { color:saddlebrown }
+a:visited  { color:saddlebrown }
+/*a:active   { color:red }
+a:hover    { color:red }*/
+
+body
+{
+/*background-color: #EFE7D6;*/
+/*background-color: #FAEBD7;*/
+background-color: #F0E8D8;
+}

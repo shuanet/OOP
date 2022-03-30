@@ -1,0 +1,270 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pyrejeu.utils &#8212; PyRejeu 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="top" title="PyRejeu 0.1.0 documentation" href="../../index.html" />
+    <link rel="up" title="pyrejeu" href="../pyrejeu.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">PyRejeu 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../pyrejeu.html" accesskey="U">pyrejeu</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for pyrejeu.utils</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># PyRejeu, an air traffic replay tool</span>
+<span class="c1"># Copyright (C) 2017 Mickael Royer &lt;mickael.royer@enac.fr&gt;</span>
+<span class="c1">#</span>
+<span class="c1"># This program is free software; you can redistribute it and/or modify</span>
+<span class="c1"># it under the terms of the GNU General Public License as published by</span>
+<span class="c1"># the Free Software Foundation; either version 2 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># This program is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span>
+<span class="c1"># GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License along</span>
+<span class="c1"># with this program; if not, write to the Free Software Foundation, Inc.,</span>
+<span class="c1"># 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module contains some useful functions used in most of the class</span>
+<span class="sd">of RejeuTraffic</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">sign</span>
+<span class="kn">import</span> <span class="nn">traceback</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+
+<div class="viewcode-block" id="log_traceback"><a class="viewcode-back" href="../../api.html#pyrejeu.utils.log_traceback">[docs]</a><span class="k">def</span> <span class="nf">log_traceback</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s2">&quot;info&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Log the last exception that has been raised in the application</span>
+
+<span class="sd">    :param string: log level used for this traceback</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">log_func</span> <span class="o">=</span> <span class="n">level</span> <span class="o">==</span> <span class="s2">&quot;info&quot;</span> <span class="ow">and</span> <span class="n">logging</span><span class="o">.</span><span class="n">info</span> <span class="ow">or</span> <span class="n">logging</span><span class="o">.</span><span class="n">error</span>
+    <span class="n">log_func</span><span class="p">(</span><span class="s2">&quot;------------------Traceback lines--------------------&quot;</span><span class="p">)</span>
+    <span class="n">log_func</span><span class="p">(</span><span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">())</span>
+    <span class="n">log_func</span><span class="p">(</span><span class="s2">&quot;-----------------------------------------------------&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="str_to_sec"><a class="viewcode-back" href="../../api.html#pyrejeu.utils.str_to_sec">[docs]</a><span class="k">def</span> <span class="nf">str_to_sec</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert a string following the format HH:MM:SS to a number of seconds</span>
+<span class="sd">    (since 00:00:00)</span>
+
+<span class="sd">    :param string: string following the format HH:MM:SS</span>
+<span class="sd">    :return: the number of seconds since 00:00:00</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">h</span><span class="p">)</span><span class="o">*</span><span class="mi">3600</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">*</span><span class="mi">60</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="sec_to_str"><a class="viewcode-back" href="../../api.html#pyrejeu.utils.sec_to_str">[docs]</a><span class="k">def</span> <span class="nf">sec_to_str</span><span class="p">(</span><span class="n">nb_sec</span><span class="p">,</span> <span class="n">seconds</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert a number of seconds to a string following the format HH:MM[:SS]</span>
+
+<span class="sd">    :param nb_sec: number of second since the beginning of the day</span>
+<span class="sd">    :param seconds: set to True (the default) in order to return the seconds</span>
+<span class="sd">    :return: string following the format HH:MM[:SS]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">nb_sec</span><span class="o">//</span><span class="mi">3600</span>
+    <span class="n">nb_sec</span> <span class="o">-=</span> <span class="n">h</span><span class="o">*</span><span class="mi">3600</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">nb_sec</span> <span class="o">//</span> <span class="mi">60</span>
+    <span class="k">if</span> <span class="n">seconds</span><span class="p">:</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">nb_sec</span> <span class="o">-</span> <span class="n">m</span><span class="o">*</span><span class="mi">60</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%02d</span><span class="s2">:</span><span class="si">%02d</span><span class="s2">:</span><span class="si">%02d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%02d</span><span class="s2">:</span><span class="si">%02d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_gs"><a class="viewcode-back" href="../../api.html#pyrejeu.utils.get_gs">[docs]</a><span class="k">def</span> <span class="nf">get_gs</span><span class="p">(</span><span class="n">x_speed</span><span class="p">,</span> <span class="n">y_speed</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the ground speed of an aircraft based on its speed vector</span>
+
+<span class="sd">    :param x_speed: x component of the speed vector</span>
+<span class="sd">    :param y_speed: y component of the speed vector</span>
+<span class="sd">    :returns: ground speed of the aircraft</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x_speed</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y_speed</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_heading"><a class="viewcode-back" href="../../api.html#pyrejeu.utils.get_heading">[docs]</a><span class="k">def</span> <span class="nf">get_heading</span><span class="p">(</span><span class="n">x_speed</span><span class="p">,</span> <span class="n">y_speed</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the heading of an aircraft based on its speed vector</span>
+
+<span class="sd">    :param x_speed: x component of the speed vector</span>
+<span class="sd">    :param y_speed: y component of the speed vector</span>
+<span class="sd">    :returns: heading of the aircraft in radian</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">x_speed</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">y_speed</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="mi">180</span> <span class="ow">or</span> <span class="mi">0</span>
+    <span class="n">angle</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">atan</span><span class="p">(</span><span class="n">y_speed</span><span class="o">/</span><span class="n">x_speed</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">x_speed</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="n">angle</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="n">angle</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_heading_to_beacon"><a class="viewcode-back" href="../../api.html#pyrejeu.utils.get_heading_to_beacon">[docs]</a><span class="k">def</span> <span class="nf">get_heading_to_beacon</span><span class="p">(</span><span class="n">cur_cone</span><span class="p">,</span> <span class="n">beacon</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the heading to reach the beacon given as argument</span>
+
+<span class="sd">    :param cur_cone: x component of the speed vector</span>
+<span class="sd">    :param y_speed: y component of the speed vector</span>
+<span class="sd">    :returns: heading to set in order to reach the beacon</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">v_x</span> <span class="o">=</span> <span class="n">beacon</span><span class="p">[</span><span class="s2">&quot;pos_x&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">cur_cone</span><span class="p">[</span><span class="s2">&quot;pos_x&quot;</span><span class="p">]</span>
+    <span class="n">v_y</span> <span class="o">=</span> <span class="n">beacon</span><span class="p">[</span><span class="s2">&quot;pos_y&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">cur_cone</span><span class="p">[</span><span class="s2">&quot;pos_y&quot;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">get_heading</span><span class="p">(</span><span class="n">v_x</span><span class="p">,</span> <span class="n">v_y</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="modulo_min_max"><a class="viewcode-back" href="../../api.html#pyrejeu.utils.modulo_min_max">[docs]</a><span class="k">def</span> <span class="nf">modulo_min_max</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">min_v</span><span class="p">,</span> <span class="n">max_v</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Be sure that a value if between a minimum and a maximum</span>
+
+<span class="sd">    :param value: the value</span>
+<span class="sd">    :param min_v: the minimum value</span>
+<span class="sd">    :param max_v: the maximum value</span>
+<span class="sd">    :returns: a value between min_v and max_v modulo (max_v-min_v)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span><span class="p">(</span><span class="n">min_v</span> <span class="o">&lt;</span> <span class="n">max_v</span><span class="p">)</span>
+    <span class="n">delta</span> <span class="o">=</span> <span class="n">max_v</span> <span class="o">-</span> <span class="n">min_v</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="n">min_v</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">+=</span> <span class="n">delta</span>
+    <span class="k">elif</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="n">max_v</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">-=</span> <span class="n">delta</span>
+    <span class="k">return</span> <span class="n">value</span></div>
+
+
+<div class="viewcode-block" id="turn_orientation"><a class="viewcode-back" href="../../api.html#pyrejeu.utils.turn_orientation">[docs]</a><span class="k">def</span> <span class="nf">turn_orientation</span><span class="p">(</span><span class="n">c_heading</span><span class="p">,</span> <span class="n">t_heading</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Determine the turn orientation to reach the target heading</span>
+
+<span class="sd">    :param c_heading: current heading</span>
+<span class="sd">    :param t_heading: target heading</span>
+<span class="sd">    :returns: Left or Right according the best turn orientation</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">d_heading</span> <span class="o">=</span> <span class="n">modulo_min_max</span><span class="p">(</span><span class="n">t_heading</span><span class="o">-</span><span class="n">c_heading</span><span class="p">,</span> <span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">d_heading</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="s2">&quot;Left&quot;</span> <span class="ow">or</span> <span class="s2">&quot;Right&quot;</span></div>
+
+
+<div class="viewcode-block" id="turn"><a class="viewcode-back" href="../../api.html#pyrejeu.utils.turn">[docs]</a><span class="k">def</span> <span class="nf">turn</span><span class="p">(</span><span class="n">c_heading</span><span class="p">,</span> <span class="n">t_heading</span><span class="p">,</span> <span class="n">rate</span><span class="p">,</span> <span class="n">inc_time</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Turn the aircraft based on the current/target heading and the turn rate</span>
+
+<span class="sd">    :param c_heading: current heading</span>
+<span class="sd">    :param t_heading: target heading</span>
+<span class="sd">    :param rate: turn rate</span>
+<span class="sd">    :returns: new heading</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">new_heading</span> <span class="o">=</span> <span class="n">modulo_min_max</span><span class="p">(</span><span class="n">c_heading</span> <span class="o">+</span> <span class="n">inc_time</span><span class="o">*</span><span class="n">rate</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">)</span>
+    <span class="n">d_heading</span> <span class="o">=</span> <span class="n">modulo_min_max</span><span class="p">(</span><span class="n">t_heading</span><span class="o">-</span><span class="n">new_heading</span><span class="p">,</span> <span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">sign</span><span class="p">(</span><span class="n">d_heading</span><span class="p">)</span> <span class="o">!=</span> <span class="n">sign</span><span class="p">(</span><span class="n">rate</span><span class="p">):</span>
+        <span class="n">new_heading</span> <span class="o">=</span> <span class="n">t_heading</span>
+    <span class="k">return</span> <span class="n">new_heading</span></div>
+
+
+<div class="viewcode-block" id="dist"><a class="viewcode-back" href="../../api.html#pyrejeu.utils.dist">[docs]</a><span class="k">def</span> <span class="nf">dist</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return the distance between the point A and B.</span>
+<span class="sd">    A and B are objects whose have the attributes pos_x ans pos_y</span>
+
+<span class="sd">    :returns: the distance between A and B</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">A</span><span class="p">[</span><span class="s2">&quot;pos_x&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">B</span><span class="p">[</span><span class="s2">&quot;pos_x&quot;</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span>
+                     <span class="o">+</span> <span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="s2">&quot;pos_y&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">B</span><span class="p">[</span><span class="s2">&quot;pos_y&quot;</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="min_dist_to_beacon"><a class="viewcode-back" href="../../api.html#pyrejeu.utils.min_dist_to_beacon">[docs]</a><span class="k">def</span> <span class="nf">min_dist_to_beacon</span><span class="p">(</span><span class="n">trajectory</span><span class="p">,</span> <span class="n">beacon</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the minimum distance between a flight trajectory and a beacon</span>
+
+<span class="sd">    :param trajectory: a flight trajectory</span>
+<span class="sd">    :param beacon: the beacon object (with name and position)</span>
+<span class="sd">    :returns: a tuple (minimum distance, corresponding cone)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">min_cone</span><span class="p">,</span> <span class="n">min_dist</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">200000</span>
+    <span class="k">for</span> <span class="n">cone</span> <span class="ow">in</span> <span class="n">trajectory</span><span class="p">:</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">dist</span><span class="p">(</span><span class="n">cone</span><span class="p">,</span> <span class="n">beacon</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="n">min_dist</span><span class="p">:</span>
+            <span class="n">min_cone</span> <span class="o">=</span> <span class="n">cone</span>
+            <span class="n">min_dist</span> <span class="o">=</span> <span class="n">d</span>
+    <span class="k">return</span> <span class="n">min_dist</span><span class="p">,</span> <span class="n">min_cone</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">PyRejeu 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../pyrejeu.html" >pyrejeu</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Mickael Royer.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

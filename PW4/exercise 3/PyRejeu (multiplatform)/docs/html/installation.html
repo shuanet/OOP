@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installation/Usage &#8212; PyRejeu 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="PyRejeu 0.1.0 documentation" href="index.html" />
+    <link rel="next" title="Ivy / ZMQ / AMQP" href="communication.html" />
+    <link rel="prev" title="Welcome to PyRejeu’s documentation!" href="index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="communication.html" title="Ivy / ZMQ / AMQP"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to PyRejeu’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">PyRejeu 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="installation-usage">
+<h1>Installation/Usage<a class="headerlink" href="#installation-usage" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt>To run PyRejeu, you have to install the following programs/modules</dt>
+<dd><ul class="first last simple">
+<li>python3 (version &gt;= 3.4.0)</li>
+<li><a class="reference external" href="http://www.sqlalchemy.org/">SqlAlchemy</a></li>
+<li><a class="reference external" href="https://pypi.python.org/pypi/ivy-python">ivy-python</a> if you want to use ivy bus</li>
+<li><a class="reference external" href="https://github.com/zeromq/pyzmq">PyZMQ</a> if you want to use ZMQ framework to exchange messages</li>
+<li><a class="reference external" href="https://pika.readthedocs.io/en/0.10.0/">Pika</a> if you want to use AMQP protocol to exchange messages (with rabbitmq for example)</li>
+</ul>
+</dd>
+</dl>
+<div class="section" id="run-in-the-source-directory">
+<h2>Run in the source directory<a class="headerlink" href="#run-in-the-source-directory" title="Permalink to this headline">¶</a></h2>
+<p>Like most of python applications, PyRejeu can be launch directly in the source
+directory, simply with the command line:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">pyrejeu</span><span class="o">.</span><span class="n">py</span> <span class="o">&lt;</span><span class="n">data_file</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Available options (&#8211;help):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Usage</span><span class="p">:</span> <span class="n">pyrejeu</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="o">&lt;</span><span class="n">data_file</span><span class="o">&gt;</span>
+
+<span class="n">Options</span><span class="p">:</span>
+<span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+<span class="o">-</span><span class="n">d</span><span class="p">,</span> <span class="o">--</span><span class="n">debug</span>           <span class="n">View</span> <span class="n">debug</span> <span class="n">message</span><span class="o">.</span>
+<span class="o">-</span><span class="n">b</span> <span class="n">BUS_ID</span><span class="p">,</span> <span class="o">--</span><span class="n">bus</span><span class="o">=</span><span class="n">BUS_ID</span>
+                      <span class="n">Bus</span> <span class="nb">id</span> <span class="p">(</span><span class="nb">format</span> <span class="n">ivy</span><span class="p">:</span><span class="o">//</span><span class="nd">@IP</span><span class="p">:</span><span class="n">port</span> <span class="k">for</span> <span class="n">IVY</span> <span class="o">|</span>
+                      <span class="n">zmq</span><span class="p">:</span><span class="o">//*</span><span class="p">:</span><span class="n">rpc_port</span><span class="p">:</span><span class="n">evt_port</span> <span class="k">for</span> <span class="n">ZeroMQ</span>  <span class="o">|</span>
+                      <span class="n">amqp</span><span class="p">:</span><span class="o">//</span><span class="n">host</span><span class="p">:</span><span class="n">port</span> <span class="k">for</span> <span class="n">AMQP</span> <span class="p">(</span><span class="k">with</span> <span class="n">rabiitmq</span> <span class="k">for</span> <span class="n">ex</span><span class="p">)</span>
+                      <span class="n">default</span> <span class="n">to</span> <span class="n">ivy</span><span class="p">:</span><span class="o">//</span><span class="mf">127.255</span><span class="o">.</span><span class="mf">255.255</span><span class="p">:</span><span class="mi">2010</span><span class="p">)</span>
+<span class="o">-</span><span class="n">a</span> <span class="n">APP_NAME</span><span class="p">,</span> <span class="o">--</span><span class="n">appname</span><span class="o">=</span><span class="n">APP_NAME</span>
+                      <span class="n">Application</span> <span class="n">Name</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="debian-package">
+<h2>Debian Package<a class="headerlink" href="#debian-package" title="Permalink to this headline">¶</a></h2>
+<p>A debian package can be built for PyRejeu, thanks to files included in the
+debian folder. To build the package, you can use for example pbuilder/pdebuild
+utilities (<a class="reference external" href="https://pbuilder.alioth.debian.org/">https://pbuilder.alioth.debian.org/</a>)</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Installation/Usage</a><ul>
+<li><a class="reference internal" href="#run-in-the-source-directory">Run in the source directory</a></li>
+<li><a class="reference internal" href="#debian-package">Debian Package</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to PyRejeu&#8217;s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="communication.html"
+                        title="next chapter">Ivy / ZMQ / AMQP</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/installation.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="communication.html" title="Ivy / ZMQ / AMQP"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to PyRejeu’s documentation!"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">PyRejeu 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Mickael Royer.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

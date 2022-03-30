@@ -1,0 +1,278 @@
+<html>
+<!---------------------- Description du style -------------------->
+<head>
+<link rel="stylesheet" type="text/css"
+href="rejeu_style.css">
+</head>
+
+
+<!------------------- Sommaire (gauche de l'ecran) ----------------->
+<body>
+
+<br />
+<h3>Messages du rejeu V2.95</h3>
+<br />
+<b>Messages connus de rejeu</b><br />
+<a href="messages_frame.html#abonnements rejeu" target="messages_frame">
+   Tous les messages</a><br />
+<br />
+<b>Messages émis par rejeu</b><br />
+<a href="messages_frame.html#messages émis" target="messages_frame">
+   Tous les messages</a><br />
+<br />
+<table bgcolor="#FFCC00" width="90%" border="1"><tr><td>
+<b>Détail des messages</b><br />
+</td></tr></table>
+<br />
+
+<b>Emis périodiquement</b><br />
+
+<a href="messages_frame.html#ClockEvent" target="messages_frame">
+   ClockEvent</a><br />
+<a href="messages_frame.html#RadarEndEvent" target="messages_frame">
+   RadarEndEvent</a><br />
+<a href="messages_frame.html#TrackMovedEvent" target="messages_frame">
+   TrackMovedEvent</a><br />
+<a href="messages_frame.html#TrackDiedEvent" target="messages_frame">
+   TrackDiedEvent</a><br />
+<a href="messages_frame.html#SectorEvent" target="messages_frame">
+   SectorEvent</a><br />
+<a href="messages_frame.html#BeaconEvent" target="messages_frame">
+   BeaconEvent</a><br />
+<a href="messages_frame.html#LayerEvent" target="messages_frame">
+   LayerEvent</a><br />
+<a href="messages_frame.html#StripEvent" target="messages_frame">
+   StripEvent</a><br />
+<a href="messages_frame.html#PlnEvent" target="messages_frame">
+   PlnEvent</a><br />
+<a href="messages_frame.html#StcaAlertEvent" target="messages_frame">
+   StcaAlertEvent</a><br />
+<a href="messages_frame.html#MsawAlertEvent" target="messages_frame">
+   MsawAlertEvent</a><br />
+<a href="messages_frame.html#UserEvent" target="messages_frame">
+   UserEvent</a><br />
+
+<b>Ordre/Info Horloge</b><br />
+
+<a href="messages_frame.html#ClockStop" target="messages_frame">
+   ClockStop</a><br />
+<a href="messages_frame.html#ClockStart" target="messages_frame">
+   ClockStart</a><br />
+<a href="messages_frame.html#ClockBackward" target="messages_frame">
+   ClockBackward</a><br />
+<a href="messages_frame.html#ClockForward" target="messages_frame">
+   ClockForward</a><br />
+<a href="messages_frame.html#SetClock" target="messages_frame">
+   SetClock</a><br />
+<a href="messages_frame.html#GetClockDatas" target="messages_frame">
+   GetClockDatas</a><br />
+
+<b>Interrogation radar</b><br />
+
+<a href="messages_frame.html#GetRadarRefresh" target="messages_frame">
+   GetRadarRefresh</a><br />
+
+<b>Interrogation vol</b><br />
+
+<a href="messages_frame.html#GetTrajectory" target="messages_frame">
+   GetTrajectory</a><br />
+<a href="messages_frame.html#GetPln" target="messages_frame">
+   GetPln</a><br />
+<a href="messages_frame.html#GetSectorsInfos" target="messages_frame">
+   GetSectorsInfos</a><br />
+<a href="messages_frame.html#GetLayersInfos" target="messages_frame">
+   GetLayersInfos</a><br />
+<a href="messages_frame.html#GetPosition" target="messages_frame">
+   GetPosition</a><br />
+<a href="messages_frame.html#GetOldPositions" target="messages_frame">
+   GetOldPositions</a><br />
+<a href="messages_frame.html#GetStrip" target="messages_frame">
+   GetStrip</a><br />
+<a href="messages_frame.html#GetRange" target="messages_frame">
+   GetRange</a><br />
+<a href="messages_frame.html#GetTrack" target="messages_frame">
+   GetTrack</a><br />
+<a href="messages_frame.html#GetTimeAtLevel" target="messages_frame">
+   GetTimeAtLevel</a><br />
+<a href="messages_frame.html#GetCfl" target="messages_frame">
+   GetCfl</a><br />
+<a href="messages_frame.html#GetPrediction" target="messages_frame">
+   GetPrediction</a><br />
+<a href="messages_frame.html#GetOrderData" target="messages_frame">
+   GetOrderData</a><br />
+<b>Création vol</b><br />
+
+<a href="messages_frame.html#GetDuplicate" target="messages_frame">
+   GetDuplicate</a><br />
+<a href="messages_frame.html#GetNewFlight" target="messages_frame">
+   GetNewFlight</a><br />
+
+<b>Interrogation BD</b><br />
+
+<a href="messages_frame.html#GetDataBaseInfos" target="messages_frame">
+   GetDataBaseInfos</a><br />
+<a href="messages_frame.html#GetFlightsWithStrip" target="messages_frame">
+   GetFlightsWithStrip</a><br />
+<a href="messages_frame.html#GetCurrentFlights" target="messages_frame">
+   GetCurrentFlights</a><br />
+<a href="messages_frame.html#GetSidStarNames" target="messages_frame">
+   GetSidStarNames</a><br />
+<a href="messages_frame.html#GetStackNames" target="messages_frame">
+   GetStackNames</a><br />
+<a href="messages_frame.html#GetStandardTrajectory" target="messages_frame">
+   GetStandardTrajectory</a><br />
+<a href="messages_frame.html#GetStackInfos" target="messages_frame">
+   GetStackInfos</a><br />
+<a href="messages_frame.html#GetGroupsOfSectors" target="messages_frame">
+   GetGroupsOfSectors</a><br />
+<a href="messages_frame.html#GetTaggedStrips" target="messages_frame">
+   GetTaggedStrips</a><br />
+<a href="messages_frame.html#GetPerfo" target="messages_frame">
+   GetPerfo</a><br />
+<a href="messages_frame.html#GetAllBeacons" target="messages_frame">
+   GetAllBeacons</a><br />
+<a href="messages_frame.html#GetBeaconsInWindow" target="messages_frame">
+   GetBeaconsInWindow</a><br />
+<a href="messages_frame.html#GetBeaconsInfos" target="messages_frame">
+   GetBeaconsInfos</a><br />
+
+<b>Modification données générales</b><br />
+
+<a href="messages_frame.html#SetGroupsOfSectors" target="messages_frame">
+   SetGroupsOfSectors</a><br />
+<a href="messages_frame.html#SetNewBeacons" target="messages_frame">
+   SetNewBeacons</a><br />
+<a href="messages_frame.html#SetTrajectoryAsSidStar" target="messages_frame">
+   SetTrajectoryAsSidStar</a><br />
+
+<b>Modification vol</b><br />
+
+<a href="messages_frame.html#SetStripTime" target="messages_frame">
+   SetStripTime</a><br />
+<a href="messages_frame.html#SetSectorIn" target="messages_frame">
+   SetSectorIn</a><br />
+<a href="messages_frame.html#SetSectorOut" target="messages_frame">
+   SetSectorOut</a><br />
+<a href="messages_frame.html#SetSectorsInfos" target="messages_frame">
+   SetSectorsInfos</a><br />
+<a href="messages_frame.html#SetCallSign" target="messages_frame">
+   SetCallSign</a><br />
+<a href="messages_frame.html#SetMiniPln" target="messages_frame">
+   SetMiniPln</a><br />
+<a href="messages_frame.html#SetPln" target="messages_frame">
+   SetPln</a><br />
+<a href="messages_frame.html#SetEstimatedPln" target="messages_frame">
+   SetEstimatedPln</a><br />
+<a href="messages_frame.html#SetBeaconEstimation" target="messages_frame">
+   SetBeaconEstimation</a><br />
+<a href="messages_frame.html#SetTfl" target="messages_frame">
+   SetTfl</a><br />
+<a href="messages_frame.html#SetBeforeTrack" target="messages_frame">
+   SetBeforeTrack</a><br />
+<a href="messages_frame.html#SetAfterTrack" target="messages_frame">
+   SetAfterTrack</a><br />
+<a href="messages_frame.html#TranslateTime" target="messages_frame">
+   TranslateTime</a><br />
+<a href="messages_frame.html#TranslateFl" target="messages_frame">
+   TranslateFl</a><br />
+<a href="messages_frame.html#TranslateXY" target="messages_frame">
+   TranslateXY</a><br />
+
+<b>Pilotage vol</b><br />
+
+<a href="messages_frame.html#AircraftDirect" target="messages_frame">
+   AircraftDirect</a><br />
+<a href="messages_frame.html#AircraftHeading" target="messages_frame">
+   AircraftHeading</a><br />
+<a href="messages_frame.html#AircraftTurn" target="messages_frame">
+   AircraftTurn</a><br />
+<a href="messages_frame.html#AircraftCircle" target="messages_frame">
+   AircraftCircle</a><br />
+<a href="messages_frame.html#AircraftLevel" target="messages_frame">
+   AircraftLevel</a><br />
+<a href="messages_frame.html#AircraftSpeed" target="messages_frame">
+   AircraftSpeed</a><br />
+<a href="messages_frame.html#AircraftIntercept" target="messages_frame">
+   AircraftIntercept</a><br />
+<a href="messages_frame.html#AircraftInterceptXY" target="messages_frame">
+   AircraftInterceptXY</a><br />
+<a href="messages_frame.html#AircraftInterceptILS" target="messages_frame">
+   AircraftInterceptILS</a><br />
+<a href="messages_frame.html#AircraftFollowTrack" target="messages_frame">
+   AircraftFollowTrack</a><br />
+<a href="messages_frame.html#AircraftTimeAtBeacon" target="messages_frame">
+   AircraftTimeAtBeacon</a><br />
+<a href="messages_frame.html#AircraftTimeAtPosition" target="messages_frame">
+   AircraftTimeAtPosition</a><br />
+<a href="messages_frame.html#AircraftHold" target="messages_frame">
+   AircraftHold</a><br />
+<a href="messages_frame.html#AircraftSetTrack" target="messages_frame">
+   AircraftSetTrack</a><br />
+<a href="messages_frame.html#AircraftDifferedOrder" target="messages_frame">
+   AircraftDifferedOrder</a><br />
+<a href="messages_frame.html#AircraftMultipleOrder" target="messages_frame">
+   AircraftMultipleOrder</a><br />
+
+<b>User Events</b><br />
+
+<a href="messages_frame.html#SetUserEventList" target="messages_frame">
+   SetUserEventList</a><br />
+<a href="messages_frame.html#MergeUserEventList" target="messages_frame">
+   MergeUserEventList</a><br />
+<a href="messages_frame.html#GetUserEventList" target="messages_frame">
+   GetUserEventList</a><br />
+<a href="messages_frame.html#GetUserEventNames" target="messages_frame">
+   GetUserEventNames</a><br />
+
+<b>Divers</b><br />
+
+<a href="messages_frame.html#CancelLastOrder" target="messages_frame">
+   CancelLastOrder</a><br />
+<a href="messages_frame.html#Discard" target="messages_frame">
+   Discard</a><br />
+<a href="messages_frame.html#DiscardAll" target="messages_frame">
+   DiscardAll</a><br />
+<a href="messages_frame.html#Enable" target="messages_frame">
+   Enable</a><br />
+<a href="messages_frame.html#Dump" target="messages_frame">
+   Dump</a><br />
+<a href="messages_frame.html#StripsOnOff" target="messages_frame">
+   StripsOnOff</a><br />
+<a href="messages_frame.html#StcaAlertOnOff" target="messages_frame">
+   StcaAlertOnOff</a><br />
+<a href="messages_frame.html#TagStrip" target="messages_frame">
+   TagStrip</a><br />
+<a href="messages_frame.html#UnTagStrip" target="messages_frame">
+   UnTagStrip</a><br />
+<a href="messages_frame.html#PrintTaggedStrips" target="messages_frame">
+   PrintTaggedStrips</a><br />
+<a href="messages_frame.html#Debug" target="messages_frame">
+   Debug</a><br />
+
+<b>Fichiers</b><br />
+
+<a href="messages_frame.html#FileRead" target="messages_frame">
+   FileRead</a><br />
+<a href="messages_frame.html#FileWrite" target="messages_frame">
+   FileWrite</a><br />
+
+<b>Evénement compte-rendu d'un ordre de pilotage</b><br />
+
+<a href="messages_frame.html#ReportEvent" target="messages_frame">
+   ReportEvent</a><br />
+
+<b>Evénements divers</b><br />
+
+<a href="messages_frame.html#FileReadEvent" target="messages_frame">
+   FileReadEvent</a><br />
+<a href="messages_frame.html#TrajectoryUpdateEvent" target="messages_frame">
+   TrajectoryUpdateEvent</a><br />
+<a href="messages_frame.html#BeaconUpdateEvent" target="messages_frame">
+   BeaconUpdateEvent</a><br />
+<br />
+
+
+</body>
+</html>
+
+

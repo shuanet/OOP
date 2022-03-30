@@ -1,0 +1,364 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pyrejeu.db.importations &#8212; PyRejeu 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="top" title="PyRejeu 0.1.0 documentation" href="../../../index.html" />
+    <link rel="up" title="pyrejeu" href="../../pyrejeu.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PyRejeu 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../../pyrejeu.html" accesskey="U">pyrejeu</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for pyrejeu.db.importations</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># PyRejeu, an air traffic replay tool</span>
+<span class="c1"># Copyright (C) 2017 Mickael Royer &lt;mickael.royer@enac.fr&gt;</span>
+<span class="c1">#</span>
+<span class="c1"># This program is free software; you can redistribute it and/or modify</span>
+<span class="c1"># it under the terms of the GNU General Public License as published by</span>
+<span class="c1"># the Free Software Foundation; either version 2 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># This program is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span>
+<span class="c1"># GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License along</span>
+<span class="c1"># with this program; if not, write to the Free Software Foundation, Inc.,</span>
+<span class="c1"># 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="k">import</span> <span class="n">func</span>
+<span class="kn">from</span> <span class="nn">pyrejeu.db.models</span> <span class="k">import</span> <span class="n">MiscInfo</span>
+<span class="kn">from</span> <span class="nn">pyrejeu.db.models</span> <span class="k">import</span> <span class="n">Flight</span>
+<span class="kn">from</span> <span class="nn">pyrejeu.db.models</span> <span class="k">import</span> <span class="n">Beacon</span>
+<span class="kn">from</span> <span class="nn">pyrejeu.db.models</span> <span class="k">import</span> <span class="n">Cone</span>
+<span class="kn">from</span> <span class="nn">pyrejeu.db.models</span> <span class="k">import</span> <span class="n">FlightPlan</span>
+<span class="kn">from</span> <span class="nn">pyrejeu.db.models</span> <span class="k">import</span> <span class="n">FlightPlanBeacon</span>
+<span class="kn">from</span> <span class="nn">pyrejeu.db.models</span> <span class="k">import</span> <span class="n">Layer</span>
+<span class="kn">from</span> <span class="nn">pyrejeu.utils</span> <span class="k">import</span> <span class="n">str_to_sec</span><span class="p">,</span> <span class="n">sec_to_str</span>
+<span class="kn">from</span> <span class="nn">pyrejeu.format</span> <span class="k">import</span> <span class="n">Event</span>
+<span class="kn">from</span> <span class="nn">pyrejeu</span> <span class="k">import</span> <span class="n">PyRejeuException</span>
+
+
+<div class="viewcode-block" id="RejeuImportation"><a class="viewcode-back" href="../../../api.html#pyrejeu.db.importations.RejeuImportation">[docs]</a><span class="k">class</span> <span class="nc">RejeuImportation</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This class contains all the functions useful to import a file</span>
+<span class="sd">    following the rejeu format in the database. The public function to import</span>
+<span class="sd">    a file is import_file</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bus</span><span class="p">,</span> <span class="n">db_conn</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">db_conn</span> <span class="o">=</span> <span class="n">db_conn</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bus</span> <span class="o">=</span> <span class="n">bus</span>
+
+<div class="viewcode-block" id="RejeuImportation.import_file"><a class="viewcode-back" href="../../../api.html#pyrejeu.db.importations.RejeuImportation.import_file">[docs]</a>    <span class="k">def</span> <span class="nf">import_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">event</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function extract the trafic informations from the rejeu file</span>
+<span class="sd">        and record them in the database</span>
+<span class="sd">        :param filename: the path of the file we want to import</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Importation of file </span><span class="si">%s</span><span class="s2"> in progress&quot;</span> <span class="o">%</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Please wait...&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">PyRejeuException</span><span class="p">(</span><span class="s2">&quot;The file </span><span class="si">%s</span><span class="s2"> does not exist&quot;</span> <span class="o">%</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">misc_infos</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">flights</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">f_cones</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">flight_plans</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">fpl_beacons</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">beacons</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">layers</span><span class="p">,</span> <span class="n">nb_layers</span> <span class="o">=</span> <span class="p">[],</span> <span class="mi">0</span>
+            <span class="n">current_flight</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">current_section</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">):</span>
+                    <span class="k">continue</span>
+                <span class="k">elif</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;Version:&quot;</span><span class="p">):</span>
+                    <span class="c1"># parse version number</span>
+                    <span class="n">infos</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+                    <span class="n">misc_infos</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;version&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">infos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="p">})</span>
+                <span class="k">elif</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;Centre:&quot;</span><span class="p">):</span>
+                    <span class="c1"># parse centre name</span>
+                    <span class="n">infos</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+                    <span class="n">misc_infos</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;centre&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">infos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="p">})</span>
+                <span class="k">elif</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;NBeacons&quot;</span><span class="p">):</span>
+                    <span class="n">current_section</span> <span class="o">=</span> <span class="s2">&quot;beacons&quot;</span>
+                <span class="k">elif</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;NbPlots&quot;</span><span class="p">):</span>
+                    <span class="n">current_section</span> <span class="o">=</span> <span class="s2">&quot;cones&quot;</span>
+                <span class="k">elif</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;NLayers&quot;</span><span class="p">):</span>
+                    <span class="n">current_section</span> <span class="o">=</span> <span class="s2">&quot;layers&quot;</span>
+                    <span class="n">nb_layers</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;$&quot;</span><span class="p">):</span>
+                    <span class="n">current_flight</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__create_flight_mapping</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+                    <span class="n">flights</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_flight</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;!&quot;</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">current_flight</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="n">PyRejeuException</span><span class="p">(</span><span class="s2">&quot;Un plan de vol est apparut &quot;</span>
+                                               <span class="s2">&quot;avant la definition du vol&quot;</span><span class="p">)</span>
+                    <span class="n">f_id</span> <span class="o">=</span> <span class="n">current_flight</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span>
+                    <span class="n">fpl</span><span class="p">,</span> <span class="n">f_bea</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__create_flightplan</span><span class="p">(</span><span class="n">f_id</span><span class="p">,</span> <span class="n">line</span><span class="p">,</span>
+                                                          <span class="nb">len</span><span class="p">(</span><span class="n">flight_plans</span><span class="p">),</span>
+                                                          <span class="nb">len</span><span class="p">(</span><span class="n">fpl_beacons</span><span class="p">))</span>
+                    <span class="n">flight_plans</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fpl</span><span class="p">)</span>
+                    <span class="n">fpl_beacons</span> <span class="o">+=</span> <span class="n">f_bea</span>
+                <span class="k">elif</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;&gt;&quot;</span><span class="p">):</span>
+                    <span class="k">continue</span>  <span class="c1"># infos secteurs non gérés pour le moment</span>
+                <span class="k">elif</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;&lt;&quot;</span><span class="p">):</span>
+                    <span class="k">continue</span>  <span class="c1"># filet de sauvegarde</span>
+                <span class="k">elif</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;%&quot;</span><span class="p">):</span>
+                    <span class="k">continue</span>  <span class="c1"># alerte relief</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">current_section</span> <span class="o">==</span> <span class="s2">&quot;cones&quot;</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">current_flight</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                            <span class="k">raise</span> <span class="n">PyRejeuException</span><span class="p">(</span><span class="s2">&quot;Un plan de vol est&quot;</span>
+                                                   <span class="s2">&quot;apparut avant la &quot;</span>
+                                                   <span class="s2">&quot;definition du vol&quot;</span><span class="p">)</span>
+                        <span class="n">f_id</span> <span class="o">=</span> <span class="n">current_flight</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span>
+                        <span class="n">f_cones</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__create_cone_mapping</span><span class="p">(</span><span class="n">f_id</span><span class="p">,</span> <span class="n">line</span><span class="p">))</span>
+                    <span class="k">elif</span> <span class="n">current_section</span> <span class="o">==</span> <span class="s2">&quot;beacons&quot;</span><span class="p">:</span>
+                        <span class="n">beacons</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__create_beacon_mapping</span><span class="p">(</span><span class="n">line</span><span class="p">))</span>
+                    <span class="k">elif</span> <span class="n">current_section</span> <span class="o">==</span> <span class="s2">&quot;layers&quot;</span>\
+                            <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">layers</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">nb_layers</span><span class="p">:</span>
+                        <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__create_layer_mapping</span><span class="p">(</span><span class="n">line</span><span class="p">))</span>
+
+            <span class="c1"># alimentation de la base de donnée</span>
+            <span class="n">engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">db_conn</span><span class="o">.</span><span class="n">get_engine</span><span class="p">()</span>
+            <span class="n">engine</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">MiscInfo</span><span class="o">.</span><span class="n">__table__</span><span class="o">.</span><span class="n">insert</span><span class="p">(),</span> <span class="n">misc_infos</span><span class="p">)</span>
+            <span class="n">engine</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">Beacon</span><span class="o">.</span><span class="n">__table__</span><span class="o">.</span><span class="n">insert</span><span class="p">(),</span> <span class="n">beacons</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">nb_layers</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">engine</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">Layer</span><span class="o">.</span><span class="n">__table__</span><span class="o">.</span><span class="n">insert</span><span class="p">(),</span> <span class="n">layers</span><span class="p">)</span>
+            <span class="n">engine</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">Flight</span><span class="o">.</span><span class="n">__table__</span><span class="o">.</span><span class="n">insert</span><span class="p">(),</span> <span class="n">flights</span><span class="p">)</span>
+            <span class="n">engine</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">Cone</span><span class="o">.</span><span class="n">__table__</span><span class="o">.</span><span class="n">insert</span><span class="p">(),</span> <span class="n">f_cones</span><span class="p">)</span>
+            <span class="n">engine</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">FlightPlan</span><span class="o">.</span><span class="n">__table__</span><span class="o">.</span><span class="n">insert</span><span class="p">(),</span> <span class="n">flight_plans</span><span class="p">)</span>
+            <span class="n">engine</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">FlightPlanBeacon</span><span class="o">.</span><span class="n">__table__</span><span class="o">.</span><span class="n">insert</span><span class="p">(),</span> <span class="n">fpl_beacons</span><span class="p">)</span>
+
+        <span class="n">stop_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Importation of </span><span class="si">%d</span><span class="s2"> flights in </span><span class="si">%d</span><span class="s2"> seconds !!&quot;</span><span class="p">,</span>
+                     <span class="nb">len</span><span class="p">(</span><span class="n">flights</span><span class="p">),</span> <span class="n">stop_time</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">event</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__send_file_read_event</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">__send_file_read_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f_name</span><span class="p">):</span>
+        <span class="n">session</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">db_conn</span><span class="o">.</span><span class="n">get_session</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">s_time</span><span class="p">,</span> <span class="n">e_time</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">Flight</span><span class="o">.</span><span class="n">h_dep</span><span class="p">),</span>
+                                           <span class="n">func</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">Flight</span><span class="o">.</span><span class="n">h_arr</span><span class="p">))</span><span class="o">.</span><span class="n">one</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Unable to get time boundaries: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+            <span class="n">s_time</span><span class="p">,</span> <span class="n">e_time</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bus</span><span class="o">.</span><span class="n">publish_event</span><span class="p">(</span><span class="n">Event</span><span class="p">(</span><span class="s2">&quot;FileReadEvent&quot;</span><span class="p">,</span> <span class="p">[</span>
+            <span class="p">(</span><span class="s2">&quot;Type&quot;</span><span class="p">,</span> <span class="s2">&quot;REJEU&quot;</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">f_name</span><span class="p">)),</span>
+            <span class="p">(</span><span class="s2">&quot;StartTime&quot;</span><span class="p">,</span> <span class="n">sec_to_str</span><span class="p">(</span><span class="n">s_time</span><span class="p">)),</span>
+            <span class="p">(</span><span class="s2">&quot;EndTime&quot;</span><span class="p">,</span> <span class="n">sec_to_str</span><span class="p">(</span><span class="n">e_time</span><span class="p">))</span>
+        <span class="p">]))</span>
+        <span class="n">session</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__create_layer_mapping</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l_line</span><span class="p">):</span>
+        <span class="n">l_infos</span> <span class="o">=</span> <span class="n">l_line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">l_infos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="s2">&quot;floor&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">l_infos</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+            <span class="s2">&quot;ceiling&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">l_infos</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
+            <span class="s2">&quot;climb_delay_first&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">l_infos</span><span class="p">[</span><span class="mi">3</span><span class="p">]),</span>
+            <span class="s2">&quot;climb_delay_others&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">l_infos</span><span class="p">[</span><span class="mi">4</span><span class="p">]),</span>
+            <span class="s2">&quot;descent_delay&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">l_infos</span><span class="p">[</span><span class="mi">5</span><span class="p">]),</span>
+            <span class="s2">&quot;descent_distance&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">l_infos</span><span class="p">[</span><span class="mi">6</span><span class="p">]),</span>
+        <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">__create_beacon_mapping</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">b_line</span><span class="p">):</span>
+        <span class="n">b_infos</span> <span class="o">=</span> <span class="n">b_line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">b_infos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="s2">&quot;pos_x&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">b_infos</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mf">8.0</span><span class="p">,</span>
+            <span class="s2">&quot;pos_y&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">b_infos</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">/</span><span class="mf">8.0</span>
+        <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">__create_flight_mapping</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flight_line</span><span class="p">):</span>
+        <span class="n">flight_infos</span> <span class="o">=</span> <span class="n">flight_line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+        <span class="c1"># f_id, f_h_dep, f_h_arr, f_fl, f_speed, f_callsign, f_type, f_dep</span>
+        <span class="c1"># f_arr, ssr, rvsm, tcas, adsb, (dlink)</span>
+        <span class="n">f_object</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">flight_infos</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+            <span class="s2">&quot;h_dep&quot;</span><span class="p">:</span> <span class="n">str_to_sec</span><span class="p">(</span><span class="n">flight_infos</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
+            <span class="s2">&quot;h_arr&quot;</span><span class="p">:</span> <span class="n">str_to_sec</span><span class="p">(</span><span class="n">flight_infos</span><span class="p">[</span><span class="mi">3</span><span class="p">]),</span>
+            <span class="s2">&quot;fl&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">flight_infos</span><span class="p">[</span><span class="mi">4</span><span class="p">]),</span>
+            <span class="s2">&quot;v&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">flight_infos</span><span class="p">[</span><span class="mi">5</span><span class="p">]),</span>
+            <span class="s2">&quot;callsign&quot;</span><span class="p">:</span> <span class="n">flight_infos</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">flight_infos</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span>
+            <span class="s2">&quot;dep&quot;</span><span class="p">:</span> <span class="n">flight_infos</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span>
+            <span class="s2">&quot;arr&quot;</span><span class="p">:</span> <span class="n">flight_infos</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span>
+            <span class="s2">&quot;ssr&quot;</span><span class="p">:</span> <span class="n">flight_infos</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span>
+            <span class="s2">&quot;rvsm&quot;</span><span class="p">:</span> <span class="n">flight_infos</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span>
+            <span class="s2">&quot;tcas&quot;</span><span class="p">:</span> <span class="n">flight_infos</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span>
+            <span class="s2">&quot;adsb&quot;</span><span class="p">:</span> <span class="n">flight_infos</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span>
+            <span class="s2">&quot;dlink&quot;</span><span class="p">:</span> <span class="s2">&quot;FALSE&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="c1"># le champ DLINK est optionnel</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">flight_infos</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">14</span><span class="p">:</span>
+            <span class="n">f_object</span><span class="p">[</span><span class="s2">&quot;dlink&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">flight_infos</span><span class="p">[</span><span class="mi">14</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">f_object</span>
+
+    <span class="k">def</span> <span class="nf">__create_cone_mapping</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flight_id</span><span class="p">,</span> <span class="n">cone_line</span><span class="p">):</span>
+        <span class="n">cone_infos</span> <span class="o">=</span> <span class="n">cone_line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+        <span class="c1"># (hour, pos_x, pos_y, vit_x, vit_y, fl, rate, tendency)</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;flight_id&quot;</span><span class="p">:</span> <span class="n">flight_id</span><span class="p">,</span>
+            <span class="s2">&quot;hour&quot;</span><span class="p">:</span> <span class="n">str_to_sec</span><span class="p">(</span><span class="n">cone_infos</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+            <span class="s2">&quot;pos_x&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">cone_infos</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mf">64.0</span><span class="p">,</span>
+            <span class="s2">&quot;pos_y&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">cone_infos</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">/</span><span class="mf">64.0</span><span class="p">,</span>
+            <span class="s2">&quot;vit_x&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">cone_infos</span><span class="p">[</span><span class="mi">3</span><span class="p">]),</span>
+            <span class="s2">&quot;vit_y&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">cone_infos</span><span class="p">[</span><span class="mi">4</span><span class="p">]),</span>
+            <span class="s2">&quot;flight_level&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">cone_infos</span><span class="p">[</span><span class="mi">5</span><span class="p">]),</span>
+            <span class="s2">&quot;rate&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">cone_infos</span><span class="p">[</span><span class="mi">6</span><span class="p">]),</span>
+            <span class="s2">&quot;tendency&quot;</span><span class="p">:</span> <span class="n">cone_infos</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span>
+        <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">__create_flightplan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flight_id</span><span class="p">,</span> <span class="n">plan_line</span><span class="p">,</span> <span class="n">f_idx</span><span class="p">,</span> <span class="n">b_idx</span><span class="p">):</span>
+        <span class="n">tmp_tab</span> <span class="o">=</span> <span class="n">plan_line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+        <span class="n">datas</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tmp_tab</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">while</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">tmp_tab</span><span class="p">):</span>
+                <span class="p">(</span><span class="n">fp_beacon</span><span class="p">,</span> <span class="n">V_or_A</span><span class="p">,</span>
+                 <span class="n">fp_hour</span><span class="p">,</span> <span class="n">es_hour</span><span class="p">,</span> <span class="n">fp_fl</span><span class="p">)</span> <span class="o">=</span> <span class="n">tmp_tab</span><span class="p">[</span><span class="n">index</span><span class="p">:</span><span class="n">index</span><span class="o">+</span><span class="mi">5</span><span class="p">]</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;^\d</span><span class="si">{2}</span><span class="s2">:\d</span><span class="si">{2}</span><span class="s2">:\d</span><span class="si">{2}</span><span class="s2">$&quot;</span><span class="p">,</span> <span class="n">es_hour</span><span class="p">):</span>
+                    <span class="n">es_hour</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">es_hour</span> <span class="o">=</span> <span class="n">str_to_sec</span><span class="p">(</span><span class="n">es_hour</span><span class="p">)</span>
+                <span class="n">datas</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">fp_beacon</span><span class="p">,</span> <span class="n">V_or_A</span><span class="p">,</span> <span class="n">fp_hour</span><span class="p">,</span> <span class="n">es_hour</span><span class="p">,</span> <span class="n">fp_fl</span><span class="p">))</span>
+                <span class="n">index</span> <span class="o">+=</span> <span class="mi">5</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Unable to parse flight plan for flight </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                          <span class="n">flight_id</span><span class="p">)</span>
+
+        <span class="n">flight_plan</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">f_idx</span><span class="p">,</span>
+            <span class="s2">&quot;flight_id&quot;</span><span class="p">:</span> <span class="n">flight_id</span>
+        <span class="p">}</span>
+        <span class="n">beacons</span> <span class="o">=</span> <span class="p">[{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">b_idx</span><span class="o">+</span><span class="n">i</span><span class="p">,</span>
+            <span class="s2">&quot;flight_plan_id&quot;</span><span class="p">:</span> <span class="n">f_idx</span><span class="p">,</span>
+            <span class="s2">&quot;order&quot;</span><span class="p">:</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;beacon_name&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="s2">&quot;V_or_A&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+            <span class="s2">&quot;hour&quot;</span><span class="p">:</span> <span class="n">str_to_sec</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
+            <span class="s2">&quot;estimated_hour&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span>
+            <span class="s2">&quot;FL&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+        <span class="p">}</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">datas</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="n">flight_plan</span><span class="p">,</span> <span class="n">beacons</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">pyrejeu.db.connection</span> <span class="k">import</span> <span class="n">DatabaseConnection</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(asctime)-15s</span><span class="s1"> - </span><span class="si">%(levelname)s</span><span class="s1"> - </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">,</span>
+                        <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="s2">&quot;Usage : importation.py &lt;file&gt;&quot;</span><span class="p">)</span>
+
+    <span class="n">db_conn</span> <span class="o">=</span> <span class="n">DatabaseConnection</span><span class="p">()</span>
+    <span class="n">import_obj</span> <span class="o">=</span> <span class="n">RejeuImportation</span><span class="p">(</span><span class="n">db_conn</span><span class="p">)</span>
+    <span class="n">import_obj</span><span class="o">.</span><span class="n">import_file</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="c1"># Test rapide sur la BDD importee</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------------ Test sur la base de données --------------&quot;</span><span class="p">)</span>
+    <span class="n">session_test</span> <span class="o">=</span> <span class="n">db_conn</span><span class="o">.</span><span class="n">get_session</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Affichage d&#39;une balise&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">session_test</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Beacon</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Affichage des informations sur les vols&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">flight</span> <span class="ow">in</span> <span class="n">session_test</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Flight</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">flight</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">flight</span><span class="o">.</span><span class="n">display_cones_extract</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Affichage des plans de vol&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">fpl</span> <span class="ow">in</span> <span class="n">session_test</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">FlightPlan</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">fpl</span><span class="p">)</span>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PyRejeu 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../../pyrejeu.html" >pyrejeu</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Mickael Royer.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

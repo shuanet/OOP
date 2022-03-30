@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Pilot orders &#8212; PyRejeu 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="PyRejeu 0.1.0 documentation" href="../index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">PyRejeu 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="pilot-orders">
+<h1>Pilot orders<a class="headerlink" href="#pilot-orders" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt><strong>AircraftDirect</strong></dt>
+<dd><p class="first">Change heading from the present time to make a direct on the beacon defined by the Beacon field:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">AircraftDirect</span> <span class="n">Flight</span><span class="o">=</span><span class="mi">678</span> <span class="n">Beacon</span><span class="o">=</span><span class="n">TOU</span>
+</pre></div>
+</div>
+<p class="last">PyRejeu sends a ReportEvent to indicate the order result (OK or ERROR). if necessary PyRejeu ca send a PlnEvent and/or a TrajectoryUpdateEvent</p>
+</dd>
+<dt><strong>AircraftTurn</strong></dt>
+<dd><p class="first">Change heading of a flight to make a turn of the number of degrees requested thanks to angle:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">AircraftTurn</span> <span class="n">Flight</span><span class="o">=</span><span class="mi">77</span> <span class="n">Angle</span><span class="o">=</span><span class="mi">15</span>
+</pre></div>
+</div>
+<p class="last">PyRejeu sends a ReportEvent to indicate the order result (OK or ERROR). if necessary PyRejeu ca send a PlnEvent and/or a TrajectoryUpdateEvent</p>
+</dd>
+<dt><strong>AircraftHeading</strong></dt>
+<dd><p class="first">Change heading from the present time to reach heading given in the field Heading:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">AircraftHeading</span> <span class="n">Flight</span><span class="o">=</span><span class="mi">77</span> <span class="n">To</span><span class="o">=</span><span class="mi">180</span>
+<span class="n">AircraftHeading</span> <span class="n">Flight</span><span class="o">=</span><span class="mi">77</span> <span class="n">To</span><span class="o">=</span><span class="n">maintain</span>
+<span class="n">AircraftHeading</span> <span class="n">Flight</span><span class="o">=</span><span class="mi">77</span> <span class="n">To</span><span class="o">=</span><span class="mi">90</span> <span class="n">By</span><span class="o">=</span><span class="n">Left</span>
+<span class="n">AircraftHeading</span> <span class="n">Flight</span><span class="o">=</span><span class="mi">77</span> <span class="n">To</span><span class="o">=</span><span class="mi">90</span> <span class="n">By</span><span class="o">=</span><span class="n">Left</span> <span class="n">Rate</span><span class="o">=</span><span class="mf">2.0</span>
+</pre></div>
+</div>
+<p class="last">PyRejeu sends a ReportEvent to indicate the order result (OK or ERROR). if necessary PyRejeu ca send a PlnEvent and/or a TrajectoryUpdateEvent</p>
+</dd>
+</dl>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/m_categories/pilot.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">PyRejeu 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Mickael Royer.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

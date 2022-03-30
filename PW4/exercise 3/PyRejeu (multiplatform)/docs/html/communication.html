@@ -1,0 +1,313 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Ivy / ZMQ / AMQP &#8212; PyRejeu 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="PyRejeu 0.1.0 documentation" href="index.html" />
+    <link rel="next" title="Supported messages" href="messages.html" />
+    <link rel="prev" title="Installation/Usage" href="installation.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="messages.html" title="Supported messages"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="installation.html" title="Installation/Usage"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">PyRejeu 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="ivy-zmq-amqp">
+<span id="communication-section"></span><h1>Ivy / ZMQ / AMQP<a class="headerlink" href="#ivy-zmq-amqp" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt>As explained in the introduction, PyRejeu handles three ways to exchange messages with clients:</dt>
+<dd><ul class="first last simple">
+<li>Ivy, as the legacy rejeu application</li>
+<li>ZeroMQ framework</li>
+<li>Advanced Message Queuing Protocol</li>
+</ul>
+</dd>
+</dl>
+<div class="section" id="ivy-bus">
+<h2>Ivy Bus<a class="headerlink" href="#ivy-bus" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>When PyRejeu is launch on the Ivy bus, it&#8217;s acted exactly like the legacy rejeu application. Then, 3 kinds of communication paradigm are used between PyRejeu and a client:</dt>
+<dd><ul class="first last">
+<li><p class="first"><em>Event dispatching</em>: PyRejeu sends events to clients, such as the ClockEvent:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ClockEvent</span> <span class="n">Time</span><span class="o">=</span><span class="mi">11</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mi">33</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><em>Commands without answer</em>: in this paradigm, client sends a command to PyRejeu but it does not wait an answer, such as the command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ClockStart</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><em>Commands with answer</em>: in this paradigm, client sends a request and expects a response from PyRejeu. In this case, the argument <em>MsgName</em> is added to identify the answer:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">GetPosition</span> <span class="n">MsgName</span><span class="o">=</span><span class="n">MyClient</span> <span class="n">Flight</span><span class="o">=</span><span class="mi">45</span> <span class="n">Time</span><span class="o">=</span><span class="mi">13</span><span class="p">:</span><span class="mi">06</span><span class="p">:</span><span class="mi">35</span>
+</pre></div>
+</div>
+<p>Then Pyrejeu answers using the identifier sent by the client:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Position</span> <span class="n">pos45</span> <span class="n">Flight</span><span class="o">=</span><span class="mi">45</span> <span class="n">CallSign</span><span class="o">=</span><span class="n">LB114JQ</span> <span class="n">Ssr</span><span class="o">=</span><span class="mi">0452</span> <span class="n">Sector</span><span class="o">=</span><span class="n">SL</span> <span class="n">Layers</span><span class="o">=</span><span class="n">F</span><span class="p">,</span><span class="n">I</span> <span class="n">X</span><span class="o">=</span><span class="mf">87.00</span> <span class="n">Y</span><span class="o">=-</span><span class="mf">128.88</span> <span class="n">Vx</span><span class="o">=-</span><span class="mi">197</span> <span class="n">Vy</span><span class="o">=</span><span class="mi">265</span> <span class="n">Afl</span><span class="o">=</span><span class="mi">195</span> <span class="n">Rate</span><span class="o">=</span><span class="mi">2098</span> <span class="n">Heading</span><span class="o">=</span><span class="mi">323</span> <span class="n">GroundSpeed</span><span class="o">=</span><span class="mi">330</span> <span class="n">Tendency</span><span class="o">=</span><span class="mi">1</span> <span class="n">Time</span><span class="o">=</span><span class="mi">13</span><span class="p">:</span><span class="mi">06</span><span class="p">:</span><span class="mi">38</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="zeromq">
+<h2>ZeroMQ<a class="headerlink" href="#zeromq" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>PyRejeu also supports the use of ZeroMQ framework to exchange messages with client. In this case, two communication paradigms are used:</dt>
+<dd><ul class="first last simple">
+<li>the Publish/Subscribe paradigm for the diffusion of events. The format of events is exactly the same than for Ivy.</li>
+<li>the RPC paradigm to send command or get informations from PyRejeu.</li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>For the request/response communication, the <strong>JSON RPC format</strong> is used. For example, <em>GetPosition</em> command is formatted as follow:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;method&#39;</span><span class="p">:</span> <span class="s1">&#39;GetPosition&#39;</span><span class="p">,</span> <span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Flight&#39;</span><span class="p">:</span> <span class="mi">101</span><span class="p">,</span> <span class="s1">&#39;Time&#39;</span><span class="p">:</span> <span class="s1">&#39;12:00:00&#39;</span><span class="p">}}</span>
+</pre></div>
+</div>
+<p>Then, PyRejeu answers using the following format:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Flight&#39;</span><span class="p">:</span> <span class="mi">101</span><span class="p">,</span> <span class="s1">&#39;CallSign&#39;</span><span class="p">:</span> <span class="s1">&#39;LB114JQ&#39;</span><span class="o">...</span><span class="p">}}</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>An other important difference with Ivy use is that PyRejeu answers to each command, such as <em>ClockStart</em>.
+For simple command, PyRejeu simply sends an acknowledgement:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<dl class="docutils">
+<dt><strong>Launch PyRejeu with zmq</strong></dt>
+<dd><dl class="first last docutils">
+<dt>To use PyRejeu with zmq, you need to specify a bus id following the format zmq://<a href="#id1"><span class="problematic" id="id2">*</span></a>:port1:port2</dt>
+<dd><ul class="first last simple">
+<li>The first port number is for the rpc exchanges. PyRejeu binds a REP socket to this port.</li>
+<li>The second one is for the diffusion of events. Pyrejeu binds en PUB socket to this port.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt><strong>Write zmq client for Pyrejeu</strong></dt>
+<dd><dl class="first docutils">
+<dt>A client which wants to use zmq needs to setup two sockets.</dt>
+<dd><ul class="first last simple">
+<li>The first one to send commands (type REQ)</li>
+<li>The second one to receive events (type SUB).</li>
+</ul>
+</dd>
+</dl>
+<p class="last">You can find an example written in python below.</p>
+</dd>
+</dl>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">zmq</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">host</span> <span class="o">=</span> <span class="s1">&#39;localhost&#39;</span>
+<span class="n">rpc_port</span> <span class="o">=</span> <span class="mi">6000</span>
+<span class="n">evt_port</span> <span class="o">=</span> <span class="mi">6001</span>
+
+<span class="c1"># send command</span>
+<span class="n">rpc_socket</span> <span class="o">=</span> <span class="n">zmq</span><span class="o">.</span><span class="n">Context</span><span class="p">()</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">zmq</span><span class="o">.</span><span class="n">REQ</span><span class="p">)</span>
+<span class="n">rpc_socket</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;tcp://{0}:{1}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">rpc_port</span><span class="p">))</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;method&#39;</span><span class="p">:</span> <span class="s1">&#39;GetPosition&#39;</span><span class="p">,</span>
+                      <span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Flight&#39;</span><span class="p">:</span> <span class="mi">101</span><span class="p">,</span> <span class="s1">&#39;Time&#39;</span><span class="p">:</span> <span class="s1">&#39;12:00:00&#39;</span><span class="p">}})</span>
+<span class="n">rpc_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+<span class="c1"># wait for a response</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">rpc_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">])</span>
+
+<span class="c1"># record events</span>
+<span class="n">evt_socket</span> <span class="o">=</span> <span class="n">zmq</span><span class="o">.</span><span class="n">Context</span><span class="p">()</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">zmq</span><span class="o">.</span><span class="n">SUB</span><span class="p">)</span>
+<span class="n">evt_socket</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;tcp://</span><span class="si">%s</span><span class="s2">:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">evt_port</span><span class="p">))</span>
+<span class="c1"># subscribe to all events</span>
+<span class="n">evt_socket</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">zmq</span><span class="o">.</span><span class="n">SUBSCRIBE</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="n">poller</span> <span class="o">=</span> <span class="n">zmq</span><span class="o">.</span><span class="n">Poller</span><span class="p">()</span>
+<span class="n">poller</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">evt_socket</span><span class="p">,</span> <span class="n">zmq</span><span class="o">.</span><span class="n">POLLIN</span><span class="p">)</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="n">evts</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">poller</span><span class="o">.</span><span class="n">poll</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mf">0.1</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">evt_socket</span> <span class="ow">in</span> <span class="n">evts</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">evt_socket</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="amqp">
+<h2>AMQP<a class="headerlink" href="#amqp" title="Permalink to this headline">¶</a></h2>
+<p>PyRejeu also supports AMQP. So, it can connect to server like <em>rabbitmq</em> to communicate with clients.</p>
+<dl class="docutils">
+<dt>The principle is identical to ZMQ.</dt>
+<dd><ul class="first last simple">
+<li>JSON-RPC format is used for RPC communications.</li>
+<li>a queue (named <strong>pyrejeu_rpc_queue</strong>) is dedicated to RPC commands.</li>
+<li>an exchange (named <strong>pyrejeu_event_exchange</strong>) is dedicated for diffusion of events.</li>
+</ul>
+</dd>
+<dt><strong>Launch PyRejeu with amqp</strong></dt>
+<dd><p class="first">To use PyRejeu with amqp, you need to specify a bus id following the format amqp://&lt;host&gt;:&lt;port&gt;. Most of the time, you will use:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">amq</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">5672</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<p><strong>Write amqp client for Pyrejeu</strong></p>
+<blockquote>
+<div>The code below is an example of client using amqp and written in python.</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pika</span>
+<span class="kn">import</span> <span class="nn">uuid</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;amqp://localhost:5672&#39;</span>
+<span class="n">connection</span> <span class="o">=</span> <span class="n">pika</span><span class="o">.</span><span class="n">BlockingConnection</span><span class="p">(</span><span class="n">pika</span><span class="o">.</span><span class="n">URLParameters</span><span class="p">(</span><span class="n">url</span><span class="p">))</span>
+<span class="n">channel</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">channel</span><span class="p">()</span>
+
+<span class="c1"># rpc commands</span>
+<span class="n">response</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">cor_id</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="k">def</span> <span class="nf">on_response</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">props</span><span class="p">,</span> <span class="n">body</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">response</span><span class="p">,</span> <span class="n">corr_id</span>
+    <span class="k">if</span> <span class="n">corr_id</span> <span class="o">==</span> <span class="n">props</span><span class="o">.</span><span class="n">correlation_id</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">body</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">channel</span><span class="o">.</span><span class="n">queue_declare</span><span class="p">(</span><span class="n">exclusive</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">callback_queue</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">method</span><span class="o">.</span><span class="n">queue</span>
+<span class="n">channel</span><span class="o">.</span><span class="n">basic_consume</span><span class="p">(</span><span class="n">on_response</span><span class="p">,</span> <span class="n">no_ack</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                      <span class="n">queue</span><span class="o">=</span><span class="n">callback_queue</span><span class="p">)</span>
+
+<span class="n">corr_id</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">())</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;method&#39;</span><span class="p">:</span> <span class="s1">&#39;GetPosition&#39;</span><span class="p">,</span>
+                      <span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Flight&#39;</span><span class="p">:</span> <span class="mi">101</span><span class="p">,</span> <span class="s1">&#39;Time&#39;</span><span class="p">:</span> <span class="s1">&#39;12:00:00&#39;</span><span class="p">}})</span>
+<span class="n">channel</span><span class="o">.</span><span class="n">basic_publish</span><span class="p">(</span><span class="n">exchange</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+                      <span class="n">routing_key</span><span class="o">=</span><span class="s1">&#39;pyrejeu_rpc_queue&#39;</span><span class="p">,</span>
+                      <span class="n">properties</span><span class="o">=</span><span class="n">pika</span><span class="o">.</span><span class="n">BasicProperties</span><span class="p">(</span>
+                           <span class="n">reply_to</span><span class="o">=</span><span class="n">callback_queue</span><span class="p">,</span>
+                           <span class="n">correlation_id</span><span class="o">=</span><span class="n">corr_id</span><span class="p">,</span>
+                      <span class="p">),</span>
+                      <span class="n">body</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+<span class="k">while</span> <span class="n">response</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="n">connection</span><span class="o">.</span><span class="n">process_data_events</span><span class="p">(</span><span class="n">time_limit</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+
+<span class="c1"># record events</span>
+<span class="k">def</span> <span class="nf">on_event</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">props</span><span class="p">,</span> <span class="n">body</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">body</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+
+<span class="n">channel</span><span class="o">.</span><span class="n">exchange_declare</span><span class="p">(</span><span class="n">exchange</span><span class="o">=</span><span class="s1">&#39;pyrejeu_event_exchange&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;topic&#39;</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">channel</span><span class="o">.</span><span class="n">queue_declare</span><span class="p">(</span><span class="n">exclusive</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">evt_queue</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">method</span><span class="o">.</span><span class="n">queue</span>
+<span class="n">channel</span><span class="o">.</span><span class="n">queue_bind</span><span class="p">(</span><span class="n">exchange</span><span class="o">=</span><span class="s1">&#39;pyrejeu_event_exchange&#39;</span><span class="p">,</span>
+                   <span class="n">queue</span><span class="o">=</span><span class="n">evt_queue</span><span class="p">,</span>
+                   <span class="n">routing_key</span><span class="o">=</span><span class="s2">&quot;evt.*&quot;</span><span class="p">)</span>
+<span class="n">channel</span><span class="o">.</span><span class="n">basic_consume</span><span class="p">(</span><span class="n">on_event</span><span class="p">,</span> <span class="n">no_ack</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">queue</span><span class="o">=</span><span class="n">evt_queue</span><span class="p">)</span>
+<span class="n">channel</span><span class="o">.</span><span class="n">start_consuming</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Ivy / ZMQ / AMQP</a><ul>
+<li><a class="reference internal" href="#ivy-bus">Ivy Bus</a></li>
+<li><a class="reference internal" href="#zeromq">ZeroMQ</a></li>
+<li><a class="reference internal" href="#amqp">AMQP</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="installation.html"
+                        title="previous chapter">Installation/Usage</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="messages.html"
+                        title="next chapter">Supported messages</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/communication.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="messages.html" title="Supported messages"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="installation.html" title="Installation/Usage"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">PyRejeu 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Mickael Royer.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

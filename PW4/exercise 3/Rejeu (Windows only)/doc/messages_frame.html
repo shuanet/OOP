@@ -1,0 +1,4348 @@
+<html>
+<!---------------------- Description du style -------------------->
+<head>
+<link rel="stylesheet" type="text/css"
+href="rejeu_style.css">
+</head>
+
+<!------------------------------------------------------------------>
+<body>
+
+<table border="0" cellpadding="0" cellspacing="1">
+<tr>
+
+<td width="100%" valign="top">
+<table width="100%" bgcolor="#FFFFFF" border="1" cellpadding="7" cellspacing="0">
+<tr>
+<td>
+
+<center>
+<h1>Messages du rejeu V2.95</h1>
+</center>
+
+<hr />
+
+<!---------------------- Liste exhaustive des abonnements --------------->
+<a name="abonnements rejeu">
+<h2>Liste exhaustive des messages auxquels rejeu est abonné</h2>
+</a>
+
+<table class="ex" bgcolor="#F0E8D8" width="100%" border="1"><tr><td>
+
+<dl><dt><b>Horloge</b></dt>
+<dd>
+<tt><br />
+  <a href="#ClockStop"><b>ClockStop</b></a> : Arrêt de l'horloge de simulation <br />
+  <a href="#ClockStart"><b>ClockStart</b></a> : (Re)Demarrage de l'horloge de simulation <br />
+  <a href="#ClockBackward"><b>ClockBackward</b></a> : Horloge en marche arrière <br />
+  <a href="#ClockForward"><b>ClockForward</b></a> : Horloge en marche avant <br />
+  <a href="#SetClock"><b>SetClock</b></a>  Time=12:26  : Fixe explicitement l'heure de simulation actuelle<br />
+  <a href="#SetClock"><b>SetClock</b></a>  Rate=3 : Fixe la vitesse de l'horloge<br />
+  <a href="#GetClockDatas"><b>GetClockDatas</b></a> : Demande les paramètres actuels de l'horloge <br /></tt>
+</dd><br />
+
+<dt><b>Interrogation Paramètre Radar (attend une réponse sur le bus) </b></dt>
+<dd>
+<tt><br />
+  <a href="#GetRadarRefresh"><b>GetRadarRefresh</b></a> : Demande la période de rafraichissement des plots <br /></tt>
+</dd><br />
+
+<dt><b>Interrogation sur un vol (attend une réponse sur le bus)</b></dt>
+<dd>
+<tt><br />
+  <a href="#GetTrajectory"><b>GetTrajectory</b></a>  : Demande la liste (ou une partie de la liste) des positions connues (X, Y, Heure niveau)<br />
+  <a href="#GetPln"><b>GetPln</b></a>  : Demande tout ou partie du plan de vol connu <br />
+  <a href="#GetSectorsInfos"><b>GetSectorsInfos</b></a>  : Demande la liste des informations "secteur"<br />
+  <a href="#GetLayersInfos"><b>GetLayersInfos</b></a>  : Demande la liste des "couches" traversées par un vol<br />
+  <a href="#GetPosition"><b>GetPosition</b></a> : Demande la position connue à une heure donnée  <br />
+  <a href="#GetOldPositions"><b>GetOldPositions</b></a> : Demande des "N" positions écoulées les plus récentes <br />
+  <a href="#GetStrip"><b>GetStrip</b></a>  : Demande des infos strips pour un secteur donné <br />
+  <a href="#GetRange"><b>GetRange</b></a>  : Demande intervalle horaire d'existence du vol et sa visibilité <br />
+  <a href="#GetTrack"><b>GetTrack</b></a> : Demande la liste (ou une partie de la liste) des informations "plot" connues <br />
+  <a href="#GetTimeAtLevel"><b>GetTimeAtLevel</b></a>  : Demande l'heure de franchissement d'un niveau de vol <br />
+  <a href="#GetCfl"><b>GetCfl</b></a>  : Demande l'heure et le lieu de mise en palier du vol <br />
+  <a href="#GetPrediction"><b>GetPrediction</b></a>  : Demande une prévision de trajectoire (donc bruitée) pour un vol <br />
+  <a href="#GetOrderData"><b>GetOrderData</b></a>  : Demande des informations sur l'historique des ordres de pilotage d'un vol <br />
+</tt>
+</dd><br />
+
+<dt><b>Création d'un vol (attend une réponse sur le bus)</b></dt>
+<dd>
+<tt><br />
+  <a href="#GetDuplicate"><b>GetDuplicate</b></a>  : Demande de dupliquer un vol <br />
+  <a href="#GetNewFlight"><b>GetNewFlight</b></a>  : Demande de créer un nouveau vol "vide" <br />
+</tt>
+</dd><br />
+
+
+<dt><b>Interrogation sur la base de données (attend une réponse
+       sur le bus)</b></dt>
+<dd>
+<tt><br />
+  <a href="#GetDataBaseInfos"><b>GetDataBaseInfos</b></a>  : Demande d'informations avec critères<br /> 
+  <a href="#GetFlightsWithStrip"><b>GetFlightsWithStrip</b></a> : Demande la liste des vols connus dans un secteur donné <br /> 
+  <a href="#GetCurrentFlights"><b>GetCurrentFlights</b></a> : Demande la liste des vols existant à un instant donné <br /> 
+  <a href="#GetSidStarNames"><b>GetSidStarNames</b></a>  : Demande la liste des SID/STARS connues par rejeu<br />
+  <a href="#GetStackNames"><b>GetStackNames</b></a>  : Demande la liste des Stacks connus par rejeu<br />
+  <a href="#GetStandardTrajectory"><b>GetStandardTrajectory</b></a>  : Demande la liste des points caractéristiques d'une SID/STAR<br /> 
+  <a href="#GetGroupsOfSectors"><b>GetGroupsOfSectors</b></a>  : Demande les groupements actuels de secteurs <br /> 
+  <a href="#GetTaggedStrips"><b>GetTaggedStrips</b></a> : Demande la liste des strips "marqués" <br /> 
+  <a href="#GetPerfo"><b>GetPerfo</b></a>  : Demande information de performance avion (si connue ...) <br /> 
+  <a href="#GetAllBeacons"><b>GetAllBeacons</b></a>  : Demande les coordonnées des balises connues<br /> 
+  <a href="#GetBeaconsInWindow"><b>GetBeaconsInWindow</b></a> : Demande les coordonnées des balises connues dans une fenêtre <br /> 
+  <a href="#GetBeaconsInfos"><b>GetBeaconsInfos</b></a> : Demande les coordonnées d'une liste de balises fournies <br /> 
+</tt>
+</dd><br />
+
+<dt><b>Modification données générales</b></dt>
+<dd>
+<tt><br />
+  <a href="#SetGroupsOfSectors"><b>SetGroupsOfSectors</b></a> : Fixe des groupements secteurs<br />
+  <a href="#SetNewBeacons"><b>SetNewBeacons</b></a> : Crée des nouvelles balises <br />
+  <a href="#SetTrajectoryAsSidStar"><b>SetTrajectoryAsSidStar</b></a> : Crée une nouvelle SID/STAR à partir d'une trajectoire enregistrée <br />
+</tt>
+</dd><br />
+
+<dt><b>Ordres de modification de données sur un vol (utiles en préparation d'exercices)</b></dt>
+<dd>
+<tt><br />
+  <a href="#SetStripTime"><b>SetStripTime</b></a>  : Modifie ou fixe l'heure d'impression de strip dans un secteur donné<br />
+  <a href="#SetSectorIn"><b>SetSectorIn</b></a>  : Modifie ou fixe l'heure (telle qu'elle est connue) d'entrée dans un secteur <br />
+  <a href="#SetSectorOut"><b>SetSectorOut</b></a> : Modifie ou fixe l'heure (telle qu'elle est connue) de sortie d'un secteur<br />
+  <a href="#SetSectorsInfos"><b>SetSectorsInfos</b></a>  : Modifie ou renseigne toutes les informations "secteur" pour un vol<br />
+  <a href="#SetCallSign"><b>SetCallSign</b></a>  : Change (ou fixe) l'indicatif d'un vol <br />
+  <a href="#SetMiniPln"><b>SetMiniPln</b></a>  : Modifie ou fixe les informations "sommaires" sur un vol <br />
+  <a href="#SetPln"><b>SetPln</b></a>  : Modifie ou fixe la liste (ou une partie) des balises du plan de vol <br />
+  <a href="#SetEstimatedPln"><b>SetEstimatedPln</b></a>  : idem ci-dessus, mais en fournissant les heures estimees de passage balise <br />
+  <a href="#SetTfl"><b>SetTfl</b></a>  : Modifie ou fixe le niveau de transfert pour un secteur <br />
+  <a href="#SetBeforeTrack"><b>SetBeforeTrack</b></a>  : Fournit des plots avant (temporellement) ceux déjà connus par rejeu <br />
+  <a href="#SetAfterTrack"><b>SetAfterTrack</b></a>   : Fournit des plots après (temporellement) ceux déjà connus par rejeu <br />
+  <a href="#TranslateTime"><b>TranslateTime</b></a>  : Décale la totalité d'un vol dans le temps <br />
+  <a href="#TranslateFl"><b>TranslateFl</b></a>  : Translate la totalité d'un vol en altitude <br />
+  <a href="#TranslateXY"><b>TranslateXY</b></a>  : Déplace géographiquement toute la trajectoire d'un vol <br />
+</tt>
+<br /><b>Pilotage</b><br />
+<tt><br />
+  <a href="#AircraftDirect"><b>AircraftDirect</b></a>  : Directe sur une balise<br />
+  <a href="#AircraftHeading"><b>AircraftHeading</b></a>  : Ordre de changement de cap <br />
+  <a href="#AircraftTurn"><b>AircraftTurn</b></a>  : Ordre de virage <br />
+  <a href="#AircraftCircle"><b>AircraftCircle</b></a>  : Ordre de retardement (360°) <br />
+  <a href="#AircraftLevel"><b>AircraftLevel</b></a>  : Ordre de changement de niveau <br />
+  <a href="#AircraftSpeed"><b>AircraftSpeed</b></a>  : Ordre de changement de vitesse <br />
+  <a href="#AircraftIntercept"><b>AircraftIntercept</b></a> : Ordre d'interception d'un axe sur une balise connue <br />
+  <a href="#AircraftInterceptXY"><b>AircraftInterceptXY</b></a> : Ordre d'interception d'un axe sur un point fourni <br />
+  <a href="#AircraftInterceptILS"><b>AircraftInterceptILS</b></a> : Ordre de capture d'un ILS avec un cap initial d'interception <br />
+  <a href="#AircraftFollowTrack"><b>AircraftFollowTrack</b></a> : Ordre d'interception et suivi d'une trajectoire (standard ou enregistrée) <br />
+  <a href="#AircraftTimeAtBeacon"><b>AircraftTimeAtBeacon</b></a> : RTA sur une balise (Demande de passage à heure fixée) <br />
+  <a href="#AircraftTimeAtPosition"><b>AircraftTimeAtPosition</b></a> : RTA sur un point (Demande de passage à heure fixée) <br />
+  <a href="#AircraftHold"><b>AircraftHold</b></a> : Ordre de mise en attente dans un stack <br />
+  <a href="#AircraftSetTrack"><b>AircraftSetTrack</b></a>  : Remplacement de tout ou partie d'une trajectoire (ensemble de plots) <br />
+  <a href="#AircraftDifferedOrder"><b>AircraftDifferedOrder</b></a>  : Ordre différé sur une condition <br />
+  <a href="#AircraftMultipleOrder"><b>AircraftMultipleOrder</b></a>  : Succession d'ordres de pilotage <br />
+
+</tt>
+</dd><br />
+
+<dt><b>Evénements utilisateur</b></dt>
+<dd>
+<tt><br />
+  <a href="#SetUserEventList"><b>SetUserEventList</b></a>  : Demande à rejeu d'emmettre des messages à des heures données <br />
+  <a href="#MergeUserEventList"><b>MergeUserEventList</b></a> : Demande de fusionner une liste de messages à emettre <br />
+  <a href="#GetUserEventList"><b>GetUserEventList</b></a>  : Demande de la liste des messages "utilisateur" connus de rejeu sous un certain nom<br />
+  <a href="#GetUserEventNames"><b>GetUserEventNames</b></a>  : Demande de la liste des noms de messages "utilisateur" connus pour un vol <br />
+</tt>
+</dd><br />
+
+<dt><b>Divers</b></dt>
+<dd>
+<tt><br />
+  <a href="#CancelLastOrder"><b>CancelLastOrder</b></a>  : Annulation du dernier ordre demandé pour un vol <br />
+  <a href="#Discard"><b>Discard</b></a>  : Rend un vol invisible <br />
+  <a href="#DiscardAll"><b>DiscardAll</b></a> : Rend tous les vols invisibles <br />
+  <a href="#Enable"><b>Enable</b></a>  : Rend un vol visible <br />
+  <a href="#Dump"><b>Dump</b></a>  : Ecriture sur stdout des informations connues pour un vol (pour mise au point) <br />
+  <a href="#StripsOnOff"><b>StripsOnOff</b></a>  : Interdit ou autorise l'impression de strips <br />
+  <a href="#StcaAlertOnOff"><b>StcaAlertOnOff</b></a>  : Interdit ou autorise les alarmes filet de sauvegarde <br />
+  <a href="#TagStrip"><b>TagStrip</b></a>  : Marque un strip en vue d'une impression ciblée <br />
+  <a href="#UnTagStrip"><b>UnTagStrip</b></a>  : Annule le marquage d'un strip <br />
+  <a href="#PrintTaggedStrips"><b>PrintTaggedStrips</b></a> : Demande l'impression des strips préalablement marqués <br />
+  <a href="#Debug"><b>Debug</b></a>  : Pour debugger <br />
+</tt>
+</dd><br />
+
+<dt><b>Fichiers</b></dt>
+<dd>
+<tt><br />
+  <a href="#FileRead"><b>FileRead</b></a>  : Demande de lecture d'un fichier de rejeu <br />
+  <a href="#FileWrite"><b>FileWrite</b></a>  : Demande de sauvegarder la situation (eventuellement avec son historique) <br />
+</tt>
+</dd><br />
+
+
+</dl>
+</td></tr></table>
+<!-------------------- Messages emis par rejeu ---------------------->
+<hr />
+<a name="messages émis">
+<h2>Liste exhaustive des messages émis par rejeu </h2>
+</a>
+
+<table class="ex" bgcolor="#F0E8D8" width="100%" border="1"><tr><td>
+
+<dl><dt><b>Messages émis systématiquement (événements)</b></dt>
+<dd>
+<tt><br />
+<a href="#ClockEvent"><b>ClockEvent</b></a> Time=10:24:45 
+      Rate=2 Bs=0 <br />
+<a href="#RadarEndEvent"><b>RadarEndEvent</b></a> <br />
+<a href="#TrackMovedEvent"><b>TrackMovedEvent</b></a> Flight=342 
+      CallSign=LB114JQ Ssr=0452 Sector=SL
+      Layers=F,I X=87.00 Y=-128.88 Vx=-197 Vy=265 Afl=195
+      Rate=2098 Heading=323 GroundSpeed=330 Tendency=1 
+      Time=12:08:32 <br />
+<a href="#TrackDiedEvent"><b>TrackDiedEvent</b></a>  Flight=74 <br />
+<a href="#SectorEvent"><b>SectorEvent</b></a>  Flight=98 SectorOut=TA 
+      SectorIn=TG <br />
+<a href="#BeaconEvent"><b>BeaconEvent</b></a>  Flight=421 Beacon=TOU 
+      Fl=150 Mode=Vertical Time=12:34:00 <br />
+<a href="#LayerEvent"><b>LayerEvent</b></a>  Flight=421 Layer=I 
+      Mode=In <br />
+<a href="#StripEvent"><b>StripEvent</b></a>  Flight=55 Time=06:40:00
+      CallSign=CRX766 AircraftType=SB20 Ssr=6744 Speed=360
+      Rfl=190 Sector=GV ExitSector=LE Frequency=123.4 Efl=170 Tfl=190
+      List=OLRAK 06:53 190 NARAK 07:02 190 NOPTA 07:09 190 <br />
+<a href="#PlnEvent"><b>PlnEvent</b></a>  Flight=55 Time=07:00:12 
+      CallSign=CRX766 AircraftType=SB20 Ssr=6744 Speed=360 Rfl=190
+      Dep=LFSB Arr=LFBO Rvsm=TRUE Tcas=TA_ONLY Adsb=NO 
+      List=OLRAK V 06:53 190 NARAK A 07:02 190 
+      NOPTA A 07:09 190<br /> 
+<a href="#StcaAlertEvent"><b>StcaAlertEvent</b></a>  Flight=456 Mode=0 
+      MinValidLevel=80 MaxValidLevel=140 
+      OtherFlight=3985 Time=10:34:03 <br />
+<a href="#MsawAlertEvent"><b>MsawAlertEvent</b></a>  Flight=843 Type=1 
+      Time=06:34:55 <br />
+<a href="#UserEvent"><b>UserEvent</b></a>  Flight=42 Name=Alert1 
+      Value=good,14,sky_is_blue <br />
+</tt>
+</dd><br />
+
+<dt><b>Réponse à une interrogation radar </b></dt>
+<dd>
+<tt><br />
+<a href="#RadarRefresh"><b>RadarRefresh</b></a>  Period=8 <br />
+</tt>
+</dd><br />
+
+<dt><b>Réponses à des interrogations sur un vol </b></dt>
+<dd>
+<tt>
+<br />
+<a href="#GetTrajectory"><b>Trajectory</b></a>  MyTraj ......  <br />
+<a href="#GetPln"><b>Pln</b></a>  PlnForMe ......  <br />
+<a href="#GetSectorsInfos"><b>SectorsInfos</b></a>  sect123 ..... <br />
+<a href="#GetLayersInfos"><b>LayersInfos</b></a>  Layers123 ..... <br />
+<a href="#GetPosition"><b>Position</b></a>  pos45 ......  <br />
+<a href="#GetOldPositions"><b>OldPositions</b></a>  old_234 Nb=2 ...  <br />
+<a href="#GetStrip"><b>Strip</b></a>  The_Strip_67_BS ....  <br />
+<a href="#GetRange"><b>Range</b></a>  xxx FirstTime=06:08:14 
+       LastTime=07:26:40 <br />
+<a href="#GetTimeAtLevel"><b>TimeAtLevel</b></a> yyy Time=12:35:07 <br />
+<a href="#GetCfl"><b>Cfl</b></a>  yyy FL=310 X=15.0 Y=-201.23 <br />
+<a href="#GetPrediction"><b>Prediction</b></a>  yyy Slice=95.25 -140.56 10:20:01 300 94.83 -139.98 10:20:09 300 ... <br />
+<a href="#GetOrderData"><b>OrderData</b></a> MyMsg Time=15:07:45 Order=AIRCRAFTLEVEL Data=8921 300 1500 <br />
+</tt>
+</dd><br />
+
+<dt><b>Réponses à des créations de vol </b></dt>
+<dd>
+<tt>
+<br />
+<a href="#GetDuplicate"><b>Duplicate</b></a>  MsgName=Dup34 NewFlight=198 <br />
+<a href="#GetNewFlight"><b>NewFlight</b></a>  MsgName=NewF NewID=101 <br />
+</tt>
+</dd><br />
+
+
+<dt><b>Réponse à une Interrogation sur la base de données</b></dt>
+<dd>
+<tt><br />
+<a href="#GetDataBaseInfos"><b>DataBaseInfos</b></a>  MsgName=X234 List=12 87 254 78 
+     567 90 79<br /> 
+<a href="#GetFlightsWithStrip"><b>FlightsWithStrip</b></a> F_In_TA  Sector=TA List=45 876 13 6543<br />
+<a href="#GetCurrentFlights"><b>CurrentFlights</b></a> ForMe  Time=10:23:56 List=45 876 13 6543
+     568 90 146<br /> 
+<a href="#GetSidStarNames"><b>SidStarNames</b></a> ForMe List=SAU3A LIBRU .....  <br /> 
+<a href="#GetStackNames"><b>StackNames</b></a> ForMe List=NETRO SURAS SULIT ADIMO .....  <br />
+<a href="#GetStandardTrajectory"><b>StandardTrajectory</b></a> ForMe Slice= .....  <br /> 
+<a href="#GetGroupsOfSectors"><b>GroupsOfSectMrs</b></a> ForMe List=AA BB CC , .....  <br /> 
+<a href="#GetTaggedStrips"><b>TaggedStrips</b></a> ForMe List=2510 TN 3415 OD .....  <br /> 
+<a href="#GetPerfo"><b>Perfo</b></a> ForMe AircraftType=B727 FL=120 Nominal_TAS=297 ........ <br /> 
+<a href="#GetAllBeacons"><b>AllBeacons</b></a> ForMe Slice=RAMEN 418.88 -415.38 RMS 295.25 160.13...<br /> 
+<a href="#GetBeaconsInWindow"><b>BeaconsInWindow</b></a> ForMe Slice=RAMEN 418.88 -415.38 RMS 295.25 160.13 .....<br /> 
+<a href="#GetBeaconsInfos"><b>BeaconsInfos</b></a> ForMe List=TOU 57.13 -198.38 LFRN -70.13 64.75 ...<br /> 
+</tt>
+</dd><br />
+
+<dt><b>Evénement émis suite à une modification des données</b></dt>
+<dd>
+<tt><br />
+
+<a href="#ReportEvent"><b>ReportEvent</b></a>  AppName  
+     Result=ERROR Info=STD_TRACKS.UNKNOWN_TRACK Order=AircraftFollowTrack|6371|Star|Meden
+   <br />
+
+<a href="#FileReadEvent"><b>FileReadEvent</b></a>  Type=REJEU 
+     Name=traffic_file.rej StartTime=07:10:05 EndTime=12:45:07
+   <br /> 
+
+<a href="#TrajectoryUpdateEvent"><b>TrajectoryUpdateEvent</b></a> 
+     Flight=7040
+   <br /> 
+<a href="#BeaconUpdateEvent"><b>BeaconUpdateEvent</b></a> List=AMB LFLL LYS 
+   <br /> 
+</tt>
+</dd><br />
+
+</dl>
+</td></tr></table>
+
+<!---------------- Details Messages -------------------------------------->
+<h2>Détails des messages émis périodiquement par rejeu
+    (Evénements)</h2>
+<hr />
+
+<a name="ClockEvent">
+<h3>ClockEvent</h3><!---------------->
+<table class="ex" width="100%" border="1"><tr><td>
+<tt>ClockEvent Time=10:23:45 Rate=3 Bs=0</tt>
+</td></tr></table>
+<p>Rejeu émet périodiquement ce message qui donne l'heure actuelle de 
+   simulation, le rythme (et le sens de déroulement) de l'horloge.
+   L'heure est toujours exprimée sous la forme <tt>HH:MM:SS</tt>. La vitesse
+   est 3 fois plus rapide que la normale si <b><tt>Rate=3</tt></b> et 2 fois
+   moins rapide que la normale si <b><tt>Rate=0.5</tt></b>.
+   Une valeur négative pour <tt>Rate</tt> indique qu'on remonte le temps
+   (à la vitesse correspondant à la valeur absolue).<br />
+   Le paramètre <b><tt>Bs</tt></b> peut avoir 2 valeurs:
+<ul>
+   <li><b><tt>Bs=0</tt></b> On est en mode de fonctionnement "normal" où
+       tous les messages divers et variés sont transmis par rejeu
+       à une cadence qui dépend de <b><tt>Rate</tt></b>.
+       Il peut néanmoins y avoir de la "compression d'événements"
+       si l'option <tt>-t</tt> a été employée sur la ligne de commande
+       (Voir les principes de l'horloge) </li>
+   <li><b><tt>Bs=1</tt></b> On est en mode "big speed". Seuls des messages
+       de position des plots sont transmis et de manière
+       échantillonée. Ainsi, 2 plots successifs de la même piste
+       peuvent correspondre à 2 positions séparées de
+       plusieurs minutes (en temps de simulation).<br /> 
+       Ce mode est déclenché par rejeu quand le <b><tt>Rate</tt></b>
+       demandé dépasse une certaine valeur (actuellement >=10)<br />
+       Le rythme de 
+       transmission sur le bus peut quant à lui être quelconque 
+       (règle de variation logarithmique).<br />
+       Ici aussi, peut se sur-ajouter de la compression d'événement pour
+       garantir un taux de transmission maximum sur le bus.</li>
+</ul>
+  Cette information peut servir par exemple à désactiver 
+  certains comportements comme les animations ou l'antirecouvrement inutiles
+  dans ces conditions.
+  </p>
+<hr />
+
+<a name="RadarEndEvent">
+<h3>RadarEndEvent</h3><!---------------->
+<table class="ex" width="100%" border="1"><tr><td>
+<tt>RadarEndEvent</tt>
+</td></tr></table>
+<p>Message émis quand toutes les pistes ont été rafraîchies (ce qui 
+   correspond à un tour d'antenne). Donc en général, toutes les 8 secondes
+   de temps de simulation (le rythme en temps réel dépend du <tt>Rate</tt>).
+  </p>
+<hr />
+
+<a name="TrackMovedEvent">
+<h3>TrackMovedEvent</h3><!---------------->
+<table class="ex" width="100%" border="1"><tr><td>
+<tt>TrackMovedEvent Flight=324 CallSign=LB114JQ Ssr=0452 Sector=SL 
+    Layers=F,I X=87.00 Y=-128.88 Vx=-197 Vy=265 Afl=195 Rate=2098
+    Heading=323 GroundSpeed=330 Tendency=1 Time=12:08:32<br />
+</tt>
+</td></tr></table>
+<p>
+   Message émis en fonction de l'heure pour indiquer une nouvelle position
+   de plot.
+<ul>
+<li>
+   <b><tt>Flight=</tt></b>
+          324 est le numéro de vol de l'avion dont on donne 
+          les éléments à cette heure là. (en fonctionnement normal, une fois en
+          moyenne toutes les 8 secondes de temps simulé)</li>
+<li>
+   <b><tt>CallSign=</tt></b>
+          Indicatif de l'appareil. <tt>Unknown</tt> si inconnu.</li>
+<li>
+   <b><tt>Ssr=</tt></b> 
+          Code transpondeur. <tt>0000</tt> si inconnu.</li>
+<li>
+   <b><tt>Sector=</tt></b> 
+          Le secteur actuel  (déduit des heures d'entrée 
+          et des heures de sortie secteur du fichier Courage) est indiqué.
+          "--" si le nom n'est pas connu</li>
+<li>
+   <b><tt>Layers=</tt></b>
+          Les couches dans lesquelles se trouvent actuellement ce vol 
+          sont fournies sous forme d'une liste de "layers" séparés par 
+          des virgules.<br /> 
+          <b>Rappel:</b> un avion peut être dans plusieurs couches, car il est 
+          physiquement à tout  moment dans une couche  (tranche d'espace 
+          entre 2 niveaux de vol) compte-tenu de son niveau de vol actuel,
+          mais doit aussi être visualisé dans d'autres qu'il atteindra 
+          bientôt étant donné son profil actuel d'evolution (montée ou 
+          descente).</li>
+<li>
+   Les coordonnées <b><tt>X, Y</tt></b> sont exprimées en NM coordonnées CAUTRA 
+   (ou lat/long : deg, dixiemes de degrés actuellement pas complètement 
+   et correctement implémenté). Le format employé par rejeu est 2 chiffres
+   après la virgule.</li>
+<li> 
+   <b><tt>Vx, Vy</tt></b> 
+          représentent les composantes de la vitesse en Kts (le module est
+          directement fourni par <tt>GroundSpeed</tt>). 
+          Les valeurs fournies sont entières.</li>
+<li>
+   <b><tt>Afl=</tt></b>
+          Niveau de vol actuel
+<li>
+   <b><tt>Rate=</tt></b> 
+          fournit le taux de montée en pieds/minutes (si négatif,
+          descente). Format entier</li>
+<li> 
+   <b><tt>Tendency</tt></b> donne la tendence verticale
+   <ul>
+      <li> <b><tt>0=</tt></b> stable en palier</li>
+      <li> <b><tt>1=</tt></b> en montée</li>
+      <li> <b><tt>-1=</tt></b> en descente</li>
+      <li> <b><tt>-2</tt></b> inconnue</li>
+   </ul> 
+<li> 
+   <b><tt>Time=</tt></b>
+           Le dernier champ de ce message sert à le dater (<tt>HH:MM:SS</tt>). 
+  </li>
+</ul>
+<hr />
+
+<a name="TrackDiedEvent">
+<h3>TrackDiedEvent</h3><!---------------->
+<table class="ex" width="100%" border="1"><tr><td>
+<tt>TrackDiedEvent Flight=654</tt>
+</td></tr></table>
+<p>
+   Ce message est envoyé lorsque rejeu constate qu'il n'a pas envoyé de 
+   message pour ce vol depuis plus d'un certain temps: 9 s par defaut  
+   (voir option <b>-l</b> sur la ligne de commande) ce qui correspond à environ 
+   un tour d'antenne en fonctionnement normal.
+   En mode "grande vitesse", c'est l'absence de position à envoyer entre 
+   2 salves de messages qui déclenche <tt>TrackDiedEvent</tt>.</p>
+<hr />
+
+<a name="SectorEvent">
+<h3>SectorEvent</h3><!---------------->
+<table class="ex" width="100%" border="1"><tr><td>
+<tt>SectorEvent Flight=98 SectorOut=TA SectorIn=TG </tt>
+</td></tr></table>
+<p>Message émis lorsque le vol change de secteur (d'après les indications
+   du fichier COURAGE). Si le nom d'un secteur est inconnu, rejeu envoie "--"
+  </p>
+<hr />
+
+<a name="BeaconEvent">
+<h3>BeaconEvent</h3><!---------------->
+<table class="ex" width="100%" border="1"><tr><td>
+<tt> BeaconEvent Flight=421 Beacon=TOU Fl=150 Mode=Vertical Time=21:56:00</tt>
+</td></tr></table>
+<p>Message émis lorsque le vol passe une balise. L'item <tt>Mode</tt> vaut
+   <tt>Vertical</tt> si la balise est survolée à moins de 2NM, sinon on 
+   considère que c'est un passage travers: <tt>Mode=Abeam</tt> à la place
+  </p>
+<p>Ces informations sont calculées par rejeu, qui les remet à jour
+   lorsque des ordres de pilotage 
+   ( <a href="#AircraftHeading"><tt>AircraftHeading</tt></a>,  
+    <a href="#AircraftDirect"><tt>AircraftDirect</tt></a>, etc )
+   sont émis. 
+   </p>
+<p> Pour information, les heures de passage balise sont
+   présentes dans les fichiers COURAGE, mais il arrive qu'elles soient
+   fantaisistes et il n'y a pas connaissance de passage "vertical"
+    ou "travers". A la génération du fichier de rejeu, ces informations
+   ont été recalculées autant que possible, mais des compromis ont
+   été effectués et toutes les heures et niveaux n'ont pas été
+   remis à jour, notamment pour des balises en début ou fin de
+   trajectoire connue, dans certains cas. En effet, la position connue pour
+    un avion dure seulement quelques minutes, alors que COURAGE donne des
+   informations plan de vol sur la totalité du survol du territoire.
+   Quand ces informations sont trop décalées par rapport à la 
+   réalité observée, certaines balises sont considérées
+   comme appartenant à la période de vol précédant ou
+   suivant ce qui a été enregistré, et dans ce cas, les
+   informations ne sont pas remises à jour. 
+   
+   </p>
+<p> Noter qu'il y a la possibilité de modifier les heures estimées de passage balise
+    grâce à des ordres  <a href="#SetBeaconEstimation"><tt>SetBeaconEstimation</tt></a> ou
+    <a href="#SetEstimatedPln"><tt>SetEstimatedPln</tt></a>, mais cela ne change en rien
+    les heures réelles de passage de la trajectoire fournies par 
+    <a href="#BeaconEvent"><tt>BeaconEvent</tt></a>.
+   </p>
+<hr />
+
+<a name="LayerEvent">
+<h3>LayerEvent</h3><!---------------->
+<table class="ex" width="100%" border="1"><tr><td>
+<tt> LayerEvent Flight=421 Layer=U Mode=Out</tt>
+</td></tr></table>
+<p>Message émis lorsque le vol entre ou sort d'une couche.<br />
+   L'item <b><tt>Mode</tt></b> vaut:
+  </p>
+<ul>
+   <li><b><tt>In</tt></b> si le vol entre dans cette couche.
+       </li>
+   <li><b><tt>Out</tt></b> si le vol sort de cette couche.
+       </li>
+</ul>
+<p> Ces informations sont calculées par rejeu:<br/>
+    Un avion est dans une couche
+    </p>
+<ul>
+    <li> si son niveau (FL) actuel est entre les limites basse et haute
+         de la couche </li>
+    <li> ou si il passera en montée dans moins de "Climb_delay" 
+         une balise à
+         un niveau compris entre les limites de la couche</li>
+    <li> ou si il passera en descente dans moins de "Descent_delay"  
+         une balise à
+         un niveau compris entre les limites de la couche</li>
+</ul>
+<p> L'algorithme réel est plus complexe, mais les résultats obtenus
+    avec ces règles semblent satisfaisants.
+    </p>
+<p> La liste des couches, ainsi que les paramètres "Climb_delay" et 
+    "Descent_delay" associés à chaque couche sont ceux du centre de contrôle
+    où se déroule le trafic.</p> 
+
+<hr />
+
+<a name="StripEvent">
+<h3>StripEvent</h3><!---------------->
+<table class="ex" width="100%" border="1"><tr><td>
+<tt>
+  StripEvent Flight=55 Time=06:40:00 CallSign=CRX766 AircraftType=SB20 
+        Ssr=6744 Speed=360 Rfl=190 Dep=LFSB Arr=LFBO  
+        Sector=TG ExitSector=AE Frequency=123.4 Efl=170 Tfl=190 
+        List=OLRAK 06:53 190 NARAK 07:02 190 NOPTA 07:09 190
+</tt>
+</td></tr></table>
+<p>Message émis automatiquement par rejeu à l'heure d'impression du 
+   strip, telle qu'elle est indiquée dans le fichier COURAGE (ou après
+   modification demandée par les ordres 
+   <a href="#SetSectorsInfos"><tt>SetSectorsInfos</tt></a> ou
+   <a href="#SetStripTime"><tt>SetStripTime</tt></a>)
+</p>
+<ul>   
+<li>
+   <b><tt>Flight=</tt></b>
+          324 est le numéro de vol de l'avion dont on donne 
+          les éléments utiles à l'impression d'un strip à cette 
+          heure là.</li>
+<li>
+   <b><tt>Time=</tt></b>
+          Heure actuelle (qui correspond à l'heure d'impression).
+          </li>
+<li>
+   <b><tt>CallSign=</tt></b>
+          Indicatif de l'appareil.</li>
+<li>
+   <b><tt>Ssr=</tt></b> 
+          Code transpondeur. <tt>0000</tt> si inconnu.</li>
+<li>
+   <b><tt>Speed=</tt></b> 
+          Vitesse de croisière. (<tt>0</tt> si inconnue).</li>
+<li>
+   <b><tt>Rfl=</tt></b> 
+          Niveau de croisière plan de vol. (<tt>0</tt> si inconnu).</li>
+<li>
+   <b><tt>Dep=</tt></b> 
+          Terrain de départ. (<tt>0000</tt> si inconnu).</li>
+<li>
+   <b><tt>Arr=</tt></b> 
+          Terrain d'arrivée. (<tt>0000</tt> si inconnu).</li>
+
+<li>
+   <b><tt>Sector=</tt></b> 
+          Le secteur relatif à l'impression du strip.</li> 
+<li>
+   <b><tt>ExitSector=</tt></b>
+          Le secteur de sortie.</li>
+<li>
+   <b><tt>Frequency=</tt></b>
+          La fréquence du secteur de sortie. <tt>000.00</tt> si inconnue.
+          (La fréquence ne peut être connue que si un message
+          <a href="#SetFrequency"><tt>SetFrequency</tt></a> a été émis
+          au préalable).</li>
+<li>
+   <b><tt>Efl=</tt></b>
+          Niveau de transfert en entrée (Tfl du secteur précédent).
+           <tt>0</tt> si inconnu. Est renseigné dans les mêmes
+          conditions que le <tt>Tfl</tt> ci-dessous.</li>
+<li>
+   <b><tt>Tfl=</tt></b>
+          Niveau de transfert en sortie. <tt>0</tt> si inconnu. 
+          Si les données de trafic (xxx.rej) ont été crées
+          à partir de données ASTERIX (avec dump_ast2rej), 
+          cette information a été
+          calculée à partir de la trajectoire connue avec cette
+          méthode:
+          Tfl= premier niveau où l'avion est stable après l'heure
+          d'entrée dans le secteur. Sinon, 
+          ne peut être
+          connu que si un ordre <a href="#SetTfl"><tt>SetTfl</tt></a> ou
+          <a href="#SetSectorsInfos"><tt>SetSectorsInfos</tt></a> a 
+          été émis.</li> 
+<li>
+   Ensuite figure une liste de {balise, heure, niveau}. Règle de selection
+   des balises à revoir. (Actuellement, pour la manip DUOPHONE, première
+   balise avant le secteur jusqu'à la première balise du secteur
+   suivant, sauf cas
+   particuliers des vols au décollage de la FIR ou à destination de 
+   la FIR......).<br />
+   Les balises "CAUTRA" (comme par exemple 03C3 ou 28SUD qui ne sont pas
+   des balises de navigation) sont éliminées de la liste.<br />
+   Les heures passage balise fournies sont des heures "estimées" si elles
+   existent ou sinon les heures réelles calculées par Rejeu.
+   Voir <a href="#SetEstimatedPln"><tt>SetEstimatedPln</tt></a> et
+   <a href="#SetBeaconEstimation"><tt>SetBeaconEstimation</tt></a>.
+   </li>
+</ul>
+
+<hr />
+
+
+<a name="PlnEvent">
+<h3>PlnEvent</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt> PlnEvent Flight=55 Time=07:00:12 CallSign=CRX766 
+ AircraftType=SB20 Ssr=6744 Speed=360 Rfl=190
+ Dep=LFSB Arr=LFBO List=OLRAK V 06:53 190 NARAK A 07:02 190 
+ NOPTA A 07:09 190</tt> 
+</td></tr></table>
+<p>Ce message est émis automatiquement par rejeu à 2 occasions:
+</p>
+<ul>
+<li> Pour chaque vol, avant le premier message de position 
+      sur le bus depuis que rejeu est lancé. Ainsi, avant la reception
+      d'un premier événement <tt>TrackMovedEvent</tt> pour
+      un vol, les applications interessées peuvent avoir au
+      préalable les informations de plan de vol pour ce nouvel
+      avion, où sont indiqués les indicatif, type avion,
+      terrain de depart, d'arrivée, route , ..........<br />
+      Le choix a été fait de n'envoyer ce message que lors
+      de la première apparition de ce vol: si on se déplace
+      dans le temps en avant, puis en arrière, bien que la piste
+      associée à ce vol ait été mise en sommeil 
+      (<tt>TrackDiedEvent</tt>), ce message <tt>PlnEvent</tt>
+      ne sera plus envoyé avant le premier plot de la piste.  </li>
+  <li>
+    Lorsqu'une modification est intervenue dans le plan de vol.<br /> 
+    Il peut s'agir d'une modification issue d'un outil de préparation
+    d'exercice (comme par exemple un changement d'indicatif) ou de la
+    modification de la route, suite à un ordre de pilotage.
+    
+    <p>Lorsque par exemple on donne une directe à un vol:
+  <ul>
+  <li> Si la balise était
+   déjà dans le plan de vol, la liste des balises n'est pas modifiée,
+   mais les heures de passage balise, ainsi que la nature du survol 
+   (vertical ou travers) sont recalculés par rejeu. 
+      </li>
+  <li> Si la balise n'était pas dans le plan de vol, ce plan est modifié
+    à partir de l'heure de l'ordre de pilotage, et ne comporte comme
+    route suivante que cette balise (avec son heure de survol).
+    </li>
+  </ul>
+
+  </li>
+</ul>
+<p> Ce message a la même structure que le message émis en réponse
+   à une demande <a href="#GetPln"><tt>GetPln</tt></a> à partir
+    du champ <tt>Flight</tt>.
+<hr />
+
+
+<a name="StcaAlertEvent">
+<h3>StcaAlertEvent</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>StcaAlertEvent Flight=456 Mode=0 MinValidLevel=80 MaxValidLevel=140 
+           OtherFlight=3985 Time=10:34:03 </tt>
+</td></tr></table>
+<p> Message filet de sauvegarde émis par rejeu. Il s'agit ici des alertes
+    qui ont été effectivement émises et enregistrées dans le fichier
+    ASTERIX qui a servi de base au trafic (si c'est le cas...). En principe
+    le taux de renouvellement est de 2 secondes.
+    Rejeu ne fait pas ce genre de calcul sur les données pistes, qui par 
+    exemple ont été modifiées.
+  </p>
+<ul>
+   <li><b><tt>Mode = 0 :</tt></b> alerte en cours. <b><tt>1 : </tt></b> fin
+       d'alerte. (Le contraire semblerait plus "logique", mais ces valeurs
+       sont celles du codage ASTERIX ....)</li>
+   <li><b><tt>MinValidLevel</tt></b> et <b><tt>MaxValidLevel:</tt></b>
+       niveau inférieur et niveau supérieur de validité de l'alerte.</li>
+   <li><b><tt>Flight</tt></b> et <b><tt>OtherFlight:</tt></b> identifiants des
+       deux vols concernés. Noter qu'il y aura un message d'alerte
+       pour chacun des 2 avions. Quand il y a plus de 2 avions impliqués,
+       tous les doublets possibles sont traités de la sorte.</li>
+   <li><b><tt>Time:</tt></b> heure d'émission de l'alerte.</li>
+</ul>
+<p> Consulter la documentation ASTERIX (cat:32) pour les précisions 
+    supplémentaires sur ces paramètres.</p>
+
+<hr />
+
+<a name="MsawAlertEvent">
+<h3>MsawAlertEvent</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>MsawAlertEvent Flight=843 Type=1 Time=06:34:55</tt>
+</td></tr></table>
+<p> Message de détection de proximité émis par rejeu. Mêmes remarques que 
+    ci-dessus pour <tt>StcaAlertEvent</tt> sur ce type de données.
+   </p>
+<ul>
+   <li><b><tt>Type:</tt></b> nature de l'alarme:
+       <ul>
+          <li><b><tt>1:</tt></b> Alarme relief
+             </li>
+          <li><b><tt>2:</tt></b> Alarme relief particulier
+             </li>
+          <li><b><tt>3:</tt></b> Alarme de pénétration d'une zone
+               à statut particulier
+             </li>
+          <li><b><tt>4:</tt></b> Alarme obstacle artificiel
+             </li>
+          <li><b><tt>5:</tt></b> Alarme de franchissement du plan de descente
+             </li>
+       </ul>
+       </li>
+   <li><b><tt>Time:</tt></b> heure d'émission de l'alerte.</li>
+</ul>
+
+<hr />
+
+<!--------------------------- Detail des messages compris par rejeu ----->
+<hr />
+<h2>Détails des messages compris par rejeu</h2>
+<h2>Horloge</h2>
+<hr />
+
+
+<a name="ClockStop">
+<h3>ClockStop</h3><!----------------->
+<table class="ex" width="100%" border="1"><tr><td>
+<tt>ClockStop</tt>
+</td></tr></table>
+<p>Message émis par une application pour geler l'horloge de simulation</p>
+<hr />
+
+<a name="ClockStart">
+<h3>ClockStart</h3><!---------------->
+<table class="ex" width="100%" border="1"><tr><td>
+<tt>ClockStart</tt>
+</td></tr></table>
+<p>Message émis par une application pour remettre l'horloge de simulation
+   en fonctionnement (avec les mêmes paramètres qu'avant l'arrêt)</p>
+<hr />
+
+<a name="ClockBackward">
+<h3>ClockBackward</h3><!---------------->
+<table class="ex" width="100%" border="1"><tr><td>
+<tt>ClockBackward</tt>
+</td></tr></table>
+<p>Message émis par une application pour faire dérouler le temps vers le passé
+   (la vitesse actuelle est inchangée)
+  </p>
+<hr />
+
+<a name="ClockForward">
+<h3>ClockForward</h3><!---------------->
+<table class="ex" width="100%" border="1"><tr><td>
+<tt>ClockForward</tt>
+</td></tr></table>
+<p>Message émis par une application pour faire dérouler le temps dans le sens
+   normal.
+   (la vitesse actuelle est inchangée)
+  </p>
+<hr />
+
+<a name="SetClock">
+<h3>SetClock</h3><!---------------->
+<table class="ex" width="100%" border="1"><tr><td>
+<tt>SetClock Time=18:45:12</tt>
+</td></tr></table>
+<p>Permet de fixer l'heure de simulation actuelle. (L'horloge peut être
+   en marche ou non)
+</p>
+
+<table class="ex" width="100%" border="1"><tr><td>
+<tt>SetClock Rate=2.5</tt>
+</td></tr></table>
+<p>Permet de fixer la vitesse de l'horloge. <b><tt>Rate</tt></b> peut être
+   exprimé en entier ou avec des chiffres après la virgule.  
+   Si <b><tt>Rate</tt></b> est négatif, l'horloge se déroule en 
+   remontant le temps, à une vitesse correspondant à la valeur 
+   absolue de <b><tt>Rate</tt></b>.<br />
+   Exemples:
+<ul>
+   <li><b><tt>Rate=2</tt></b> Le temps avance à 2 fois la vitesse normale
+       </li>
+   <li><b><tt>Rate=0.5</tt></b> On va à la moitié de la vitesse normale
+       </li>
+   <li><b><tt>Rate=-3.75</tt></b> On remonte le temps, et en allant 3.75
+       fois plus vite que la normale.</li>
+</ul>
+
+</p>
+
+<hr />
+
+<a name="GetClockDatas">
+<h3>GetClockDatas</h3><!---------------->
+<table class="ex" width="100%" border="1"><tr><td>
+<tt>GetClockDatas</tt>
+</td></tr></table>
+<p>Demande à rejeu de donner les paramètres actuels de l'horloge. 
+   Peut sembler inutile à priori, puisque rejeu émet périodiquement ces 
+   informations, mais dans le cas orùu l'horloge est stoppée (ou se déroule avec
+   une vitesse très lente), cette requête permet d'eviter d'attendre.....
+   Rejeu répond avec un message: 
+  </p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>ClockDatas Time=18:46:34 Rate=1.0 Bs=0 Stop=1
+</tt>
+</td></tr></table>
+<p>Les paramètres sont les mêmes que pour le message <tt>ClockEvent</tt>
+   qui donne l'état actuel des caracteristiques de l'horloge,
+   avec en plus le champ <tt>Stop</tt>:
+<ul>
+   <li><b><tt>0 :</tt></b> l'horloge est en marche.</li>
+   <li><b><tt>1 :</tt></b> l'horloge est stoppée.</li>
+</ul>
+
+<p>Remarque: le <tt>Rate</tt> indiqué est celui en cours quand l'horloge
+   est en marche, ou celui qui le sera quand l'horloge sera redémarrée.
+</p>
+<hr />
+
+<!-------------------- Interrogation radar ----------------------------->
+<h2>Interrogation Radar</h2>
+
+<a name="GetRadarRefresh">
+<h3>GetRadarRefresh</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>GetRadarRefresh</tt>
+</td></tr></table>
+<p>Ce message demande à rejeu quelle est la période de renouvellement
+   d'information radar.
+</p>
+<p><b>Réponse de rejeu:</b></p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>RadarRefresh Period=8</tt>
+</td></tr></table>
+<p>
+   Le paramètre <b><tt>Period</tt></b> exprimé en secondes 
+   indique le temps
+   nominal de simulation (nominal au sens: "il n'y a pas de trou radar") entre 
+   2 informations succesives de rafraichissement de la même piste.
+   Pour des données en route, c'est 8 secondes et en approche 4 secondes.
+  </p>
+<p>Rejeu détermine cette valeur en début de simulation 
+   en étudiant (par échantillonage) les données qu'il a à traiter.
+   (temps le plus courant entre 2 positions successives des pistes connues)
+   </p>
+<p>Cette information combinée ensuite avec le <b><tt>Rate</tt></b>
+   de l'horloge fourni avec chaque message <tt>ClockEvent</tt> 
+   , permet de calibrer des animations s'il y a lieu entre
+   les positions successives des plots sur une piste.
+   </p> 
+<hr />
+
+
+<!-------------------- Interrogation sur un vol ------------------------->
+<h2>Interrogation sur un vol</h2>
+
+
+<a name="GetTrajectory">
+<h3>GetTrajectory</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>GetTrajectory MsgName=MyTraj Flight=54 From=now</tt>
+</td></tr></table>
+<p>Message pour demander à rejeu de fournir tous les points connus de
+   la trajectoire enregistrée (ou eventuellement modifiée suite à 
+   des ordres de pilotage) pour le vol numéro <tt>54</tt>.
+  </p>
+<p> <b><tt>MsgName=</tt></b> Nom quelconque donné par celui qui émet
+    ce message. Ce nom permettra d'identifier la réponse que rejeu fera
+    </p>
+<p> Le paramètre <b><tt>From</tt></b> peut valoir:
+<ul>
+  <li><b><tt>now</tt></b>: liste des points à partir de l'heure de simulation
+      actuelle.</li>
+  <li><b><tt>HH:MM:SS</tt></b>: liste des points à partir de l'heure 
+       spécifiée.</li>
+  <li><b><tt>origin</tt></b>: tous les points connus
+</ul>
+<p>
+<b>Réponse de rejeu:</b></p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>Trajectory MyTraj Slice=95.25 -140.56 10:20:01 300 94.83 -139.98 10:20:09
+    300 ... <br />
+    Trajectory MyTraj Slice=......<br />
+    Trajectory MyTraj Slice=......</tt> <= éventuellement moins d'infos<br />
+<tt>Trajectory MyTraj EndSlice
+</td></tr></table>
+<p>Rejeu fournit la liste des quadruplets {X, Y, heure, niveau} correspondant
+   à la demande. Afin de ne pas envoyer de message trop long sur le bus,
+   rejeu en fait des tranches successives: 30 quadruplets par messages,
+   sauf le dernier message qui peut en comprendre moins. 
+   La réponse se termine avec l'envoi du message 
+   <tt>Trajectory MyTraj EndSlice</tt>.
+<p>Dans le cas où la liste est vide, rejeu envoie:<br />
+</p>
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>Trajectory MyTraj Slice=</tt><br />
+<tt>Trajectory MyTraj EndSlice</tt>
+</td></tr></table>
+<p> Pour avoir des informations plus complètes sur les plots d'une 
+    piste (vitesse, taux d'évolution, tendance, ....) voir
+   <a href="#GetTrack"><tt>GetTrack</tt> </a>.
+	</p>   
+<hr />
+
+<a name="GetPln">
+<h3>GetPln</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>GetPln MsgName=Pln54ForMe Flight=54 From=OLRAK</tt>
+</td></tr></table>
+<p>Message pour demander à rejeu de fournir le plan de vol tel
+   qu'il a été réalisé et enregistré dans le fichier COURAGE.
+   Noter que les heures passage balise ont été recalculées par
+   rejeu pour (être en général ...)  plus réalistes.
+  </p>
+<p> <b><tt>MsgName=</tt></b> Nom quelconque donné par celui qui émet
+    ce message. Ce nom permettra d'identifier la réponse que rejeu fera.
+    </p>
+<p> Le paramètre <b><tt>From</tt></b> peut valoir:
+<ul>
+  <li><b><tt>now</tt>:</b> On veut la liste des balises de la route à partir 
+      de l'heure de simulation actuelle.</li>
+  <li><b>un nom de balise:</b> On veut la route à partir de celle 
+      spécifiée (comprise). Si plusieurs occurrences de cette 
+      balise dans le plan de vol, on prend la première </li>
+  <li><b><tt>origin</tt>:</b> tous les points connus de la route. </li>
+  <li><b>Une heure</tt>:</b> tous les points connus de la route après
+       cette heure. </li>
+</ul>
+<p>
+<b>Réponse de rejeu:</b></p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>Pln Pln54ForMe Flight=54 Time=07:10:12 CallSign=CRX766 
+        AircraftType=SB20 Ssr=6744 
+        Speed=360 Rfl=190 Dep=LFSB Arr=LFBO  
+        Rvsm=TRUE Tcas=TA_ONLY Adsb=NO
+        List=OLRAK V 06:53 190 NARAK A 07:02 190 NOPTA A 07:09 190
+</tt>
+</td></tr></table>
+<p>Rejeu donne les éléments statiques connus pour ce vol (indicatif,
+   type avion, ....) précédés des noms de champs, et une liste de 
+   quadruplets {balise,vertical ou travers, heure, niveau} 
+   qui correspondent à ce qui s'est déroulé et qui a  été 
+   enregistré dans le fichier COURAGE (sauf l'information de passage  
+   vertical ou travers qui est calculée par rejeu pour chaque balise).
+   Si une modification de route a été demandée par un ordre
+   de pilotage (par exemple 
+   <a href="#AircraftDirect"><tt>AircraftDirect</tt> </a>),
+    rejeu effectue les calculs necessaires. Voir <a href="#PlnEvent">
+   <tt>PlnEvent</tt></a>.
+</p>
+<ul>   
+<li>
+   <b><tt>Flight=</tt></b>
+          324 est le numéro de vol de l'avion dont on a demandé
+          les éléments de route suivie.</li>
+<li>
+   <b><tt>Time=</tt></b>
+          Heure actuelle de simulation. 
+          </li>
+<li>
+   <b><tt>CallSign=</tt></b>
+          Indicatif de l'appareil.</li>
+<li>
+   <b><tt>Ssr=</tt></b> 
+          Code transpondeur. <tt>0000</tt> si inconnu.</li>
+<li>
+   <b><tt>Speed=</tt></b> 
+          Vitesse de croisière. (<tt>0</tt> si inconnue).</li>
+<li>
+   <b><tt>Rfl=</tt></b> 
+          Niveau de croisière.(<tt>0</tt> si inconnu).</li>
+<li>
+   <b><tt>Dep=</tt></b> 
+          Terrain de départ. (<tt>0000</tt> si inconnu).</li>
+<li>
+   <b><tt>Arr=</tt></b> 
+          Terrain d'arrivée. (<tt>0000</tt> si inconnu).</li>
+<li>
+   <b><tt>Rvsm=</tt></b> 
+       <tt>TRUE</tt> ou <tt>FALSE</tt> suivant l'équipement RVSM 
+          de l'avion.</li>
+<li>
+   <b><tt>Tcas=</tt></b> 
+          <tt>OFF</tt> ou <tt>TA_ONLY</tt> ou <tt>TA_RA</tt> suivant 
+          l'équipement TCAS de l'avion.</li>
+<li>
+   <b><tt>Adsb=</tt></b> 
+          <tt>NO</tt> ou <tt>YES</tt> ou <tt>OUT_ONLY</tt> suivant 
+          l'équipement ADSB de l'avion.</li>
+
+<li>
+   Ensuite figure une liste de {balise, vertical/travers, heure, niveau}.
+   <ul><li><b><tt>V</tt></b> : vertical </li>
+       <li><b><tt>A</tt></b> : travers (Abeam) </li>
+   </ul>
+   La liste peut être vide, si par exemple l'heure fournie dans le 
+   champ <tt>From</tt> est postérieure à l'heure de passage de
+   la dernière balise connue.     
+   </li>
+</ul>
+<hr />
+
+<a name="GetSectorsInfos">
+<h3>GetSectorsInfos</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>GetSectorsInfos MsgName=sect123 Flight=123</tt>
+</td></tr></table>
+<p>Message émis par une application pour demander la liste des infos
+   concernant les secteurs traversés par ce vol.
+  </p>
+<p> <b><tt>MsgName=</tt></b> Nom quelconque donné par celui qui émet
+    ce message. Ce nom permettra d'identifier la réponse que rejeu fera
+    </p>
+<p><b>Réponse de rejeu:</b></p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>SectorsInfos sect123 Flight=123 List=CF 10:05 10:09 09:54 290 NL 10:09 10:12 10:00 290 
+    SL 10:12 10:31 10:00 290</tt>
+</td></tr></table>
+<p>
+  Rejeu répond les informations {secteur, heure entrée,
+  heure sortie, heure impression de strip, niveau de transfert} 
+  telles qu'elles ont été lues dans 
+  le fichier COURAGE, sauf si des ordres de modification qui touchent
+  ces données ont été pris en compte (messages: 
+  <a href="#SetStripTime"><tt>SetStripTime</tt></a>,
+  <a href="#SetSectorIn"><tt>SetSectorIn</tt></a>,
+  <a href="#SetSectorOut"><tt>SetSectorOut</tt></a>,
+  <a href="#SetSectorsInfos"><tt>SetSectorsInfos</tt></a>,
+  <a href="#TranslateTime"><tt>TranslateTime</tt></a>,
+  <a href="#TranslateFl"><tt>TranslateFl</tt></a>.</p>
+<p>
+  L'information niveau de transfert (<tt>0</tt> si inconnu) ne peut être
+  connue que si un ordre <a href="#SetTfl"><tt>SetTfl</tt></a> ou
+  <a href="#SetSectorsInfos"><tt>SetSectorsInfos</tt></a> a 
+   été émis).</p>
+<p><b>Warning!</b> 
+   Les modifications issues d'ordres de pilotage 
+  <a href="#AircraftDirect"><tt>AircraftDirect</tt></a>,
+  <a href="#AircraftHeading"><tt>AircraftHeading</tt></a>,
+  <a href="#AircraftTurn"><tt>AircraftTurn</tt></a>,
+  <a href="#AircraftLevel"><tt>AircraftLevel</tt></a>, 
+  <a href="#AircraftSpeed"><tt>AircraftSpeed</tt></a>, 
+  <a href="#AircraftIntercept"><tt>AircraftIntercept</tt></a>, 
+  <a href="#AircraftSetTrack"><tt>AircraftSetTrack</tt></a> 
+  ne modifient pas actuellement ces informations, car rejeu n'a pas
+  réellement connaissance de la sectorisation (Il connaît juste
+  les infos fournies sur les vols dans le fichier COURAGE).
+  Si ces informations doivent absolument être mises à jour, il faut 
+  disposer sur le bus d'une application qui fait spécifiquement ces calculs et
+  les transmet à rejeu (grace au message 
+  <a href="#SetSectorsInfos"><tt>SetSectorsInfos</tt></a>) 
+  </p>
+<hr />
+
+
+<a name="GetLayersInfos">
+<h3>GetLayersInfos</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>GetLayersInfos MsgName=Layers123 Flight=123</tt>
+</td></tr></table>
+<p>Message émis par une application pour demander la liste des couches
+   traversées par ce vol.
+  </p>
+<p> <b><tt>MsgName=</tt></b> Nom quelconque donné par celui qui émet
+    ce message. Ce nom permettra d'identifier la réponse que rejeu fera
+    </p>
+<p><b>Réponse de rejeu:</b></p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>LayersInfos Layers123 Flight=123 List=F,Q,I,S </tt>
+</td></tr></table>
+
+<hr />
+
+<a name="GetPosition">
+<h3>GetPosition</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>GetPosition MsgName=pos45 Flight=45 Time=13:06:35</tt>
+</td></tr></table>
+<p>Message émis par une application pour demander la position d'un
+   vol  à une heure donnée.
+  </p>
+<p> <b><tt>MsgName=</tt></b> Nom quelconque donné par celui qui émet
+    ce message. Ce nom permettra d'identifier la réponse que rejeu fera
+    </p>
+<p><b>Réponse de rejeu:</b></p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>Position pos45 Flight=45 CallSign=LB114JQ Ssr=0452 Sector=SL
+     Layers=F,I X=87.00 Y=-128.88 Vx=-197 Vy=265 Afl=195
+     Rate=2098 Heading=323 GroundSpeed=330 Tendency=1 
+     Time=13:06:38</tt>
+      <br />
+</td></tr></table>
+<p>
+   Rejeu cherche à l'heure donnée les informations de position du
+   vol concerné. Si l'heure fournie n'est pas une heure où rejeu
+   connait la position exacte de ce vol (les données radar donnent 
+   en route cette information en moyenne toutes les 8 secondes), rejeu
+   cherche la première position connue dans les 30 secondes qui suivent.
+   (C'est l'heure de cette première position connue qui est indiquée
+   dans le champs <tt><b>Time=</b></tt> qui termine le message)
+   </p> 
+<hr />
+
+<a name="GetOldPositions">
+<h3>GetOldPositions</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>GetOldPositions MsgName=3old56 Flight=56 Nb=3</tt>
+</td></tr></table>
+<p>Message émis par une application pour demander les Nb dernières 
+   positions d'un vol (avant l'heure actuelle).
+  </p>
+<p> <b><tt>MsgName=</tt></b> Nom quelconque donné par celui qui émet
+    ce message. Ce nom permettra d'identifier la réponse que rejeu fera
+    </p>
+<p><b>Réponse de rejeu:</b></p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>OldPositions 3old56 Flight=56 Nb=3 List=87.00 -128.88 -197 265 195 2098 13:06:38
+    89.03 -130.65 -200 270 197 2075 ..........
+     </tt>
+</td></tr></table>
+<p>
+   Rejeu fournit <tt>Nb</tt> septuplets {X, Y, Vx, Vy, Fl, Rate, heure}. 
+   La valeur de <tt>Nb</tt> représente le nombre de septuplets
+   effectivement renvoyés (il peut se faire que rejeu ne connaisse
+   pas assez de positions de plots pour satisfaire toute la demande, auquel
+   cas il envoie le maximum de ce qu'il connait, eventuellement 0 et
+   <tt>List=</tt> est vide). 
+   </p> 
+<hr />
+
+<a name="GetStrip">
+<h3>GetStrip</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>GetStrip MsgName=The_Strip_67_GV Flight=67 Sector=GV</tt>
+</td></tr></table>
+<p>Message émis par une application pour demander les infos "strip"
+   pour un vol et un secteur donné.
+  </p> 
+<p> <b><tt>MsgName=</tt></b> Nom quelconque donné par celui qui émet
+    ce message. Ce nom permettra d'identifier la réponse que rejeu fera
+    </p>
+<p><b>Réponse de rejeu:</b></p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>Strip The_Strip_67_GV Flight=67 Time=06:40:00 CallSign=CRX766 
+        AircraftType=SB20 Ssr=6744
+        Speed=360 Rfl=190 Dep=LFSB Arr=LFBO 
+        Sector=GV ExitSector=LE Frequency=123.4 Efl=170 Tfl=190
+        List=OLRAK 06:53 190 NARAK 07:02 190 NOPTA 07:09 190</tt>
+</td></tr></table>
+<p>Toutes les informations fournies sont identiques à celles qui
+   sont émises par rejeu de manière 
+   événementielle à l'heure "normale" d'impression du strip
+   pour ce vol dans le secteur indiqué
+    (<a href="#StripEvent"><tt>StripEvent</tt></a>).<br />
+   Seuls les 2 premiers champs (<tt>Strip</tt> et ici <tt>The_Strip_67_GV</tt>
+   (correspondant au nom donné par l'utilisateur à la requête)
+   diffèrent.<br />
+   Le champ <b><tt>Time</tt></b> indique l'heure à laquelle ce
+   strip est normalement imprimée (avec <tt>StripEvent</tt>).
+   </p>
+<p>Warning: Si le vol est "circulaire" (plusieurs passages dans le même
+   secteur), c'est le premier qui est considéré.
+   </p>
+<hr />
+
+<a name="GetRange">
+<h3>GetRange</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>GetRange MsgName=MyRange123 Flight=123</tt>
+</td></tr></table>
+<p>Message émis par une application pour demander l'intervalle 
+   de temps d'existence de ce vol et sa visibilité.
+  </p>
+<p> <b><tt>MsgName=</tt></b> Nom quelconque donné par celui qui émet
+    ce message. Ce nom permettra d'identifier la réponse que rejeu fera
+    </p>
+<p><b>Réponse de rejeu:</b></p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>Range MyRange123 FirstTime=06:08:14 LastTime=07:26:40 Visible=yes</tt>
+</td></tr></table>
+<p>
+   L'heure du premier plot connu pour ce vol est indiquée dans
+   <b><tt>FirstTime</tt></b> et l'heure du dernier mouvement est 
+   dans <b><tt>LastTime</tt></b>.</p>
+<hr />
+
+
+
+<a name="GetTrack">
+<h3>GetTrack</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>GetTrack MsgName=MyTrack Flight=54 From=origin</tt>
+</td></tr></table>
+<p>Message pour demander à rejeu de fournir toutes les informations
+   connues {Heure, X, Y, Vx, Vy, FL, Rate, Tend} 
+   pour tous les points de
+   la piste enregistrée (ou eventuellement modifiée suite à 
+   des ordres de pilotage) pour le vol numéro <tt>54</tt>.
+  </p>
+<p> <b><tt>MsgName=</tt></b> Nom quelconque donné par celui qui émet
+    ce message. Ce nom permettra d'identifier la réponse que rejeu fera
+    </p>
+<p> Le paramètre <b><tt>From</tt></b> peut valoir:
+<ul>
+  <li><b><tt>now</tt></b>: liste des points à partir de l'heure de simulation
+      actuelle.</li>
+  <li><b><tt>HH:MM:SS</tt></b>: liste des points à partir de l'heure 
+       spécifiée.</li>
+  <li><b><tt>origin</tt></b>: tous les points connus
+</ul>
+<p>
+<b>Réponse de rejeu:</b></p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>Track MyTrack Slice=10:20:01 95.25 -140.56 300 94 290 0 0 10:20:09 ....
+     ... <br />
+    Track MyTrack Slice=......<br />
+    Track MyTrack Slice=......</tt> <= éventuellement moins d'infos<tt><br />
+    Track MyTrack EndSlice    </tt>
+</td></tr></table>
+<p>Rejeu fournit la liste des n-uplets {Heure, X, Y, Vx, Vy, FL, Rate, Tend}
+   correspondant à la demande:
+   </p>
+<ul> 
+    <li>Heure (sous la forme HH:MM ou HH:MM:SS)</li>
+    <li>X, Y (en NM, valeurs décimales autorisées)</li>
+    <li>Vx, Vy (en Kts, valeurs entières)</li>
+    <li>Niveau (FL)</li>
+    <li>Taux (en Ft/mn, valeur entière)</li>
+    <li>Tendance:
+             <ul>
+                 <li><b><tt>0 :</tt></b>Stable</li> 
+                 <li><b><tt>1 :</tt></b>Montée</li> 
+                 <li><b><tt>-1 :</tt></b>Descente</li> 
+                 <li><b><tt>-2 :</tt></b>Inconnue</li> 
+             </ul>
+</ul>
+<p>
+   Afin de ne pas envoyer de message trop long sur le bus,
+   rejeu en fait des tranches successives: 20 n-uplets par messages,
+   sauf le dernier message qui peut en comprendre moins. 
+   La réponse se termine avec l'envoi du message 
+   </p>
+<table class="ex"  width="100%" border="1"><tr><td>
+   <tt>Track MyTrack EndSlice</tt>.
+</td></tr></table>
+
+<p>Dans le cas où la liste est vide, rejeu envoie:<br />
+</p>
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>Track MyTrack Slice=</tt><br />
+<tt>Track MyTrack EndSlice</tt>
+</td></tr></table>
+
+<p> L'intérêt essentiel de ce message est de permettre à une 
+    application de récupérer tous les éléments piste d'un vol 
+    pour faire des calculs précis (comme par exemple des modifications
+    de trajectoire, grâce à des modèles avions réalistes 
+    en se substituant à rejeu pour les ordres de pilotage).
+    Voir <a href="#AircraftSetTrack"> <tt>AircraftSetTrack</tt></a>
+    </p>
+<hr />
+
+<a name="GetTimeAtLevel">
+<h3>GetTimeAtLevel</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>GetTimeAtLevel MsgName=MyMsg Flight=54 FL=290</tt>
+</td></tr></table>
+<p> <b><tt>MsgName=</tt></b> Nom quelconque donné par celui qui émet
+    ce message. Ce nom permettra d'identifier la réponse que rejeu fera
+    </p>
+<p> Le paramètre <b><tt>FL</tt></b> indique le niveau "cible" dont 
+    on cherche l'heure de franchissement.
+    </p>
+<p> Ce message sert à demander à rejeu à quelle heure un avion 
+    franchit un certain niveau de vol dans sa trajectoire à
+    partir de l'heure actuelle de simulation.
+    </p>
+<p> Au cas où la demande est farfelue compte tenu du profil
+    du vol, rejeu n'envoie pas de réponse sur le bus mais
+    un message d'erreur est affiché dans le terminal de 
+    lancement de rejeu.
+    </p>
+<p> Les données connues de rejeu peuvent comporter des manques
+    lorsqu'il s'agit de plots obtenus après un enregistrement 
+    réel de trajectoire (notamment mode C non renseigné sur
+    un ou plusieurs plots). Cela se traduit habituellement
+    par un niveau "0" fugitif. Ce type de plots ne fausse
+    pas la recherche de rejeu qui fournit bien l'heure
+    du premier plot connu, où le niveau cible à été franchi.
+    Noter que si l'avion évolue avec un fort taux de montée
+    ou descente, et si le rafraichissement est par exemple
+    de 8 secondes, l'heure est celle du premier
+    plot connu ayant vérifié la condition de franchissement
+    et pas une heure calculée par interpolation.   
+    </p>
+
+<p>
+<b>Réponse de rejeu:</b></p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>TimeAtLevel MyMsg Time=11:12:56 </tt>
+</td></tr></table>
+   </p>
+<hr />
+
+
+<a name="GetCfl">
+<h3>GetCfl</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>GetCfl MsgName=MyMsg Flight=54 From=now</tt>
+</td></tr></table>
+<p> <b><tt>MsgName=</tt></b> Nom quelconque donné par celui qui émet
+    ce message. Ce nom permettra d'identifier la réponse que rejeu fera
+    </p>
+<p> Le paramètre <b><tt>From</tt></b> indique à rejeu de rechercher
+    le prochain plot où l'avion se met en palier, soit à partir
+    de l'heure actuelle de simulation (<b><tt>now</tt></b>), soit 
+    à partir d'une heure quelconque fournie
+    par l'utilisateur.
+    </p>
+<p> Rejeu donne le niveau où l'avion s'est stabilisé pendant au 
+    moins 30 secondes, à quelle heure et à quel endroit.
+    </p>
+<p> Au cas où il n'y a pas de mise en palier dans la trajectoire,
+    Rejeu répond avec un <b><tt>FL=0</tt></b>.
+    </p>
+<p> Les données connues de rejeu peuvent comporter des manques
+    lorsqu'il s'agit de plots obtenus après un enregistrement 
+    réel de trajectoire (notamment mode C non renseigné sur
+    un ou plusieurs plots). Cela se traduit habituellement
+    par un niveau "0" fugitif. Ce type de plots ne fausse
+    pas la recherche de rejeu qui fournit bien l'heure
+    du premier plot connu, où l'avion s'est mis en palier.   
+    </p>
+
+<p>
+<b>Réponse de rejeu:</b></p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>Cfl MyMsg FL=310 Time=11:06:54 X=73.41 Y=-19.64 </tt>
+</td></tr></table>
+   </p>
+<hr />
+
+<a name="GetPrediction">
+<h3>GetPrediction</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>GetPrediction MsgName=MyMsg Flight=54 SfplOrder=AircraftDirect,AGN</tt>
+</td></tr></table>
+
+<p> Rejeu va fournir une prévision de trajectoire basée sur le bruitage de la trajectoire qu'il connait pour cet avion.
+	A chaque instant, Rejeu connaît la totalité des positions, cap, vitesse, niveau, tendance, etc de tous les avions 
+	pendant toute la durée de la simulation. Il pourrait fournir ces données 
+   (voir <a href="#GetTrajectory"><tt>GetTrajectory</tt></a>), mais cela ne pourrait pas servir de prévision réaliste, 
+   car il n'y aurait absolument aucune erreur sur les plots visualisés à postériori quand la simulation se déroule.
+   Rejeu simule donc une prévision de trajectoire en appliquant des ordres de pilotage avec un biais sur les paramètres.
+	Un tirage aléatoire (avec une loi normale) de % d'erreur sur la vitesse est effectué à la première demande pour chaque avion.
+	Ensuite, pour cet avion, ce même paramètre sera appliqué pour les demandes successives de nouvelles prévisions de trajectoire.
+	Cette méthode garantit un comportement cohérent (plutôt en avance, ou plutôt en retard) pour un vol donné. 
+
+</p>
+
+<p> <b><tt>MsgName=</tt></b> Nom quelconque donné par celui qui émet
+    ce message. Ce nom permettra d'identifier la réponse que rejeu fera
+    </p>
+
+<p> Le paramètre <b><tt>SfplOrder</tt></b> peut valoir:
+<ul>
+  <li><b><tt>No_Order</tt></b>: La prévision est effectuée en "bruitant" la trajectoire qui va se dérouler
+				si on n'applique aucun ordre de pilotage à partir de maintenant. 
+  <li><b><tt>To_Pln</tt></b>: La prévision est faite à partir de la position actuelle de l'avion.
+				On fait les calculs en faisant comme si l'avion avait un ordre de pilotage lui permettant
+				de reprendre dès à présent la trajectoire déclarée dans son PLN (une directe sur la prochaine balise, ou la
+				suivante si cette dernière est à moins d'une minute). Noter que si l'avion a eu une directe précédemment,
+            les balises intermédiaires du PLN seront ignorées.</li>
+  <li><b><tt>AircraftDirect</tt></b> ou <b><tt>AircraftHeading</tt></b> ou <b><tt>AircraftTurn</tt></b> ou
+		<b><tt>AircraftLevel</tt></b>	 ou <b><tt>AircraftSpeed</tt></b> ou <b><tt>AircraftFollowTrack</tt></b>:
+            La prévision est faite en faisant l'hypothèse qu'on applique l'ordre de pilotage mentionné à l'avion.
+				Ceci est réalisé de manière virtuelle dans le sens où la trajectoire qui sera visible sur l'image radar est
+            celle prévue actuellement sans modification.</li>
+  <li><b><tt>AircraftDifferedOrder</tt></b> ou <b><tt>AircraftMultipleOrder</tt></b> : Idem ci-dessus, mais il s'agit d'un ordre 
+            différé ou de plusieurs ordres qui s'enchainent. Voir les ordres en question pour la syntaxe 
+				(<a href="#AircraftDifferedOrder"><tt>AircraftDifferedOrder</tt></a>, 
+				 <a href="#AircraftMultipleOrder"><tt>AircraftMultipleOrder</tt></a>).
+  <li><b><tt>AircraftTimeAtBeacon</tt></b> ou <b><tt>AircraftTimeAtPosition</tt></b> : La prévision est faite en réalisant
+				le RTA demandé, puis ensuite seulement la trajectoire est "bruitée" comme pour les autres ordres.
+				L'utilisateur devrait normalement fournir un <b><tt>Sigma=0.0</tt></b> comme paramètre de RTA 
+				(RTA parfait à l'heure demandée),mais rejeu prendra en compte toute autre valeur demandée pour une utilisation spéciale.
+				Comme pour les autres ordres, cette requête ne modifie en rien la trajectoire qui sera visible sur l'image radar
+				pour cet avion.
+</ul>
+
+<p>
+<b>Exemples de champ <tt>SfplOrder</tt>:</b>
+	</p>
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>.......SfplOrder=No_Order <br />
+    .......SfplOrder=To_Pln<br />
+    .......SfplOrder=AircraftHeading,230<br />
+    .......SfplOrder=AircraftDirect,AGN<br />
+    .......SfplOrder=AircraftDifferedOrder Level,60 AircraftDirect,AGN<br />
+    .......SfplOrder=AircraftMultipleOrder AircraftLevel,150,1000 AircraftHeading,180<br />
+    .......SfplOrder=AircraftTimeAtBeacon,LMG,11:40,0.0<br />
+    .......SfplOrder=AircraftFollowTrack,Star,NARAK_6L,WithTemplate=8621<br />
+</td></tr></table>
+<p>
+<b>Réponse de rejeu:</b></p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>Prediction MyMsg Slice=95.25 -140.56 10:20:01 300 94.83 -139.98 10:20:09
+    300 ... <br />
+    Prediction MyMsg Slice=......<br />
+    Prediction MyMsg Slice=......</tt> <= éventuellement moins d'infos<br />
+<tt>Prediction MyMsg EndSlice
+</td></tr></table>
+<p>Rejeu fournit la liste des quadruplets {X, Y, heure, niveau} correspondant
+   à la demande. Afin de ne pas envoyer de message trop long sur le bus,
+   rejeu en fait des tranches successives: 30 quadruplets par messages,
+   sauf le dernier message qui peut en comprendre moins. 
+   La réponse se termine avec l'envoi du message 
+   <tt>Prediction MyMsg EndSlice</tt>.
+	</p>
+<p> Bien qu'il ne s'agisse pas d'un ordre de pilotage, cette requête émet un compte-rendu
+	<a href="#ReportEvent"><tt>ReportEvent</tt></a>.
+	Le champ <b><tt>Info=</tt></b> indique la valeur de pourcentage d'erreur sur la vitesse qui a été
+	prise en compte pour le calcul (valeur, tirée au hasard au premier appel).
+	</p>
+    
+<hr />
+
+
+<a name="GetOrderData">
+<h3>GetOrderData</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>GetOrderData MsgName=LastOrder_123 Flight=123 Order=AircraftDirect Time=NEWEST</tt>
+</td></tr></table>
+<p>Message qui demande à Rejeu les informations concernant un ordre de pilotage qu'il a reçu 
+   (donc présent dans son historique).
+	</p>
+<p> <b><tt>MsgName=</tt></b> Nom quelconque donné par celui qui émet
+    ce message. Ce nom permettra d'identifier la réponse que rejeu fera
+    </p>
+<p>  <b><tt>Order=</tt></b> Un ordre de pilotage quelconque comme 
+		<a href="#AircraftDirect"><tt>AircraftDirect</tt></a> ou 
+		<a href="#AircraftLevel"><tt>AircraftLevel</tt></a> ou .......<br/>
+		Si la valeur <b><tt>Any</tt></b> est fournie, cela signifie qu'on s'intéresse à
+      n'importe quel ordre dans l'historique pour cet avion.
+	</p>
+<p> Noter que les ordres <a href="#AircraftMultipleOrder"><tt>AircraftMultipleOrder</tt></a> et
+                         <a href="#AircraftDifferedOrder"><tt>AircraftDifferedOrder</tt></a> 
+    qui sont en fait comparables à des ordres "Macros", ne 
+    sont pas conservés sous cette forme dans l'historique: en effet, ce sont les ordres élémentaires qui en découlent
+    (avec leurs heures d'occurence) qui sont empilés et accessibles par cette requête.
+	</p>
+<p>  <b><tt>Time=</tt></b> peut valoir:
+<ul>
+  <li><b><tt>OLDEST</tt>:</b> On veut l'ordre de pilotage le plus ancien 
+                              (dans l'ordre des messages reçus par Rejeu) pour cet avion.</li>
+  <li><b><tt>NEWEST</tt>:</b> On veut l'ordre de pilotage le plus récent 
+                              (dans l'ordre des messages reçus par Rejeu) pour cet avion. </li>
+
+  <li><b>Une heure</tt>:</b>  Rejeu recherche l'ordre exécuté à une heure la plus proche
+           (antérieurement) à cette heure. 
+            Noter que les ordres sont stockés sequentiellement suivant leur ordre d'arrivée, 
+            mais comme l'horloge peut être manipulée dans tous les sens (notamment quand il s'agit 
+            d'application de préparation d'exercice), cela ne correspond pas nécessairement 
+            à l'ordre chronologique => d'ou cette dernière fonctionnalité. 
+</li>
+</ul>
+<p>
+	Quand on utilise Rejeu dans le cadre du déroulement d'une simulation, l'heure de simulation est monotone croissante,
+   et donc une requête avec <b><tt>Time=NEWEST</tt></b> permet de connaître simplement l'ordre de pilotage le plus récent
+   donné à l'avion. Une requête avec <b><tt>Time=OLDEST</tt></b> permet de connaître le premier ordre donné après le début
+   de la simulation pour cet avion (si ordre il y a eu ....)
+	</p>
+
+<p><b>Réponse de rejeu:</b></p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>OrderData LastOrder_123 Time=14:40:05 Order=AIRCRAFTDIRECT Data=123 PPG</tt>
+</td></tr></table>
+
+<ul>
+  <li><b><tt>Time=</tt> :</b> Heure de l'éxécution de cet ordre trouvé dans l'historique.</li>
+  <li><b><tt>Order=</tt> :</b> L'ordre en question (intéressant quand la requête a été faite avec <b><tt>Any</tt></b>) . </li>
+  <li><b><tt>Data=</tt> :</b> Ensemble des paramètres qui avaient été fournis pour exécuter l'ordre, séparés par des blancs.
+                            Le premier représente l'ID de l'avion, les suivants dépendent évidemment de l'ordre.
+									Ici, il s'agissait d'une directe sur le VOR de Perpignan, donnée à l'heure de 
+                           simulation 14h40 et 05 secondes</li>
+  
+</ul>
+<p> Si Rejeu n'a pas trouvé d'ordre correspondant à la requête dans son historique, il répond:
+	</p>
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>OrderData LastOrder_123 Time=-- Order=AIRCRAFTDIRECT Data=NULL</tt>
+</td></tr></table>
+<p> Si un paramètre de la requête est incorrect, Rejeu ne répond rien et un message d'erreur est affiché 
+	dans le terminal ayant lancé Rejeu.
+	</p>
+
+
+<!-------------------- Création de  vol ------------------------------------->
+<h2>Création d'un vol</h2>
+
+<a name="GetDuplicate">
+<h3>GetDuplicate</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>GetDuplicate MsgName=MyDup78 Flight=78</tt>
+</td></tr></table>
+<p>Message émis par une application pour demander à rejeu de 
+   créer un clône du vol indiqué.
+  </p>
+<p> <b><tt>MsgName=</tt></b> Nom quelconque donné par celui qui émet
+    ce message. Ce nom permettra d'identifier la réponse que rejeu fera
+    </p>
+<p><b>Réponse de rejeu:</b></p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>Duplicate MyDup78 NewFlight=205</tt>
+</td></tr></table>
+<p>
+   Le nouveau vol crée par duplication de tous les éléments a
+   le numéro indiqué par <b><tt>NewFlight</tt></b>.(attribué par 
+   rejeu garantissant l'unicité avec ce qui est déjà connu).</p>
+<p>
+   Ce vol ayant exactement les mêmes caractéristiques que son 
+   "père", il faudra probablement au moins le décaler dans le temps
+    (message <a href="#TranslateTime"><tt>TranslateTime</tt></a>)
+     et peut-être lui changer son indicatif (message <a href="#SetCallSign">
+     <tt>SetCallSign</tt></a>) pour éviter un doublon sur l'image radar
+      suivant l'heure. .</p>
+<hr />
+
+<a name="GetNewFlight">
+<h3>GetNewFlight</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>GetNewFlight MsgName=NewF</tt>
+</td></tr></table>
+<p> Message émis par une application qui souhaite créer un nouveau vol "vide"
+    </p>
+<p> <b><tt>MsgName=</tt></b> Nom quelconque donné par celui qui émet
+    ce message. Ce nom permettra d'identifier la réponse que rejeu fera
+    </p>
+<p><b>Réponse de rejeu:</b></p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>NewFlight NewF NewID=101</tt>
+</td></tr></table>
+<p>
+   Rejeu cherche un identifiant libre à partir de 100 et l'affecte à ce 
+   nouveau vol. Ce vol ne contient aucune information (pas de données avion,
+   pas de plan de vol, pas de plots enregistrés) et doit donc être 
+   renseigné grâce à des requêtes émises postérieurement comme 
+   <a href="#SetMiniPln"><tt>SetMiniPln</tt></a> puis 
+   <a href="#SetPln"><tt>SetPln</tt></a> et par exemple 
+   <a href="#AircraftSetTrack"><tt>AircraftSetTrack</tt></a>.
+   Voir les questions/réponses à ce sujet pour utiliser au mieux les 
+   possibilités offertes par rejeu dans ce domaine.
+   </p>
+
+<hr />
+<!-------------------- Interrogation base de données ------------------------->
+<h2>Interrogation sur la base de données de rejeu</h2>
+
+<a name="GetDataBaseInfos">
+<h3>GetDataBaseInfos</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>GetDataBaseInfos MsgName=X234 Cond= (CallSign=AF*) and (Dep=LFBO)
+    Passing_Through=100.5 -256.4 5 110 180 Select=CallSign,Arr,Tcas</tt>
+</td></tr></table>
+<p>Message émis par une application pour demander la liste des vols
+   qui remplissent les conditions exprimées par <b><tt>"Cond"</tt></b>. 
+   Si le champ <b><tt>"Passing_Through"</tt></b> (facultatif) est présent,
+   rejeu selectionne en plus ceux qui passent dans un volume donné.
+   Si le champ <b><tt>"Select"</tt></b> (facultatif) est présent, rejeu 
+   complète la réponse avec les valeurs associées aux champs demandés.
+   Si  <b><tt>"Passing_Through"</tt></b> et  <b><tt>"Select"</tt></b> sont
+   présents tous les deux, ils doivent être dans cet ordre 
+   (exemple ci-dessus).
+  </p>
+<p> <b><tt>MsgName=</tt></b> Nom quelconque donné par celui qui émet
+    ce message. Ce nom permettra d'identifier la réponse que rejeu fera
+    </p>
+<p><b>Réponse de rejeu en l'absence de "Select=":</b></p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>DataBaseInfos X234 Nb=7 List=12 87 254 78 567 90 79</tt>
+</td></tr></table>
+<p>
+  rejeu répond le nombre de vols qui remplissent les conditions 
+  demandées, puis la liste des numéros de ces vols.</p>
+
+<p><b>Type de réponse de rejeu en présence de "Select=CallSign Arr Tcas":</b></p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>DataBaseInfos X234 Nb=7 List=12,AF123KQ,LFPG,TA_RA  87,AFR3011,LEVC,TA_ONLY 79,AF234GH,LFMT,TA_RA .......</tt>
+</td></tr></table>
+
+<p>
+  <b><tt>Cond</tt></b> est exprimée naturellement avec des relations
+   logiques habituelles et des conditions sur les champs concernant les vols. 
+   </p>
+<p>
+    Exemple:  <tt>(Beacon = AGN or Beacon = TOU) and AircraftType = A320 and 
+    Dep = LFPO</tt>
+    <br />
+    tous les aibus A320 qui passent par Agen ou Toulouse et qui viennent d'Orly 
+    </p>
+<p>
+Les noms de champs autorisés sont: 
+<ul>
+  <li> <b><tt>AircraftType:</tt></b> Type de l'appareil</li> 
+  <li> <b><tt>CallSign:</tt></b> Indicatif de l'avion</li> 
+  <li> <b><tt>Sector:</tt></b> Secteur traversé </li> 
+  <li> <b><tt>Beacon:</tt></b> Balise du plan de vol</li> 
+  <li> <b><tt>Fl:</tt></b> Niveau de croisière</li> 
+  <li> <b><tt>Speed:</tt></b> Vitesse de croisière</li> 
+  <li> <b><tt>Arr:</tt></b> Terrain d'arrivée</li> 
+  <li> <b><tt>Dep:</tt></b> Terrain de départ</li> 
+  <li> <b><tt>Rvsm:</tt></b> équipement qui peut valoir 
+              <tt>TRUE</tt> ou <tt>FALSE</tt> </li> 
+  <li> <b><tt>Tcas:</tt></b> équipement qui peut valoir
+            <tt>OFF</tt> ou <tt>TA_ONLY</tt> ou <tt>TA_RA</tt> </li>
+  <li> <b><tt>Adsb:</tt></b> équipement qui peut valoir
+            <tt>NO</tt> ou <tt>YES</tt> ou <tt>OUT_ONLY</tt> </li> 
+</ul>
+Les relations autorisées pour les champs sont: <b><tt>= < ></tt></b><br /> 
+Les Jokers ? et * sont autorisés pour les valeurs des champs: <br />
+<p>
+   <tt>Arr=LFB?</tt> => les avions qui se posent dans la FIR Bordeaux<br /> 
+   <tt>CallSign=AF*</tt> => les avions Air France <br />
+   </p>
+<p>
+    Les relations logiques sont <b><tt>or, and ,not</tt></b> 
+    </p>
+<p>
+Exemple:<br />
+ 
+<tt>(Sector=TA or Beacon = AGN) and not(CallSign = AF*)</tt>
+   </p> 
+<p>
+     Les vols qui ne sont pas Air France et qui ont Agen  dans leur plan 
+     de vol ou qui passent par le secteur TA 
+     </p>
+<p> On peut également utiliser <b><tt>ExistIn Time1 Time2</tt></b>
+    pour spécifier qu'on se restreint aux avions qui ont au moins
+    un plot visible dans l'intervalle <b><tt>[Time1 .. Time2]</tt></b>.
+    </p>
+<p> WARNING: Bien noter que cette requête fournit les avions qui ont au
+    moins un plot dans l'intervalle, mais c'est tout. 
+    Notamment, une requête comme:
+    </p>
+<p> <tt> Beacon=AGN and ExistIn 10:00 11:00 </tt> 
+    </p>
+<p> donne les avions qui 
+    sont connus entre 10 et 11H et qui passent AGN dans leur plan de vol.
+    Cela ne veut pas dire qu'ils passent AGN entre 10h et 11h ......
+    </p>
+<p>
+    Les blancs sont non significatifs. Le niveau d'imbriquation de 
+    parenthèses est quelconque. 
+    En cas d'erreur de syntaxe, aucun message de réponse n'est envoyé
+    sur le bus (message d'erreur  sur stdout). 
+    </p>
+
+
+<p>
+  <b><tt>Passing_Trough</tt></b> indique une liste de 5 champs séparés par des 
+  blancs. Ces champs spécifient un volume cylindrique dans lequel on souhaite
+  que l'avion soit passé:
+  <ul>
+      <li> les coordonnées X Y (cautra) du centre </li> 
+      <li> le rayon  </li> 
+      <li> le niveau minimum  </li> 
+      <li> le niveau maximum  </li> 
+  </ul>
+  Un avion (parmi les pré-sélectionnés) sera retenu si l'un des plots de sa 
+  trajectoire est situé dans ce cylindre, dans la bonne tranche d'espace.
+  </p>
+<p> WARNING: Pour bénéficier d'un temps de traitement court avec des gros
+    fichiers de trafic, veiller à restreindre la pré-sélection avec 
+    la condition <b><tt>Cond</tt></b> (éviter la condition préférée de Jean-Paul: CallSign = *).
+   </p>
+<p>
+  <b><tt>Select</tt></b> indique une liste de champs séparés par des 
+   "," (et/ou des blanc, tabulation) dont on souhaite 
+   récupérer la valeur pour les vols sélectionnés. 
+   L'ordre des champs sera évidemment respecté dans la réponse.
+   Les champs sont séparés dans la réponse par des "," et les infos (n_uplets)
+   relatives à chaque vol sont séparées par un blanc.
+   </p>
+
+<p>
+Les noms de champs autorisés sont: 
+<ul>
+  <li> <b><tt>AircraftType:</tt></b> Type de l'appareil</li> 
+  <li> <b><tt>CallSign:</tt></b> Indicatif de l'avion</li> 
+  <li> <b><tt>Fl:</tt></b> Niveau de croisière</li> 
+  <li> <b><tt>Speed:</tt></b> Vitesse de croisière</li> 
+  <li> <b><tt>Arr:</tt></b> Terrain d'arrivée</li> 
+  <li> <b><tt>Dep:</tt></b> Terrain de départ</li> 
+  <li> <b><tt>Ssr:</tt></b> Code radar secondaire</li> 
+  <li> <b><tt>FirstTime:</tt></b> Heure du premier plot connu exprimée en
+              HH:MM:SS</li> 
+  <li> <b><tt>LastTime:</tt></b> Heure du dernier plot connu exprimée en
+              HH:MM:SS</li> 
+  <li> <b><tt>Rvsm:</tt></b> équipement qui peut valoir 
+              <tt>TRUE</tt> ou <tt>FALSE</tt> </li> 
+  <li> <b><tt>Tcas:</tt></b> équipement qui peut valoir
+            <tt>OFF</tt> ou <tt>TA_ONLY</tt> ou <tt>TA_RA</tt> </li>
+  <li> <b><tt>Adsb:</tt></b> équipement qui peut valoir
+            <tt>NO</tt> ou <tt>YES</tt> ou <tt>OUT_ONLY</tt> </li> 
+</ul>
+<hr />
+
+<a name="GetFlightsWithStrip">
+<h3>GetFlightsWithStrip</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>GetFlightsWithStrip MsgName=F_In_TA Sector=TA</tt>
+</td></tr></table>
+<p> Requête pour connaitre la liste des vols qui sont actuellement dans
+    le secteur spécifié ou qui vont bientôt l'être ( strip
+    déjà imprimé dans ce secteur). 
+    </p>
+<p> <b><tt>MsgName=</tt></b> Nom quelconque donné par celui qui émet
+    ce message. Ce nom permettra d'identifier la réponse que rejeu fera
+    </p>
+<p><b>Réponse de rejeu:</b></p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>FlightsWithStrip F_In_TA Sector=TA List=45 876 13 6543 568 90 146
+    </tt>
+</td></tr></table>
+<p>La liste des numéros de vol qui sont actuellement concernés par
+   la requête est fournie. Pratiquement, il s'agit des vols tels que,
+   pour le secteur spécifié:
+   </p>
+<p> Heure impression de strip dans le secteur <= Heure simu <= Heure de
+    sortie du secteur
+    </p> 
+
+<hr />
+
+
+<a name="GetCurrentFlights">
+<h3>GetCurrentFlights</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>GetCurrentFlights MsgName=ForMe Time=Now</tt>
+</td></tr></table>
+<p> Requête pour connaitre la liste des vols qui existent à l'heure
+    spécifiée. (Noter qu'il n'y a pas nécessairement de plot exactement
+    à cette seconde là). 
+    </p>
+<p> <b><tt>MsgName=</tt></b> Nom quelconque donné par celui qui émet
+    ce message. Ce nom permettra d'identifier la réponse que rejeu fera
+    </p>
+<p> <b><tt>Time=</tt></b> Heure exprimée en HH:MM:SS (ou HH:MM). Ce 
+    champ peut également valoir <tt><b>"Now"</tt></b> pour indiquer
+    l'heure actuelle de simulation.
+    </p>  
+<p><b>Réponse de rejeu:</b></p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>CurrentFlights ForMe Time=10:16:35 List=45 876 13 6543 568 90 146
+    </tt>
+</td></tr></table>
+<p>La liste des numéros de vol qui sont actuellement concernés par
+   la requête est fournie. Pratiquement, il s'agit des vols visibles
+   (qui ne sont pas sous le coup d'un ordre 
+   <a href="#Discard"><tt>Discard</tt></a> et tels que, 
+   pour l'heure spécifiée H :
+   </p>
+<p> Heure du premier plot connu <= H <= Heure du dernier plot connu
+    </p> 
+
+<hr />
+
+
+<a name="GetSidStarNames">
+<h3>GetSidStarNames</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>GetSidStarNames MsgName=ForMe</tt>
+</td></tr></table>
+<p> Requête pour connaitre la liste des noms de <b>SID/STAR</b>
+   connues de rejeu. Ces trajectoires standard sont normalement
+   communiquées à la création du fichier de rejeu grâce à l'option 
+   <tt><b>-d[ata] file.txt</b></tt> sur la ligne de commande de 
+   <tt><b>dump_ast2rej</b></tt>. 
+	Le fichier
+   indiqué contient la description "logique" de chaque <b>SID/STAR/ILS</b>
+   exprimée sous une forme similaire à des ordres de pilotage.
+   </p>
+<p> On peut également enrichir un fichier de Rejeu avec ces informations
+    en utilisant  <a href="donnees_frame.html#merge_data"><tt>merge_data</tt></a>.
+
+<p><b>Réponse de rejeu:</b></p>
+<p> Exemple avec quelques trajectoires standard de Bordeaux:</p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>SidStarNames ForMe sid=SAU3A ROYAN3A star=CGC4 LMG4 VELIN4 </tt>
+</td></tr></table>
+
+<p> Si aucune sid (ou star) n'est connue, rejeu renvoie 
+    <tt><b>sid=NULL</b></tt>
+    (et/ou <tt><b>star=NULL</b></tt>)
+    </p>
+<hr />
+
+<a name="GetStackNames">
+<h3>GetStackNames</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>GetStackNames MsgName=ForMe</tt>
+</td></tr></table>
+<p> Requête pour connaitre la liste des noms de <b>Stacks</b>
+   connus de rejeu. Ces hippodromes sont normalement
+   communiqués à la création du fichier de rejeu grâce à l'option 
+   <tt><b>-d[ata] file.txt</b></tt> sur la ligne de commande de 
+   <tt><b>dump_ast2rej</b></tt>. 
+	Le fichier
+   indiqué contient la description "logique" de chaque <b>Stack</b>.
+   </p>
+<p> On peut également enrichir un fichier de Rejeu avec ces informations
+    en utilisant  <a href="donnees_frame.html#merge_data"><tt>merge_data</tt></a>.
+
+<p><b>Réponse de rejeu:</b></p>
+<p> Exemple avec quelques Stacks de Toulouse:</p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>StackNames ForMe List=NETRO SURAS SULIT ADIMO</tt>
+</td></tr></table>
+
+<p> Si aucun Stack n'est connu, rejeu renvoie 
+    <tt><b>List=NULL</b></tt>
+    </p>
+
+
+<hr />
+
+<a name="GetStandardTrajectory">
+<h3>GetStandardTrajectory</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>GetStandardTrajectory MsgName=ForMe Type=SID Name=SAU3A</tt><br />
+<tt>GetStandardTrajectory MsgName=ForMe Type=STAR Name=CGC4</tt>
+</td></tr></table>
+<p> Requête pour connaitre la liste des points générés
+   par rejeu qui correspondent à la projection au sol d'une trajectoire 
+   <b>SID/STAR</b> connue.
+   (Voir <a href="#GetSidStarNames"><tt>GetSidStarNames</tt></a>).
+
+<p><b>Réponse de rejeu:</b></p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>StandardTrajectory ForMe Slice=220.55 -77.36 220.11 -77.45 219.67 -77.53 ... </tt><br />
+<tt>StandardTrajectory ForMe Slice=...... ..... ...... ..... ...... ..... .. ... </tt><br />
+<tt>StandardTrajectory ForMe Slice=......</tt> <= éventuellement moins d'infos<tt><br />
+<tt>StandardTrajectory ForMe EndSlice</tt>
+</td></tr></table>
+
+<p>Rejeu fournit la liste des doublets {X, Y} qui constituent la 
+   projection au sol de la trajectoire standard telle que rejeu
+   l'a calculée.
+   </p>
+<ul> 
+    <li>X, Y (en NM, valeurs décimales autorisées)</li>
+</ul>
+<p>
+   Afin de ne pas envoyer de message trop long sur le bus,
+   rejeu en fait des tranches successives: 40 doublets par messages,
+   sauf le dernier message qui peut en comprendre moins. 
+   La réponse se termine avec l'envoi du message 
+   </p>
+<table class="ex"  width="100%" border="1"><tr><td>
+   <tt>StandardTrajectory ForMe EndSlice</tt>
+</td></tr></table>
+
+<p> Si la trajectoire demandée n'est pas connue de rejeu (soit 
+   parce que le nom est incorrect, ou que le type sid/star ne correspond pas),
+   rejeu répond une liste vide:</p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>StandardTrajectory ForMe Slice=</tt><br />
+<tt>StandardTrajectory EndSlice</tt>
+</td></tr></table>
+
+<hr />
+
+<a name="GetStackInfos">
+<h3>GetStackInfos</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>GetStackInfos MsgName=ForMe Name=STACK_ADIMO</tt>
+</td></tr></table>
+<p> Requête pour connaitre les caractéristiques d'un <b>Stack</b>
+   connu de rejeu. 
+   </p>
+<p><b>Réponse de rejeu:</b></p>
+
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>StackInfos ForMe STACK_ADIMO,ADIMO,294,LEFT,UPPER_DIST,TOU,34.5</tt>
+</td></tr></table>
+
+<p> Les informations concernant le stack sont fournies concaténées, séparées par 
+   des ",". On trouve dans l'ordre: 
+	</p>
+<ul>
+	<li> le nom, </li>
+	<li> le point de référence (balise), </li>
+   <li> l'axe de référence, </li>
+	<li> le sens de virage (<tt><b>LEFT</b></tt> ou <tt><b>RIGHT</b></tt>, </li>
+</ul>
+<p>
+	puis un nombre de champs variable
+   qui dépend de la façon dont est décrit le stack (condition pour la branche retour).
+   On peut trouver:
+	</p> 
+<ul>
+	<li> <tt><b>TIME</b>,temps d'éloignement</tt> ou </li>
+	<li> <tt><b>UPPER_DIST</b>,balise,distance </tt> ou  </li>
+   <li> <tt><b>LOWER_DIST</b>,balise,distance</tt>. </li>
+</ul>
+<p>
+   Voir fin de fichier de rejeu à ce sujet.
+	</p>
+<p> Si aucun Stack avec ce nom n'est connu, rejeu renvoie 
+    <tt><b>NULL</b></tt>
+    </p>
+
+
+<hr />
+
+
+<a name="GetGroupsOfSectors">
+<h3>GetGroupsOfSectors</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>GetGroupsOfSectors MsgName=ForMe</tt>
+</td></tr></table>
+
+<p> Demande à rejeu quelle est la liste de groupements secteurs en vigueur
+   actuellement.
+   </p>
+<p> Rejeu répond:
+   </p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>GroupsOfSectors ForMe List=AA BB CC , DD EE , FF GG HH II</tt><br />
+</td></tr></table>
+
+<p> Ce qui signifie qu'il y a actuellement 3 regroupements:
+    </p>
+<ul>
+   <li><b>AA BB CC</b></li> 
+   <li><b>DD EE</b></li> 
+   <li><b>FF GG HH II</b></li> 
+</ul>
+
+<hr />
+
+<a name="GetTaggedStrips">
+<h3>GetTaggedStrips</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>GetTaggedStrips MsgName=ForMe</tt>
+</td></tr></table>
+
+<p> Demande à rejeu quelle est la liste des strips taggés (grâce à
+   l'ordre <a href="#TagStrip"><b>TagStrip</b></a>).
+   </p>
+<p> Rejeu répond:
+   </p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>TaggedStrips ForMe List=2510 TN 3415 OD</tt><br />
+</td></tr></table>
+
+<p> ce qui signifie qu'il y a actuellement 2 strips taggés:
+    </p>
+<ul>
+   <li>Le vol <b>2510</b> pour le secteur <b>TN</b></li> 
+   <li>Le vol <b>3415</b> pour le secteur <b>OD</b></li> 
+</ul>
+
+<hr />
+
+<a name="GetPerfo">
+<h3>GetPerfo</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>GetPerfo MsgName=ForMe Flight=234 FL=260</tt>
+</td></tr></table>
+
+<p> Demande à rejeu quelles sont les performances de l'appareil correspondant
+    au vol numéro <b>234</b> au niveau de vol <b>260</b>.
+   </p>
+<p> Au lieu de fournir une valeur numérique pour le niveau, la requête 
+    peut contenir le mot-clef <b>Current_FL</b> dans le champ <b>FL=</b>.
+    Dans ce cas, rejeu donne les performances connues de cet avion au
+    niveau où il se trouve à l'heure actuelle de simulation. (rejeu cherche
+    un plot pour ce vol dans les 30 secondes suivant l'heure de simulation
+    où l'ordre est reçu et prend en compte son niveau de vol)
+<p> Rejeu répond:
+   </p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>Perfo ForMe AircraftType=B767 FL=260 Nominal_TAS=452 Climb_TAS=425 Low_ROC=1160 Nom_ROC=1630 High_ROC=2520 Descent_TAS=425 Nom_ROD=2140 Time_To_FL0=00:15:13 Dist_To_FL0=80.70
+</tt><br />
+</td></tr></table>
+
+<p> Les informations fournies correspondent à ce qui est connu dans le fichier
+    de performances fourni sur la ligne de commande à rejeu avec l'option
+    <b>-p[erfo] file </b> (ou à une interpolation linéaire faite à partir 
+    de ces données), pour le niveau souhaité. Si aucun fichier de perfo n'est fourni,
+    Rejeu utilise ce qu'il connait par défaut (environ 60 types d'avions avec leurs equivalents,
+    ce qui correspond à environ 160 types d'appareils).
+</p>
+<p> Nature des champs de la réponse:
+</p>
+<ul>
+   <li> <b>AircraftType:</b> Le type avion </li>
+   <li> <b>FL:</b> Rappel du niveau où les performances sont demandées </li>
+   <li> <b>Nominal_TAS:</b> La vitesse nominale de croisiere (Kts) </li>
+   <li> <b>Climb_TAS:</b> La vitesse nominale de montée (Kts) </li>
+   <li> <b>Low_ROC:</b> Faible taux de montée (ft/min)</li>
+   <li> <b>Nom_ROC:</b> Taux de montée nominal à ce niveau (ft/min)</li>
+   <li> <b>High_ROC:</b> Fort taux de montée (ft/min)</li>
+   <li> <b>Descent_TAS:</b> La vitesse nominale de descente (Kts) </li>
+   <li> <b>Nom_ROD:</b> Taux de descente nominal à ce niveau (ft/min)</li>
+   <li> <b>Time_To_FL0:</b> Temps necessaire pour atteindre le niveau 0 </li>
+   <li> <b>Dist_To_FL0:</b> Distance necessaire pour atteindre le niveau 0 (NM)</li>
+
+
+</ul>
+<hr />
+
+<a name="GetAllBeacons">
+<h3>GetAllBeacons</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>GetAllBeacons MsgName=X123 Type=Pilot</tt>
+</td></tr></table>
+
+<p> Demande à rejeu qu'il fournisse les coordonnées de toutes les balises 
+    qu'il connait. 
+    </p>
+    Le champ <b><tt>Type</tt></b> peut prendre les valeurs:
+<ul>
+   <li><b><tt>Pilot :</tt></b>
+       Seules les balises connues des pilotes seront fournies. Il s'agit des
+       balises dont les noms ne comportent pas de chiffres, qui sont à
+       2, 3 ou 5 caratères ainsi que les indicatifs d'emplacement
+       d'aérodrome français (4 caratères qui commencent par LF..)
+       </li>
+   <li><b><tt>All  :</tt></b>
+       Rejeu donne les coordonnées de toutes les balises qu'il connait.
+       On trouve ainsi des noms comme 28SUD qui sont issues de fichier
+       COURAGE ayant servi à constituer le fichier de trafic rejeu en cours
+       et n'ayant un intérêt que pour des algorithmes relatifs à des 
+       calculs CAUTRA.
+       </li>
+</ul>
+<p><b>Réponse de rejeu:</b></p>
+
+<p>Rejeu donne une réponse par tranches de 50 balises:
+   </p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>AllBeacons X123 Slice=LAULY 147.88 72.38 LEPRA 375.25 -190.13 MARRI ..
+. </tt><br />
+<tt>AllBeacons X123 Slice=...... ..... ...... ..... ...... ..... .. ..
+. </tt><br />
+<tt>AllBeacons X123 Slice=......</tt> <= éventuellement moins d'infos <br />
+
+<tt>AllBeacons X123 EndSlice</tt>
+</td></tr></table>
+
+<p>Rejeu fournit la liste des triplets {Nom, X, Y} demandés. X et Y sont
+   exprimés en NM avec 2 chiffres après la virgule.
+   </p>
+<br />
+
+<hr />
+
+<a name="GetBeaconsInWindow">
+<h3>GetBeaconsInWindow</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>GetBeaconsInWindow MsgName=X123 Type=Pilot XLeft=-10 XRight=50.5 YTop=75 YBottom=20.15</tt>
+</td></tr></table>
+
+<p> Demande à rejeu qu'il fournisse les coordonnées de toutes les balises 
+    qu'il connait dans la fenêtre délimitée par les coordonnées fournies
+    dans XLeft, XRight, YTop et YBottom exprimés en NM CAUTRA (format libre
+    comme dans l'exemple ci-dessus). 
+    </p>
+    Le champ <b><tt>Type</tt></b> peut prendre les mêmes valeurs que pour
+    l'ordre :
+    <a href="#GetAllBeacons"><b>GetAllBeacons</b></a>
+
+<p><b>Réponse de rejeu:</b></p>
+
+<p>Rejeu donne une réponse par tranches de 50 balises:
+   </p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>BeaconsInWindow X123 Slice=EVROM -10.00 67.88 TUR 29.00 26.13 TERNI 33.63 41.13 ..
+. </tt><br />
+<tt>BeaconsInWindow X123 Slice=...... ..... ...... ..... ...... ..... .. ..
+. </tt><br />
+<tt>BeaconsInWindow X123 Slice=....</tt> <= éventuellement moins d'infos <br />
+
+<tt>BeaconsInWindow X123 EndSlice</tt>
+</td></tr></table>
+
+<p>Rejeu fournit la liste des triplets {Nom, X, Y} demandés. X et Y sont
+   exprimés en NM avec 2 chiffres après la virgule.
+   </p>
+<br />
+
+
+<a name="GetBeaconsInfos">
+<h3>GetBeaconsInfos</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>GetBeaconsInfos MsgName=X123 NullCoord=N/A List=LFBO TOU XYZ AFRIC</tt>
+</td></tr></table>
+
+<p> Demande à rejeu qu'il fournisse les coordonnées de toutes les balises 
+    dont les noms sont fournis dans <b>LIST</b>. Lorsque Rejeu ne connait 
+    pas une balise, il rend comme coordonnées ce que l'utilisateur a
+    préconisé dans le champ <b>NullCoord</b> traité comme une chaine 
+    quelconque (des valeurs comme <b>0.0</b> ou <b>UNKNOWN</b> sont
+    ainsi possibles au gré de l'utilisateur).
+
+<p><b>Réponse de rejeu:</b></p>
+
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>BeaconsInfos X123 List=LFBO 58.00 -209.38 TOU 57.13 -198.38 XYZ N/A N/A AFRIC 124.25 -191.63
+</td></tr></table>
+
+<p>Rejeu fournit la liste des triplets {Nom, X, Y} demandés. X et Y sont
+   exprimés en NM avec 2 chiffres après la virgule.
+   </p>
+<br />
+
+
+<hr />
+<!------------------------ Modification donnees generales ------------------>
+<h2>Modification des données générales</h2>
+
+<a name="SetGroupsOfSectors">
+<h3>SetGroupsOfSectors</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>SetGroupsOfSectors List=TA TG BS , UA UV</tt>
+</td></tr></table>
+
+<p> Ce message permet de spécifier une configuration de secteurs à
+    prendre en compte (à l'heure d'émission du message).<br />
+    Dans l'exemple ci-dessus, on indique que les secteurs <b>TA TG BS</b>
+    doivent être regroupés d'une part, ainsi que <b>UA UV</b> d'autre part.
+    Un groupe est un ensemble de secteurs séparés par des blancs. Les groupes 
+    doivent être séparés par " , " (blanc avant et après la virgule).
+    </p>
+<p> La conséquence pour rejeu est de n'emettre dorénavant qu'un seul strip
+    pour le premier secteur d'un groupement traversé par un vol
+    (au lieu d'un strip pour chaque secteur). Ce strip tient compte
+    du regroupement secteurs en indiquant toutes les balises du groupement,
+    plus la première balise du secteur suivant (même logique que pour
+    un secteur simple, en considérant le groupement comme un "grand" secteur).
+    </p>
+<p> Tout nouveau message de ce type a pour effet d'annuler les messages
+    émis à des heures postérieures et de rendre la nouvelle situation
+    valide à partir de l'heure du message.
+    </p>
+<p> Chaque message doit indiquer la totalité de la situation en terme de 
+    regroupements secteurs au moment où il est émis. Ainsi, si un 
+    regroupement antérieur doit être maintenu, ce groupement doit être
+    mentionné de nouveau dans le message.
+    </p>
+<p> Si un groupement comme <b>TA TG</b> est en vigueur, et qu'un vol
+    traverse par exemple <b>TG TA BS ..... </b>, un strip est émis
+    à l'entrée dans <b>TG</b>, puis dans <b>BS</b> (et pas dans <b>TA</b>).
+    Si par contre, il traverse dans l'ordre <b>TA BS TG .....</b> par exemple,
+    rejeu considère qu'il doit emettre un strip pour <b>TA</b>, un pour
+    <b>BS</b> et également un pour <b>TG</b> du fait du passage dans un
+    secteur (<b>BS</b>) extérieur au groupement (<b>TA TG</b>) entre les deux.
+    </p> 
+<p> Rejeu teste la validité de la liste de groupes de secteurs, et
+    ne prend en compte qu'un message correct (sinon message d'erreur
+    dans le terminal qui a servi à lancer rejeu). Ainsi, sont 
+    détectés (et considérés comme illégaux) les groupes de moins de 
+    2 secteurs, les secteurs utilisés dans plusieurs groupes, les messages
+    mal formés (mauvais séparateur, etc). Par contre, rejeu ne teste pas 
+    l'existence réelle d'un secteur dont le nom pourrait être correct,
+    car de nouveaux secteurs peuvent intervenir grâce à
+    <a href="#SetSectorsInfos"><b>SetSectorsInfos</b></a> pour des raisons 
+    d'expérimentations.
+    </p>
+<p> Un message avec une liste vide a pour effet de remettre dans la situation
+    sans groupement de secteurs.
+    </p>
+<p> Noter que Rejeu émet alors les strips comme cela est initialement 
+    indiqué dans le fichier Courage ayant été utilisé pour générer le 
+    fichier de rejeu (et il y avait peut-être des regroupements en cours
+    au moment de l'enregistrement .........)
+    </p>
+<p> Noter aussi que si ces heures d'impression de strip ne conviennent
+    pas, elles peuvent être modifiées à volonté au niveau applicatif
+    grâce à l'ordre 
+    <a href="#SetSectorsInfos"><b>SetSectorsInfos</b></a><br />
+    </p>
+
+<hr />
+
+<a name="SetNewBeacons">
+<h3>SetNewBeacons</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>SetNewBeacons List=LVM 10.0 -45.76 XMFF 23.78 -65.45 .....</tt>
+</td></tr></table>
+
+<p> Cette requête demande à rejeu de prendre en compte des nouvelles
+    balises (ou de nouvelles coordonnées pour des balises existantes)
+    </p>
+<p> <b>LIST</b> doit être constituée de triplets {Nom, X, Y}. <b>NOM</b>
+    peut comporter 5 caractères au maximum et les coordonnées <b>X</b> et
+    <b>Y</b> sont exprimées en NM (format libre)
+    </p>
+<p> Si l'ordre est correctement pris en compte, rejeu emet l'évènement:
+    <a href="#BeaconUpdateEvent"><tt>BeaconUpdateEvent</tt></a>.
+    </p>
+
+<hr />
+
+<a name="SetTrajectoryAsSidStar">
+<h3>SetTrajectoryAsSidStar</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>SetTrajectoryAsSidStar Type=star Name=My_Star Flight=567</tt><br />
+<tt>SetTrajectoryAsSidStar Type=sid Name=My_Sid Flight=234</tt><br />
+</td></tr></table>
+<p> A ECRIRE
+	</p>
+
+<hr />
+
+
+ 
+<!------------------------ Modification donnees vol ------------------>
+<h2>Modification des données d'un vol</h2>
+
+<a name="SetStripTime">
+<h3>SetStripTime</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>SetStripTime Flight=56 Sector=TA Time=07:56</tt>
+</td></tr></table>
+<p>Message émis par une application (probablement de préparation 
+   des données) pour changer l'heure d'impression d'un strip pour
+   un vol donné.<br />
+   L'heure fournie dans <b><tt>Time</tt></b> remplace l'heure d'impression
+   du strip pour ce vol qui était indiqué dans le fichier COURAGE
+   pour le secteur <b><tt>Sector</tt></b>.
+  </p>
+<p><b>Warning!</b> Si le secteur en question a été traversé plusieurs
+   fois par ce vol (rare, mais ça existe...), c'est pour toutes les
+   occurrences que l'heure est changée.
+   Si ce problème se pose, utiliser l'ordre plus général
+   <a href="#SetSectorsInfos"><b>SetSectorsInfos</b></a>
+   </p> 
+<hr />
+
+<a name="SetSectorIn">
+<h3>SetSectorIn</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>SetSectorIn Flight=56 Sector=TA Time=07:56</tt>
+</td></tr></table>
+<p>Message émis par une application (probablement de préparation 
+   des données) pour changer l'heure d'entrée dans un secteur
+   d'un vol donné.<br />
+   L'heure fournie dans <b><tt>Time</tt></b> remplace l'heure qui était
+   connue grâce aux informations COURAGE.
+  </p>
+<p>Cette information n'a aucune incidence sur la piste associée à ce
+   vol dont les plots sont toujours à la même place à la même
+   heure.<br />
+   L'intérêt de cette commande est de décaler finement dans
+   le temps le message (événement) "changement de secteur"
+    émis par rejeu, quand ce message sert à déclencher un 
+   comportement applicatif particulier.(Utilisé dans DUOPHONE)
+   </p>
+<p><b>Warning!</b> Si le secteur en question a été traversé plusieurs
+   fois par ce vol (rare, mais ça existe...), c'est pour toutes les
+   occurrences que l'heure est changée.
+   Si ce problème se pose, utiliser l'ordre plus général
+   <a href="#SetSectorsInfos"><b>SetSectorsInfos</b></a>
+   </p> 
+<hr />
+
+<a name="SetSectorOut">
+<h3>SetSectorOut</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>SetSectorOut Flight=56 Sector=TA Time=07:56</tt>
+</td></tr></table>
+<p>Message émis par une application (probablement de préparation 
+   des données) pour changer l'heure de sortie dans un secteur
+   d'un vol donné.<br />
+   L'heure fournie dans <b><tt>Time</tt></b> remplace l'heure qui était
+   connue grâce aux informations COURAGE.
+  </p>
+<p>Cette information n'a aucune incidence sur la piste associée à ce
+   vol dont les plots sont toujours à la même place à la même
+   heure.<br />
+   L'intérêt de cette commande est de décaler finement dans
+   le temps le message (événement) "changement de secteur"
+    émis par rejeu, quand ce message sert à déclencher un 
+   comportement applicatif particulier.(Utilisé dans DUOPHONE)
+   </p>
+<p><b>Warning!</b> Si le secteur en question a été traversé plusieurs
+   fois par ce vol (rare, mais ça existe...), c'est pour toutes les
+   occurrences que l'heure est changée.
+   Si ce problème se pose, utiliser l'ordre plus général
+   <a href="#SetSectorsInfos"><b>SetSectorsInfos</b></a>
+   </p> 
+<hr />
+
+<a name="SetSectorsInfos">
+<h3>SetSectorsInfos</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>SetSectorsInfos Flight=56 List=TA 08:10 08:21 07:59 190 TG 08:21 08:26 08:10 190 ....</tt>
+</td></tr></table>
+<p>Message émis par une application (probablement de préparation 
+   des données) pour changer (fixer) tous les paramètres
+   d'un vol donné en ce qui concerne les secteurs traversés.
+  </p>
+<P>Les informations fournies sont des quintuplets {secteur, 
+   heure entrée, heure sortie, heure impression strip, Tfl}
+   </p>
+<p>Des tests d'intégrité sont effectués sur les valeurs fournies: ainsi,
+   il faut avoir:
+   </p>
+   <ul>
+     <li> (heure entrée <= heure sortie) et</li>
+     <li> (heure impression strip <= heure entrée) et</li>
+     <li> (heure entrée = heure sortie secteur précédent) 
+          sauf évidemment pour le premier secteur.</li>
+   </ul>
+
+<p>   Si l'une de ces conditions n'est pas respectée, l'ordre est refusé et
+   un message d'erreur est envoyé sur stdout.
+   </p>
+   
+<p>En général, cette liste d'informations pour ce vol a été
+   récupérée grâce à la requête 
+   <a href="#GetSectorsInfos"><tt>GetSectorsInfos</tt></a> et on modifie
+    certains éléments.
+   </p> 
+<p>Ces informations n'ont aucune incidence sur la piste associée à ce
+   vol dont les plots sont toujours à la même place à la même
+   heure.<br />
+   L'intérêt de cette commande est de décaler finement dans
+   le temps les informations qui génèrent des messages d'entrée/sortie
+   de secteur ou d'impression de strip émis par rejeu afin d'obtenir un
+   comportement applicatif particulier.(Utilisé dans DUOPHONE)
+   </p>
+<hr />
+
+<a name="SetCallSign">
+<h3>SetCallSign</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>SetCallSign Flight=5678 CallSign=AF456KQ</tt>
+</td></tr></table>
+<p>Message émis par une application (probablement de préparation 
+   des données) pour changer l'indicatif d'un vol.
+  </p>
+<p>Notamment, lorsqu'un vol a été dupliqué grâce à
+   <a href="#GetDuplicate"><tt>GetDuplicate</tt></a>, il est souvent
+   souhaitable d'en changer au moins l'indicatif.
+   </p> 
+<p>A la suite d'un ordre <tt>SetCallSign</tt>, un événement 
+   <a href="#PlnEvent"><tt>PlnEvent</tt></a> est émis pour ce vol.
+   </p>
+<hr />
+
+
+<a name="SetMiniPln">
+<h3>SetMiniPln</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>SetMiniPln Flight=8 Ssr=4732 Dep=LFBO Arr=LFPG</tt>
+</td></tr></table>
+<p>Message émis par une application (probablement de préparation 
+   des données) pour changer les éléments du "mini" plan de vol
+   qui peuvent être l'indicatif, le type avion, le code transpondeur,
+   la vitesse de croisière, le niveau de croisière, les terrains
+   de départ et d'arrivée. 
+  </p>
+<p>Notamment, lorsqu'un vol a été dupliqué grâce à
+   <a href="#GetDuplicate"><tt>GetDuplicate</tt></a>, il est souvent
+   souhaitable d'en changer au moins l'indicatif.
+   </p> 
+<p>A la suite d'un ordre <tt>SetMiniPln</tt>, un événement 
+   <a href="#PlnEvent"><tt>PlnEvent</tt></a> est émis pour ce vol.
+   </p>
+Les noms des champs (facultatifs) qui peuvent être présents dans cette
+commande et dans n'importe quel ordre sont: 
+<ul>
+   <li><b><tt>CallSign=</tt></b>
+       Nouvel indicatif de l'appareil.
+       </li>
+   <li><b><tt>AircraftType=</tt></b>
+       Type de l'appareil (exemple: A320)
+       </li>
+   <li><b><tt>Ssr=</tt></b>
+       code transpondeur à affecter à ce vol.       
+       </li>
+   <li><b><tt>Speed=</tt></b>
+       Vitesse de croisière du plan de vol.(Ne modifie pas la vitesse
+       réellement enregistrée sur les pistes radar)
+       </li>
+   <li><b><tt>Rfl=</tt></b>
+       Niveau de croisière demandé dans le plan de vol. (Ne modifie
+       pas le niveau de croisère observé sur les plots de ce vol:
+       pour le faire, utiliser la commande 
+       <a href="#TranslateFl"><tt>TranslateFl</tt></a>)
+   <li><b><tt>Dep=</tt></b>
+       Change le terrain de départ
+       </li>
+   <li><b><tt>Arr=</tt></b>
+       Change le terrain d'arrivée
+       </li>
+   <li><b><tt>Rvsm=</tt></b>
+       Change l'équipement Rvsm (Valeurs possibles: 
+       <b><tt>TRUE</tt></b> ou <b><tt>FALSE</tt></b>)
+       </li>
+   <li><b><tt>Tcas=</tt></b>
+       Change l'équipement Tcas (Valeurs possibles: 
+       <b><tt>OFF</tt></b> ou <b><tt>TA_ONLY</tt></b>  
+       ou <b><tt>TA_RA</tt></b>)
+       </li>
+   <li><b><tt>Adsb=</tt></b>
+       Change l'équipement Adsb (Valeurs possibles: 
+       <b><tt>NO</tt></b> ou <b><tt>YES</tt></b>  
+       ou <b><tt>OUT_ONLY</tt></b>)
+       </li>
+</ul>
+Exemples:
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>SetMiniPln Flight=65 CallSign=AF123KQ Ssr=4756 Dep=LFPO Arr=LFBD <br />
+    SetMiniPln Flight=65 Dep=LFPO Arr=LFBD Ssr=3126 Rfl=330<br />
+    SetMiniPln Flight=65 AircraftType=A319 CallSign=AF345TY Rvsm=FALSE </tt>
+</td></tr></table>
+
+
+<hr />
+
+<a name="SetPln">
+<h3>SetPln</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>SetPln Flight=8 Time=10:15 List=AFRIC FJR RHONE MTG</tt>
+</td></tr></table>
+<p>Message émis par une application (probablement de préparation 
+   des données) pour changer les éléments du plan de vol (liste des
+   balises)
+  </p>
+<p>Les balises dont l'heure de passage est postérieure à l'heure 
+   spécifiée avec <b>Time</b> sont remplacées par la liste fournie dans le
+   champ <b>List</b>.
+   </p>
+<p> Le paramètre <b><tt>Time</tt></b> peut valoir:
+<ul>
+  <li><b><tt>now</tt></b>: Liste des nouvelles balises du plan de vol 
+      à partir de l'heure de simulation actuelle.</li>
+  <li><b><tt>HH:MM</tt></b>: Liste des nouvelles balises du plan de vol
+      à partir de l'heure spécifiée.</li>
+  <li><b><tt>origin</tt></b>: La liste des nouvelles balises du plan de vol remplace la totalité du PLN connu
+      </li>
+
+</ul>
+<p>
+<p>La trajectoire de l'avion (les positions radar) est modifiée comme
+   si une directe sur la première balise
+   de la liste fournie était demandée (éxécution d'un ordre de pilotage
+   <a href="#AircraftDirect"><tt>AircraftDirect</tt></a>) à l'heure 
+   spécifiée.
+   </p> 
+<p>A la suite d'un ordre <tt>SetPln</tt>, un événement 
+   <a href="#PlnEvent"><tt>PlnEvent</tt></a> est émis pour ce vol, ainsi
+   qu'un événement 
+   <a href="#TrajectoryUpdateEvent"><tt>TrajectoryUpdateEvent</tt></a>.
+   </p>
+<p>Exemple </p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>GetPln MsgName=MyPln Flight=6637 From=origin </tt>
+</td></tr></table>
+
+<p>
+Rejeu répond:
+</p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>Pln MyPln Pln MyPln Flight=6637 Time=10:00:00 CallSign=USA49 AircraftType=B762 Ssr=641 Speed=460 Rfl=340 Dep=LFPG Arr=KPIT Rvsm=TRUE Tcas=TA_ONLY Adsb=NO List=LPG V 09:53 1 EDG V 09:54 23 KELUD V 10:00 150 EVX V 10:06 258 LISEU V 10:13 250 RUBIX V 10:14 280 SENLO V 10:18 280 JSY V 10:23 280 MUREL V 10:31 280 GANTO V 10:38 280 PEMAK V 10:45 280 PHILI V 10:49 280 RATKA V 10:54 280
+</tt>
+</td></tr></table>
+
+<p>
+Si maintenant on demande:
+</p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>SetPln Flight=6637 Time=10:15 List=MTL FJR</tt>
+</td></tr></table>
+
+<p>
+On reçoit les informations suivantes dans "PlnEvent":
+</p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>PlnEvent Flight=6637 Time=10:00:00 CallSign=USA49 AircraftType=B762 Ssr=641 Speed=460 Rfl=340 Dep=LFPG Arr=KPIT Rvsm=TRUE Tcas=TA_ONLY Adsb=NO List=EDG V 09:54 23 KELUD V 10:00 150 EVX V 10:06 258 LISEU V 10:13 250 RUBIX V 10:14 280 MTL V 10:56 299 FJR A 10:56 299
+</tt>
+</td></tr></table>
+
+
+<hr />
+
+<a name="SetEstimatedPln">
+<h3>SetEstimatedPln</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>SetEstimatedPln Flight=8 Time=10:15 List=AFRIC 10:00 FJR 10:09 RHONE 10:13 MTG 10:17</tt>
+</td></tr></table>
+<p>
+Cet ordre fonctionne comme <a href="#SetPln"><b>SetPln</b></a> ci-dessus, avec la différence fondamentale
+que seul le plan de vol est modifié et en aucun cas la trajectoire effectuée par l'avion n'est altérée. 
+(il n'y a pas de directe déclenchée sur la première balise mise à jour).
+Par ailleurs, cet ordre sert à fournir à Rejeu des heures estimées de passage des balises,
+dont les calculs ont été faits par l'utilisateur (avec donc un certain degré d'incertitude), 
+par opposition aux heures calculées (en fait observées) par rejeu qui elles, sont exactes.
+	</p>
+<p>
+	Les conséquences de l'utilisation de cet ordre sont visibles dans les messages émis par Rejeu,
+où il est question d'heures de passage balise: <a href="#PlnEvent"><tt>PlnEvent</tt></a> ou bien sûr
+<a href="#StripEvent"><tt>StripEvent</tt></a>. Dans tous les cas, Rejeu fournira des heures estimées
+lorsqu'il les connait et ne donnera des heures observées quand aucune estimation ne lui a été fournie.
+Le message <a href="#BeaconEvent"><tt>BeaconEvent</tt></a> n'est par contre pas concerné et est
+toujours émis à l'heure réelle de passage balise.
+	</p>
+<p> Noter que toutes les balises d'un plan de vol pour un avion n'auront donc pas nécessairement le même statut,
+certaines ayant pu recevoir une estimation, d'autres non.
+	</p>
+<p> Lorsqu'on veut que Rejeu continue de fournir (ou fournisse de nouveau) l'heure réelle de passage
+ dans ses messages, il suffit de fixer "--" comme heure estimée pour la balise concernée dans 
+l'ordre <b><tt>SetEstimatedPln</tt></b>. on peut aussi utiliser l'ordre <a href="#SetBeaconEstimation"><tt>SetBeaconEstimation</tt></a>
+si on souhaite modifier l'heure d'une seule balise existant dans le plan de vol.
+	</p>
+
+<hr />
+
+<a name="SetBeaconEstimation">
+<h3>SetBeaconEstimation</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>SetBeaconEstimation Flight=8 Beacon=AFRIC Time=10:15 Occ=1</tt>
+</td></tr></table>
+<p>
+Cet ordre fournit à Rejeu une heure estimée de passage sur une balise. C'est cette information
+que Rejeu restituera dans les messages <a href="#PlnEvent"><tt>PlnEvent</tt></a> ou 
+<a href="#StripEvent"><tt>StripEvent</tt></a> au lieu de l'heure exacte observée sur la trajectoire
+ (qui continue par contre d'être utilisée dans <a href="#BeaconEvent"><tt>BeaconEvent</tt></a>).
+	</p>
+<p>
+	Comme il est possible qu'une même balise figure plusieurs fois dans un plan de vol, le champ 
+<b><tt>Occ</tt></b> permet de désigner le numéro d'occurrence de la balise qui intéresse l'utilisateur 
+dans le Pln. En général, <b><tt>Occ</tt></b> sera indiqué =1, mais pour des Pln circulaires, il
+est possible de fixer l'heure de passage sur une balise pour la 2ème fois (ou nième fois).
+	</p>
+<p>
+	Pour revenir à une situation où on ne connait pas l'heure estimée, il suffit de fournir "--"
+	comme heure.
+	</p>
+
+<hr />
+<a name="SetTfl">
+<h3>SetTfl</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>SetTfl Flight=654 Sector=TA Tfl=190</tt>
+</td></tr></table>
+    <p>Permet de fixer le niveau de transfert de manière atomique, au
+     lieu d'utiliser <tt>SetSectorsInfos</tt> qui couvre tous les secteurs
+     d'un vol.  </p>
+<p><b>Warning!</b> Si le secteur en question a été traversé plusieurs
+   fois par ce vol (rare, mais ça existe...), c'est pour toutes les
+   occurrences que le Tfl est changé.
+   Si ce problème se pose, utiliser l'ordre plus général
+   <a href="#SetSectorsInfos"><b>SetSectorsInfos</b></a>
+   </p> 
+<hr />
+
+<a name="SetBeforeTrack">
+<h3>SetBeforeTrack</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>SetBeforeTrack Flight=234 List=12.56 45.98 205 190 13.79 48.76 205 190</tt>
+</td></tr></table>
+<p>Ordre de création de segments de trajectoire à prendre en 
+   compte à partir de l'heure actuelle.<br />
+   Chaque point est un quadruplet {x,y,vitesse,niveau} exprimé en 
+   NM, Kts et FL. 
+  </p>
+<p>Ces morceaux de trajectoire précèderont la trajectoire
+   normale de ce vol avant l'heure actuelle.
+   </p>
+<p>A la suite d'un ordre <tt>SetBeforeTrack</tt>, un événement
+   <a href="#TrajectoryUpdateEvent"><tt>TrajectoryUpdateEvent</tt></a>
+   est émis pour ce vol.
+   </p>
+<p><b>Warning! </b> N'est pas implémenté complètement: la vitesse
+   n'est pas traitée (la vitesse courante est maintenue)
+   </p>
+<hr />
+
+<a name="SetAfterTrack">
+<h3>SetAfterTrack</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>SetAfterTrack Flight=234 List=12.56 45.98 IAS,205 190 13.79 48.76 210 190</tt>
+</td></tr></table>
+<p>Ordre de création de segments de trajectoire à prendre en 
+   compte à partir de l'heure actuelle.<br />
+   Chaque point est un quadruplet <b><tt>{x,y,vitesse,niveau}</tt></b> exprimé en
+   NM, Kts et FL.
+  </p>
+<p>
+   La nouvelle vitesse demandée est fournie grâce à:
+   <b><tt>Type,Value</tt></b>. (le séparateur est une virgule)</br>
+   Le champ <b><tt>Type</tt></b> indique de
+   quelle vitesse il s'agit et peut
+   prendre les valeurs:
+<ul>
+   <li><b><tt>IAS :</tt></b>
+       La valeur fournie est une vitesse indiquée 
+       (en Kts sous forme d'un entier).
+       </li>
+   <li><b><tt>GS  :</tt></b>
+       Il s'agit d'une vitesse "sol" (Ground Speed), telle qu'elle
+       apparaît sur une image radar (exprimée en Kts sous forme d'un entier).
+       </li>
+   <li><b><tt>MACH :</tt></b>
+       Le champ <b><tt>Value</tt></b> exprime le nombre de Mach
+       (exemple: 0.82)
+       </li>
+   <li><b><tt>PERFO :</tt></b>
+       Le champ <b><tt>Value</tt></b> exprime le coefficient correcteur
+       (exemple: 0.96 => correspond à -4% des perfos nominales. 
+       Voir l'ordre <a href="#AircraftSpeed"><tt>AircraftSpeed</tt></a>).
+       </li>
+</ul>
+<p> Si le séparateur (",") est absent, la valeur de vitesse fournie seule est considérée comme une 
+    vitesse "sol" (<b><tt>GS</tt></b>)
+
+	</p>
+<p>Ces morceaux de trajectoire suivront la trajectoire
+   normale de ce vol après l'heure actuelle.
+   </p>
+<p>A la suite d'un ordre <tt>SetAfterTrack</tt>, un événement
+   <a href="#TrajectoryUpdateEvent"><tt>TrajectoryUpdateEvent</tt></a>
+   est émis pour ce vol.
+   </p>
+<p> Noter que si les perfos sont connues pour cet avion, les vitesses 
+    demandées seront corrigées pour les respecter fonction du profil 
+    et du niveau.....
+	</p>   
+<hr />
+
+<a name="TranslateTime">
+<h3>TranslateTime</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>TranslateTime Flight=582 Shift=03:46:54</tt>
+</td></tr></table>
+<p>Ce message émis probablement par une application de préparation de 
+   données de simulation, permet de décaler dans le temps la totalité 
+   d'un vol connu de rejeu. Toutes les heures (plot, entrée/sortie de 
+   secteur, impression de strip, passage balises) sont également
+   prises en compte.
+  </p>
+<p>Le décalage est effectué (positivement ou négativement) de la 
+   valeur fournie avec <b><tt>Shift</tt></b>. Le codage pour le cas
+   négatif se fait en ajoutant tout simplement '-' devant les heures.
+   Exemple : <b><tt>Shift=-02:30:45</tt></b> signifie que le vol est 
+   avancé de 2 heures 30 minutes et 45 secondes.
+   </p>
+<p>Les débordements avant 0H TU ou apres 24H TU ne sont pas correctement 
+   traités.</p>
+<p>A la suite d'un ordre <tt>TranslateTime</tt>, un événement 
+   <a href="#PlnEvent"><tt>PlnEvent</tt></a> et un événement
+   <a href="#TrajectoryUpdateEvent"><tt>TrajectoryUpdateEvent</tt></a>
+   sont émis pour ce vol.
+   </p>
+<hr />
+
+<a name="TranslateFl">
+<h3>TranslateFl</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>TranslateFl Flight=582 Delta=-20</tt>
+</td></tr></table>
+<p>Ce message émis probablement par une application de préparation de 
+   données de simulation, permet de décaler en niveau la totalité 
+   d'un vol connu de rejeu. Tous les niveaux (plot,  
+    passage balises, etc) sont également translatés.
+  </p>
+<p>Le décalage est effectué (positivement ou négativement) de la 
+   valeur fournie avec <b><tt>Delta</tt></b>.
+   </p>
+<p>Les débordements (FL final trop négatif, ou supérieur au
+   niveau de croisière maximum possible pour cet appareil ne sont
+   pas traités). 
+   </p>
+<p>A la suite d'un ordre <tt>TranslateFl</tt>, un événement 
+   <a href="#PlnEvent"><tt>PlnEvent</tt></a> et un événement
+   <a href="#TrajectoryUpdateEvent"><tt>TrajectoryUpdateEvent</tt></a>
+   sont émis pour ce vol.
+   </p>
+<hr />
+
+<a name="TranslateXY">
+<h3>TranslateXY</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>TranslateXY Flight=582 ShiftX=18.2 ShiftY=-12.5</tt>
+</td></tr></table>
+<p>Ce message émis probablement par une application de préparation de 
+   données de simulation, permet de décaler géographiquement toute
+   la trajectoire d'un vol connu de rejeu.
+   Tous les plots sont translatés en X et Y des valeurs fournies dans
+   <b><tt>ShiftX</tt></b> et <b><tt>ShiftY</tt></b> exprimées en NM
+   (positifs ou négatifs). Toutes les caractéristiques des plots sont
+   conservées (vitesse, niveau, taux de montée/descente, virages).
+   </p>
+<p>
+   Les passages balises sont remis à jour. 
+   </p>
+<p>
+   Les éventuels messages "utilisateurs" connus (voir 
+   <a href="#SetUserEventList"><tt>SetUserEventList</tt></a>) sont
+   conservés.
+   Par contre, les éventuels messages STCA et MSAW sont neutralisés.
+  </p>
+<p>A la suite d'un ordre <b><tt>TranslateXY</tt></b>, un événement 
+   <a href="#TrajectoryUpdateEvent"><tt>TrajectoryUpdateEvent</tt></a>
+   est émis pour ce vol.
+   </p>
+<p>Bien noter que seule la trajectoire radar du vol est modifiée et pas
+   le plan de vol.
+   </p>
+<p>Cet ordre doit s'utiliser dans des conditions qui s'y prêtent, car
+   s'il est appliqué par exemple à un vol qui décolle ou se pose dans 
+   le secteur, sa nouvelle trajectoire montrera qu'il décolle ou atterrit
+   en rase campagne .....
+   </p> 
+<hr />
+
+<h2>Ordres de pilotage</h2>
+
+Voir les limitations et précisions dans la documentation de 
+présentation de rejeu
+
+<a name="AircraftDirect">
+<h3>AircraftDirect</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>AircraftDirect Flight=678 Beacon=TOU</tt>
+</td></tr></table>
+<p> ou </p>
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>AircraftDirect Flight=678 Beacon=RESUME_PLN</tt>
+</td></tr></table>
+
+
+<p>Changement de cap à partir de l'heure actuelle pour faire une directe
+   sur la balise mentionnée par <b><tt>Beacon</tt></b>. Le profil
+   de montée/descente est maintenu conformément à la
+   piste actuelle.
+  </p>
+   <p> Si la balise est dans le plan de vol (restant à partir de l'heure 
+   de l'ordre) l'avion se dirige sur la balise et poursuit par une 
+   navigation conforme à ce qui est indiqué dans ce qui
+   reste du plan de vol (en ne considérant que les balises ayant un
+   sens du point de vue pilote: élimination de points CAUTRA tels
+   que 28SUD ou XTLB par exemple....).
+  </p>
+<p>Si la balise n'est pas dans le plan de vol et qu'aucun ordre de 
+   pilotage n'est donné par la suite, l'avion continuera à évoluer 
+   au cap final, même lorsque la balise sera franchie.
+   </p>
+<p>Si le vol devait s'arrêter peu de temps après (avant que l'ordre 
+   de pilotage ne soit émis), rejeu construit la nouvelle trajectoire 
+   pour au moins 15 minutes.
+   </p>
+<p>Les nouvelles heures de passage balise (vertical ou travers) sont
+   recalculées. Par contre, il n'y a pas modification des heures
+   entrée/sortie des secteurs traversés, ni d'ailleurs de la
+   liste de ces secteurs qui peut être différente suite à
+   ce changement de route. Une remise à jour à ce niveau
+   doit être faite si necessaire, pour l'instant, au niveau 
+   applicatif grâce à un message 
+   <a href="#SetSectorsInfos"><tt>SetSectorsInfos</tt></a> par exemple.
+   </p>
+<p>
+   Il n'y a pas de prise en compte réellement de perfo avion, mais 
+   la mise en virage, sortie de virage (changement de configuration) et 
+   rayon de virage sont calculés avec une méthode simple qui ne 
+   dépend que de la vitesse actuelle, et donnent un résultat 
+   assez réaliste.
+   </p>
+<p>
+	Si au lieu d'indiquer une balise dans le champ <b><tt>Beacon</tt></b>,
+   la valeur <b><tt>RESUME_PLN</tt></b> est fournie, Rejeu
+	cherche quelle est la prochaine balise dans le PLN et effectue une directe dessus.
+	Si l'avion est trop proche (moins d'une minute de vol), c'est la balise d'après
+   qui est visée.
+	</p>
+<p>A la suite d'un ordre <tt>AircraftDirect</tt>, un événement 
+   <a href="#PlnEvent"><tt>PlnEvent</tt></a> et un événement
+   <a href="#TrajectoryUpdateEvent"><tt>TrajectoryUpdateEvent</tt></a>
+   sont émis pour ce vol.
+   </p>
+<p> Comme pour tous les ordres de pilotage, un 
+	<a href="#ReportEvent"><tt>ReportEvent</tt></a> est emis sur le bus.
+	</p>
+<hr />
+
+<a name="AircraftHeading">
+<h3>AircraftHeading</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>AircraftHeading Flight=77 To=180</tt><br />
+<tt>AircraftHeading Flight=77 To=maintain</tt><br />
+<tt>AircraftHeading Flight=77 To=90 By=Left</tt><br />
+<tt>AircraftHeading Flight=77 To=90 By=Left Rate=2.0</tt>
+</td></tr></table>
+<p>Changement de cap à partir de l'heure actuelle pour rejoindre
+   le cap donné avec <b><tt>To</tt></b>, ou demande de maintien du
+   cap actuel.
+  </p>
+<p>
+	Le champ <b><tt>By</tt></b> est facultatif et permet de 
+   forcer le sens de virage. Les valeurs possibles sont:
+	</p>
+
+<ul>
+   <li><b><tt>Left :</tt></b>
+       le virage aura lieu par la gauche, quel que soit le cap visé.
+       </li>
+   <li><b><tt>Right :</tt></b>
+       le virage aura lieu par la droite quel que soit le cap visé.
+       </li>
+   <li><b><tt>Shortest :</tt></b>
+       la prise de cap s'effectue par le côté le plus "normal".
+       </li>
+</ul>
+<p>
+	Le champ <b><tt>Rate</tt></b> est facultatif et permet de 
+   virer avec un taux non standard. Au taux standard, le virage s'effectue à 3 degrés/sec.
+	Lorsqu'une valeur est spécifiée, le virage s'effectue à 3*Rate degrés/sec
+	</p>
+<p>
+	Si les 2 champs <b><tt>By</tt></b> et <b><tt>Rate</tt></b> sont présents, ils doivent être dans cet ordre.
+	</p>
+
+<p> Mêmes remarques complémentaires que pour l'ordre
+   <a href="#AircraftDirect"><tt>AircraftDirect</tt></a>, sauf
+   qu'il n'y a pas d'événement <tt>PlnEvent</tt> émis.
+   </p>
+<hr />
+
+<a name="AircraftTurn">
+<h3>AircraftTurn</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>AircraftTurn Flight=77 Angle=-15</tt>
+</td></tr></table>
+<p>Changement de cap à partir de l'heure actuelle pour effectuer
+   un virage du nombre de degrés demandés grâce à 
+   <b><tt>Angle</tt></b>.<br />
+   Si positif, virage à droite, négatif, virage à gauche.
+  </p>
+<p> Mêmes remarques complémentaires que pour l'ordre
+   <a href="#AircraftDirect"><tt>AircraftDirect</tt></a>, sauf 
+   qu'il n'y a pas d'événement <tt>PlnEvent</tt> émis.
+   </p>
+<hr />
+
+<a name="AircraftCircle">
+<h3>AircraftCircle</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>AircraftCircle Flight=100 Beacon=LMG By=Left Nb=1 Rate=2.0</tt>
+</td></tr></table>
+<p> L'avion effectue un (ou plusieurs) tour(s) de retardement (360°) suivant la valeur de <b><tt>Nb</tt></b>. 
+  </p>
+
+<p>	Le champ <b><tt>Beacon</tt></b> permet d'indiquer à quel endroit on souhaite effectuer le(s) 360°. 
+   Les valeurs possibles sont:
+	</p>
+
+<ul>
+   <li><b><tt>HERE :</tt></b>
+       le virage aura lieu immédiatement à la position courante.
+       </li>
+   <li><b><tt>Une balise connue de Rejeu :</tt></b>
+       l'avion fait une directe sur la balise indiquée et y effectue le(s) 360° demandé(s).
+       </li>
+</ul>
+
+
+
+<p>	Le champ <b><tt>By</tt></b> permet de 
+   forcer le sens de virage. Les valeurs possibles sont:
+	</p>
+
+<ul>
+   <li><b><tt>Left :</tt></b>
+       le virage aura lieu par la gauche.
+       </li>
+   <li><b><tt>Right :</tt></b>
+       le virage aura lieu par la droite.
+       </li>
+</ul>
+
+<p>	Le champ <b><tt>Rate</tt></b> est facultatif et permet de 
+   fixer le taux de virage. Taux standard (15° d'inclinaison => Rate=1.0)
+	</p>
+
+<hr />
+
+
+<a name="AircraftLevel">
+<h3>AircraftLevel</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>AircraftLevel Flight=76 Fl=330</tt>
+</td></tr></table>
+ou
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>AircraftLevel Flight=76 Fl=330 Rate=2000</tt>
+</td></tr></table>
+<p>Changement de niveau à partir de l'heure actuelle.
+   Le nouveau niveau demandé est fourni grâce à:
+   <b><tt>Fl</tt></b>.<br />
+  </p>
+<p> Le champ <b><tt>Rate</tt></b> est facultatif. Dans le cas où
+    il est présent, son signe n'est pas pris en compte: c'est le niveau
+    demandé par rapport au niveau actuel qui permet de savoir s'il
+    faut monter ou descendre. On peut aussi indiquer <b><tt>PERFO</tt></b> 
+    ou <b><tt>MAX_PERFO</tt></b>.
+<p> Dans le cas où le champ <b><tt>Rate</tt></b> n'est pas présent,
+    le taux de descente ou montée appliqué correspond à
+    un taux approximatif possible pour ce type d'avion 
+    en se basant sur les évolutions
+    habituelles enregistrées par ailleurs. (Un A320 va descendre
+    à 2500 ou 3000 pieds/minutes au dessus du FL 100, et un TB20 plutôt à 500
+    ou 700 pieds/minutes sur tout son domaine de vol) 
+   </p>
+<p> L'évolution pour atteindre le niveau demandé s'effectue par défaut à vitesse
+    indiquée constante, sauf si un ordre de pilotage en vitesse a été
+    donné précédemment pour cet avion. Dans ce cas, cette contrainte de
+    vitesse sera prise en compte à nouveau.
+    </p>
+<p> Noter que la politique "IAS Constante" est en général adaptée pour la descente
+    en approche, mais peut être inappropriée en montée pour certains types d'avions, suivant les tranches de niveaux traversés.
+    </br> OK pour un ATR42 par exemple sur tout son domaine de vol, OK pour un A320 entre FL 120 et FL 290, mais discutable
+    entre FL 290 et FL 390 .........
+    </br> Dans ce cas, un ordre <a href="#AircraftSpeed"><tt>AircraftSpeed</tt></a> avec
+    <b><tt>Type=PERFO</tt></b> (ordre antérieur ou immédiatement postérieur) permet de rendre la vitesse plus réaliste.
+    </p>
+<hr />
+
+<a name="AircraftSpeed">
+<h3>AircraftSpeed</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>AircraftSpeed Flight=56 Type=IAS Value=250</tt></br>
+<tt>AircraftSpeed Flight=56 Type=MACH Value=MAINTAIN</tt></br>
+<tt>AircraftSpeed Flight=56 Type=PERFO Value=1.02</tt>
+</td></tr></table>
+<p>Changement de vitesse à partir de l'heure actuelle.
+   La nouvelle vitesse demandée est fournie grâce à:
+   <b><tt>Value</tt></b>.</br> 
+   Le champ <b><tt>Type</tt></b> indique de
+   quelle vitesse il s'agit et peut
+   prendre les valeurs:
+<ul>
+   <li><b><tt>IAS :</tt></b>
+       La valeur fournie est une vitesse indiquée 
+       (en Kts sous forme d'un entier).
+       </li>
+   <li><b><tt>GS  :</tt></b>
+       Il s'agit d'une vitesse "sol" (Ground Speed), telle qu'elle
+       apparaît sur une image radar (exprimée en Kts sous forme d'un entier).
+       </li>
+   <li><b><tt>MACH :</tt></b>
+       Le champ <b><tt>Value</tt></b> exprime le nombre de Mach
+       (exemple: 0.82)
+       </li>
+   <li><b><tt>PERFO :</tt></b>
+		 La vitesse visée est celle indiquée dans les perfos pour cet avion, fonction de son attitude (Montée, Descente, Stable). 
+       Elle est réactualisée en fonction des niveaux traversés.
+       Dans ce cas, le champ <b><tt>Value</tt></b> représente un coefficient permettant de "corriger" les perfos.
+       Si par exemple on indique <b><tt>Value=1.05</tt></b>, la vitesse de perfo est multipliée par  <b><tt>1.05</tt></b>,
+       et correspond donc à une augmentation de 5% des valeurs nominales.
+       </li>
+<!--
+   <li><b><tt>PERCENTAGE :</tt></b>
+       Le champ <b><tt>Value</tt></b> exprime la valeur en % de 
+       la variation de vitesse demandée, par rapport aux vitesses
+       enregistrées sur la trajectoire
+       (exemple: -10 pour une réduction de vitesse de 10%)
+       </li>
+-->
+</ul>
+<br />
+<p>
+	Le champ <b><tt>Value</tt></b> peut valoir <b><tt>MAINTAIN</tt></b> et cela demande à Rejeu de maintenir la vitesse
+	actuelle à partir de l'heure de l'ordre jusqu'à nouvel avis. Si l'avion est en palier, l'information 
+   <b><tt>IAS</tt></b> ou <b><tt>GS</tt></b> ou <b><tt>MACH</tt></b> fournie dans le champ <b><tt>Type</tt></b> aura
+	le même effet. Par contre si l'avion est en évolution, il restera à Mach constant ou à vitesse indiquée constante ou à 
+	vitesse sol constante en tenant compte des niveaux traversés (ainsi que des limitations de perfos, si elles sont connues
+	pour ce type avion).
+	</p>
+<p>
+	 Noter qu'on ne peut pas avoir <b><tt>Type=PERFO</tt></b> avec <b><tt>Value=MAINTAIN</tt></b>.
+	</p>
+
+  </p>
+<p> Si rejeu connait les performances pour ce type d'avion, il les respecte.
+    Dans le cas contraire, aucun contrôle de cohérence n'est effectué sur la valeur
+    fournie, et rejeu essaiera
+    de réaliser l'ordre, même si la demande est irréaliste.
+   </p>
+<p> Rejeu calcule une augmentation ou regression de vitesse, en conservant
+    le profil de la trajectoire connue (virages, <b>pentes</b> de montée, 
+    <b>pentes</b> de descente ou palier). 
+    </p>
+<p>Les nouvelles heures de passage balise (vertical ou travers) sont
+   recalculées. Par contre, il n'y a pas modification des heures
+   entrée/sortie des secteurs traversés (ni modification d'heure
+   d'impression de strip).
+   Une remise à jour 
+   doit être faite si necessaire, pour l'instant, au niveau 
+   applicatif grâce à un message 
+   <a href="#SetSectorsInfos"><tt>SetSectorsInfos</tt></a> par exemple.
+   </p>
+<p> Noter que rejeu conserve le profil vertical tel qu'il a été enregistré 
+   (ou modifié grâce à des ordres de niveau par exemple) 
+   et donc il vise pour chaque plot un objectif de vitesse qui s'adapte 
+   constamment au niveau de vol actuel sur la trajectoire.
+   </p>
+<p> Le champ <b><tt>Info</tt></b> du message de compte-rendu 
+	<a href="#ReportEvent"><tt>ReportEvent</tt></a> émis par Rejeu
+	suite à cet ordre, contient la valeur numérique de la vitesse effectivement retenue,
+	du type demandé (vitesse sol, vitesse indiquée, MACH ou coefficient multiplicateur dans le cas PERFO).
+	Cette information est surtout intéressante dans le cas d'une demande de maintien de vitesse.
+	</p>
+<hr />
+
+
+<a name="AircraftIntercept">
+<h3>AircraftIntercept</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>AircraftIntercept Flight=56 Beacon=AGN Axis=150</tt>
+</td></tr></table>
+<p> Demande à l'avion d'intercepter l'axe orienté vers le cap fourni
+    dans <b><tt>Axis</tt></b> qui passe par la balise <b><tt>Beacon</tt></b>.
+    </p>
+<p> Le profil dans le plan vertical est maintenu, ainsi que la vitesse.
+    La trajectoire générée est au moins aussi longue que l'initiale
+    plus eventuellement des nouveaux plots pour garantir une piste après
+    l'ordre d'au moins 15 minutes.
+    </p>
+<p> Les altérations de cap pour aller chercher l'axe (se rapprocher),
+    puis pour intercepter sont gérées avec le respect des mises
+    en virage, sortie de virage et rayon de virage fonction de la vitesse.
+    Même les cas extrêmes, comme des retournements sur la direction
+    opposée donnent des résultats réalistes. 
+    </p>
+<hr />
+
+<a name="AircraftInterceptXY">
+<h3>AircraftInterceptXY</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>AircraftInterceptXY Flight=56 X=18.55 Y=112.00 Axis=150</tt>
+</td></tr></table>
+<p> Demande à l'avion d'intercepter l'axe orienté vers le cap fourni
+    dans <b><tt>Axis</tt></b> qui passe par le point de coordonnées
+    CAUTRA (exprimées en NM) <b><tt>X,Y</tt></b>.
+    </p>
+<p> Le profil dans le plan vertical est maintenu, ainsi que la vitesse.
+    La trajectoire générée est au moins aussi longue que l'initiale
+    plus eventuellement des nouveaux plots pour garantir une piste après
+    l'ordre d'au moins 15 minutes.
+    </p>
+<p> Les altérations de cap pour aller chercher l'axe (se rapprocher),
+    puis pour intercepter sont gérées avec le respect des mises
+    en virage, sortie de virage et rayon de virage fonction de la vitesse.
+    Même les cas extrêmes, comme des retournements sur la direction
+    opposée donnent des résultats réalistes. 
+    </p>
+<hr />
+
+<a name="AircraftInterceptILS">
+<h3>AircraftInterceptILS</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>AircraftInterceptILS Flight=352 Heading=280 Ils=ILS24</tt><br />
+<tt>AircraftInterceptILS Flight=352 Heading=LAST_HEADING Ils=ILS24</tt>
+</td></tr></table>
+<p> Demande à l'avion d'intercepter l'ILS mentionné dans <b><tt>Ils</tt></b>
+    en prenant le cap fourni dans <b><tt>Heading</tt></b>. Si la valeur fournie est 
+	<b><tt>LAST_HEADING</tt></b>, rejeu va chercher la clearance de cap la plus récente
+	et va considérer que c'est le cap d'interception.
+    </p>
+<p> Le profil dans le plan vertical (vitesse, taux) est rendu autant que possible
+    similaire à ce qui a été enregistré pour cet avion lorsqu'il s'est 
+    réellement posé (éventuellement sur une autre piste).
+    </p>
+<p> Les altérations de cap pour intercepter sont gérées avec le respect des mises
+    en virage, sortie de virage et rayon de virage fonction de la vitesse.
+    Même les cas extrêmes, comme des retournements sur la direction
+    opposée donnent des résultats réalistes. 
+    </p>
+<p> ATTENTION: Il ne faut utiliser cet ordre qu'avec des avions dont la trajectoire
+    finale pour se poser fait partie des plots enregistrés.
+    </p>
+<p> L'ILS à intercepter dont le nom est donné dans le champ <b><tt>Ils</tt></b> doit
+    avoir été lu par Rejeu  dans un fichier de données, comme les SID/STAR 
+    (option -d fichier.txt). Exemple dans un tel fichier d'une ligne qui définit
+    l'Ils nommé <b><tt>ILS24</tt></b> qui correspond à l'axe <bb><tt>240</tt></bb>
+    sur le point (balise) <b><tt>BDX</tt></b>:
+    </p>
+<p>
+    <tt> ILS ILS24 BDX 240 </tt>
+    
+    </p>
+<p> Si le point correspondant au seuil souhaité n'existe pas, il faut le définir
+    grâce à une ligne (coordonnées en 1/8 NM):
+    </p>
+<p>
+    <tt> Newbeacon BDX -244 -1038 </tt>
+    </p>
+<hr />
+
+
+<a name="AircraftFollowTrack">
+<h3>AircraftFollowTrack</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>AircraftFollowTrack Flight=352 Sid=ONZON2S</tt> <br />
+<tt>AircraftFollowTrack Flight=352 Star=ARBON18</tt> <br/>
+<tt>AircraftFollowTrack Flight=352 Ils=ILS24R</tt> <br/>
+</td></tr></table>
+<p> Demande à l'avion d'aller intercepter la trajectoire spécifiée.
+	Cette trajectoire peut être une trajectoire standard "officielle"
+   fournie dans un fichier sur la ligne de commande ayant lancé Rejeu
+	(option <b><tt>-d</tt></b>) ou une trajectoire déclarée par l'utilisateur
+	à partir d'une trajectoire effectivement suivie par un autre avion,
+   et prise en compte grâce à un ordre 
+	<a href="#SetTrajectoryAsSidStar"><tt>SetTrajectoryAsSidStar</tt></a>.
+	</p>
+<p> Pour les SID, Rejeu va utiliser le profil enregistré pour cet avion lorsqu'il
+	a décollé. Rejeu vérifie que cet avion a bien décollé du terrain concerné en 
+	utilisant le premier plot connu (car le PLN n'est pas une garantie que le vol a ete enregistre depuis le depart et 
+	par ailleurs, Rejeu ne connait pas explicitement le terrain auquel est attachée la SID). 
+	</p>
+<p> Si rejeu constate qu'il n'a pas les plots correspondant à un décollage, il génére, conformément aux performances connues
+	pour ce type d'avion, les plots sur la SID demandée. Il est nécessaire dans ce cas de fournir un champ supplémentaire dans 
+	l'ordre AircraftFollowTrack indiquant le niveau clearé (qui sera traité uniquement dans ce cas). Ici le FL 70:
+	</p>
+	<table class="ex"  width="100%" border="1"><tr><td>
+	<tt>AircraftFollowTrack Flight=567 Sid=FISTO5P 70</tt> <br />
+	</td></tr></table>
+
+<p> Pour les STAR (ou ILS), Rejeu va utiliser le profil enregistré pour cet avion 
+	lorsqu'il s'est posé, sauf s'il constate que la trajectoire enregistrée 
+   ne le permet pas: 
+    l'avion ne s'est pas posé à proximité de l'aboutissement de la STAR ou de l'ILS
+    (autre destination, ou trajectoire incomplète).
+	Dans ce cas, Rejeu recherche dans l'échantillon de trafic actuel un avion de même
+   type qui s'est posé sur le terrain souhaité. Rejeu utilise alors son profil vertical
+   (vitesse, taux de descente avec les variations constatées pour amener le vol
+   au sol sur la trajectoire spécifiée). Le numéro du vol ayant servi d'exemple
+   est alors indiqué dans le champ <b><tt>Info</tt></b> du message de compte-rendu
+   <a href="#ReportEvent"><tt>ReportEvent</tt></a>. Si Rejeu échoue, l'indication
+    <b><tt>NO_CONGRUENT_FLIGHT</tt></b> figure dans ce message.
+	</p>
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>AircraftFollowTrack Flight=352 Star=RECORDED_TRACK</tt> <br/>
+</td></tr></table>
+<p> Demande à l'avion d'aller récupérer sa propre trajectoire enregistrée pour
+    aller atterrir. L'utilisation habituelle est d'obliger ainsi l'avion à
+    reprendre une trajectoire d'arrivée avec un profil très réaliste, après
+    s'en être éloigné, suite à d'autres ordres de pilotage.
+	</p>
+ <table class="ex"  width="100%" border="1"><tr><td>
+<tt>AircraftFollowTrack Flight=352 Star=MEDEN WithTemplate=4150</tt> <br/>
+</td></tr></table>
+<p> Demande à l'avion d'aller récupérer la STAR spécifiée (<b><tt>MEDEN</tt></b>)
+	du point de vue profil horizontal, 
+    mais avec le profil vertical enregistré pour l'avion <b><tt>4150</tt></b> lorsqu'
+    il s'est posé (sur un cheminement horizontal quelconque).
+	</p>
+<hr />
+
+<a name="AircraftTimeAtBeacon">
+<h3>AircraftTimeAtBeacon</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>AircraftTimeAtBeacon Flight=352 Beacon=LMG Time=11:37 Policy=RTA_With_Constant_Speed Sigma=15.0</tt>
+</td></tr></table>
+<p> Demande à l'avion de s'arranger pour passer la balise <b><tt>LMG</tt></b>
+    à l'heure fixée dans  <b><tt>Time</tt></b> (RTA).
+	 Pour respecter au mieux la réalité, si on souhaite simuler une plus ou 
+    moins grande précision, l'heure de passage effectif sera
+    répartie autour de la valeur souhaitée avec une loi normale centrée sur
+    <b><tt>Time</tt></b> et dont l'utilisateur fournit <b><tt>Sigma</tt></b>.
+    (=> si Sigma=0, Rejeu tente le RTA parfait ....)
+    </p>
+<p> Rappel: la probabilité que l'heure obtenue du RTA se trouve dans:
+	</p>
+
+<ul>
+   <li>[Time-Sigma .. Time+Sigma]  vaut environ 68%.
+       </li>
+   <li> [Time-2*Sigma .. Time+2*Sigma] vaut environ 95%.
+       </li>
+   <li> [Time-3*Sigma .. Time+3*Sigma] vaut plus de 99%.
+       </li>
+</ul>
+
+<p> Noter par ailleurs que la connaissance de la position de l'avion 
+    est discrete (plots successifs connus du radar avec une période de rafraichissement 
+    de ~8s en route et ~4s en approche). Lorsque Rejeu emet un evènement
+    <a href="#BeaconEvent"><tt>BeaconEvent</tt></a> , il indique le plot
+    de la trajectoire le plus près de la balise, ce qui ne correspond pas 
+    "exactement" au passage vertical ou travers "géométrique", mais
+    c'est la meilleure position connue par le radar.
+    </p>
+<p> Le champ <b><tt>Info</tt></b> du message de compte-rendu 
+	<a href="#ReportEvent"><tt>ReportEvent</tt></a> émis par Rejeu
+	suite à cet ordre, contient l'heure effectivement retenue pour tenter
+	de réaliser le RTA (tirage aléatoire lié au <b><tt>Sigma</tt></b> fourni).
+	</p>
+<p> Rejeu emploie une stratégie qui vise à passer la balise dans les mêmes
+	conditions (vitesse, niveau) que dans la trajectoire initialement connue
+	avant l'ordre, lorsque la stratégie <b><tt>RTA_With_Cost_Index_Speed</tt></b>
+   est indiquée dans le champ <b><tt>Policy</tt></b>.
+	</p>
+<p> Si c'est <b><tt>RTA_With_Constant_Speed</tt></b> qui est choisie comme stratégie,
+   Rejeu cherche tout simplement la vitesse qui lui permet de réaliser la contrainte
+   (en tenant compte des perfos s'il les connait) et il maintient cette vitesse
+   jusqu'à la balise. Toutefois, il veille à 
+   ce que cette vitesse ne soit pas différente de plus de 8% de la vitesse initiale. 
+	Il reprend ensuite sa vitesse "optimale". 
+	</p>
+<p> Lorsque ces conditions n'ont pas pu être réalisées, (RTA impossible ou
+	heure de passage acceptable, mais pas à la vitesse planifiée), Rejeu 
+   l'indique dans le champ
+   <b><tt>Result=</tt></b> qui vaut <b><tt>WARNING</tt></b>. 
+	Le champ <b><tt>Info</tt></b> contient alors la meilleure heure de passage que Rejeu a pu
+	réaliser, compte tenu des contraintes (performances avion ou limitation des différences de vitesses maximum).	
+	L'utilisateur peut
+	alors décider que l'ordre (qui a été néanmoins exécuté au mieux) ne lui
+	convient pas et il peut alors l'annuler avec 
+	<a href="#CancelLastOrder"><tt>CancelLastOrder</tt></a>.
+	</p>	
+<hr />
+
+<a name="AircraftTimeAtPosition">
+<h3>AircraftTimeAtPosition</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>AircraftTimeAtPosition Flight=352 X=42.85 Y=-70.72 Time=11:37 Policy=RTA_With_Cost_Index_Speed Sigma=15.0</tt>
+</td></tr></table>
+<p> Demande à l'avion de passer le point de coordonnées <b><tt>X</tt></b>
+	et <b><tt>Y</tt></b> à l'heure fixée dans  <b><tt>Time</tt></b> (RTA) avec la stratégie 
+   <b><tt>RTA_With_Cost_Index_Speed</tt></b> .
+	Le point fourni doit être sur la trajectoire actuellement suivie par l'avion.
+	Une tolérance de 2 NM est acceptée. En cas d'erreur manifeste, l'information
+	<b><tt>RTA_Point_not_in_Trajectory </tt></b> sera indiquée dans le message de compte-rendu
+	<a href="#ReportEvent"><tt>ReportEvent</tt></a>.
+	Même logique que <a href="#AircraftTimeAtBeacon"><tt>AircraftTimeAtBeacon</tt></a>.
+	Voir les explications correspondant à cet ordre.
+	</p>
+<hr />
+
+<a name="AircraftHold">
+<h3>AircraftHold</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>AircraftHold Flight=122 Stack=StackNG</tt>
+</td></tr></table>
+<p> Demande à l'avion de se diriger vers le point de référence du stack <b><tt>StackNG</tt></b>
+	et d'y entrer conformément aux règles habituelles (suivant le cap d'arrivée, entrée directe, parallèle ou décalée).
+	Lorsque l'avion s'approche de la balise, il commence à réduire sa vitesse indiquée vers une valeur
+   correspondant à environ 75% de sa vitesse nominale au niveau actuel.
+	Son niveau courant est maintenu, sauf s'il est précisément sous la contrainte d'un ordre de niveau.
+   Dans ce cas, l'avion poursuit son évolution dans le stack pour satisfaire la clearance en cours.
+	L'avion reste dans le stack jusqu'à un ordre de pilotage et sinon pendant 15 tours (ce qui correspond à 1 heure ou plus
+   (eloignement 1 minute au FL<140 ou 1minute 30 au FL>140 en standard).
+   
+	</p>
+<p> La définition des stacks doit se trouver dans le fichier de rejeu (anciennement fichier "data" avec option -d sur la ligne de commande).
+	 Si un tel fichier existe, penser à utiliser le job "merge_data" qui permet d'intégrer des données de ce type dans un fichier de rejeu.
+	</p>
+<p> Exemple de définition de Stack en fin de fichier de Rejeu:
+	</p>
+
+<br />
+
+<table class="txt" width="100%" border="1"><tr><td>
+<dl><dt><b>Infos Stacks en fin de fichier de rejeu</b></dt><dd>
+
+<p><tt>
+<br /> # Exemple definition d'un stack:
+<br /># STACK MY_STACK BEACON AXIS Dir Condition
+<br /># Dir (sens du virage) peut valoir: LEFT ou RIGHT
+<br /># Condition peut-etre:
+<br />#    TIME VALUE <= temps branche eloignement en minutes (1, 1.5, 2 ....)
+<br />#    LOWER_DIST BEACON VALUE (Beacon pas necessairement identique a la balise de reference du stack)
+<br />#    UPPER_DIST BEACON VALUE
+<br />#    OVER BEACON
+<br />STACK My_Stack LMG 30.0 RIGHT Time 2
+<br />STACK stackbdx BDX 270.0 LEFT Upper_Dist LFBD 8.0
+</p></tt>
+</dd> </dl>
+</td></tr></table>
+
+
+<hr />
+
+<a name="AircraftSetTrack">
+<h3>AircraftSetTrack</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>AircraftSetTrack Flight=56 Slice=20:42:44 62.09 -205.05 -95 117 13 
+    -1319 -1 20:42:52 61.91 -204.81 -91 115 12 -1020 -1 20:43:00 .......</tt>
+    <br />
+<tt>AircraftSetTrack Flight=56 Slice=......................... </tt>
+    <br />
+<tt>AircraftSetTrack Flight=56 EndSlice</tt>
+    <br />
+</td></tr></table>
+<p> Il s'agit d'un pseudo-ordre de pilotage qui consiste à donner à
+   rejeu tous les éléments d'une piste qui a été calculée par ailleurs,
+   afin de modifier la trajectoire d'un avion. Il sera notamment
+   interessant d'utiliser cet ordre, lorsqu'on dispose d'un bon modèle
+   avion et qu'on souhaite être plus réaliste qu'avec les ordres de 
+   pilotage simples inclus dans rejeu.
+   </p>
+<p> La technique consistera à interroger rejeu sur les éléments de sa
+   base de données (grâce à un 
+   <a href="#GetTrack"><tt>GetTrack</tt></a> ), puis à calculer les
+   nouvelles positions piste suivant les manoeuvres souhaitées, puis
+   à les donner à rejeu qui va prendre en compte ces nouvelles valeurs 
+   dans sa base de données. A partir de cet instant, tous les messages
+   correspondant à ces nouveaux plots seront émis, (comme
+   <a href="#TrackMovedEvent"><tt>TrackMovedEvent</tt></a>,
+   <a href="#LayerEvent"><tt>LayerEvent</tt></a>, ..... etc )
+   comme si rejeu avait
+   effectué lui même les calculs grâce à ses propres ordres de pilotage
+   (<a href="#AircraftHeading"><tt>AircraftHeading</tt></a> ou
+   <a href="#AircraftLevel"><tt>AircraftLevel</tt></a> ou etc.)
+
+   Les heures et niveau passage balise seront également remis à jour.
+   Par contre, les informations secteurs (entrée/sortie, impression
+   de strip) ne peuvent être modifiées
+   par rejeu (qui ne connait pas la géographie des secteurs). 
+   Cependant, il est possible
+   de le faire au niveau applicatif grâce par exemple au message:
+   <a href="#SetSectorsInfos"><tt>SetSectorsInfos</tt></a>. 
+   </p>
+<p> L'application qui envoie ce message <tt>AircraftSetTrack</tt> peut
+   emettre autant de <tt>Slice</tt> qu'elle le souhaite (avec autant de
+   n-uplets dans chaque <tt>Slice</tt> qu'elle le souhaite). L'action de
+   prise en compte de toutes ces données n'aura lieu qu'à la
+   reception du message avec <tt>EndSlice</tt> pour ce vol.
+   </p>
+<p> Si la liste de n-uplets n'est pas trop longue pour être envoyée
+   en une seule fois sur le bus, rejeu comprend aussi le message:
+   </p>
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>AircraftSetTrack Flight=56 List=20:42:44 62.09 -205.05 -95 117 13 
+    -1319 20:42:52 61.91 -204.81 -91 115 12 -1020 20:43:00 .......</tt>
+    <br />
+</td></tr></table>
+
+
+<p> qui se suffit à lui-même et qui est alors  éxécuté 
+    immédiatement.
+    </p>
+<p> Dans tous les cas, la liste (List ou Slice) est constituée des
+    n-uplets constitués dans l'ordre de:
+    </p>
+<ul> 
+    <li>Heure</li>
+    <li>X, Y (en NM, valeurs décimales autorisées)</li>
+    <li>Vx, Vy (en Kts, valeurs entières)</li>
+    <li>Niveau (FL)</li>
+    <li>Taux (en Ft/mn, valeur entière)</li>
+</ul>
+<p> Noter la différence avec la réponse à la requête 
+    <a href="#GetTrack"><tt>GetTrack</tt></a> qui contient le champ
+    supplémentaire <tt>Tendency</tt> qui peut valoir -2 (pour inconnue).
+    On considère que si on fournit les éléments de piste après
+    calcul, la valeur donnée dans le <tt>Rate</tt> permet à
+    rejeu de déterminer la tendance qui ne peut pas être inconnue...
+    </p>
+
+<hr />
+
+<a name="AircraftDifferedOrder">
+<h3>AircraftDifferedOrder</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>AircraftDifferedOrder Flight=56 Condition=LEVEL,60 Order=AircraftDirect,AGN</tt>
+</td></tr></table>
+<p>
+	Execution d'un ordre de pilotage de manière différée, lorsqu'une condition 
+	est réalisée sur la trajectoire de l'avion (ne pas confondre avec le plan de vol).
+	</p>
+<p>
+	<b><tt>Condition</tt></b> peut valoir 
+	</p>
+
+
+<table >
+
+<tr>
+	<td> <b><tt>TIME,</tt></b>heure</td>
+	<td>: L'ordre sera déclenché à cette heure.</td></tr>
+<tr>
+	<td><b><tt>LEVEL,</tt></b>valeur</td>
+	<td>: Lorsque l'avion atteint ce niveau, l'ordre est déclenché.</td></tr>
+<tr>
+	<td><b><tt>OVER,</tt></b>balise</td>
+	<td>: L'ordre est éxécuté au passage vertical balise.</td></tr>
+<tr>
+	<td><b><tt>UPPER_DIST,</tt></b>balise,valeur</td>
+	<td>: Déclenchement dès que la 
+         distance à la balise est supérieure à la valeur fournie.</td></tr>
+<tr>
+	<td><b><tt>LOWER_DIST,</tt></b>balise,valeur</td>
+	<td>: Déclenchement dès que la 
+         distance à la balise est inférieure à la valeur fournie.</td></tr>
+
+</table>
+
+
+
+
+
+<p>
+	<b><tt>Order</tt></b> peut valoir nimporte quel ordre 
+		(<a href="#AircraftLevel"><tt>AircraftLevel</tt></a>,
+		 <a href="#AircraftDirect"><tt>AircraftDirect</tt></a>, .....etc)
+       
+	</p>
+<p>
+	Suivant la condition, il peut y avoir plusieurs valeurs separées par des ","
+	(cas de <b><tt>UPPER_DIST</tt></b> et <b><tt>LOWER_DIST</tt></b>)
+	</p>
+<p>
+Exemples:
+</p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>AircraftDifferedOrder Flight=123 Condition=LEVEL,150 Order=AircraftDirect,AGN</tt>
+<br />
+</td></tr></table>
+<p>
+Lorsque Rejeu reçoit cet ordre, il cherche à partir de maintenant à quel moment l'avion atteindra 
+le niveau 150, puis déclenche alors une directe sur <bb>AGN</b> 
+	</p>	
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>AircraftDifferedOrder Flight=123 Condition=LOWER_DIST,AGN,10.5 Order=AircraftLevel,60</tt>
+   <br />
+</td></tr></table>
+<p>
+Ici, lorsque l'avion s'approche à moins de 10.5 NM d'<bb>AGN</b>, il entame une montée 
+ou descente vers le niveau 60
+	</p>
+
+
+<p>
+Cette routine calcule l'heure à laquelle la condition est réalisée (sauf si l'heure
+est explicitement fournie avec <b><tt>TIME</tt></b>) et exécute
+l'ordre demandé, comme s'il avait été émis à cette heure là.
+L'exécution de l'ordre se fait en appelant la même routine que celle qui est
+utilisée quand l'ordre arrive sur le bus (<a href="#AircraftLevel"><tt>AircraftLevel</tt></a>,
+ <a href="#AircraftSpeed"><tt>AircraftSpeed</tt></a>, 
+<a href="#AircraftHeading"><tt>AircraftHeading</tt></a> .......)
+ => il faut donc les mêmes champs que dans l'ordre initial
+séparés par des "," et sans indiquer le numéro de vol:
+	</p>
+<p>
+
+<tt>AircraftSpeed Flight=123 Type=IAS Value=250 </tt>
+	</p>
+<p>
+devient en ordre différé:
+	</p>
+<p>
+<tt>Order=AircraftSpeed,IAS,250</tt>
+	</p>
+<p> Lorsqu'il y a des champs facultatifs dans l'ordre initial, ils restent facultatifs
+et donc peuvent être ou ne pas être présents.
+<p> Noter que c'est l'ordre <b>effectif</b> de pilotage qui est sauvegardé dans l'historique des ordres
+avec son heure d'éxécution (l'heure de la condition) comme s'il était arrivé sur le bus
+à cette heure là. Il apparaîtra comme tel dans un éventuel fichier de simu et 
+peut être annulé avec un  <a href="#CancelLastOrder"><tt>CancelLastOrder</tt></a>.
+
+
+<hr />
+<a name="AircraftMultipleOrder">
+<h3>AircraftMultipleOrder</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>AircraftMultipleOrder Flight=56 List=AircraftLevel,150,1000 AircraftDirect,AGN AircraftHeading,180</tt>
+</td></tr></table>
+
+ou
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>AircraftMultipleOrder Flight=56 List=AircraftHeading,120;UPPER_DIST,TOU,25 AircraftDirect,MEN</tt></br> 
+<tt>AircraftDirect,LYS;LOWER_DIST,VNE,45 AircraftInterceptILS,280,ILS24</tt>
+</td></tr></table>
+
+<p>
+Cet ordre permet d'enchainer successivement des ordres de pilotage, en spécifiant la condition 
+qui déclenche l'ordre suivant.
+</p>
+
+<p>
+<b><tt>List</tt></b> est une succession d'items séparés par des blancs.
+Chaque item est un ordre de pilotage, (avec ses arguments associés 
+séparés par des ",") et éventuellement une condition (relative au temps, à la position ou au niveau) qui sert à déclencher l'ordre suivant.
+	</p>
+
+<p>
+Le séparateur entre l'ordre de pilotage et la condition est le point-virgule "<b>;</b>".
+
+Une condition est constituée d'informations séparées par des virgules "<b>,</b>", avec les
+mêmes possibilités et mêmes mots-clefs que dans l'ordre <a href="#AircraftDifferedOrder"><tt>AircraftDifferedOrder</tt></a>
+(<tt>TIME, LEVEL, OVER, UPPER_DIST, LOWER_DIST</tt>.
+	</p>
+<p>
+Si l'ordre de pilotage est <a href="#AircraftLevel"><tt>AircraftLevel</tt></a> ou 
+<a href="#AircraftDirect"><tt>AircraftDirect</tt></a>, la condition est facultative.
+Dans ce cas là, par défaut, c'est quand le but est atteint 
+(le niveau souhaité pour <a href="#AircraftLevel"><tt>AircraftLevel</tt></a>, 
+ou le passage vertical de la balise quand c'est <a href="#AircraftDirect"><tt>AircraftDirect</tt></a>) 
+que l'ordre suivant est déclenché.
+	</p>
+<p>Ainsi,</p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>AircraftMultipleOrder Flight=45 List=AircraftLevel,150,1000 AircraftDirect,AGN AircraftHeading,180</tt>
+<br />
+</td></tr></table>
+<p> qui signifie: "On monte sur la trajectoire actuelle vers le FL 150 avec un taux de 1000ft/mn, puis on 
+fait une directe sur AGN et passant AGN, on prend le cap 180".
+	</p>
+	
+<p>est strictement équivalent pour Rejeu à:</p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>AircraftMultipleOrder Flight=45 List=AircraftLevel,150,1000;LEVEL,150 AircraftDirect,AGN;OVER,AGN AircraftHeading,180</tt>
+<br />
+</td></tr></table>
+
+
+<p> 
+Voir l'ordre <a href="#AircraftDifferedOrder"><tt>AircraftDifferedOrder</tt></a> pour les 
+précisions sur les arguments de chaque ordre de pilotage.
+	</p>
+<p>
+Pour le dernier ordre, aucune condition ne doit être indiquée (il n'y a pas d'ordre à déclencher dérrière....). 
+Si c'est le cas, elle est simplement ignorée (mais <tt>Rejeu</tt> exécute quand même les ordres demandés) et un <b>Warning</b> est indiqué dans le champ <tt><b>Result </b></tt>
+du <a href="#ReportEvent"><tt>ReportEvent</tt></a> et le champ <tt><b>Info </b></tt> contient la condition inutile.
+
+	</p>
+
+<p> Le deuxièmpe exemple fourni ci-dessus:</p>
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>AircraftMultipleOrder Flight=56 List=AircraftHeading,120;UPPER_DIST,TOU,25 AircraftDirect,MEN</tt></br> 
+<tt>AircraftDirect,LYS;LOWER_DIST,VNE,45 AircraftInterceptILS,280,ILS24</tt>
+</td></tr></table>
+<p>
+signifie pour le vol numéro 56 qu'on lui demande de prendre le cap 120 jusqu'à une distance supérieure à 25 NM de la balise de Toulouse (TOU), puis d'effectuer une directe sur la balise de Mende (MEN). Arrivé vertical MEN, faire une directe sur la balise de Lyon (LYS) jusqu'à ce que la distance à la balise de Vienne (VNE) soit inférieure à 45NM. Puis intercepter l'ILS24 avec un cap initial 280°.
+	</p>
+
+<p> En interne, <tt>Rejeu</tt> considère <tt>AircraftMultipleOrder</tt> comme une sorte de macro constituée d'un premier
+	ordre de pilotage, puis d'un ensemble d'ordres différés (<tt>AircraftDifferedOrder</tt>).
+	</p>
+
+<p>
+	Noter que ce sont les ordres <b>effectifs</b> de pilotage élémentaires qui sont successivement 
+   exécutés et sauvegardés dans l'historique des ordres (chacun avec son heure d'occurrence).
+	Pour annuler l'ensemble, il faut donc effectuer autant de 
+	<a href="#CancelLastOrder"><tt>CancelLastOrder</tt></a> qu'il y a d'ordres élémentaires
+	composant la demande d'ordre multiple.
+	</p>
+<hr />
+
+
+
+<h2>Evénements utilisateur</h2>
+
+Rejeu permet de créer à sa guise des listes de doublets
+{heure, valeur} nommés associés à un vol et traités ensuite
+pour générer des messages (événements) aux heures demandées
+pour ce vol.  <br />
+
+ATTENTION: le "blanc" étant un séparateur pour le bus Ivy, il ne doit
+pas y en avoir dans le message. <br />
+
+On peut ainsi penser, par exemple, à gérer des états de vol
+avec ce type de message. 
+
+<a name="SetUserEventList">
+<h3>SetUserEventList</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>SetUserEventList Flight=832 EventName=State List=10:12:30 ASSUME 10:23 SHOOT</tt>
+</td></tr></table>
+<p>Ce message émis par une application demande à rejeu d'émettre
+   un message <tt>UserEvent</tt> à chaque heure spécifiée.
+   Cette heure peut comme toujours être en HH:MM:SS ou HH:MM.
+   Chaque message
+   émis par rejeu, outre le nom donné dans <tt>EventName</tt>, restitue
+   la valeur textuelle associée à l'heure en question.
+   </p>
+<p>
+   Ainsi, sur la demande
+   de l'exemple ci-dessus, à 10:12:30 rejeu envoie:
+  </p>
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>UserEvent Flight=832 Name=State Value=ASSUME</tt>
+</td></tr></table>
+<p>
+   et à 10:23:</p>
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>UserEvent Flight=832 Name=State Value=SHOOT</tt>
+</td></tr></table>
+<p>La liste des doublets {heure, valeur} peut être fournie à rejeu
+   dans un ordre quelconque. Toutefois, si la même heure apparaît 2 fois
+   ou plus avec des messages associés différents, c'est le dernier 
+   message qui sera considéré comme valide, et lui seul sera envoyé à 
+   cette heure là.
+   </p>
+<p>
+   Si pour le vol indiqué, une liste existe déjà avec le même
+   nom, elle est écrasée.(elle peut être fusionnée si on utilise
+   <a href="#MergeUserEventList"><tt>MergeUserEventList</tt></a>).
+   </p>
+<p>Pour effacer une liste, il suffit de faire un <tt>SetUserEventList</tt>
+   avec une liste vide.
+   </p>
+<p> <b>Attention:</b> pour des raisons liées au protocole Ivy, il
+    ne doit pas y avoir de blancs dans les messages (champ <tt>Value</tt>).
+    Penser, par exemple, à les remplacer par des "_" pour avoir
+    un message: 
+    <b><tt>"Appeler_Marcel"</tt></b> au lieu de 
+    <b><tt>"Appeler Marcel"</tt></b> qui ne fonctionnerait pas.
+    </p>
+<hr />
+
+<a name="MergeUserEventList">
+<h3>MergeUserEventList</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>MergeUserEventList Flight=45 EventName=Alert1 List=09:45 Message45 09:48 Message48</tt>
+</td></tr></table>
+<p>Ce message émis par une application demande à rejeu de fusionner
+   la liste de doublets {heure, valeur} de nom <tt>Alert1</tt> avec
+   une liste déjà existante pour ce vol numéro <tt>45</tt>.
+  </p>
+<p>Si une telle liste n'existait pas, <tt>MergeUserEventList</tt> se comporte 
+   comme <tt>SetUserEventList</tt>, et prend en compte ces informations
+   comme une nouvelle liste.
+   </p>
+<p>Si une liste avec le même nom existe pour ce vol, les valeurs 
+   associées à une heure déjà indiquée remplacent les
+   anciennes, les autres sont ajoutées à la liste.
+   </p>
+<p> Ainsi, la reception des 3 messages 
+    </p>
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>SetUserEventList Flight=45 EventName=Alert1 09:30 Message30 09:48 Message48</tt>
+<br />
+<tt>MergeUserEventList Flight=45 EventName=Alert1 09:32 Message32 09:48 
+    NewerMessage48 </tt>
+<br />
+<tt>MergeUserEventList Flight=45 EventName=Alert1 09:48 NewestMessage48 </tt>
+</td></tr></table>
+<p>
+   aboutit à l'emission des messages par rejeu:
+   <ul>
+      <li>à 09:30 <tt>Message30</tt></li>
+      <li>à 09:32 <tt>Message32</tt></li>
+      <li>à 09:48 <tt>NewestMessage48</tt></li>
+   </ul>
+</p>
+<hr />
+
+<a name="GetUserEventList">
+<h3>GetUserEventList</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>GetUserEventList Flight=47 EventName=MyEvent</tt>
+</td></tr></table>
+<p>Message qui demande à rejeu de fournir la liste actuelle des
+   événements utilisateur de nom <tt>MyEvent</tt> pour le vol <tt>47</tt>
+  </p>
+<p>Rejeu répond un message comme:
+   </p>
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>UserEventList Flight=47 Name=MyEvent List=10:00:00 AlertX 10:10:00 AlertY 
+    10:22:30 AlertZ</tt>
+</td></tr></table>
+<p>Cette liste peut éventuellement être vide, auquel cas le message
+   émis par rejeu est:
+  </p>
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>UserEventList Flight=47 Name=MyEvent List=</tt>
+</td></tr></table>
+
+<hr />
+
+<a name="GetUserEventNames">
+<h3>GetUserEventNames</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>GetUserEventNames MsgName=MyId Flight=65</tt>
+</td></tr></table>
+<p>Demande de l'ensemble des noms de listes d'événements associés 
+   à un vol.
+  </p>
+<p>Si par exemple rejeu a reçu les ordres suivants:
+  </p>
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>SetUserEventList Flight=65 EventName=Event1 10:00 Msg1 10:34 ......<br />
+    SetUserEventList Flight=65 EventName=Event2 09:47 xxx 09:51 ..... <br />
+    SetUserEventList Flight=65 EventName=Event3 ..............</tt>
+</td></tr></table>
+<p> il répondra:</p>
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>UserEventNames MyId Flight=65 List=Event1 Event2 Event3</tt>
+</td></tr></table>
+
+<hr />
+
+<h2>Ordres divers</h2>
+
+<a name="CancelLastOrder">
+<h3>CancelLastOrder</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>CancelLastOrder Flight=6532</tt>
+</td></tr></table>
+<p>Ce message demande à rejeu d'annuler le dernier ordre de modification
+   que rejeu a reçu pour ce vol. La situation antérieure est
+   intégralement restituée (piste, pln etc ..).
+  </p>
+<p>Tous les ordres étant conservés en pile, des ordres d'annulation
+   peuvent se succéder pour revenir à la situation souhaitée
+   </p>
+
+<hr />
+
+<a name="Discard">
+<h3>Discard</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>Discard Flight=987</tt>
+</td></tr></table>
+<p>Dès que Rejeu reçoit cet ordre, il considère qu'il doit
+   ignorer ce vol, et donc aucun événement (positions piste, 
+   passage balise, strips, ...) n'est plus envoyé sur le bus
+   pour ce vol. Noter que cela concerne la totalité du vol, même
+   aux heures de simulation antérieures à l'heure de l'ordre.
+   Par contre, Rejeu continue à répondre à la plupart des demandes 
+   d'informations concernant ce vol.
+  </p>
+<p>Pour rétablir ce vol, faire <tt><b>Enable Flight=987</b></tt>
+  </p>
+<hr />
+
+<a name="DiscardAll">
+<h3>DiscardAll</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>DiscardAll</tt>
+</td></tr></table>
+<p>Dès que Rejeu reçoit cet ordre, il considère qu'il doit
+   ignorer tous les vols qu'il connait, et donc aucun événement 
+   (positions piste,
+   passage balise, strips, ...) n'est plus envoyé sur le bus
+   pour aucun vol. Noter que cela concerne la totalité des vol, même
+   aux heures de simulation antérieures à l'heure de l'ordre.
+   Par contre, Rejeu continue à répondre à des demandes
+   d'informations concernant tous les vols.</p>
+<p>
+   Cet ordre peut être utile pour des applications de préparation
+   d'exercice simple où on veut garder seulement quelques vols, alors
+   qu'on dispose par exemple d'un fichier de trafic d'une journée.
+   Pour ce faire, après avoir fait  <tt><b>DiscardAll</b></tt>,
+   on demande à rejeu de re-rendre visibles quelques vols avec des
+   ordres: <tt><b>Enable Flight=xxx</b></tt>.</p>
+<p> 
+   Cela évite d'envoyer des centaines voire des milliers d'ordres 
+   <tt><b>Discard Flight=xxx</b></tt> 
+   sur le bus ivy ....
+  </p>
+<hr />
+
+<a name="Enable">
+<h3>Enable</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>Enable Flight=987</tt>
+</td></tr></table>
+<p>Rétablissement du vol <tt>987</tt> après un <tt><b>Discard</b></tt>.
+   Tous les messages événementiels concernant ce vol sont de 
+   nouveau émis quand il y a lieu. 
+  </p>
+<hr />
+
+<a name="Dump">
+<h3>Dump</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>Dump Flight=543</tt>
+</td></tr></table>
+<p>Impression dans le terminal où rejeu est lancé de tous
+    éléments connus dans la base actuellement pour ce vol.
+   Le format des données est identique à celui obtenu par
+   <a href="#FileWrite"><tt>FileWrite</tt></a><tt> Type=dump ...</tt>
+     (ou par le programme <tt>rej2txt xxx.rej
+   xxx.txt</tt> qui sert à convertir un fichier binaire de rejeu en 
+   fichier texte ou encore <tt>dump_ast2rej ..... </tt> qui sert à 
+   créer des fichiers de rejeu à partir de fichier ASTERIX et COURAGE).
+  </p>
+<p>Début d'un "dump":</p>
+<tt>
+<br />
+$  7291 03:58:31 04:26:02 230 428 AFR372V  B738 EHAM LFPO 2140
+<br />! NILEM V 03:50 230 MOPIL V 03:51 230 KENAP V 03:52 230 XERAM V 03:55 230 SOTUS V 03:57 230 SOLBA T 04:00 230 VELER V 04:01 230 ZOA   V 04:10 46 PO    V 04:11 40
+<br />> BR 03:43 03:50 03:38 150 TE 03:50 04:08 03:38 110 RB 04:08 04:09 03:38 110 OA 04:09 04:11 03:38 0
+<br />< 5707  04:00:03 30 39 0 04:00:05 30 39 0 04:00:07 30 39 0 04:00:09 30 39 0 04:00:11 30 39 0 04:00:13 30 39 0 04:00:15 30 39 0 04:00:17 30 39 0 04:00:19 30 39 1 
+<br />NbPlots:  206
+<br />03:58:31  9027  10235 -127 -330  164 -1020 -1
+<br />03:58:40  9004  10182 -128 -329  162 -1020 -1
+<br />03:58:48  8988  10136 -130 -328  161 -1020 -1
+<br />03:58:56  8969  10088 -128 -328  158 -1260 -1
+<br />.........................
+</tt>
+<p>Début d'un fichier de dump qui explique le format:
+   </p>
+<tt>
+Version: 2.00
+<br /># Fichier genere automatiquement (dump_ast2rej ou rejeu)
+<br /># Le premier caractere donne le "type" de ligne :
+<br /># # Ceci est un commentaire
+<br /># $ FLIGHT HDEB HFIN FL SPEED IVOL AV TERD TERA SSR <--  Mini Plan de Vol
+<br /># ! {NOMBAL (V ou T) HEURE FL}                    <-- Survols balises
+<br /># > {NOMSECT HENTREE HSORTIE HSTRIP TFL}          <-- Infos secteurs
+<br /># < FLIGHT {MINVALIDLEVEL MAXVALIDLEVEL ENDALERT} <-- Filet de sauvegarde (STCA)
+<br /># % {HEURE TYPE}                                  <-- Proximite relief (MSAW)
+<br /># Autre ligne est un mouvement correspondant au dernier mini_pln 
+<br /># Le nombre de ces lignes est fourni par "NbPlots"
+<br /># Un mouvement est compose de:
+<br /># HEURE X(Nm) Y(Nm) VX(Kts) VY(Kts) FL TAUX(Ft/min) TENDANCE
+<br />#
+</tt>
+
+<ul>
+   <li>Ligne qui commence par "$" : Mini plan de vol
+   <ul>
+       <li><b><tt>FLIGHT :</tt></b>Numéro de vol (identifiant rejeu) </li>
+       <li><b><tt>HDEB</tt></b> et <b><tt>HFIN :</tt></b> Heures des
+             première position piste et dernière position piste
+             connues pour ce vol</li> 
+       <li><b><tt>FL :</tt></b>Niveau de croisière</li>
+       <li><b><tt>SPEED :</tt></b>Vitesse de croisière (Kts)</li> 
+       <li><b><tt>IVOL :</tt></b>Indicatif de l'avion.</li>
+       <li><b><tt>AV :</tt></b>Type avion</li>
+       <li><b><tt>TERD :</tt></b>Terrain de départ</li>
+       <li><b><tt>TERA :</tt></b>Terrain d'arrivée</li>
+       <li><b><tt>SSR :</tt></b>Code transpondeur</li>
+    </ul>  
+       </li>
+   <li>Ligne qui commence par "!" : Liste des balises du PLN (tel qu'il 
+       est connu au moment de la requête <tt>Dump</tt>
+   <ul>
+       <li><b><tt>NOMBAL :</tt></b> Balise survolée.</li>
+       <li><b><tt>V :</tt></b> ou <b><tt>T :</tt></b>Vertical (moins de 2 NM)
+           ou Travers (calculé par rejeu)</li>
+       <li><b><tt>HEURE :</tt></b>Heure du passage</li>
+       <li><b><tt>FL :</tt></b>Niveau au moment du survol.
+   </ul>
+        </li>
+   <li>Ligne qui commence par ">" : Liste des secteurs traversés.
+   <ul>
+        <li><b><tt>NOMSECT :</tt></b>Nom du secteur</li>
+        <li><b><tt>HENTREE :</tt></b>Heure d'entrée secteur 
+             (fichier COURAGE ou modification utilisateur) </li>
+        <li><b><tt>HSORTIE :</tt></b>Heure de sortie secteur
+             (fichier COURAGE ou modification utilisateur) </li>
+        <li><b><tt>HSTRIP :</tt></b>Heure d'impresson de strip
+             (fichier COURAGE ou modification utilisateur) </li>
+        <li><b><tt>TFL :</tt></b>Niveau de transfert "calculé" par 
+             rejeu</li>
+       </ul>
+        </li>
+   <li>Ligne qui commence par "<" : Alertes filet de sauvegarde (STCA)
+        Voir <a href="#StcaAlertEvent"><tt>StcaAlertEvent</tt></a>
+        </li>
+   <li>Ligne qui commence par "%" : Alerte proximite relief (MSAW)
+        Voir <a href="#MsawAlertEvent"><tt>MsawAlertEvent</tt></a>
+
+        </li>
+   <li>Ligne position piste
+   <ul>
+        <li><b><tt>HEURE :</tt></b>Heure de la position piste</li>
+        <li><b><tt>X :</tt></b>Coordonnée X (entier en 1/64 NM) CAUTRA 4</li>
+        <li><b><tt>Y :</tt></b>Coordonnée Y (entier en 1/64 NM) CAUTRA 4</li>
+        <li><b><tt>VX :</tt></b>Composante X de la vitesse 
+              (entier en Kts)</li>
+        <li><b><tt>VY :</tt></b>Composante X de la vitesse 
+              (entier en Kts)</li>
+        <li><b><tt>FL :</tt></b>Niveau de vol courant</li>
+        <li><b><tt>TAUX :</tt></b>Taux de montée/descente entier en 
+               pieds/minute</li>
+        <li><b><tt>TENDANCE :</tt></b>Tendance verticale:
+             <ul>
+                 <li><b><tt>0 :</tt></b>Stable</li> 
+                 <li><b><tt>1 :</tt></b>Montée</li> 
+                 <li><b><tt>-1 :</tt></b>Descente</li> 
+                 <li><b><tt>-2 :</tt></b>Inconnue</li> 
+             </ul>
+             </li>
+
+       </ul>  
+        </li>
+</ul>
+<hr />
+
+<a name="StripsOnOff">
+<h3>StripsOnOff</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>StripsOnOff Print=yes</tt>
+</td></tr></table>
+<p><ul>
+      <li><b><tt>Print=no</tt></b>: Demande à rejeu de ne pas
+             emettre les messages d'impression de strip pour tous
+             les vols.</li>
+      <li><b><tt>Print=yes</tt></b>: Demande à rejeu d'emettre
+             normalement les messages d'impression de strip pour tous
+             les vols aux heures adéquates.</li>
+</ul></p>
+<hr />
+
+<a name="StcaAlertOnOff">
+<h3>StcaAlertOnOff</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>StcaAlertOnOff Send=yes</tt>
+</td></tr></table>
+<p><ul>
+      <li><b><tt>Send=no</tt></b>: Demande à rejeu de ne pas
+             emettre les messages d'alerte filet de sauvegarde
+		   présents dans le fichier de référence enregistré.
+             </li>
+      <li><b><tt>Send=yes</tt></b>: Demande à rejeu d'emettre
+             normalement les messages d'alerte filet de sauvegarde
+		   enregistrés pour les vols concernés, aux heures adéquates.
+		   (Option par défaut)</li>
+</ul></p>
+<hr />
+
+<a name="TagStrip">
+<h3>TagStrip</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>TagStrip Flight=45 Sector=BS</tt>
+</td></tr></table>
+<p>Ce message demande à rejeu de marquer ce strip dans le but
+   de l'imprimer ultérieurement grâce à un ordre 
+   <a href="#PrintTaggedStrips"> <b>PrintTaggedStrips</b></a>. </p>
+<p>Cette fonctionalité permet, grâce à un seul ordre au
+   moment opportun d'imprimer un ensemble de strips immédiatement.
+   (Utilisé par exemple pour préparer le plateau de strips
+    en début de simulation).</p>
+<p>Cet ordre (<tt>TagStrip</tt>) est normalement émis par une
+   application de préparation de simulation, pour être stocké
+   avec les autres ordres de modification des données dans un fichier
+   texte de type "simul".</p>
+<hr />
+
+<a name="UnTagStrip">
+<h3>UnTagStrip</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>UnTagStrip Flight=45 Sector=BS</tt>
+</td></tr></table>
+<p>Ce message demande à rejeu d'enlever (s'il y est ...) ce strip 
+   de la liste des strips qui peuvent être imprimés grâce a un ordre 
+   <a href="#PrintTaggedStrips"><b>PrintTaggedStrips</b></a>. </p>
+<p>Cet ordre doit normalement être postérieur à un ordre 
+   <a href="#TagStrip"><b>TagStrip</b></a>
+   avec les mêmes paramètres. </p>
+<hr />
+
+<a name="PrintTaggedStrips">
+<h3>PrintTaggedStrips</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>PrintTaggedStrips</tt>
+</td></tr></table>
+<p> Demande d'émettre sur le bus les strips qui ont été 
+    préalablement marqués par un ordre <tt>TagStrip</tt>.
+    </p>
+<p> Peut sembler à priori faire double usage avec 
+    <tt>GetFlightsWithStrip</tt> suivi des <tt>GetStrip</tt> pour 
+    chaque vol, mais dans le cadre d'expés, cet ordre permet
+    d'imprimer directement une liste pré-établie de strips, à
+    n'importe quelle heure, eventuellement ayant rapport à plusieurs 
+    secteurs, pour préparer le tableau de strip du début de simul.
+    </p>
+<hr />
+
+<a name="Debug">
+<h3>Debug</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>Debug Flight=22 5</tt>
+</td></tr></table>
+<p>Message pour "debugger". Sert à déclencher un traitement
+   spécifique (ici le numéro 5) sur un vol dans les conditions
+   de fonctionnement dynamiques.
+  </p>
+<p>En principe, réservé pour moi :-)</p>
+<hr />
+
+<h2>Ordres relatifs aux fichiers</h2>
+
+<a name="FileRead">
+<h3>FileRead</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>FileRead Type=rejeu Name=StrBdx100701.rej</tt>
+</td></tr></table>
+<p>Demande à rejeu de charger dynamiquement les données 
+   contenues dans le fichier indiqué par <b><tt>Name</tt></b>.
+   Toutes les autres données préalables de la même nature
+   sont écrasées.
+  </p>
+<p>Le paramètre <b><tt>Type=</tt></b> peut prendre les valeurs:
+<ul>
+      <li><b><tt>rejeu</tt></b>: le fichier fourni contient des
+          données de référence (préparées par les outils associés
+          à rejeu comme <tt>dumpast2rej</tt> ou <tt>elvira2rej</tt>
+           ou  <tt>madrec2rej</tt> ou ........
+          Il peut être de nature xxx.rej ou xxx.txt. L'extension
+          pilote la façon de le lire pour rejeu</li>
+      <li><b><tt>simu</tt></b>: le fichier (textuel) fourni contient des 
+           lignes d'ordres de modification des données de base d'un 
+           fichier de rejeu de référence (indiqué d'ailleurs dans ce 
+           fichier de "simu"). Ce type de fichier a en principe été
+           crée par un outil de préparation d'exercice qui a
+           utilisé la commande <tt>FileWrite Type=simu .... </tt>.
+           Evidemment, ce fichier a également aussi pu être édité
+           à la main en respectant le format des ordres demandés
+           à rejeu. (Voir documentation de rejeu).</li>
+</ul>
+<p> Un événement <a href="#FileReadEvent"><tt>FileReadEvent</tt></a>
+    est émis sur le bus, lorsque rejeu a lu le fichier.
+   </p>
+            
+<hr />
+
+<a name="FileWrite">
+<h3>FileWrite</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>FileWrite Type=rejeu Name=echantillon.rej</tt>
+</td></tr></table>
+<p>Demande à rejeu de sauvegarder les données telles qu'il les
+   connait au moment de la requête.
+  </p>
+<p>Le paramètre <b><tt>Type=</tt></b> peut prendre les valeurs:
+<ul>
+      <li><b><tt>rejeu</tt></b>: le fichier crée contient des
+          données binaires. </li>
+      <li><b><tt>simu</tt></b>: le fichier (textuel) crée contient des 
+           lignes d'ordres de modification des données de base du 
+           fichier binaire de rejeu qui sert actuellement 
+           (indiqué d'ailleurs en tête dans ce fichier de "simu").
+           <br />Ce type de fichier peut ensuite eventuellement être
+           édité pour modifier/ajouter certains ordres.
+           <br />Lorsqu'il sera rechargé, rejeu se remettra dans le 
+           même état qu'au moment de la sauvegarde de ce fichier. 
+           Ainsi, à partir des mêmes données de base d'un 
+           fichier binaire de rejeu, on peut constituer des situations
+           de simulation très différentes, sauvegardées chacune
+           dans un fichier de ce type <tt>simu</tt>.
+           (Voir documentation de rejeu).</li>
+        <li><b><tt>dump</tt></b>: Dump dans un fichier texte de la 
+            base actuelle (après toutes les eventuelles modifications).
+            <br />Ce fichier peut être vu comme la concaténation du
+            résultat d'ordres <a href="#Dump"><tt>Dump</tt></a> pour
+            tous les vols connus (et stockés dans un fichier plutôt
+            que sur la sortie standard).<br /> 
+            Le programme <tt>txt2rej</tt> peut permettre de le transformer
+            en un fichier binaire (*.rej)<br />
+            Le fichier texte obtenu est autodocumenté. 
+</ul>
+            
+<hr />
+
+<h2> Evénement Compte-rendu d'un ordre de pilotage</h2>
+
+<a name="ReportEvent">
+<h3>ReportEvent</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt> ReportEvent IIPP1 Result=ERROR Info=STD_TRACKS.UNKNOWN_TRACK Order=AircraftFollowTrack|6371|Star|Meden18 </tt>
+</td></tr></table>
+ ou
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt> ReportEvent Digipilot Result=OK Info=284 Order=AircraftDirect|6841|BTZ </tt>
+</td></tr></table>
+ ou
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt> ReportEvent MyAppli Result=WARNING Info=11:30:17 Order=AircraftTimeAtBeacon|6841|LMG|11:30:15|10</tt>
+</td></tr></table>
+
+<p> Le premier champ après <b><tt>ReportEvent</tt></b> est le nom de l'application
+	qui a demandé à Rejeu d'effectuer l'ordre de pilotage, dont les arguments sont
+	rappelés dans le champ <b><tt>Order=</tt></b>. L'ensemble des valeurs reçues par Rejeu est
+	simplement restitué avec  "|" comme séparateur.
+	</p>
+<p>Cet evénement de compte-rendu est émis systématiquement par Rejeu suite à un ordre de pilotage:
+	</p>
+<ul>
+   <li> <a href="#AircraftDirect"><b>AircraftDirect</b></a> </li>
+   <li> <a href="#AircraftHeading"><b>AircraftHeading</b></a> </li>
+   <li> <a href="#AircraftTurn"><b>AircraftTurn</b></a> </li>
+   <li> <a href="#AircraftCircle"><b>AircraftCircle</b></a> </li>
+   <li> <a href="#AircraftLevel"><b>AircraftLevel</b></a> </li>
+   <li> <a href="#AircraftSpeed"><b>AircraftSpeed</b></a> </li>
+   <li> <a href="#AircraftIntercept"><b>AircraftIntercept</b></a> </li>
+   <li> <a href="#AircraftInterceptXY"><b>AircraftInterceptXY</b></a> </li>
+   <li> <a href="#AircraftInterceptILS"><b>AircraftInterceptILS</b></a> </li>
+   <li> <a href="#AircraftTimeAtBeacon"><b>AircraftTimeAtBeacon</b></a> </li>
+   <li> <a href="#AircraftTimeAtPosition"><b>AircraftTimeAtPosition</b></a> </li>
+   <li> <a href="#AircraftFollowTrack"><b>AircraftFollowTrack</b></a> </li>
+   <li> <a href="#AircraftDifferedOrder"><b>AircraftDifferedOrder</b></a> </li>
+   <li> <a href="#AircraftMultipleOrder"><b>AircraftMultipleOrder</b></a> </li>
+   <li> et également pour la requête <a href="#GetPrediction"><b>GetPrediction</b></a> </li>
+</ul>
+<p> Le champ <b><tt>Result=</tt></b> peut valoir:
+	</p>
+<ul>
+		<li><b><tt>ERROR</tt></b>: L'ordre n'a pas pu être éxécuté,
+			car au moins un paramètre est de nature soit incorrecte  
+			(comme par exemple <b><tt>Heading=wzkg</tt></b>), soit ne permet pas à Rejeu
+         de réaliser l'ordre (comme par exemple <b><tt>Beacon=BTZ</tt></b> dans un 
+			<a href="#AircraftDirect"><b>AircraftDirect</b></a>
+         mais Rejeu ne connait pas les coordonnées de la balise <b><tt>BTZ</tt></b>).
+			Le champ  <b><tt>Info</tt></b> indique la raison de l'echec. 
+           </li>
+      <li><b><tt>OK</tt></b>: L'ordre a été effectué conformément à la demande.
+			Le champ <b><tt>Info</tt></b>  contient la valeur <b><tt>NIL</tt></b>, sauf si
+			Rejeu donne une précision sur un paramètre qui a été utilisé
+			 pour réaliser l'ordre (comme par exemple le cap initial  pris pour réaliser
+			une directe) 
+           </li>
+      <li><b><tt>WARNING</tt></b>: L'ordre a été exécuté, mais dans une configuration
+			non "nominale". Voir exemple avec l'ordre 
+			<a href="#AircraftTimeAtBeacon"><b>AircraftTimeAtBeacon</b></a> ou 
+			<a href="#AircraftMultipleOrder"><b>AircraftMultipleOrder</b></a>
+           </li>
+</ul>
+
+<p> Voir la documentation associée à chaque ordre.
+	</p>
+
+<hr />
+
+
+<h2>Evénement suite à une modification de données</h2>
+
+
+<a name="FileReadEvent">
+<h3>FileReadEvent</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt> FileReadEvent Type=REJEU Name=traffic_file.rej StartTime=07:10:05 
+     EndTime=12:45:07 </tt>
+</td></tr></table>
+<p>Cet événement est généré par rejeu losqu'un nouveau fichier de données
+   est lu (demande initiale sur la ligne de commande, ou par la suite
+   dynamiquement sur le bus grâce à un 
+  <a href="#FileRead"><b>FileRead</b></a>)
+  </p>
+<p>Le paramètre <b><tt>Type=</tt></b> peut valoir:
+<ul>
+      <li><b><tt>REJEU</tt></b>: le fichier qui a été lu par rejeu est 
+            un fichier de trafic de référence (xxx.rej ou xxx.txt).
+           </li>
+      <li><b><tt>SIMU</tt></b>: le fichier qui a été lu par rejeu est 
+           un fichier texte (xxx.simu)
+           contenant des préparations (modifications) des données
+           relatives à un fichier de trafic.
+           </li>
+</ul>
+
+<p> Les Champs <tt>StartTime</tt> et <tt>EndTime</tt> indiquent respectivement
+    l'heure du premier plot et l'heure du dernier plot connus dans le 
+    fichier nouvellement lu.</br> 
+    Quand il s'agit d'un fichier de type <tt>SIMU</tt>, ces 
+    2 champs sont absents.
+    </p>
+            
+<hr />
+
+<a name="TrajectoryUpdateEvent">
+<h3>TrajectoryUpdateEvent</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>TrajectoryUpdateEvent Flight=7040  </tt>
+</td></tr></table>
+<p>
+   Ce message est émis lorsqu'un ordre envoyé à rejeu a 
+   pour conséquence d'avoir modifié la trajectoire de cet avion.
+   C'est le cas pour les ordres:
+   </p>
+<ul>
+   <li> <a href="#AircraftDirect"><b>AircraftDirect</b></a> </li>
+   <li> <a href="#AircraftHeading"><b>AircraftHeading</b></a> </li>
+   <li> <a href="#AircraftTurn"><b>AircraftTurn</b></a> </li>
+   <li> <a href="#AircraftCircle"><b>AircraftCircle</b></a> </li>
+   <li> <a href="#AircraftLevel"><b>AircraftLevel</b></a> </li>
+   <li> <a href="#AircraftSpeed"><b>AircraftSpeed</b></a> </li>
+   <li> <a href="#AircraftIntercept"><b>AircraftIntercept</b></a> </li>
+   <li> <a href="#AircraftInterceptXY"><b>AircraftInterceptXY</b></a> </li>
+   <li> <a href="#AircraftInterceptILS"><b>AircraftInterceptILS</b></a> </li>
+   <li> <a href="#AircraftTimeAtBeacon"><b>AircraftTimeAtBeacon</b></a> </li>
+   <li> <a href="#AircraftTimeAtPosition"><b>AircraftTimeAtPosition</b></a> </li>
+   <li> <a href="#AircraftFollowTrack"><b>AircraftFollowTrack</b></a> </li>
+   <li> <a href="#SetBeforeTrack"><b>SetBeforeTrack</b></a> </li>
+   <li> <a href="#SetAfterTrack"><b>SetAfterTrack</b></a> </li>
+   <li> <a href="#TranslateTime"><b>TranslateTime</b></a> </li>
+   <li> <a href="#TranslateFl"><b>TranslateFl</b></a> </li>
+   <li> <a href="#TranslateXY"><b>TranslateXY</b></a> </li>
+</ul>   
+<p> Ainsi que pour l'annulation d'un des ordres ci-dessus:
+    <a href="#CancelLastOrder"><b>CancelLastOrder</b></a>
+    </p>
+<hr />
+
+<a name="BeaconUpdateEvent">
+<h3>BeaconUpdateEvent</h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>BeaconUpdateEvent List=LVM 10.0 -45.76 XMFF 23.78 -65.45</tt>
+</td></tr></table>
+<p> Cet évènement est émis lorsque l'ordre 
+    <a href="#SetNewBeacons"><b>SetNewBeacons</b></a> a été pris en compte
+    et <b>List</b> répète les modifications effectuées sur les balises
+    </p>
+
+<hr />
+<h2> Suggestions d'évolutions avec nouveaux messages</h2>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>Discard Flight=xxx Cond=((Arr=LFB?) or (Dep=LFB?)) and Fl<80</tt>
+</td></tr></table>
+  <p>
+      Possibilité d'annuler seulement une partie d'un vol, fonction
+      d'une condition quelconque exprimée sur les éléments 
+      du vol ou sur le temps. Dans cet exemple, on ne veut pas voir les 
+      vols qui decollent ou atterissent dans la FIR de Bordeaux quand ils sont
+      en desous du niveau 80.
+      </p>
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>SetUserCondEvent CondName=MyCond Value=MyValue 
+    Cond=xxxxx </tt>
+</td></tr></table>
+    <p>Demande d'emettre un message particulier quand une condition est 
+     réalisée. Possibilités d'expression de la condition à 
+     définir (relations temporelles, relations entre vols, etc...).
+     Type d'emission de l'événement à définir (à la première
+     occurrence de la condition seulement ou à chaque fois ou ....).
+    </p>
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>SetUserData Flight=xxx DataName=NNNNN Value=my_val</tt>
+</td></tr></table>
+  <p>
+      Possibilité d'associer des données à un vol comme cela
+      existe dèjà en terme d'événements. Pour récupérer
+      une donnée nommée, utilisation du mesage <tt>GetUserData</tt>
+      qui va avec.
+   </p>  
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>SetUserGlobalEvent UserGlobalEventName=UGlobEvt 10:00 Value1 11:00 Value2</tt>
+</td></tr></table>
+   <p>Possibilité d'avoir des événements non liés directement 
+     à  des vols et qui seront émis aux heures indiquées avec les
+     valeurs souhaitées.
+    </p>
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>SetFrequency Sector=TG Frequency=129.2</tt>
+</td></tr></table>
+     <p> Permet de tenir à jour une table de correspondance secteur<-->
+      fréquence utile pour renseigner le message d'impression de strip.
+      </p>
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>AircraftResumeNavigation Flight=341 After=TOU </tt>
+</td></tr></table>
+      <p>Reprise de la navigation plan de vol après un ordre de pilotage.
+       On peut envisager après une balise (après une directe, par exemple)
+       ou à partir de maintenant ou d'une heure donnée.
+      </p>
+
+
+<hr />
+
+
+<!-- exemple de table ------------->
+<a name="xxxxx">
+<h3>   </h3><!---------------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>   </tt>
+</td></tr></table>
+<p>
+  </p>
+<hr />
+
+
+</td></tr></table>
+<!------------------- Fin partie centrale ------------------>
+
+</td></tr></table>
+
+</body>
+</html>
+
+

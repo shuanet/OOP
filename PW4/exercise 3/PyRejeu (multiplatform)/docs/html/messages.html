@@ -1,0 +1,542 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Supported messages &#8212; PyRejeu 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="PyRejeu 0.1.0 documentation" href="index.html" />
+    <link rel="prev" title="Ivy / ZMQ / AMQP" href="communication.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="communication.html" title="Ivy / ZMQ / AMQP"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">PyRejeu 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="supported-messages">
+<h1>Supported messages<a class="headerlink" href="#supported-messages" title="Permalink to this headline">¶</a></h1>
+<p>At the moment, PyRejeu does not handle all the messages supported by the
+original rejeu application. This page lists all the messages handle and send by
+PyRejeu.</p>
+<div class="section" id="events">
+<h2>Events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils" id="clockevent">
+<dt><strong>ClockEvent</strong></dt>
+<dd><p class="first">PyRejeu emits periodically this message that gives the current hour of the simulation:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ClockEvent</span> <span class="n">Time</span><span class="o">=</span><span class="mi">10</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mi">45</span> <span class="n">Rate</span><span class="o">=</span><span class="mi">3</span> <span class="n">Bs</span><span class="o">=</span><span class="mi">0</span>
+</pre></div>
+</div>
+<dl class="last docutils">
+<dt><strong>Parameters</strong>:</dt>
+<dd><ul class="first last simple">
+<li><em>Time</em>: the current time (HH:MM:SS format)</li>
+<li><em>Rate</em>: the current clock speed (Rate &lt; 0 when the clock is in reverse mode)</li>
+<li><em>Bs</em>: Big Speed mode (o: disabled, 1: enabled)</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Currently, Big Speed mode is not supported by PyRejeu</p>
+</div>
+<dl class="docutils">
+<dt><strong>TrackMovedEvent</strong></dt>
+<dd><p class="first">Message emitted by PyRejeu to indicate a new position for a flight:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">TrackMovedEvent</span> <span class="n">Flight</span><span class="o">=</span><span class="mi">324</span> <span class="n">CallSign</span><span class="o">=</span><span class="n">LB114JQ</span> <span class="n">Ssr</span><span class="o">=</span><span class="mi">0452</span> <span class="n">Sector</span><span class="o">=</span><span class="n">SL</span> <span class="n">Layers</span><span class="o">=</span><span class="n">F</span><span class="p">,</span><span class="n">I</span> <span class="n">X</span><span class="o">=</span><span class="mf">87.00</span> <span class="n">Y</span><span class="o">=-</span><span class="mf">128.88</span> <span class="n">Vx</span><span class="o">=-</span><span class="mi">197</span> <span class="n">Vy</span><span class="o">=</span><span class="mi">265</span> <span class="n">Afl</span><span class="o">=</span><span class="mi">195</span> <span class="n">Rate</span><span class="o">=</span><span class="mi">2098</span> <span class="n">Heading</span><span class="o">=</span><span class="mi">323</span> <span class="n">GroundSpeed</span><span class="o">=</span><span class="mi">330</span> <span class="n">Tendency</span><span class="o">=</span><span class="mi">1</span> <span class="n">Time</span><span class="o">=</span><span class="mi">12</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mi">32</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>TrackDiedEvent</strong></dt>
+<dd><p class="first">This message indicates the end of a track:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">TrackDiedEvent</span> <span class="n">Flight</span><span class="o">=</span><span class="mi">654</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>PlnEvent</strong></dt>
+<dd><p class="first">PyRejeu emits this message in two cases:
+* Before the first message of position
+* When the flight plan has been modified
+<em>Example</em>:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">PlnEvent</span> <span class="n">Flight</span><span class="o">=</span><span class="mi">55</span> <span class="n">Time</span><span class="o">=</span><span class="mi">07</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">12</span> <span class="n">CallSign</span><span class="o">=</span><span class="n">CRX766</span> <span class="n">AircraftType</span><span class="o">=</span><span class="n">SB20</span> <span class="n">Ssr</span><span class="o">=</span><span class="mi">6744</span> <span class="n">Speed</span><span class="o">=</span><span class="mi">360</span> <span class="n">Rfl</span><span class="o">=</span><span class="mi">190</span> <span class="n">Dep</span><span class="o">=</span><span class="n">LFSB</span> <span class="n">Arr</span><span class="o">=</span><span class="n">LFBO</span> <span class="n">Rvsm</span><span class="o">=</span><span class="n">TRUE</span> <span class="n">Tcas</span><span class="o">=</span><span class="n">TA_ONLY</span> <span class="n">Adsb</span><span class="o">=</span><span class="n">NO</span> <span class="n">DLink</span><span class="o">=</span><span class="n">NO</span> <span class="n">List</span><span class="o">=</span><span class="n">OLRAK</span> <span class="n">V</span> <span class="mi">06</span><span class="p">:</span><span class="mi">53</span> <span class="mi">190</span> <span class="n">NARAK</span> <span class="n">A</span> <span class="mi">07</span><span class="p">:</span><span class="mi">02</span> <span class="mi">190</span> <span class="n">NOPTA</span> <span class="n">A</span> <span class="mi">07</span><span class="p">:</span><span class="mi">09</span> <span class="mi">190</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>TrajectoryUpdateEvent</strong></dt>
+<dd><p class="first">This message is emitted when the trajectory of a flight has been updated:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">TrajectoryUpdateEvent</span> <span class="n">Flight</span><span class="o">=</span><span class="mi">7040</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>ReportEvent</strong></dt>
+<dd><p class="first">This message is emitted by PyRejeu after a pilot order to indicate the result of the order:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">ReportEvent</span> <span class="n">IIPP1</span> <span class="n">Result</span><span class="o">=</span><span class="n">ERROR</span> <span class="n">Info</span><span class="o">=</span><span class="n">STD_TRACKS</span><span class="o">.</span><span class="n">UNKNOWN_TRACK</span> <span class="n">Order</span><span class="o">=</span><span class="n">AircraftFollowTrack</span><span class="o">|</span><span class="mi">6371</span><span class="o">|</span><span class="n">Star</span><span class="o">|</span><span class="n">Meden18</span>
+<span class="n">ReportEvent</span> <span class="n">Digipilot</span> <span class="n">Result</span><span class="o">=</span><span class="n">OK</span> <span class="n">Info</span><span class="o">=</span><span class="mi">284</span> <span class="n">Order</span><span class="o">=</span><span class="n">AircraftDirect</span><span class="o">|</span><span class="mi">6841</span><span class="o">|</span><span class="n">BTZ</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>FileReadEvent</strong></dt>
+<dd><p class="first">This event is emitted by PyRejeu when it finishes to read data file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FileReadEvent</span> <span class="n">Type</span><span class="o">=</span><span class="n">REJEU</span> <span class="n">Name</span><span class="o">=</span><span class="n">traffic_file</span><span class="o">.</span><span class="n">rej</span> <span class="n">StartTime</span><span class="o">=</span><span class="mi">07</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">05</span> <span class="n">EndTime</span><span class="o">=</span><span class="mi">12</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mi">07</span>
+</pre></div>
+</div>
+<p class="last"><em>StartTime</em> and <em>EndTime</em> fields indicate the time of the first cone and the last known cone in the newly read file, respectively.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Currently, <em>REJEU</em> is the only file type supported by PyRejeu</p>
+</div>
+<dl class="docutils" id="beaconupdateevent">
+<dt><strong>BeaconUpdateEvent</strong></dt>
+<dd><p class="first">This event is sent after a SetNewBeacons command:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">BeaconUpdateEvent</span> <span class="n">List</span><span class="o">=</span><span class="n">LVM</span> <span class="mf">10.0</span> <span class="o">-</span><span class="mf">45.76</span> <span class="n">XMFF</span> <span class="mf">23.78</span> <span class="o">-</span><span class="mf">65.45</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="clock">
+<h2>Clock<a class="headerlink" href="#clock" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><strong>ClockStop</strong></dt>
+<dd><p class="first">Message from an application to freeze the simulation clock:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">ClockStop</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>ClockStart</strong></dt>
+<dd><p class="first">Message sent by an application to restart the simulation clock (with the same parameters as before the stop):</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">ClockStart</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>ClockBackward</strong></dt>
+<dd><p class="first">Message sent by an application to set the clock to reverse mode (the current speed is unchanged):</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">ClockBackward</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>ClockForward</strong></dt>
+<dd><p class="first">Message sent by an application to set the clock to normal sense (The current speed is unchanged):</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">ClockForward</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>SetClock</strong></dt>
+<dd><p class="first">Sets the current simulation time (The clock may or may not be on) or the speed of the clock:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">SetClock</span> <span class="n">Time</span><span class="o">=</span><span class="mi">18</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mi">12</span>
+<span class="n">SetClock</span> <span class="n">Rate</span><span class="o">=</span><span class="mf">2.5</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>GetClockDatas</strong></dt>
+<dd><p class="first">Request to PyRejeu to give the current parameters of the clock:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">GetClockDatas</span>
+</pre></div>
+</div>
+<p>PyRejeu answers with the following message:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ClockDatas</span> <span class="n">Time</span><span class="o">=</span><span class="mi">18</span><span class="p">:</span><span class="mi">46</span><span class="p">:</span><span class="mi">34</span> <span class="n">Rate</span><span class="o">=</span><span class="mf">1.0</span> <span class="n">Bs</span><span class="o">=</span><span class="mi">0</span> <span class="n">Stop</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+<dl class="last docutils">
+<dt>The answer parameters are the same as for <a class="reference internal" href="#clockevent"><span class="std std-ref">ClockEvent</span></a> event, with the extra <em>Stop</em> parameter:</dt>
+<dd><ul class="first last simple">
+<li>0: the clock is running</li>
+<li>1: the clock is stopped</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<div class="section" id="database-requests">
+<h2>Database Requests<a class="headerlink" href="#database-requests" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><strong>GetAllBeacons</strong></dt>
+<dd><p class="first">Ask PyRejeu to provide informations for all known beacons:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">GetAllBeacons</span> <span class="n">MsgName</span><span class="o">=</span><span class="n">X123</span> <span class="n">Type</span><span class="o">=</span><span class="n">All</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><em>Type</em> can take two values:</dt>
+<dd><ul class="first last simple">
+<li><strong>Pilot</strong>: Only beacons known by pilots are returned.</li>
+<li><strong>All</strong>: All the beacons are returned.</li>
+</ul>
+</dd>
+</dl>
+<p>PyRejeu answers with the following messages:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">AllBeacons</span> <span class="n">X123</span> <span class="n">Slice</span><span class="o">=</span><span class="n">LAULY</span> <span class="mf">147.88</span> <span class="mf">72.38</span> <span class="n">LEPRA</span> <span class="mf">375.25</span> <span class="o">-</span><span class="mf">190.13</span> <span class="n">MARRI</span> <span class="o">..</span> <span class="o">.</span>
+<span class="n">AllBeacons</span> <span class="n">X123</span> <span class="n">Slice</span><span class="o">=......</span> <span class="o">.....</span> <span class="o">......</span> <span class="o">.....</span> <span class="o">......</span> <span class="o">.....</span> <span class="o">..</span> <span class="o">..</span> <span class="o">.</span>
+<span class="n">AllBeacons</span> <span class="n">X123</span> <span class="n">Slice</span><span class="o">=......</span> <span class="o">&lt;=</span> <span class="n">possibly</span> <span class="n">less</span> <span class="n">infos</span>
+<span class="n">AllBeacons</span> <span class="n">X123</span> <span class="n">EndSlice</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>GetBeaconsInfos</strong></dt>
+<dd><p class="first">Ask PyRejeu to provide inforations for the beacons whose names are provided in List:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">GetBeaconsInfos</span> <span class="n">MsgName</span><span class="o">=</span><span class="n">X123</span> <span class="n">NullCoord</span><span class="o">=</span><span class="n">N</span><span class="o">/</span><span class="n">A</span> <span class="n">List</span><span class="o">=</span><span class="n">LFBO</span> <span class="n">TOU</span> <span class="n">XYZ</span> <span class="n">AFRIC</span>
+</pre></div>
+</div>
+<p>PyRejeu answers with the following message:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">BeaconsInfos</span> <span class="n">X123</span> <span class="n">List</span><span class="o">=</span><span class="n">LFBO</span> <span class="mf">58.00</span> <span class="o">-</span><span class="mf">209.38</span> <span class="n">TOU</span> <span class="mf">57.13</span> <span class="o">-</span><span class="mf">198.38</span> <span class="n">XYZ</span> <span class="n">N</span><span class="o">/</span><span class="n">A</span> <span class="n">N</span><span class="o">/</span><span class="n">A</span> <span class="n">AFRIC</span> <span class="mf">124.25</span> <span class="o">-</span><span class="mf">191.63</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>SetNewBeacons</strong></dt>
+<dd><p class="first">Ask PyRejeu to take into account beacons given in the <em>List</em> parameter:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SetNewBeacons</span> <span class="n">List</span><span class="o">=</span><span class="n">LVM</span> <span class="mf">10.0</span> <span class="o">-</span><span class="mf">45.76</span> <span class="n">XMFF</span> <span class="mf">23.78</span> <span class="o">-</span><span class="mf">65.45</span> <span class="o">.....</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>List</strong>: contains triplets {Name X Y} for each beacon</li>
+</ul>
+</dd>
+</dl>
+<p class="last">If the command is correctly formatted, PyRejeu sends a <a class="reference internal" href="#beaconupdateevent"><span class="std std-ref">BeaconUpdateEvent</span></a> event.</p>
+</dd>
+<dt><strong>GetCurrentFlights</strong></dt>
+<dd><p class="first">Ask PyRejeu to provide all the flights existing at the given time:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">GetCurrentFlights</span> <span class="n">MsgName</span><span class="o">=</span><span class="n">ForMe</span> <span class="n">Time</span><span class="o">=</span><span class="n">Now</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><strong>Parameters</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>MsgName</strong>: string used to identify the answer.</li>
+<li><strong>Time</strong>: time, PyRejeu supports the format HH:MM:SS, HH:MM or the value Now (meaning the current time).</li>
+</ul>
+</dd>
+</dl>
+<p>PyRejeu answers with the following message:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CurrentFlights</span> <span class="n">ForMe</span> <span class="n">Time</span><span class="o">=</span><span class="mi">10</span><span class="p">:</span><span class="mi">16</span><span class="p">:</span><span class="mi">35</span> <span class="n">List</span><span class="o">=</span><span class="mi">45</span> <span class="mi">876</span> <span class="mi">13</span> <span class="mi">6543</span> <span class="mi">568</span> <span class="mi">90</span> <span class="mi">146</span>
+</pre></div>
+</div>
+<dl class="last docutils">
+<dt><em>List</em> field contains the ids of flights which fullfill the following conditions:</dt>
+<dd><ul class="first last simple">
+<li>It is enabled (meaning not concern by the Discard command)</li>
+<li>First known cone &lt; Given time &lt; Last known cone</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt><strong>GetDataBaseInfos</strong></dt>
+<dd><p class="first">Ask PyRejeu to provide flights matching with the filter given in the Cond field</p>
+<blockquote>
+<div>GetDataBaseInfos MsgName=X234 Cond=(CallSign=AF*) and (Dep=LFBO) Select=CallSign,Arr</div></blockquote>
+<dl class="docutils">
+<dt><strong>Parameters</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>MsgName</strong>: string used to identify the answer.</li>
+<li><strong>Cond</strong>: flight filter.</li>
+<li><strong>Select (Optionnal)</strong>: list of informations to return for each selected flight (after the id)</li>
+</ul>
+</dd>
+</dl>
+<p>PyRejeu answers with the following message:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">DataBaseInfos</span> <span class="n">X234</span> <span class="n">Nb</span><span class="o">=</span><span class="mi">7</span> <span class="n">List</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span><span class="n">AF123KQ</span><span class="p">,</span><span class="n">LFPG</span> <span class="mi">87</span><span class="p">,</span><span class="n">AFR3011</span><span class="p">,</span><span class="n">LEVC</span> <span class="mi">79</span><span class="p">,</span><span class="n">AF234GH</span><span class="p">,</span><span class="n">LFMT</span> <span class="o">.......</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<dl class="last docutils">
+<dt>Currently, PyRejeu has some limitations, compared to the legacy rejeu application:</dt>
+<dd><ul class="first last simple">
+<li><em>Passing_Through</em> parameter is not supported.</li>
+<li>Inside filter, <em>ExistIn</em> field is not supported.</li>
+<li>In Select parameter, <em>FirstTime</em> and <em>LastTime</em> fields are not supported.</li>
+</ul>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="flight-informations-requests">
+<h2>Flight Informations Requests<a class="headerlink" href="#flight-informations-requests" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><strong>GetTrajectory</strong></dt>
+<dd><p class="first">Message to request PyRejeu to provide all the known points of a registered trajectory (or possibly modified following pilot orders):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">GetTrajectory</span> <span class="n">MsgName</span><span class="o">=</span><span class="n">MyTraj</span> <span class="n">Flight</span><span class="o">=</span><span class="mi">54</span> <span class="n">From</span><span class="o">=</span><span class="n">Now</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><strong>Parameters</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>MsgName</strong>: string used to identify the answer.</li>
+<li><strong>Flight</strong>: the flight identifier</li>
+<li><dl class="first docutils">
+<dt><strong>From</strong>: The starting time for the trajectory, can take the values:</dt>
+<dd><ul class="first last">
+<li><em>Now</em> to take the current time</li>
+<li><em>Origin</em> to get all the trajectory</li>
+<li><em>HH:MM:SS</em> to specify a custom time</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+<p>PyRejeu answers with the following messages when the flight exists:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">Trajectory</span> <span class="n">MyTraj</span> <span class="n">Slice</span><span class="o">=</span><span class="mf">95.25</span> <span class="o">-</span><span class="mf">140.56</span> <span class="mi">10</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mi">01</span> <span class="mi">300</span> <span class="mf">94.83</span> <span class="o">-</span><span class="mf">139.98</span> <span class="mi">10</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mi">09</span> <span class="mi">300</span> <span class="o">...</span>
+<span class="n">Trajectory</span> <span class="n">MyTraj</span> <span class="n">Slice</span><span class="o">=......</span>
+<span class="n">Trajectory</span> <span class="n">MyTraj</span> <span class="n">Slice</span><span class="o">=......</span> <span class="o">&lt;=</span> <span class="n">possibly</span> <span class="n">less</span> <span class="n">infos</span>
+<span class="n">Trajectory</span> <span class="n">MyTraj</span> <span class="n">EndSlice</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>GetTrack</strong></dt>
+<dd><p class="first">Message to request PyRejeu to provide the full track of a registered flight</p>
+<blockquote>
+<div>GetTrack MsgName=MyTrack Flight=54 From=origin</div></blockquote>
+<p>This command takes the same parameters than <em>GetTrajectory</em>. PyRejeu answers with the following messages when the flight exists:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">Track</span> <span class="n">MyTrack</span> <span class="n">Slice</span><span class="o">=</span><span class="mi">10</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mi">01</span> <span class="mf">95.25</span> <span class="o">-</span><span class="mf">140.56</span> <span class="mi">300</span> <span class="mi">94</span> <span class="mi">290</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">10</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mi">09</span> <span class="o">....</span> <span class="o">...</span>
+<span class="n">Track</span> <span class="n">MyTrack</span> <span class="n">Slice</span><span class="o">=......</span>
+<span class="n">Track</span> <span class="n">MyTrack</span> <span class="n">Slice</span><span class="o">=......</span> <span class="o">&lt;=</span> <span class="n">possibly</span> <span class="n">less</span> <span class="n">infos</span>
+<span class="n">Track</span> <span class="n">MyTrack</span> <span class="n">EndSlice</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>GetPln</strong></dt>
+<dd><p class="first">Message to ask PyRejeu to provide the flight plan as it was realized and recorded in the file COURAGE:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">GetPln</span> <span class="n">MsgName</span><span class="o">=</span><span class="n">Pln54ForMe</span> <span class="n">Flight</span><span class="o">=</span><span class="mi">54</span> <span class="n">From</span><span class="o">=</span><span class="n">OLRAK</span>
+</pre></div>
+</div>
+<p>This command takes the same parameters than <em>GetTrajectory</em>. PyRejeu answers with the following messages when the flight exists:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">Pln</span> <span class="n">Pln54ForMe</span> <span class="n">Flight</span><span class="o">=</span><span class="mi">54</span> <span class="n">Time</span><span class="o">=</span><span class="mi">07</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">12</span> <span class="n">CallSign</span><span class="o">=</span><span class="n">CRX766</span> <span class="n">AircraftType</span><span class="o">=</span><span class="n">SB20</span> <span class="n">Ssr</span><span class="o">=</span><span class="mi">6744</span> <span class="n">Speed</span><span class="o">=</span><span class="mi">360</span> <span class="n">Rfl</span><span class="o">=</span><span class="mi">190</span> <span class="n">Dep</span><span class="o">=</span><span class="n">LFSB</span> <span class="n">Arr</span><span class="o">=</span><span class="n">LFBO</span> <span class="n">Rvsm</span><span class="o">=</span><span class="n">TRUE</span> <span class="n">Tcas</span><span class="o">=</span><span class="n">TA_ONLY</span> <span class="n">Adsb</span><span class="o">=</span><span class="n">NO</span> <span class="n">DLink</span><span class="o">=</span><span class="n">NO</span> <span class="n">List</span><span class="o">=</span><span class="n">OLRAK</span> <span class="n">V</span> <span class="mi">06</span><span class="p">:</span><span class="mi">53</span> <span class="mi">190</span> <span class="n">NARAK</span> <span class="n">A</span> <span class="mi">07</span><span class="p">:</span><span class="mi">02</span> <span class="mi">190</span> <span class="n">NOPTA</span> <span class="n">A</span> <span class="mi">07</span><span class="p">:</span><span class="mi">09</span> <span class="mi">190</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>GetRange</strong></dt>
+<dd><p class="first">Message sent by an application to request the time interval of a flight (or ALL flight) and its visibility:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">GetRange</span> <span class="n">MsgName</span><span class="o">=</span><span class="n">MyRange123</span> <span class="n">Flight</span><span class="o">=</span><span class="mi">123</span>
+<span class="n">GetRange</span> <span class="n">MsgName</span><span class="o">=</span><span class="n">MySimuRange</span> <span class="n">Flight</span><span class="o">=</span><span class="n">ALL</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><strong>Parameters</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>MsgName</strong>: string used to identify the answer.</li>
+<li><strong>Flight</strong>: the flight identifier or <em>ALL</em> to return the global range.</li>
+</ul>
+</dd>
+</dl>
+<p>PyRejeu answers with the following message when the flight exists:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">Range</span> <span class="n">MyRange123</span> <span class="n">FirstTime</span><span class="o">=</span><span class="mi">06</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mi">14</span> <span class="n">LastTime</span><span class="o">=</span><span class="mi">07</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="mi">40</span> <span class="n">Visible</span><span class="o">=</span><span class="n">yes</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>GetPosition</strong></dt>
+<dd><p class="first">A message issued by an application to request the position of a flight at a given time:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">GetPosition</span> <span class="n">MsgName</span><span class="o">=</span><span class="n">pos45</span> <span class="n">Flight</span><span class="o">=</span><span class="mi">45</span> <span class="n">Time</span><span class="o">=</span><span class="mi">13</span><span class="p">:</span><span class="mi">06</span><span class="p">:</span><span class="mi">35</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><strong>Parameters</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>MsgName</strong>: string used to identify the answer.</li>
+<li><strong>Flight</strong>: the flight identifier</li>
+<li><dl class="first docutils">
+<dt><strong>Time</strong>: the specified time</dt>
+<dd><ul class="first last">
+<li><em>Now</em> to take the current time</li>
+<li><em>HH:MM:SS</em> to specify a custom time</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+<p>PyRejeu answers with the following message when the flight exists:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">Position</span> <span class="n">pos45</span> <span class="n">Flight</span><span class="o">=</span><span class="mi">45</span> <span class="n">CallSign</span><span class="o">=</span><span class="n">LB114JQ</span> <span class="n">Ssr</span><span class="o">=</span><span class="mi">0452</span> <span class="n">Sector</span><span class="o">=</span><span class="n">SL</span> <span class="n">Layers</span><span class="o">=</span><span class="n">F</span><span class="p">,</span><span class="n">I</span> <span class="n">X</span><span class="o">=</span><span class="mf">87.00</span> <span class="n">Y</span><span class="o">=-</span><span class="mf">128.88</span> <span class="n">Vx</span><span class="o">=-</span><span class="mi">197</span> <span class="n">Vy</span><span class="o">=</span><span class="mi">265</span> <span class="n">Afl</span><span class="o">=</span><span class="mi">195</span> <span class="n">Rate</span><span class="o">=</span><span class="mi">2098</span> <span class="n">Heading</span><span class="o">=</span><span class="mi">323</span> <span class="n">GroundSpeed</span><span class="o">=</span><span class="mi">330</span> <span class="n">Tendency</span><span class="o">=</span><span class="mi">1</span> <span class="n">Time</span><span class="o">=</span><span class="mi">13</span><span class="p">:</span><span class="mi">06</span><span class="p">:</span><span class="mi">38</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="flight-modifications-requests">
+<h2>Flight Modifications Requests<a class="headerlink" href="#flight-modifications-requests" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><strong>SetPln</strong></dt>
+<dd><p class="first">Message sent by an application to change some elements of the flight plan (list of beacons):</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">SetPln</span> <span class="n">Flight</span><span class="o">=</span><span class="mi">8</span> <span class="n">Time</span><span class="o">=</span><span class="mi">10</span><span class="p">:</span><span class="mi">15</span> <span class="n">List</span><span class="o">=</span><span class="n">AFRIC</span> <span class="n">FJR</span> <span class="n">RHONE</span> <span class="n">MTG</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="pilot-orders">
+<h2>Pilot orders<a class="headerlink" href="#pilot-orders" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><strong>AircraftDirect</strong></dt>
+<dd><p class="first">Change heading from the present time to make a direct on the beacon defined by the Beacon field:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">AircraftDirect</span> <span class="n">Flight</span><span class="o">=</span><span class="mi">678</span> <span class="n">Beacon</span><span class="o">=</span><span class="n">TOU</span>
+</pre></div>
+</div>
+<p class="last">PyRejeu sends a ReportEvent to indicate the order result (OK or ERROR). if necessary PyRejeu ca send a PlnEvent and/or a TrajectoryUpdateEvent</p>
+</dd>
+<dt><strong>AircraftTurn</strong></dt>
+<dd><p class="first">Change heading of a flight to make a turn of the number of degrees requested thanks to angle:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">AircraftTurn</span> <span class="n">Flight</span><span class="o">=</span><span class="mi">77</span> <span class="n">Angle</span><span class="o">=</span><span class="mi">15</span>
+</pre></div>
+</div>
+<p class="last">PyRejeu sends a ReportEvent to indicate the order result (OK or ERROR). if necessary PyRejeu ca send a PlnEvent and/or a TrajectoryUpdateEvent</p>
+</dd>
+<dt><strong>AircraftHeading</strong></dt>
+<dd><p class="first">Change heading from the present time to reach heading given in the field Heading:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">AircraftHeading</span> <span class="n">Flight</span><span class="o">=</span><span class="mi">77</span> <span class="n">To</span><span class="o">=</span><span class="mi">180</span>
+<span class="n">AircraftHeading</span> <span class="n">Flight</span><span class="o">=</span><span class="mi">77</span> <span class="n">To</span><span class="o">=</span><span class="n">maintain</span>
+<span class="n">AircraftHeading</span> <span class="n">Flight</span><span class="o">=</span><span class="mi">77</span> <span class="n">To</span><span class="o">=</span><span class="mi">90</span> <span class="n">By</span><span class="o">=</span><span class="n">Left</span>
+<span class="n">AircraftHeading</span> <span class="n">Flight</span><span class="o">=</span><span class="mi">77</span> <span class="n">To</span><span class="o">=</span><span class="mi">90</span> <span class="n">By</span><span class="o">=</span><span class="n">Left</span> <span class="n">Rate</span><span class="o">=</span><span class="mf">2.0</span>
+</pre></div>
+</div>
+<p class="last">PyRejeu sends a ReportEvent to indicate the order result (OK or ERROR). if necessary PyRejeu ca send a PlnEvent and/or a TrajectoryUpdateEvent</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="misc-requests">
+<h2>Misc Requests<a class="headerlink" href="#misc-requests" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><strong>FileWrite</strong></dt>
+<dd><p class="first">Request to PyRejeu to save the data as it knows them at the time of the request:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">FileWrite</span> <span class="n">Type</span><span class="o">=</span><span class="n">dump</span> <span class="n">Name</span><span class="o">=</span><span class="n">echantillon</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Currently, only <em>dump</em> type is supported by PyRejeu.</p>
+</div>
+<dl class="docutils">
+<dt><strong>CancelLastOrder</strong></dt>
+<dd><p class="first">Ask PyRejeu to cancel the last modification received for the flight identified by the Flight parameter:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">CancelLastOrder</span> <span class="n">Flight</span><span class="o">=</span><span class="mi">6532</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>Discard</strong></dt>
+<dd><p class="first">Ask PyRejeu to ignore the flight identified by the Flight parameter:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">Discard</span> <span class="n">Flight</span><span class="o">=</span><span class="mi">987</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>DiscardAll</strong></dt>
+<dd><p class="first">Ask PyRejeu to ignore all the flights:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">DiscardAll</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>Enable</strong></dt>
+<dd><p class="first">Ask PyRejeu to cancel the discard order for the flight identified by the Flight parameter:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">Enable</span> <span class="n">Flight</span><span class="o">=</span><span class="mi">987</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Supported messages</a><ul>
+<li><a class="reference internal" href="#events">Events</a></li>
+<li><a class="reference internal" href="#clock">Clock</a></li>
+<li><a class="reference internal" href="#database-requests">Database Requests</a></li>
+<li><a class="reference internal" href="#flight-informations-requests">Flight Informations Requests</a></li>
+<li><a class="reference internal" href="#flight-modifications-requests">Flight Modifications Requests</a></li>
+<li><a class="reference internal" href="#pilot-orders">Pilot orders</a></li>
+<li><a class="reference internal" href="#misc-requests">Misc Requests</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="communication.html"
+                        title="previous chapter">Ivy / ZMQ / AMQP</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/messages.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="communication.html" title="Ivy / ZMQ / AMQP"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">PyRejeu 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Mickael Royer.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

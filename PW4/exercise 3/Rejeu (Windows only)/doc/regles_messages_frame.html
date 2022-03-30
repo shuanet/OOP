@@ -1,0 +1,394 @@
+<html>
+<!---------------------- Description du style -------------------->
+<head>
+<link rel="stylesheet" type="text/css"
+href="rejeu_style.css">
+</head>
+
+<!------------------------------------------------------------------>
+<body>
+
+<table border="0" cellpadding="0" cellspacing="1">
+<tr>
+
+<td width="100%" valign="top">
+<table width="100%" bgcolor="#FFFFFF" border="1" cellpadding="7" cellspacing="0">
+<tr>
+<td>
+
+<hr />
+<!------------------- Categorie de messages ---------------------------->
+<h2>Catégories de messages</h2>
+
+<p class="intro">Il y a au total environ une soixantaine de messages 
+   traités par rejeu (messages auxquels il est abonné ou messages qu'il émet).
+   Ces messages sont de différentes natures, et on peut les classer en 4 
+   catégories (+ une 5ème non implémentée, mais facile à faire): </p>
+
+
+<hr />
+
+<a name="événements">
+<h3> A) Messages émis "systématiquement" par rejeu (événements)</h3>
+</a>
+
+<p> Ils sont liés à l'heure de simulation (c'est l'horloge le déclencheur) 
+    et ils s'apparentent à des événements de différentes natures auxquels 
+    les applications s'abonnent.</p>
+
+<p>Exemples:</p>
+
+<ul>
+<li>message de position de plot (X, Y, VX, VY, FL etc.....) réactualisé 
+    toutes les 8s par exemple en route</li>
+<li>message de passage vertical ou travers balise d'un vol émis à l'heure
+    correspondante.</li>
+<li>message d'impression de strip pour un secteur donné pour un vol à 
+    l'heure indiquée dans le fichier COURAGE (ou autre si elle a été 
+    modifiée par l'utilisateur .....).</li>
+<li>message d'alerte comme le filet de sauvegarde (STCA) ou de proximité
+    (MSAW).</li> 
+</ul>
+
+<p>
+Certains événements ne sont pas liés au temps, mais sont une
+conséquence d'une modification des données demandée par une 
+application.</p>
+
+<p>Exemples:</p>
+
+<ul>
+<li>message pour prévenir qu'un nouveau fichier de données vient
+    d'être lu.</li>
+<li>message indiquant que la trajectoire d'un avion change suite à
+    un ordre de pilotage, ou de préparation de simulation</li>
+</ul>
+
+<hr />
+
+<a name="ordres">
+<h3>B) Demande pour que rejeu procède à une modification (ordre)</h3>
+</a>
+
+<p>Ces messages sont émis par les autres applications pour demander à rejeu
+    de modifier son comportement :  faire une action ou prendre en compte 
+    des modifications des données utilisées.</p>
+
+<p>Exemples:</p>
+
+<ul>
+<li>Fixer l'heure actuelle de simulation et la vitesse d'horloge souhaitée</li>
+<li>Changer l'heure d'impression d'un strip particulier</li>
+<li>Donner un ordre de pilotage à un avion </li>
+<li>Changer l'indicatif d'un vol</li>
+<li>Sauvegarder dans un fichier les modifications demandées (et effectuées)</li>
+</ul>
+<hr />
+
+<a name="requêtes">
+<h3>C) Messages émis pour obtenir des informations (requêtes)</h3>
+</a>
+
+<p>Ces messages sont émis par les autres applications et sont assimilables
+   à des requêtes qui necessiteront que rejeu envoie une réponse sur le bus.</p>
+
+<p>Exemples:</p>
+
+<ul>
+<li>demande de la liste des balises du plan de vol d'un avion (avec heure, niveau)</li>
+<li>demande de l'heure actuelle de simulation</li>
+<li>demande des secteurs traversés par le vol (nom secteur, heure)</li>
+<li>demande de la liste des vols qui remplissent des conditions souhaitées
+    (par exemple, liste des vols Air France de type A320 qui se posent à
+    Toulouse) </li>
+</ul>
+<hr />
+
+<a name="réponses">
+<h3>D) Messages émis par rejeu, en réponse à une demande de type C</h3>
+</a>
+
+<p>C'est une réponse sur le bus, comportant un identifiant qui a été 
+   fourni par le demandeur.</p>
+<hr />
+
+<a name="erreurs">
+<h3>E) Messages d'erreur émis par rejeu. </h3>
+</a>
+
+<p>Catégorie actuellement non implémentée sur le bus: Tous les messages
+   d'erreur sont écrits dans le terminal où rejeu a été lancé, et c'est 
+   suffisant pour debugger. 
+   Serait utile sur le bus, si les applis existantes souhaitaient  
+   s'abonner à ce type de message pour faire réellement un traitement.
+   Pour l'instant, un ordre ou une demande envoyé à rejeu avec des
+   paramètres incorrects est tout simplement ignoré de rejeu, qui se contente 
+   d'imprimer un message d'erreur sur <tt>stdout</tt>. ( C'est la raison
+   pour laquelle il est fortement conseillé de rediriger ces informations
+   dans un fichier de Log, lorsque rejeu est invoqué dans un script
+   de lancement de simulation ou de démonstration pour comprendre ce qui
+   se passe, quand ..... il ne se passe rien :-)) </p>
+
+<center><b>As You Want!</b></center>
+<hr />
+
+<!-------------------- Regles constitution des messages --------------->
+
+<hr />
+
+<h2>Règles utilisées pour la constitution des messages</h2>
+
+<p>
+<b>Préambule:</b> ce que je propose est un compromis entre plusieurs 
+   points de vue, en essayant de prendre aussi en compte des arguments
+   de simplicité et d'efficacité
+</p>
+
+<p>Simplicité au risque de ne pas être "implacable" sur le plan théorique
+   quand on est en distribué...., comme par exemple la latitude laissée à 
+   l'utilisateur de nommer lui-même ses requêtes ce qui rend possible les
+   collisions. Mais quand même obligation de nommer une requête (ce qui 
+   nomme aussi la réponse), car en général les applis ne sont pas 
+   intéressées par les réponses aux requêtes des autres, mêmes si elles 
+   s'intéressent aux mêmes infos ....... 
+</p>
+
+<p> Efficacité en s'assurant que le premier champ des messages est 
+   d'entrée de jeu discriminant (prise en compte du fait que le bus 
+   actuel est friand de regexps qui diffèrent, dès le champ qui commence
+   par "^" .....) 
+</p>
+
+<h2>Les règles employées:</h2>
+
+<!------------------ Majuscules/minuscules ----------->
+<a name="règle maj/min"></a>
+<table class="txt" width="100%" border="1"><tr><td>
+<dl><dt><b>Majuscules/Minuscules</b></dt>
+<dd>
+<p>Du point de vue de rejeu, le bus est "case insensitive", mais les messages
+  sont constitués de mots (simples ou concaténés) en miniscule avec la 
+  première lettre de chaque mot en majuscule.</p>
+
+<p>
+ Exemple: <tt>"CancelLastOrder Flight=4622"</tt></p>
+
+<p>Cette règle s'applique aux mots clefs (ordres, interrogations, 
+   noms de champs) mais évidemment pas aux valeurs associées à ces champs.</p>
+
+</dd> </dl>
+</td></tr></table>
+
+<!------------------ Regle Listes --------------------->
+<br />
+<a name="règle listes"></a>
+<table class="txt" width="100%" border="1"><tr><td>
+<dl><dt><b>Listes dans les messages</b></dt><dd>
+<p>Une information peut être constituée d'un ensemble de champs distincts
+   comme: <tt>X=12.34 Y=45.16 Vx=224 Vy=113 ..... </tt>. Un message 
+   destiné à transmettre une information simple est constitué de l'ensemble
+   des noms de champs et valeurs associées.</p>
+<p> 
+   Par contre, quand des messages comportent des listes de telles informations
+   (donc en général beaucoup de données à transmettre) les noms des champs
+   sont omis.Seul apparaît l'identificateur de champ <tt>List=</tt> 
+   suivi de la liste des n-uplets.</p>
+<p>On transmet:
+<tt>List=12.34 45.16 224 113 10:24:11 13.56 47.0 220 123 10:24:18 etc .....</tt>
+<br /> au lieu de:
+ <tt>X=12.34 Y=45.16 VX=224 VY=113 Time=10:24:11 X=13.56 Y=... VX= .... etc</tt> </p>
+</dd> </dl>
+</td></tr></table>
+
+<!------------------ Regle Tranches -------------------->
+<br />
+<a name="règle tranches"></a>
+<table class="txt" width="100%" border="1"><tr><td>
+<dl><dt><b>Tranches pour les longues listes</b></dt><dd>
+<p>Quand une liste constitue la totalité du message, et qu'elle 
+   est trop longue pour tenir en un seul message sur le bus, 
+   on la transmet en tranches succesives.
+   Dans ce cas, le mot clef <tt>Slice</tt> intervient sur chaque ligne
+   de message comportant des éléments (Nombre à discretion de rejeu).
+   La transmission se termine avec <tt>EndSlice</tt>.</p>
+
+<p>Exemple: une application fait la demande de la trajectoire d'un vol
+   (ensembles des plots connus pour un vol)</p> 
+<p>
+<tt>GetTrajectory MsgName=Mytraj Flight=4123 From=10:56</tt></p>
+
+<p>Réponse de rejeu à cette demande:</p>
+<p><tt>
+Trajectory MsgName=MyTraj Slice=95.25 -140.56 10:20:01 300 94.83 -139.98 10:20:09 300
+<br />Trajectory MsgName=Mytraj Slice=....... ..............
+<br />...........
+<br />Trajectory MsgName=Mytraj Slice=....</tt> 
+                 &lt;= eventuellement moins d'infos<tt>
+<br />Trajectory MsgName=MyTraj EndSlice
+</p></tt>
+</dd> </dl>
+</td></tr></table>
+
+<!------------------ Regle evenement ------------------->
+<br />
+<a name="règle événements"></a>
+<table class="txt" width="100%" border="1"><tr><td>
+<dl><dt><b>Messages "Evénements"</b></dt><dd>
+<p>Les messages de type A) (événements émis par rejeu liés à
+   l'heure de simulation )
+   comprennent le mot <tt>Event</tt> (ou <tt>UserEvent</tt> pour les
+   événements utilisateur) dans le premier mot du message.</p>
+
+<p>Exemples:</p> 
+<p><tt>
+  ClockEvent Time=10:24:45 Rate=2 Bs=0<br />
+  TrackDiedEvent Flight=4622 <br />
+  BeaconEvent Flight=4622 Beacon=AGN Fl=80 Time=10:26:14 Mode=Abeam <br />
+  UserEvent Flight=7689 Name=Alert Value=WhateverIwanted
+</tt></p>
+</dd> </dl>
+</td></tr></table>
+
+<!------------------- Regle Ordre ---------------------->
+<br />
+<a name="règle ordres"></a>
+<table class="txt" width="100%" border="1"><tr><td>
+<dl><dt><b>Demande pour que rejeu procède à une modification</b></dt><dd>
+<p>
+Les messages de type B) commencent par:</p>
+<ul> 
+<li> <p>
+   <tt>Setxxxx</tt> quand on demande a rejeu d'intervenir sur le(s) 
+   paramètre(s) <tt>xxxx</tt>
+   <br /> (avec eventuellement <tt>Flight= ....</tt>
+    immédiatement derrière quand cela concerne un vol).<br /> 
+   <tt>Set....</tt> indique que la/les valeur(s) fournie(s) remplace(nt)
+    celle(s) eventuellement déjà existante(s).</p>
+
+   <p>Exemples:</p>
+   <p><tt>
+SetClock Time=10:20:15 
+<br />SetStripTime Flight=5689 Sector=TA Time=10:24
+<br />SetDirect Flight=5678 Beacon=FJR
+   </tt></p>
+<br />
+<br />
+</li>
+
+<li><p> 
+   <tt>Mergexxxx</tt> quand on fusionne les paramètres déjà existant
+    avec des nouveaux (ajout et remplacement suivant les cas.
+    (Voir definition du message <tt>MergeUserEvent</tt>)</p>
+
+<p><tt>MergeUserEvent Name=MyEvent Flight=1234 Time=10:45:00 Value=MyValue1 Time=10:50:00 Value=MyValue2
+</tt></p>
+<br />
+<br />
+</li>
+
+<li><p>
+    ou un mot clef qui identifie une action ou un calcul qu'on demande a 
+    rejeu.</p>  
+<p><tt>
+ClockStop
+<br />TranslateTime Flight=1234 Shift=02:16:56
+<br />FileRead Type=simul Name=exo1.simul
+</tt></p>
+</li>
+</ul>
+
+
+<br />
+<br />
+</dd></dl>
+</td></tr></table>
+
+
+<!------------------- Regle Requetes ------------------->
+<br />
+<a name="règle requêtes"></a>
+<table class="txt" width="100%" border="1"><tr><td>
+<dl><dt><b>Demande d'informations à rejeu</b></dt><dd>
+
+<p>Les messages de type C) qui sont des demandes d'informations qui 
+   necessitent une réponse sur le bus commencent par:</p>
+<p>
+   <tt>Getxxx  MsgName=MyRequest ........</tt></p>
+
+<p>Exemples:</p>
+<p><tt>
+GetOldPositions MsgName=MyOldPos Flight=2345 Nb=3
+<br />GetStrip MsgName=OneStripForMe Flight=6789 Sector=TG
+<br />GetDataBaseInfos MsgName=MyRequest Cond=FL>330 and CallSign=AFR*
+</tt></p>
+<p>Exceptions recensées: (la nature de ces 2 messages ne semble pas
+   justifier un <tt>MsgName</tt>)</p>
+<p><tt>
+GetClockDatas<br />
+GetRadarRefresh
+</tt></p>
+
+<br />
+<br />
+</dd></dl>
+</td></tr></table>
+
+<!----------------- Regle Reponses --------------------->
+<br />
+<a name="règle réponses"></a>
+<table class="txt" width="100%" border="1"><tr><td>
+<dl><dt><b>Réponses de rejeu aux requêtes</b></dt><dd>
+
+<p>Les messages de type D) qui sont des réponses à un message de
+   demande d'information de type C commencent par:</p>
+<p> 
+  <tt>xxx MsgName=MyRequest ........</tt></p>
+<p>
+   si la demande était:</p>
+<p>
+  <tt> Getxxx MsgName=MyRequest ......</tt></p>
+
+<p>Exemples:</p>
+
+<p>Une application envoie le message suivant pour obtenir les 2 dernières
+   positions pour le vol <tt>1234</tt>:</p>
+<p><tt>
+GetOldPositions MsgName=MyOldPos Flight=1234 Nb=2
+</tt></p>
+
+<P>rejeu répond:</p>
+
+<p><tt>
+OldPositions MsgName=MyOldPos Flight=1234 List=22.19 -9.95 109 226 180 0 10:21:05 22.45 -9.45 113 225 180 0 10:21:13
+</tt></p>
+<hr />
+<p> rejeu reçoit la demande de strip pour le vol <tt>1234</tt> dans le 
+secteur <tt>GV</tt>:</p>
+
+<p><tt>
+GetStrip MsgName=MyStrip Flight=1234 Sector=GV
+</tt></p>
+
+<p>et répond:</p>
+
+<p><tt>
+Strip MyStrip Flight=1234 Time=06:00:00 CallSign=CEV444 AcftType=TBM7 
+Dep=LFBC Arr=LFPY Rfl=180 Speed=260 Ssr=0440 Sector=NL ExitSector=TW 
+Frequency=123.4 Tfl=190 Time=09:35  List=VERAC 09:48 180 
+POI 09:54:00 180
+</tt></p> 
+
+<p>Les champs uniques sont nommés (<tt>CallSign, Dep, Arr, etc</tt>), mais
+   ceux qui interviennent dans une information multiple (<tt> Beacon, Time,
+   FL</tt>) sont omis conformément à la règle.
+
+<br />
+<br />
+</dd></dl>
+</td></tr></table>
+<hr />
+
+</body>
+</html>
+
+

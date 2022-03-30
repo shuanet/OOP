@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Events &#8212; PyRejeu 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="PyRejeu 0.1.0 documentation" href="../index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">PyRejeu 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="events">
+<h1>Events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils" id="clockevent">
+<dt><strong>ClockEvent</strong></dt>
+<dd><p class="first">PyRejeu emits periodically this message that gives the current hour of the simulation:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ClockEvent</span> <span class="n">Time</span><span class="o">=</span><span class="mi">10</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mi">45</span> <span class="n">Rate</span><span class="o">=</span><span class="mi">3</span> <span class="n">Bs</span><span class="o">=</span><span class="mi">0</span>
+</pre></div>
+</div>
+<dl class="last docutils">
+<dt><strong>Parameters</strong>:</dt>
+<dd><ul class="first last simple">
+<li><em>Time</em>: the current time (HH:MM:SS format)</li>
+<li><em>Rate</em>: the current clock speed (Rate &lt; 0 when the clock is in reverse mode)</li>
+<li><em>Bs</em>: Big Speed mode (o: disabled, 1: enabled)</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Currently, Big Speed mode is not supported by PyRejeu</p>
+</div>
+<dl class="docutils">
+<dt><strong>TrackMovedEvent</strong></dt>
+<dd><p class="first">Message emitted by PyRejeu to indicate a new position for a flight:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">TrackMovedEvent</span> <span class="n">Flight</span><span class="o">=</span><span class="mi">324</span> <span class="n">CallSign</span><span class="o">=</span><span class="n">LB114JQ</span> <span class="n">Ssr</span><span class="o">=</span><span class="mi">0452</span> <span class="n">Sector</span><span class="o">=</span><span class="n">SL</span> <span class="n">Layers</span><span class="o">=</span><span class="n">F</span><span class="p">,</span><span class="n">I</span> <span class="n">X</span><span class="o">=</span><span class="mf">87.00</span> <span class="n">Y</span><span class="o">=-</span><span class="mf">128.88</span> <span class="n">Vx</span><span class="o">=-</span><span class="mi">197</span> <span class="n">Vy</span><span class="o">=</span><span class="mi">265</span> <span class="n">Afl</span><span class="o">=</span><span class="mi">195</span> <span class="n">Rate</span><span class="o">=</span><span class="mi">2098</span> <span class="n">Heading</span><span class="o">=</span><span class="mi">323</span> <span class="n">GroundSpeed</span><span class="o">=</span><span class="mi">330</span> <span class="n">Tendency</span><span class="o">=</span><span class="mi">1</span> <span class="n">Time</span><span class="o">=</span><span class="mi">12</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mi">32</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>TrackDiedEvent</strong></dt>
+<dd><p class="first">This message indicates the end of a track:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">TrackDiedEvent</span> <span class="n">Flight</span><span class="o">=</span><span class="mi">654</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>PlnEvent</strong></dt>
+<dd><p class="first">PyRejeu emits this message in two cases:
+* Before the first message of position
+* When the flight plan has been modified
+<em>Example</em>:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">PlnEvent</span> <span class="n">Flight</span><span class="o">=</span><span class="mi">55</span> <span class="n">Time</span><span class="o">=</span><span class="mi">07</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">12</span> <span class="n">CallSign</span><span class="o">=</span><span class="n">CRX766</span> <span class="n">AircraftType</span><span class="o">=</span><span class="n">SB20</span> <span class="n">Ssr</span><span class="o">=</span><span class="mi">6744</span> <span class="n">Speed</span><span class="o">=</span><span class="mi">360</span> <span class="n">Rfl</span><span class="o">=</span><span class="mi">190</span> <span class="n">Dep</span><span class="o">=</span><span class="n">LFSB</span> <span class="n">Arr</span><span class="o">=</span><span class="n">LFBO</span> <span class="n">Rvsm</span><span class="o">=</span><span class="n">TRUE</span> <span class="n">Tcas</span><span class="o">=</span><span class="n">TA_ONLY</span> <span class="n">Adsb</span><span class="o">=</span><span class="n">NO</span> <span class="n">DLink</span><span class="o">=</span><span class="n">NO</span> <span class="n">List</span><span class="o">=</span><span class="n">OLRAK</span> <span class="n">V</span> <span class="mi">06</span><span class="p">:</span><span class="mi">53</span> <span class="mi">190</span> <span class="n">NARAK</span> <span class="n">A</span> <span class="mi">07</span><span class="p">:</span><span class="mi">02</span> <span class="mi">190</span> <span class="n">NOPTA</span> <span class="n">A</span> <span class="mi">07</span><span class="p">:</span><span class="mi">09</span> <span class="mi">190</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>TrajectoryUpdateEvent</strong></dt>
+<dd><p class="first">This message is emitted when the trajectory of a flight has been updated:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">TrajectoryUpdateEvent</span> <span class="n">Flight</span><span class="o">=</span><span class="mi">7040</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>ReportEvent</strong></dt>
+<dd><p class="first">This message is emitted by PyRejeu after a pilot order to indicate the result of the order:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">ReportEvent</span> <span class="n">IIPP1</span> <span class="n">Result</span><span class="o">=</span><span class="n">ERROR</span> <span class="n">Info</span><span class="o">=</span><span class="n">STD_TRACKS</span><span class="o">.</span><span class="n">UNKNOWN_TRACK</span> <span class="n">Order</span><span class="o">=</span><span class="n">AircraftFollowTrack</span><span class="o">|</span><span class="mi">6371</span><span class="o">|</span><span class="n">Star</span><span class="o">|</span><span class="n">Meden18</span>
+<span class="n">ReportEvent</span> <span class="n">Digipilot</span> <span class="n">Result</span><span class="o">=</span><span class="n">OK</span> <span class="n">Info</span><span class="o">=</span><span class="mi">284</span> <span class="n">Order</span><span class="o">=</span><span class="n">AircraftDirect</span><span class="o">|</span><span class="mi">6841</span><span class="o">|</span><span class="n">BTZ</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>FileReadEvent</strong></dt>
+<dd><p class="first">This event is emitted by PyRejeu when it finishes to read data file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FileReadEvent</span> <span class="n">Type</span><span class="o">=</span><span class="n">REJEU</span> <span class="n">Name</span><span class="o">=</span><span class="n">traffic_file</span><span class="o">.</span><span class="n">rej</span> <span class="n">StartTime</span><span class="o">=</span><span class="mi">07</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">05</span> <span class="n">EndTime</span><span class="o">=</span><span class="mi">12</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mi">07</span>
+</pre></div>
+</div>
+<p class="last"><em>StartTime</em> and <em>EndTime</em> fields indicate the time of the first cone and the last known cone in the newly read file, respectively.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Currently, <em>REJEU</em> is the only file type supported by PyRejeu</p>
+</div>
+<dl class="docutils" id="beaconupdateevent">
+<dt><strong>BeaconUpdateEvent</strong></dt>
+<dd><p class="first">This event is sent after a SetNewBeacons command:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">BeaconUpdateEvent</span> <span class="n">List</span><span class="o">=</span><span class="n">LVM</span> <span class="mf">10.0</span> <span class="o">-</span><span class="mf">45.76</span> <span class="n">XMFF</span> <span class="mf">23.78</span> <span class="o">-</span><span class="mf">65.45</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/m_categories/events.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">PyRejeu 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Mickael Royer.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

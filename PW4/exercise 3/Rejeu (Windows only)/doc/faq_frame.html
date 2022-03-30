@@ -1,0 +1,505 @@
+<html>
+<!---------------------- Description du style -------------------->
+<head>
+<link rel="stylesheet" type="text/css"
+href="rejeu_style.css">
+</head>
+
+<!------------------------------------------------------------------>
+<body>
+
+<table border="0" cellpadding="0" cellspacing="1">
+<tr>
+
+<td width="100%" valign="top">
+<table width="100%" bgcolor="#FFFFFF" border="1" cellpadding="7" cellspacing="0"
+>
+<tr>
+<td>
+
+<hr />
+<!------------------- FAQ ---------------------------------------------->
+
+<!------------------- Fichier de Simu --------------------------------------->
+<a name="Fichier simu"></a>
+<h2> Fichiers de "simu" </h2>
+<b> Quelle est la différence entre un fichier dit de "simu" et un fichier
+    de "rejeu"? </b>
+<p> Normalement, un fichier de "rejeu" désigne un fichier de "référence" 
+    qui a été généré à partir de trafic réel enregistré (ou d'un générateur 
+    de trafic comme MASS).
+    </p>
+<p> Des modifications de toutes sortes peuvent être faites sur tous
+    les éléments de trafic. Ces modifications constituent des différences par 
+    rapport à la réalité enregistrée, et ce sont toutes ces modifications 
+    qui sont 
+    stockées (sous forme de texte) dans un fichier dit de "simu".
+    Dans ce fichier, la première ligne indique le chemin complet du
+    fichier qui sert de référence et auquel s'appliquent toutes les
+    modifications pour aboutir à la situation souhaitée.
+    </p>
+<p>
+    Lorsqu'un fichier de simu est soumis à rejeu, celui-ci applique aux heures
+    adéquates toutes les modifications 
+    qui y sont stockées ce qui regénère la situation voulue.
+    Noter que ceci n'enlève en rien toutes les possibilités de
+    navigation avant-arrière, vite-lentement dans le temps.
+    </p>
+<p> Ainsi, généralement, à partir d'un fichier de référence, on peut générer
+    plusieurs situations très différentes, chacune d'entre elles étant
+    représentée par un fichier de simu.
+    </p>
+
+<hr />
+<b> Peut-on obtenir un fichier de rejeu "autonome" à partir d'un
+    fichier de référence "rejeu" et d'un fichier de simu associé?
+    </b>
+<p> Oui, il suffit d'utiliser l'outil 
+    <a href="donnees_frame.html#simu2txt" target="info_frame">simu2txt</a> 
+    Dans ce cas,
+    bien sûr, toutes les modifications ayant servi à aboutir à la
+    situation finale sont appliquées, mais leur historique ne peut plus
+    être exploité (ni connu). Ainsi, une trajectoire obtenue après de
+    multiples ordres de pilotage passera pour avoir été enregistrée
+    comme si elle s'était réellement déroulée.
+    </p>
+
+<hr />
+<b> Hier, je lançais la commande: "rejeu -o fic.simu" et ça marchait.
+    Aujourd'hui non, pourquoi?
+    </b>
+<p> Cette commande indique à rejeu d'aller chercher ses informations 
+    dans le fichier "fic.simu" qui contient toutes les modifications 
+    préparées s'appliquant à un fichier "rejeu" de référence dont le nom
+    et le chemin absolu sont indiqués sur la première ligne de "fic.simu".
+    Si depuis hier ce fichier a été déplacé dans l'arborescence de fichiers,
+    rejeu ne le retrouve plus, d'où le problème.
+    </p>
+<p> Pour y remédier, éditer la première ligne de fic.simu et indiquer
+    le chemin correct.
+    </p> 
+
+<hr />
+
+<b> Rejeu peut être utilisé pour mener des expérimentations. Comment
+    lui dit-on qu'on est en mode "expé" ou en mode "préparation d'exercice"
+    ?
+    </b>
+<p> Il n'y a aucune différence pour rejeu. Qui peut le plus peut le moins.
+    Rejeu applique les ordres qu'il reçoit, quelle que soit leur nature:
+    </p>
+<ul>
+  <li>  pendant une expé, il reçoit des ordres de pilotage (ainsi que des 
+    requêtes d'applications qui demandent certaines informations).
+    l'horloge se déroule à vitesse réelle dans le sens croissant.</li>
+  <li>  pendant une préparation, il reçoit essentiellement des ordres 
+    pour cacher, dupliquer ou translater des vols (dans le temps ou
+    l'espace), mais aussi eventuellement des ordres de pilotage pour
+    obtenir les trajectoires souhaitées. Généralement, l'horloge
+    est abondamment manipulée d'avant en arrière, à vitesse plus
+    ou moins accélérée, car l'opérateur vérifie directement sur
+    l'image les conséquences de ses modifications.</li>
+</ul>
+<p> Ces possibilités facilitent considérablement les pré-expés, car
+    il est facile en cours de route de dire "revenons un peu en arrière
+    et appliquons plutôt cette commande pour voir ce qui se passe".
+    Il n'y a aucun problème pour annuler des ordres ou revenir à
+    un instant quelconque pour essayer quelque chose sans être
+    obligé de relancer toute la simulation depuis le début.
+    </p>
+
+<hr />
+<b> Comment faire pour rejouer ce qui s'est passé en expé?
+    </b>
+<p> Comme quand on prépare un exercice où il est naturel de sauvegarder
+    son travail à la fin, il suffit d'avoir sauvegardé
+    (avec l'ordre " 
+    <a href="messages_frame.html#FileWrite" target="info_frame">FileWrite</a>
+     type=simu Name=expe.simu") à la fin 
+    de l'exercice. 
+    Si on rejoue ce fichier, la situation se déroule de la même manière. 
+    L'historique de tous les ordres de pilotage y est conservé et
+    ils sont appliqués aux bonnes heures (comme 
+    l'auraient été des ordres de préparation d'ailleurs .....).
+   
+
+<hr />
+<!------------------- Horloge ---------------------------------------------->
+<a name="Horloge"></a>
+<h2> Horloge </h2>
+<b> A quoi sert le mode "big speed"?
+    </b>
+<p> Toutes les explications ici: 
+    <a href="rejeu_frame.html#Big Speed" target="info_frame">
+       Horloge Big Speed</a><br />
+<hr />
+<b> Dans le terminal ayant servi à lancer rejeu, je vois le message
+    <b><tt>"Warning Overclock"</tt></b>. Qu'est-ce que ça signifie?
+    </b>
+<p> Rejeu n'a pas le temps d'envoyer tous les messages nécessaires entre 2 
+    tops d'horloge. Il y a de fortes chances que cela soit dû à une
+    application connectée sur le bus et qui n'utilise pas correctement
+    les principes d'Ivy. Voir 
+    <a href="rejeu_frame.html#Overclock" target="info_frame">
+       Overclock</a><br />
+    </p>
+
+<hr />
+<b> La granularité de l'horloge est au mieux d'une seconde (dans l'espace de 
+    simulation) et c'est la précision des messages plots émis. Peut-on 
+    envisager de faire fonctionner rejeu avec une meilleure précision?
+    </b> 
+<p> Non, la conception de rejeu impose cette granularité.  
+    A tout moment, rejeu connait la liste et la nature des évènements à 
+    prendre en compte à cette heure là: positions plots, 
+    entrée/sortie secteurs, passages balises, impression des strips, etc ...,
+    et l'heure exprimée en secondes sert 
+    d'index pour déclencher toutes les actions nécessaires.
+    </p>
+    
+<hr />
+<!------------------- Balises ---------------------------------------------->
+<a name="Balises"></a>
+<h2> Balises </h2>
+
+<b> Je donne une directe sur une balise, et rien ne se passe. Pourquoi?</b>
+<p>
+La balise n'est pas connue de rejeu, et donc l'ordre de pilotage ne peut pas être exécuté.
+</p>
+<p>Pour remédier à cette situation, plusieurs possibilités sont offertes:
+<ul>
+   <li>Regénérer le fichier de rejeu en donnant un fichier de balises 
+       plus complet (Voir génération des données).
+       </li>
+	<li>Utiliser le job "merge_data", disponible à partir de la V2.80,
+		 pour integrer des données à un fichier de rejeu existant.
+       </br> Si on fait:
+       </br> <tt> merge_data rejeu.txt new_rejeu.txt -b beacons.txt</tt>
+       </br> avec par exemple le fichier <b>beacons.txt</b> contenant:
+       <tt> </br> LVM 10.0 -45.76
+            </br> XMFF 23.78 -65.45
+            </tt>
+       </br> les 2 balises <tt><b>LVM</b></tt> et <tt><b>XMFF</b></tt> seront intégrées 
+        dans le fichier rejeu résultat <b>new_rejeu.txt</b>
+       </li>
+   <li>Editer le fichier texte ".txt" de rejeu. A la fin du fichier (après tous
+       les plots de tous les vols), on trouve la liste des balises
+       connues de rejeu.
+       Chaque ligne indique le nom du point et ses coordonnées X et Y
+       exprimées en 1/8 ème de NM.
+       On peut donc rajouter une ou plusieurs lignes, en prenant la 
+       précaution de tenir à jour la ligne précédant ces balises, qui indique
+       le nombre de balises du fichier: ligne <b><tt>NBeacons 256 </tt></b>
+       par exemple.
+       </li>
+   <li>Indiquer dynamiquement à rejeu avec un message envoyé sur le bus
+       le nom et les coordonnées de cette balise. voir l'ordre
+       <a href="messages_frame.html#SetNewBeacons" target="info_frame">
+   SetNewBeacons</a>. Si une sauvegarde de fichier "simu" est effectuée,
+       l'ordre y figure et ainsi lors d'un lancement ultérieur, il ne
+       sera pas utile de le renvoyer sur Ivy.
+       </li>
+   <li>Il est aussi possible d'éditer le fichier de "simu" 
+       concerné pour y ajouter une (ou plusieurs) ligne(s) comme:
+       </br> <tt>11:00:02 SETNEWBEACONS LVM 10.0 -45.76 XMFF 23.78 -65.45</tt>
+       </li>
+</ul>
+
+<hr />
+<b> J'ai crée un fichier de rejeu à partir d'un enregistrement ASTERIX
+    et d'un fichier COURAGE en utilisant conv_ast et dump_ast2rej.
+    Je n'ai fait aucune modification au fichier rejeu obtenu. 
+    Je constate pourtant dans les messages émis par rejeu
+    que les heures de passage balise de certains avions ne correspondent
+    pas à ce qui est indiqué dans mon fichier COURAGE. Pourquoi?
+    </b>
+<p> Pour de multiples raisons, les heures CAUTRA enregistrées dans les
+    fichiers COURAGE ne correspondent pas à 100% à la réalité observée.
+    L'outil de création de données dump_ast2rej met à jour ces informations
+    (niveau et heure de passage balise) à partir des plots observés, 
+    en indiquant de plus si l'avion est passé vertical ou travers la 
+    balise (vertical si moins de 2NM).
+    </p>
+<p> Ces informations sont également maintenues à jour par rejeu pendant
+    le déroulement d'une simulation, lorsque des ordres modifient la 
+    trajectoire.
+    </p> 
+<hr />
+<!------------------- Couches ---------------------------------------------->
+<a name="Couches"></a>
+<h2> Couches de visualisation </h2>
+
+<b> Pour chaque plot émis par rejeu, une liste de couches concernées par
+    la visualisation de ce plot est indiquée (champ <b><tt>Layers=</tt></b>
+    du message <b><tt>TrackMovedEvent</tt></b>). Comment sont déterminées
+    ces couches?
+    </b>
+<p> Pour chaque couche, rejeu connait un plancher et un plafond.
+    Il connait également les paramètres:
+<ul>
+   <li> "Climb_delay_first": combien de temps avant le passage de 
+    la premiere balise de son PLN à un niveau situé dans la couche il faut 
+    mettre l'avion dans cette couche, quand il y arrive en montant </li>
+   <li> "Descent_delay": idem, mais quand il y arrive en descendant </li>
+</ul>
+<p> Si un vol est dans la tranche d'espace (donc à un niveau de vol entre
+    le plancher et le plafond) associée à une couche, il est dans cette
+    couche.
+    Pour les autres couches, rejeu regarde aussi pour ce vol l'heure de la
+    prochaine balise survolée à un niveau compris dans la couche.
+    Si le vol y arrive en montant et que cette heure de passage est
+    avant l'heure actuelle + "Climb_delay_first", le vol est aussi dans cette 
+    couche. Si le vol y arrive en descendant et que cette heure de passage est
+    avant l'heure actuelle + "Descent_delay", le vol est aussi dans cette
+    couche.
+    </p> 
+<p> Ces informations sont calculées en temps réel par rejeu, et tiennent
+    donc compte des modifications de trajectoire liées à des ordres
+    envoyés à rejeu. (Les heures et niveaux de passage balise
+    sont tenus à jour par rejeu)
+    </p>
+     
+<hr />
+<b> Les couches fournies par rejeu ne correspondent pas du tout à celles
+    en vigueur pour le trafic visualisé. D'où vient le problème?
+    </b>
+<p> Rejeu connait les couches des 5 centres français. 
+    Chaque fichier de rejeu indique à quel centre se réfère le trafic
+    qu'il contient. Cette information qui
+    figure au début d'un fichier de rejeu (2ème ligne quand c'est un 
+    fichier .txt) a normalement été fournie par les outils qui préparent
+    les données. Si le renseignement n'a pas été fourni par l'opérateur,
+    Bordeaux est pris par défaut => d'où une raison possible du problème.
+    Ce cas peut être résolu facilement sans avoir à regénérer les
+    données: il suffit d'éditer (sous UNIX) le fichier .txt de rejeu,
+    et d'indiquer le bon centre (Bordeaux, Reims, Paris, Aix ou Brest).
+    </p>
+<hr />
+<b> Peut-on changer les paramètres qui définissent les couches?
+    </b>
+<p> Avant la version V2.80 non, sauf à recompiler l'application en modifiant les
+    constantes qui définissent les couches dans le paquetage "layers".
+    </br> Depuis la version V2.80, les couches connues de rejeu sont exprimées en clair
+    à la fin du fichier de rejeu et sont dont éditables directement.
+    </p>
+<p> Si vous avez un "vieux" fichier de rejeu et que vous voulez jouer avec les couches,
+    il est possible de le transformer très simplement en lançant la commande:
+    </br><tt> merge_data old_rejeu.txt new_rejeu.txt</tt>
+    </p>
+<hr />
+<!------------------- Secteurs ---------------------------------------------->
+<a name="Secteurs - Strips"></a>
+<h2> Secteurs - Strips</h2>
+
+<b> Comment rejeu connait-il les heures entrée/sortie de secteur, impression
+    de strips?
+    </b>
+<p> Ce sont les heures indiquées dans le fichier <b><tt>COURAGE</tt></b>
+    qui a servi à renseigner le trafic enregistré.
+    </p>
+<p> Ces heures peuvent aussi avoir été "arrangées" au gré de l'utilisateur
+    grâce à un outil de préparation de situations de trafic
+    (<b><tt>PREPATAC</tt></b> ou autre, ou édition du fichier de rejeu,
+    et/ou édition du fichier de simu)
+    </p>
+
+<hr />
+<b> Je modifie la trajectoire d'un vol (par exemple avec un changement de cap).
+    Comment sont recalculées les heures d'entrée/sortie de secteur et
+    d'impression de strips?
+    </b>
+<p> Les heures ne sont pas recalculées, car rejeu ne connait absolument pas
+    la sectorisation. La seule chose qu'il peut faire, est de prendre
+    en compte ce qui lui a été fourni dans le fichier COURAGE au moment
+    de la crétion du fichier de rejeu.
+    <p>
+<p> Si la nouvelle trajectoire générée n'est pas trop différente de celle
+    réellement effectuée, les anciennes heures conviennent en général.
+    </p>
+<p> Si le vol est suffisamment modifié pour que les différences soient 
+    notables, et que ce type d'information est capital pour l'utilisateur,
+    il est necessaire de fournir sur le bus une application spécifique
+    chargée de ces mises à jour. Rejeu peut alors prendre en compte les 
+    résultats de ces calculs effectués de manière externe, pour
+    emettre les messages correctement (bons secteurs, bonnes heures). 
+    L'application doit utiliser des ordres comme:
+    <a href="messages_frame.html#SetSectorsInfos" target="info_frame">
+   SetSectorsInfos</a> pour prévenir rejeu.
+   </p>
+    
+<hr />
+<b> Est-ce que je peux faire un groupement de secteurs à partir d'un
+    instant choisi. Que se passe-t-il pour les strips?
+    </b>
+<p> Oui, il faut utiliser l'ordre:
+    <a href="messages_frame.html#SetGroupsOfSectors" target="info_frame">
+   SetGroupsOfSectors</a>.
+    Voir la documentation associée.
+    </p>
+   
+<hr />
+<!------------------- Donnes de test ----------------------------------------->
+<a name="Donnees de test"></a>
+<h2> Préparer des données de test </h2>
+
+<b> Pour faire des tests, je voudrais un fichier de rejeu avec un seul avion.
+    Avec Prepatac, je peux prendre un fichier réel de trafic, puis 
+    désactiver tous les avions sauf 1. Est-ce qu'il y a plus simple?
+    </b>
+<p> Oui, il suffit d'utiliser 
+    <a href="donnees_frame.html#selflights" target="info_frame"> selflights</a>
+    </p>
+<p> On regarde un fichier de trafic et on choisit un avion.
+    On lance la commande:
+    </p>
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>selflights fic_origine.txt 1_avion.txt callsign=SAB3753</tt>
+</td></tr></table>
+
+<p> le fichier "1_avion.txt" crée ne contient que le vol SAB3753 souhaité
+    </p>
+<p> Autres exemples, pour plusieurs avions:
+    </p>
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>selflights fic_origine.txt departs_bordeaux.txt dep=LFBD</tt>
+</td></tr></table>
+
+<p> On a un fichier uniquement constitué de vols qui décollent de
+    Bordeaux.
+    </p>
+<table class="ex"  width="100%" border="1"><tr><td>
+<tt>selflights fic_origine.txt arr_a320_bordeaux.txt "(arr=lfbo) and (aircrafttype=a320) and existin 10:00 10:15"</tt>
+</td></tr></table>
+ 
+<p> On a maintenant un fichier avec les A320 qui atterissent à Blagnac et
+    pour lesquels il existe des plots entre 10h00 et 10h15.
+    <p>
+
+<hr />
+<b> Je voudrais extraire une tranche horaire d'un fichier de trafic 
+    d'une journée complète. Comment faire?
+    </b>
+<p> Il faut utiliser l'outil 
+    <a href="donnees_frame.html#cutrej" target="info_frame">cuttxt</a> 
+    <p>
+
+<hr />
+<b> Je voudrais créer un vol avec une trajectoire qui me convient à l'heure
+    de mon choix avec le plan de vol que je souhaite. Comment faire?
+    </b>
+<p> Les méthodes préconisées dépendent du contexte. On peut envisager les 
+    cas suivants:
+    </p>
+<ul>
+  <li>Pour la plupart des cas,
+    il suffit de disposer d'un fichier de trafic de référence suffisamment
+    fourni pour pouvoir "extraire" un ou des vols qui ressemblent à ce
+    qu'on cherche. Ainsi il est souvent possible de trouver un vol qui
+    correspond au type avion et à la trajectoire souhaitée, mais qui
+    n'est pas dans le créneau horaire souhaité. Dans ce cas, la méthode
+    consiste à faire un  
+    <a href="messages_frame.html#TranslateTime" target="info_frame">
+   TranslateTime</a> 
+   pour ramener ce vol à l'instant souhaité. On peut 
+   ensuite modifier les éléments qui ne conviennent pas avec des ordres 
+   comme:  
+    <a href="messages_frame.html#SetCallsign" target="info_frame">
+    SetCallsign</a> 
+    ou
+    <a href="messages_frame.html#SetMiniPln" target="info_frame">
+    SetMiniPln</a> .
+    Les infos trajectoire plan de vol (liste des balises du PLN) peuvent 
+    être modifiées par un ordre comme
+    <a href="messages_frame.html#SetPln" target="info_frame">
+    SetPln</a> 
+    alors que les informations relatives aux secteurs, strips peuvent
+    l"être avec par exemple l'ordre:
+    <a href="messages_frame.html#SetSectorsInfos" target="info_frame">
+    SetSectorsInfos</a> 
+    On pourra également modifier la trajectoire réellement suivie (les plots)
+    avec des ordres de pilotages du style 
+    <a href="messages_frame.html#AircraftHeading" target="info_frame">
+    AircraftHeading</a>, 
+    <a href="messages_frame.html#AircraftDirect" target="info_frame">
+    AircraftDirect</a>, 
+    <a href="messages_frame.html#AircraftLevel" target="info_frame">
+    AircraftLevel</a>,  ou n'importe lesquels des autres.
+    </li>
+<li> Une autre possibilité lorsqu'on souhaite avoir des "trains" d'avions
+    similaires est d'utiliser l'ordre:
+    <a href="messages_frame.html#GetDuplicate" target="info_frame">
+    GetDuplicate</a> 
+    qui crée un clone du vol souhaité. il est ensuite possible, comme
+    ci-dessus de modifier des éléments (en général le Callsign au minimum
+    et une translation dans le temps)
+    </li>
+<li> Dans le cas où on souhaite constituer un vol "from scratch", une
+    utilisation judicieuse de quelques ordres le permet:
+
+ <ul>
+   <li>Dans un premier temps, il faut créer un vol vide avec
+     <a href="messages_frame.html#GetNewFlight" target="info_frame">
+     GetNewFlight</a>
+    </li>
+   <li>Ensuite, donner une trajectoire minimum (1 point) avec un ordre
+     <a href="messages_frame.html#AircraftSetTrack" target="info_frame">
+     AircraftSetTrack</a></li)
+   <li>Fournir ensuite par exemple les éléments statiques souhaités avec
+     <a href="messages_frame.html#SetMiniPln" target="info_frame">
+     SetMiniPln</a> 
+     ou au minimum avec 
+     <a href="messages_frame.html#SetCallsign" target="info_frame">
+     SetCallsign</a> pour pouvoir disposer d'un indicatif réaliste sur
+     l'image radar.</li>
+   <li>Donner la liste des balises constituant un plan de vol avec un ordre
+     <a href="messages_frame.html#SetPln" target="info_frame">
+     SetPln</a></li>
+   <li>La trajectoire de l'avion est alors modifiée comme si une directe
+     sur la première balise fournie était demandée (Voir la documentation
+     associée à cet ordre). Ceci a pour effet de générer entre 10 et 15
+     minutes de plots, comme le font les ordres de pilotage lorsque
+     la trajectoire enregistrée s'arrête prématurément. Pour allonger encore
+     la trajectoire si necessaire, on peut utiliser la même astuce
+     en donnant à une heure proche du (ou de l'un des) dernier(s) plot(s) 
+     de la trajectoire générée un ordre de pilotage "directe" sur une balise
+     (a priori la prochaine dans le contexte) fixée dans le plan de vol:
+     <a href="messages_frame.html#AircraftDirect" target="info_frame">
+     AircraftDirect</a>. Voir les explications données pour cet ordre.
+     </li>
+  </ul>   
+    </li>
+</ul>
+
+
+<hr />
+<!------------------- Erreurs  ----------------------------------------->
+<a name="Erreurs"></a>
+<h2> Erreurs </h2>
+
+<b> Il n'y a jamais de messages d'erreurs sur le bus quand des requêtes
+    à rejeu sont formulées incorrectement. Comment faire pour debugger?
+    </b>
+<p> Effectivement, rejeu n'émet pas de message d'erreur sur le bus
+    pour des requêtes autres que des ordres de pilotage. Il 
+    se contente de ne pas effectuer une opération erronée et continue de
+    fonctionner normalement. Toutefois, rejeu donne des informations 
+    multiples en cours de fonctionnement sur stdout dans le terminal où
+    il a été lancé, et notamment des messages d'erreurs. Mais comme
+    beaucoup d'infos de nature diverses circulent dans ce terminal, 
+    beaucoup d'utilisateurs redirigent purement et simplement stdout
+    sur /dev/null. Il est recommandé de rediriger dans un "log.txt",
+    ce qui permet d'identifier rapidement les ordres incorrects en
+    mode de mise au point ........
+    </p>
+<p> Depuis la V2.80, Rejeu émet systématiquement un message de compte-rendu
+    <a href="messages_frame.html#ReportEvent"><b>ReportEvent</b></a> lorsqu'un ordre de pilotage
+    est émis (tous les ordres de type: <tt>Aircraftxxxxxxx</tt>).
+    </br> Ceci couvre maintenant une grande partie des besoins dans ce domaine.
+    </p>
+
+
+
+<!--------------------------------------------------------------------------->
+</td></tr></table>
+</body>
+</html>

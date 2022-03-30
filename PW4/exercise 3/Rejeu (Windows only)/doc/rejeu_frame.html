@@ -1,0 +1,899 @@
+<html>
+<!---------------------- Description du style -------------------->
+<head>
+<link rel="stylesheet" type="text/css"
+href="rejeu_style.css">
+</head>
+
+<!-------------------- Partie centrale ------------------------------->
+<body>
+
+<table border="0" cellpadding="0" cellspacing="1">
+<tr>
+
+<td width="100%" valign="top">
+<table width="100%" bgcolor="#FFFFFF" border="1" cellpadding="7" cellspacing="0"
+>
+<tr>
+<td>
+
+<center>
+<h1>Rejeu V2.95</h1>
+</center>
+
+<hr />
+<!------------------- A quoi sert rejeu ---------------------------->
+<a name="à quoi sert rejeu">
+<h2>A quoi sert rejeu?</h2>
+
+<dl>
+<dt><b>Fonction principale:</b></dt>
+<dd>
+<p>
+Rejeu fournit sur le bus <b>Ivy</b> les informations nécessaires à la 
+visualisation d'images radar de trafic en route et/ou en approche.
+Ce trafic est constitué de trajectoires obtenues à partir d'enregistrements 
+de plots radar de différentes sortes:
+
+</p>
+<ul>
+ <li> STR au format ASTERIX, (messages cat:30 pour les pistes, 
+      cat:32 pour les alertes filet de sauvegarde, proximité du
+      sol) ou </li>
+ <li> ELVIRA ou </li>
+ <li> format LEGAL ou</li>
+ <li> MADREC ou </li>
+ <li> TRAP_DATA (Dump d'une simulation générée par MASS) ou</li>
+<li> Dump d'une simulation ELECTRA ou </li>
+<li> Dump d'une simulation SCANSIM </li>
+</ul> 
+<p>
+et complétés eventuellement avec les fichiers COURAGE (ou PLN) correspondants.
+<br />
+   Ces images peuvent être visualisées à vitesse normale, 
+accélérée ou ralentie, en avant ou en arrière, à partir 
+d'heures quelconques.<br />
+   On peut également changer dynamiquement de journée de données 
+enregistrées. 
+</p>
+</dd>
+
+<dt><b>Préparation de situations de simulation</b></dt>
+<dd>
+<p>
+Grâce à Rejeu, on peut préparer des situations de simulation, 
+construites à partir de trafic réel enregistré et modifié 
+suivant les besoins (suppression d'avions, décalage d'avions dans le temps,
+décalage de niveau, duplication de vols, génération de 
+trajectoire précédant ou suivant les pistes enregistrées, en fait, 
+modification de toutes les données enregistrées....).<br /> 
+Il est également possible d'utiliser du trafic "virtuel" complètement généré par
+un simulateur (<b>MASS</b>, <b>ELECTRA</b> ou <b>SCANSIM</b>), qu'on peut modifier de la même manière,
+ce qui permet d'exploiter un grand nombre d'exercices déjà conçus pour ces simulateurs.<br />
+</p>
+</dd>
+
+<dt><b>Expérimentations, Démonstrations</b></dt>
+<dd>
+<p>
+A des fins de démonstration pour des maquettes qui renseignent le 
+système sur des ordres de contrôle, ou pour donner du réalisme 
+à certaines 
+expérimentations nécessitant des retours d'informations sur une image radar, 
+un pilotage manuel peut se substituer au rejeu effectif du trafic pour
+nimporte quels avions.
+On peut ainsi procéder à des changements de cap,  
+directes sur des balises,
+changements de niveau, changements de vitesse, interceptions d'axes,
+récupérations de SID ou STAR, mise en stack, .....) pour les avions souhaités,
+les possibilités d'avance ou retour rapide étant maintenues, 
+avec possibilité d'annuler les ordres émis pour retrouver les 
+situations antérieures.
+
+(voir <a href="#Rejeu par l'exemple">
+        <b>Rejeu par l'exemple</b></a>)
+</p>
+<p>
+Avec le temps, Rejeu est devenu un simulateur largement utilisé pour les expérimentations 
+et plus généralement pour les besoins de R&D, compte tenu de la grande souplesse d'utilisation.
+De multiples fonctionnalités spécifiques permettent d'une part: 
+<ul>
+	<li> de bénéficier de fonctionnalités habituellement non couvertes, (comme par exemple des ordres
+		de pilotage pour passer une balise ou un point à une heure donnée, avec une incertitude
+		maitrisée)
+	</li>
+	<li> d'obtenir, sous certaines conditions, des niveaux de réalisme difficillement atteignables 
+		avec des simulateurs traditionnels. 
+		On peut citer, par exemple, les possibilités  d'effectuer un départ (standard ou non) en exploitant
+		les performances effectivement observées dans l'enregistrement de la trajectoire réelle de cet avion.
+		Idem pour récupérer une trajectoire d'arrivée après un guidage radar.
+	</li>
+</ul>
+</p>
+<p>
+Les performances utilisées pour certains ordres de pilotage sont soit issues
+<ul>
+	<li>d'informations tabulées et interpolées tirées de BADA</li>
+	<li>d'informations tirées des trajectoires enregistrées</li>
+	<li>d'heuristiques propres à Rejeu, lorsqu'aucune autre information n'est disponible</li>
+</ul>
+</p>
+
+</dd>
+</dl>
+<hr />
+
+<!------------------------------- Lancer rejeu ------------------------->
+<a name="Lancer rejeu">
+<h2>Comment lancer Rejeu</h2>
+<p>
+Exemple si on choisit le port 3111 et que l'adresse de broadcast  
+du réseau est 10.192.36.255  (obtenue par ifconfig....Voir documentation
+sur le bus logiciel <b>Ivy</b>): 
+</p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<b><tt>rejeu -b 10.192.36.255:3111 STR-BDX000406.rej -s 10:34 </tt></b>
+</td></tr></table>
+<p>ou  plus simplement, si les applications qui vont dialoguer sur le bus 
+   sont en local: 
+  </p>
+<table class="ex"  width="100%" border="1"><tr><td>
+<b><tt>rejeu -b:3111 STR-BDX000406.txt -s 10:34 </tt></b>
+</td></tr></table>
+<p>
+  rejeu va lire le fichier  <b>STR-BDX000406.txt</b> qui contient  
+  les données, et va démarrer à vitesse réelle (1 seconde 
+  de simulation = 1 seconde réelle) à partir de 10 heures 34
+  minutes. </p>
+<b>Options possibles sur la ligne de commande:</b><br />
+
+<p>Toutes les options peuvent être présentes dans n'importe quel ordre,
+  avec un nombre de lettres quelconque pour chacune.
+  (-b , -bu , -bus sont équivalents, par exemple)</p> 
+
+<table >
+<tr>
+   <td>  ---------------------</td> 
+   <td>  : -----------------------------------------------------------</td></tr>
+<tr>
+   <td>  <b><tt>-v</tt></b></td> 
+   <td>  : demande la version de rejeu</td></tr>
+<tr>
+   <td>  <b><tt>-h[elp]</tt></b></td> 
+   <td>  : help </td></tr> 
+<tr>
+   <td>  <b><tt>-b[us] arg</tt></b></td>    
+   <td>  : Port Ivy </td></tr> 
+<tr>
+   <td>  <b><tt>-s[tart] arg</tt></b></td>  
+   <td>  : Heure de debut (xxx sec TU depuis 0h  ou hh:mm, ou hh:mm:ss) </td></tr> 
+<tr>
+   <td>  <b><tt>-s[tart] auto</tt></b></td>  
+   <td>  : Démarrage automatique à l'heure du premier plot </td></tr> 
+<tr>
+   <td>  <b><tt>-f[reeze] arg</tt></b></td>  
+   <td>  : Situation gelée à l'heure indiquée </td></tr> 
+<tr>
+   <td>  <b><tt>-l arg</tt></b></td>        
+   <td>  : Duree de vie d'une piste (en sec) - Defaut=9 </td></tr> 
+<tr>
+   <td>  <b><tt>-t arg</tt></b></td>        
+   <td>  : Temps minimum à respecter entre 2 envois de message de position.
+                (Voir compression des événements) </td></tr> 
+<tr>
+   <td>  <b><tt>-m[inbs] arg</tt></b></td>        
+   <td>  : Vitesse demandée au dessus de laquelle on passe dans le mode 
+         "Big Speed". En standard, 10 fois la vitesse normale
+         Voir mode d'échantillonage "Big Speed" </td></tr> 
+<tr>
+   <td>  <b><tt>-n[ocautra]</tt></b></td>   
+   <td>  : Messages position avec coord Lat-Long, au lieu de Cautra par défaut </td></tr> 
+<tr>
+   <td>  <b><tt>-o[ffset] file</tt></b></td>
+   <td>  : Fichier des modifications par rapport aux données d'origine 
+         (vols décalés dans le temps, vols dupliqués, etc) </td></tr> 
+<tr>
+   <td>  <b><tt>-d[ata] file</tt></b></td>
+   <td>  : Fichier de données statiques complémentaires (SID,STAR). 
+			Obsolète, voir "merge_data" dans les outils.
+          </td></tr> 
+<tr>
+   <td>  <b><tt>-p[erfo] file</tt></b></td>
+   <td>  : Fichier de perfos avions pour augmenter le réalisme pour
+           certaines fonctions de pilotage (BADA connu par défaut);
+          </td></tr> 
+<tr>
+   <td>  <b><tt>file</tt></b> </td>
+   <td>  : fichier (de type <tt>xxxx.rej</tt>) des donnees preparées à partir de 
+              données STR (cat:30 et cat:32) et COURAGE 
+              (*,?, etc autorises dans le nom de fichier => 
+              file=premier fichier qui matche) </td></tr> 
+</table>
+
+<p>
+<b>Variables d'environnement:</b><br /> </p>
+
+<p>
+<table >
+<tr>
+   <td>  <b><tt>IVYBUS</tt></b></td> 
+   <td>  : Fixe le port Ivy. Si cette variable est présente dans
+         l'environnement, elle est prise en compte au lieu de la
+         valeur par défaut (port 2010). Si l'option 
+         <b><tt>-b[us] arg</tt></b> est présente sur la ligne de commande,
+         c'est cette dernière qui est prise en compte. </td></tr>
+</table>
+</p>
+<hr />
+
+<!-------------------------- Fichiers de simulation ------------------->
+<a name="Fichiers simulation">
+<h2>Fichiers de simulation</h2>
+
+<p>Rejeu peut fonctionner en exploitant 2 sortes de fichiers qui se 
+   complètent:
+<ul>
+   <li>Un fichier crée à partir du trafic enregistré (type de fichier
+       binaire xxx.rej ou son image textuelle xxx.txt). 
+       Ce fichier peut être donné comme argument sur la ligne de 
+       commande (exemple ci-dessus). Il contient l'ensemble des 
+       informations sur tous les vols.
+       </li>
+   <li>Un fichier texte de simulation ( xxx.simu) crée par rejeu associé à 
+       un outil de préparation des données ou édité manuellement.
+       <br /> Un fichier de ce type fait référence à un fichier de
+       trafic de base (xxx.rej ou xxx.txt) auquel il apporte des 
+       modifications de 
+       toutes sortes (effacement, déplacement d'avions, changement de
+       paramètres, etc). 
+       Ainsi, à partir d'un même fichier de base ( xxx.rej ou xxx.txt),
+       en associant des fichiers de simulation différents, on peut
+       générer des situations de trafic complètement spécifiques et 
+       adaptées aux situations souhaitées (types de conflit, nombre
+       d'avions, etc).
+       </li>
+</ul>
+
+<p>On peut donc avoir sur la ligne de commande:</p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<b><tt>rejeu -b 10.192.36.255:3111 STR-BDX000406.rej -o simul1.simu -s 10:34 </tt></b>
+</td></tr></table>
+
+<p>L'indication du fichier de référence <tt>STR-BDX000406.rej</tt> n'est 
+   d'ailleurs pas nécessaire, car cette information doit être indiquée dans
+   le fichier <tt>simul1.simu</tt>, et rejeu vérifie qu'il y a cohérence.
+   </p>
+<p>Rejeu peut aussi avoir été lancé sans paramètres, puisqu'il est possible
+   de lui indiquer par des messages sur le bus quel(s) fichier(s) il
+   doit lire (et on peut en changer dynamiquement si c'est utile, autant 
+   pour le fichier de référence que pour le fichier de simulation
+   si on souhaite des différences avec le trafic réel).
+   </p>
+<p> Voir <a href="#Création de situations">
+         <b>Création de situations</b></a>.
+   </p>
+
+<hr />
+<!-------------------------- Les ordres de pilotage ----------------->
+<a name="Les ordres de pilotage"></a>
+<h2>Principes généraux des ordres de pilotage</h2>
+
+
+<p> D'une manière générale, rejeu tente de rester le plus réaliste
+   possible lorsqu'on lui demande d'éxécuter un ordre de pilotage,
+    en exploitant au mieux les données qu'il connait sur l'avion 
+    en question. 
+   </p>
+<p> Ainsi, si un ordre de pilotage dans le plan horizontal est sollicité
+   comme:
+   </p>
+
+<ul>
+   <li> <a href="messages_frame.html#AircraftDirect">
+        <b>AircraftDirect</b></a> : direct sur une balise</li>
+   <li> <a href="messages_frame.html#AircraftHeading">
+        <b>AircraftHeading</b></a> : cap absolu</li>
+   <li> <a href="messages_frame.html#AircraftTurn">
+        <b>AircraftTurn</b></a> : quantité de virage à appliquer</li>
+   <li> <a href="messages_frame.html#AircraftIntercept">
+        <b>AircraftIntercept</b></a> : interception d'un radial sur une balise</li>
+</ul>
+
+<p> rejeu génère un virage (avec eventuellement un certain délai)
+   et la trajectoire qui suit,
+   en tenant compte d'une mise en virage, sortie de virage et en
+   maintenant le même profil vertical que celui qu'avait l'avion
+   au moment de l'ordre. (Rejeu connait le "futur", car c'est du trafic
+   enregistré et donc il maintient les paramètres de vitesse, niveau,
+   taux de montée/descente observés sur les plots (avec leur
+   variation), en les "collant" sur la nouvelle trajectoire générée. 
+   </p>
+<p> Lorsqu'une directe sur une balise est demandée, rejeu génère
+   une trajectoire qui va sur la balise concernée à partir de la 
+   position actuelle et qui reprend une 
+   route plan de vol si cette balise était dans le plan de vol 
+   (en gardant toujours le profil vertical qui était enregistré).
+   Si la balise n'était pas dans le plan de vol (ou evidemment lorsque
+   le plan de vol est inconnu), l'avion reste au même cap après
+   le passage vertical sur la balise. (Par ailleurs, rejeu s'assure qu'au
+   minimum 15 minutes de vol seront visualisables, si la piste initiale
+   était trop courte, et se terminait prématurément).
+   </p>
+<p> Lorsqu'un ordre de changement de niveau comme:
+   </p>
+<ul>
+   <li> <a href="messages_frame.html#AircraftLevel">
+        <b>AircraftLevel</b></a> </li>
+</ul>
+
+<p> est éxécuté, la trajectoire horizontale est maintenue.
+	Le taux de montée/descente peut être fourni explicitement,
+	(ou être simplement conforme aux perfos min, max ou standard 
+   de ce type d'avion).
+   La vitesse indiquée (IAS) est maintenue constante
+	par défaut, sauf si un ordre de pilotage préalable en gestion 
+	de vitesse a été demandé, auquel cas, c'est la politique
+	mentionnée qui continue à est appliquée. voir ci-dessous. 
+
+   </p>
+<p> Un ordre de modification de vitesse comme:
+   </p>
+<ul>
+   <li> <a href="messages_frame.html#AircraftSpeed">
+        <b>AircraftSpeed</b></a> </li>
+</ul>
+<p> laisse l'avion sur sa trajectoire verticale initiale 
+   (conservation de la pente), avec conservation du tracé sur le
+   plan horizontal.
+   </p>
+<p> Toutes les options sont fournies à l'utilisateur pour exprimer
+	ses choix avec des valeurs relatives:
+	<ul> 
+		<li>au point de MACH,</li> 
+		<li>à la vitesse indiquée (IAS),</li>
+		<li>à la vitesse sol</li>
+		<li>aux performances de ce type d'avion </li>
+	</ul>
+	En tout état de cause, Rejeu tentera de rester compatible
+	avec le domaine de vol de ce type d'avion (si il est connu).
+	</p>
+<p> Lorsque les informations necessaires à la connaissance de SID 
+   (trajectoire de départ standard) ou STAR (trajectoire d'arrivée
+   standard) sont connues de rejeu (grâce à l'option 
+   <tt>-data file.txt</tt> utilisée à la création du fichier de Rejeu
+    avec <b>dump_ast2rej</b> initialement ou ensuite avec <b>merge_data</b>), 
+   on peut demander à tout moment 
+   qu'un avion récupère une de ces trajectoires à partir de sa 
+   position actuelle. Pour cela, il faut utilser l'ordre:
+   </p> 
+<ul>
+   <li> <a href="messages_frame.html#AircraftFollowTrack">
+        <b>AircraftFollowTrack</b></a> </li>
+</ul>
+
+<p> S'il s'agit d'une <b>SID</b>, rejeu fait en sorte que l'avion rattrape la
+   trajectoire sur le plan horizontal, en respectant des taux de virages
+   raisonnables, et garde les performances réellement effectuées 
+   dans le plan vertical: copie des accroissements de vitesse, taux de
+   montée (et donc niveaux) tels qu'ils ont été enregistrés.
+   (=> la piste obtenue ne peut pas être plus réaliste, car
+   ce sont les paramètres de cet avion, ce jour-là, avec son
+   poids, cette méthode de pilotage, etc). Cet ordre n'a evidemment
+   un sens que pour un avion au décollage du terrain où est
+   située la SID spécifiée dans l'ordre.
+   </p>
+<p> S'il s'agit d'une <b>STAR</b> ou d'un <b>ILS</b>, rejeu fait également en sorte que l'avion
+   rattrape la trajectoire sur le plan horizontal (toujours fonction
+   de son cap et de sa vitesse actuelle), mais, il
+   procède à un traitement supplémentaire sur le plan 
+   vertical: en effet, avant l'ordre, cet avion s'est effectivement 
+   posé avec des paramètres de regression de vitesse et
+   taux de descente associés (ces informations sont dans les plots
+   situées en fin de piste enregistrée). Considérant ces 
+   paramètres comme un objectif à atteindre, puis à suivre
+   pour mimer la réalité, rejeu converge progressivement en vitesse,
+   taux et niveau vers ces valeurs, fonction de la position actuelle de
+   l'avion. Suivant les configurations, la convergence est plus ou moins
+   rapide (ou impossible, mais dans la réalité aussi, le rattrapage
+   aurait été impossible .....). Comme pour les SIDs, cet ordre
+   n'a un sens que pour un avion à destination du terrain concerné
+   par la STAR indiquée dans l'ordre "AircraftFollowTrack".
+   </p>
+<p> D'une manière générale, conformément à la philosophie 
+    de rejeu, le résultat des ordres de pilotage est visualisable
+    immédiatement (on peut avancer le temps ou le reculer, vite
+    ou lentement .....). On peut également voir le dessin de
+    la trajectoire passée et prévue à un instant donné
+    si l'image radar a demandé les informations à rejeu
+    (Selection du vol).
+    </p>
+<p> Les ordres de pilotages peuvent être enchainés sans
+    limitation, et successivement annulés en cas de besoin
+    (Ordre <a href="messages_frame.html#CancelLastOrder">
+       <b>CancelLastOrder</b></a>). A chaque annulation, la situation
+    existant préalablement à l'ordre est rétablie.
+    </p>
+<p> Pour ce qui concerne la mise à jour des autres informations
+    (heure et niveau de passage balise ou m.a.j. plan de vol par exemple)
+    lorsqu'un ordre de pilotage est demandé, voir les 
+    explications dans la documentation des messages.
+    </p>
+
+<hr />
+
+<!----- penser recuperation Pln, speed=> pente , star>
+
+<!-------------------------- Préparation d'exrcices------------->
+
+<a name="Création de situations">
+<h2>Création de situations</h2>
+
+<p> Exemple simple à écrire ..... </p>
+
+<hr />
+<!-------------------------- Principes Horloge ----------------->
+<a name="principes horloge">
+<h2>Principes de fonctionnement de l'horloge</h2>
+
+<p>Rejeu peut fonctionner en mode "maitre" auquel cas il fournit 
+   lui-même l'heure de simulation au rythme demandé, ou alors en 
+   mode "esclave" lorsque l'horloge de rejeu est stoppée.
+   Dans ce cas, l'heure de simulation est fournie par une autre 
+   application (au rythme souhaité), et rejeu se contente d'emettre sur le 
+   bus tous les messages opportuns à cette heure là (position des avions).
+   </p> 
+<p>   En mode maitre, la gestion de l'horloge est conçue  pour pouvoir 
+   s'adapter au mieux aux exigences des applications qui l'utilisent: 
+   Rejeu est en mesure d'emettre sur le bus la totalité des messages 
+   (d'états et d'événements) qu'il sait générer jusqu'à
+    une vitesse 
+   (qui dépend évidemment du nombre d'avions présents à cet instant)
+   qui avoisine 15 à 20 fois la vitesse normale pour une situation 
+   comprenant une trentaine d'avions.<br /> 
+
+   Ce taux est généralement trop élevé pour être 
+   traité par certaines applications, et donc il est 
+   possible d'indiquer à rejeu 
+   (option -t  sur la ligne de commande => compression d'événements) 
+   le temps minimum qu'il faut garantir entre 2 envois de messages sur le bus. 
+   <br />
+
+   Ce taux sera respecté par rejeu pour les messages de position 
+   (message <tt>TrackMovedEvent</tt>), ainsi que pour les 
+   entrée/sortie de secteur: <tt>SectorEvent</tt>.<br /> 
+   Par contre les autres messages (beaucoup moins nombreux que les
+   <tt>TrackMovedEvent</tt>)
+   sont envoyés sans limitation (impression de strips: <tt>StripEvent</tt>
+   , passage balise: <tt>BeaconEvent</tt>, 
+   fin de piste: <tt>TrackSleepEvent</tt>, etc).<br /> 
+   Une compression sur les messages envoyés est effectuée pour respecter 
+   la vitesse demandée. 
+   Ainsi, losqu'une position est envoyée effectivement 
+   sur le bus, c'est la plus à jour possible compte tenu de l'heure actuelle 
+   de simulation, même si rejeu a généré une multitude de positions 
+   intermédiaires.
+   </p>
+<a name="Big Speed">
+<h3>Mode "Big Speed"</h3>
+
+<p> 
+   Par ailleurs, afin de permettre des déplacements encore plus rapides 
+   dans l'espace de simulation (50, 100, 1000 ....ou vitesse quelconque) 
+   fois la vitesse normale, lorque la vitesse demandée est supérieure 
+    à 10 (why not?), rejeu ne génère plus tous les "ticks" d'horloge
+   (<tt>ClockEvent</tt>),   
+   mais se déplace plutôt dans l'espace de simulation  en 
+   générant des ticks avec un écart adapté, et à une 
+   vitesse qui lui permet de faire les calculs necessaires.<br /> 
+
+   Pour chaque nouveau <tt>ClockEvent</tt>, rejeu prend en compte les positions 
+   enregistrées autour de cette heure pour générer une "vague" de 
+   messages de position.
+   (Noter que les enregistrements radar fournissent en moyenne la 
+   position d'un avion toutes les 8 secondes en route et toutes les 4 
+   secondes en approche) <br />
+   Ce mode de fonctionnement très accéléré, continue de garantir la 
+   compression mentionnée ci-dessus, si l'application a indiqué son 
+   temps minimum d'acceptation des messages de position. 
+   </p>
+<p>Noter que dans ce mode de fonctionnement "BigSpeed", seuls les messages
+   de position (<tt>TrackMovedEvent</tt>), et de changement secteur 
+   (<tt>SectorEvent</tt>) sont émis.
+   Lors d'apparition d'un nouveau vol, un <tt>PlnEvent</tt> est envoyé, et
+   un <tt>TrackDiedEvent</tt> est également émis à la disparition 
+   d'un vol .
+   Il n'y a pas de message d'impression de strip ni de passage balise.
+   </p>
+
+<a name="Overclock">
+<h3>Overclock</h3>
+<p>
+   Il peut arriver que le message "OVERCLOCK" soit émis par rejeu
+   dans le terminal où il a été lancé. Cela correspond à 
+   la situation où un nouveau "Tick" d'horloge arrive, alors que la 
+   totalité des messages necessaires pour le "Tick" précédent
+   n'a pas encore été envoyée sur le bus Ivy. Rejeu prend le parti 
+   d'envoyer quand même tous les messages, en "retardant" 
+   temporairement (mais au minimum) le rythme de l'horloge. 
+   Cela dépend évidemment du "rate" et de la densité du 
+   trafic à ce moment là. 
+   </p>
+
+<p>
+	Le problème provient principalement de clients sur le bus Ivy
+	qui ne peuvent pas suivre le rythme imposé pour effectuer leurs traitements
+	sur l'arrivée des messages (=> saturation des sockets gérées par Ivy).
+   </p>
+<p>
+	Pour traquer ces "mauvais" clients, positionner la variable
+	d'environnement IVY_DEBUG_SEND et regarder dans le terminal de
+	lancement de rejeu le nom du (des) fautif(s) qui vident mal les tuyaux ....
+	</p> 
+<p><b>MAIS "ATTENTION!"</b>	
+	Cela peut également provenir d'un mauvais usage des regexps avec Ivy
+	(Voir documentation Ivy)
+   </p> 
+<p>Quelques essais sur 
+   du trafic de Paris, le matin où la charge est importante, ont 
+   montré que des clients qui choisissent
+   de "mauvaises regexps" pour s'abonner aux messages, ralentissent
+   considérablement l'envoi des messages sur le bus.
+   Sur l'exemple cité, 10.000 messages sont transmis par Ivy en
+   0.67 secondes pour un client qui souhaite avoir les messages 
+   concernant le vol "1798" et qui s'abonne avec:
+   </p>
+<p>
+   <tt>'^(TrackMoved|Beacon|Layer|Sector|Pln)Event Flight=1798(.*)'</tt>
+   </p>
+<p>
+   alors qu'il faut 131.84 secondes pour celui qui s'abonne avec
+   </p>
+<p>
+   <tt>'(.*1798.*)'</tt>
+   </p>
+<p>
+   Le rapport est de l'ordre de 200 => veiller à "accrocher" le plus
+   souvent possible les regexps en début de chaine (avec ^)
+   </p>
+
+<p>
+   Rejeu peut ainsi fonctionner en avant ou en arrière, à n'importe 
+   quelle vitesse. 
+   On peut fixer également à tout moment l'heure souhaitée (que 
+   l'horloge soit en marche ou non).
+   </p> 
+
+
+<a name="Bouclage de l'horloge">
+<h3>Bouclage de l'horloge</h3>
+<p>
+   Lorsque l'horloge se déroule dans le sens normal, l'arrivée à l'heure
+   du dernier plot connu dans la simulation déclenche un "rebouclage"
+   directement à l'heure du premier plot connu. Idem losqu'on remonte le temps
+   et qu'on franchit l'heure de début de simulation: l'horloge se 
+   repositionne à l'heure de fin de simulation et se décrémente à la
+   vitesse en cours.
+   </p>
+
+
+<hr />
+
+<!-------------------------- Actions principales de rejeu------------>
+
+<a name="Rejeu par l'exemple">
+<h2>Rejeu par l'exemple</h2>
+
+<p> Un fichier réel de trafic "1_heure_Bordeaux.txt" est normalement
+    présent dans le répertoire "/usr/lib/rejeu" suite à l'installation
+    du paquet rejeu sur votre machine. 
+    Recopiez-le dans votre répertoire courant.
+    </p>
+<p> Pour se faire une première idée de ce que fait rejeu,
+   lancer dans une fenêtre un rejeu, avec ce fichier de 
+   trafic de Bordeaux, avec initialisation de l'heure et démarrage
+   par exemple à 11 heures 05:
+   </p>
+<table class="ex"  width="100%" border="1"><tr><td>
+<b><tt>rejeu  1_heure_Bordeaux.txt -s 11:05</tt></b>
+</td></tr></table>
+
+<p> Lancer également un "ivyprobe" dans une autre fenêtre pour espionner 
+   tous les messages qui circulent sur le bus: 
+   (pour faciliter la lecture des messages, dimensionner
+   la fenêtre pour qu'elle soit le plus large possible afin qu'un message 
+   tienne sur une ligne)
+   </p>
+<table class="ex"  width="100%" border="1"><tr><td>
+<b><tt>ivyprobe '(.*)'</tt></b>
+</td></tr></table>
+
+<p>
+   Pour info, l'argument <tt>'(.*)'</tt> indique qu'on s'abonne à tous
+   les messages sur le bus et donc tout ce qui y passe sera visualisé
+   dans cette fenêtre.
+   </p>
+
+<p> Pour faciliter l'envoi de message "manuel" sur le bus, lancer un
+   autre ivyprobe dans une troisième fenêtre:
+   </p>
+<table class="ex"  width="100%" border="1"><tr><td>
+<b><tt>ivyprobe</tt></b>
+</td></tr></table>
+
+<p> Ici on n'indique aucun argument, ce qui signifie qu'on ne s'abonne à 
+    aucun message, et donc l'affichage dans cette fenêtre ne sera pas perturbé
+    par ce qui passe sur le bus. Cette fenêtre ne servira que pour
+    envoyer des ordres (messages) sur le bus, auxquels les autres
+    applications présentes (rejeu, ivyprobe n°1, twinkle ci-dessous plus
+    eventuellement d'autres de votre choix) pourront réagir si cela
+    les concerne (=> si ils se sont abonnés à ces sortes de messages)
+    </p> 
+
+<p> Il est intéressant de lancer une image radar (twinkle) dans une quatrième
+   fenêtre, pour comprendre l'occurence de certains messages et
+   pour visualiser le résultat d'ordres envoyés à rejeu.
+   </p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<b><tt>twinkle -geometry 800x800+100+50 --nofugueinfo --norejeu</tt></b>
+</td></tr></table>
+
+<p>
+   Vous devez voir une image radar à l'echelle de la France chargée de trafic
+   dans la région de Bordeaux et une petite interface pour piloter l'horloge.
+   Utilisez les touches <b><tt>+</tt></b> et
+   <b><tt>-</tt></b> pour zoomer, dézoomer et les flèches gauche, droite,
+   haut, bas pour se positionner à l'endroit désiré. 
+   Suivant la configuration de votre machine (carte graphique, OpenGL),
+   si les temps
+   de réponse sont trop longs ou si cela ne fonctionne pas correctement,
+   essayez de relancer <b><tt>twinkle</tt></b> comme ci-dessus, mais avec 
+   l'option <b><tt>--norender</tt></b> en plus.
+   </p>
+<p>
+   Centrez l'image sur Toulouse et zoomez en cherchant le vol 
+   <b><tt>AF121ZL</tt></b> qui vient de décoller de Blagnac.
+   </p>
+<p>
+   Arrétez l'horloge pour pouvoir lire les messages circulant sur le bus.
+   Le dernier message écrit dans le terminal du premier 
+   <b><tt>ivyprobe</tt></b> est <b><tt>ClockStop</tt></b>, message 
+   envoyé par <b><tt>twinkle</tt></b> lorsque vous avez appuyé
+   sur le bouton "Stop" de l'interface.
+   </p>
+<p>
+   Rejeu qui est abonné à ce type de message a réagi et a "gelé"
+   la situation, n'envoyant plus de messages correspondant aux évènements 
+   d'évolution de l'horloge (ClockEvent ....) ou de positions de
+   plots (TrackMovedEvent ....).
+   </p>
+<p>
+   Parmi tous les messages échangés, on peut trouver notamment ceux
+   qui concernent <b><tt>AF121ZL</tt></b> et qui sont émis par rejeu 
+   périodiquement (toutes les 8 sec) pour prévenir les autres applications
+   de la position successive des plots. Ce sont les messages du type:
+   </p>
+<p>
+   <tt><b>TrackMovedEvent Flight=6677 CallSign=AF121ZL Ssr=0455 Sector=AW Layers=F,I X=56.38 Y=-197.83 Vx=-103 Vy=137 Afl=45 Rate=1020 Heading=323 GroundSpeed=171 Tendency=1 Time=11:06:37</b></tt>
+   </p>
+
+<p>
+   Cliquez (bouton gauche) sur l'AF121ZL: twinkle envoie sur le bus 
+   un message de selection pouvant intéresser d'autres applications
+   indiquant que l'action concerne le vol dont l'identifiant est 6677
+   (celui de AF121Z):
+   </p>
+<p>
+   <tt><b>SelectionEvent .......... Flight=6677</tt></b>
+   </p>
+<p>
+   puis immédiatement ensuite twinkle envoie un message:
+   </p>
+<p>
+   <tt><b>GetTrajectory MsgName=xxxxxxx Flight=6677 From=origin</tt></b>
+   </p>
+<p>
+   qui est une requête à destination de rejeu pour connaitre la trajectoire 
+   enregistrée de ce vol dans le but de l'afficher sur l'image radar
+   (c'est l'action commandée par défaut quand on sélectionne un vol).
+   </p>
+<p>
+   Il reçoit la réponse sous forme de plusieurs messages comme:
+   </p>
+<p>
+   <tt><b>Trajectory xxxxxxx Slice=58.88 -200.91 11:05:09 .....<br />
+          Trajectory xxxxxxx Slice=51.47 -162.09 11:13:08 .....<br />
+          .....................................................<br />
+          Trajectory xxxxxxx EndSlice</tt></b>
+   </p>
+<p>
+   qui correspondent à l'ensembles des points de cette trajectoire 
+   découpée en tranches (pour des raisons liées à Ivy)
+   </p>
+<p>
+   Twinkle (évidemment abonné à ce type de messages) reçoit ces
+   informations et affiche la trajectoire à l'écran.
+   </p>
+<p>
+   Vous allez maintenant donner un ordre à rejeu, en envoyant un message
+   sur le bus à partir de la fenêtre ou a été lancé l'ivyprobe sans arguments.
+   Par exemple, un ordre de pilotage demandant à l'AF121ZL de prendre
+   un cap 090:
+   </p>
+<p>
+   Ecrivez la ligne suivante dans la fenêtre d'ivyprobe et faites "entrée":
+   </p>
+<p>
+   <tt><b>AircraftHeading Flight=6677 To=90</tt></b>
+   </p>
+<p>
+   Dans ce terminal s'affiche l'information: "-> Sent to 2 peers" qui 
+   signifie que 2 applications connectées sur le bus ont été interessées
+   par ce message, en l'occurence "rejeu" et "ivyprobe" numéro 1 
+   (celui lancé avec l'argument d'abonnement à tous les messages '(.*)' ) 
+   </p>
+<p>
+   Rejeu prend en compte cet ordre, fait tous les calculs necessaires,
+   puis emet le message (évènement dans la terminologie rejeu) qui
+   indique que la trajectoire du vol 6677 vient de subir une modification:
+   </p>
+<p>
+   <tt><b>TrajectoryUpdateEvent Flight=6677</tt></b>
+   </p>
+<p>
+   Twinkle, qui est abonné à ce genre de message est donc prévenu
+   qu'il lui faut rafraichir la visualisation de la trajectoire de cet avion.
+   Pour pouvoir le faire, il lui faut disposer des nouveaux éléments et
+   donc il émet à son tour un messsage de requête comme ci-dessus après
+   le "click" de selection du vol:
+   </p>
+<p>
+   <tt><b>GetTrajectory MsgName=xxxxxxx Flight=6677 .......</tt></b>
+   </p>
+<p>
+   Rejeu y répond comme précedemment et la nouvelle trajectoire
+   s'affiche.
+   </p>
+<p>
+   Vous pouvez évidemment faire la même chose avec l'horloge en route,
+   mais la lecture des messages sera plus délicate .... :-(
+   </p>
+<p> Redémarrez l'horloge en clickant sur Start dans twinkle. 
+    Vous pouvez aussi écrire ClockStart et "entrée" dans le terminal 
+    d'ivyprobe et le résultat sera le même, car rejeu recevra ce message
+    grâce à Ivy et s'en fiche de savoir qui lui a envoyé .....
+    Puis avancez de plusieurs fois 2 minutes (bouton >>) dans twinkle
+    et donnez une directe sur FISTO.
+    </p>
+<p>
+<tt><b>AircraftDirect Flight=6677 Beacon=FISTO</tt></b>
+    </p>
+<p> Dezoomez, pour voir la nouvelle trajectoire dans son ensemble: le
+    vol met le cap sur FISTO, puis reprend sa trajectoire sur Limoges (LMG),
+    (car FISTO figurait dans son PLN. Voir la logique de l'ordre
+    <a href="messages_frame.html#AircraftDirect" target="rejeu_frame">
+    AircraftDirect</a>). On peut vérifier en regardant les messages
+    "PlnEvent" envoyés sur le bus par rejeu pour ce vol, que les
+    heures de passage balise ont été réactualisées pour tenir compte
+    de ces modifications de trajectoire. 
+    </p>
+<p> Il est possible que le point FISTO ne soit pas visible (ou connu)
+    dans twinkle. Si c'est le cas, allez dans le menu "View" et cochez
+    "Show Waypoint buttons". Saisissez les coordonnées CAUTRA de FISTO dans
+    l'emplacement apparu en haut à droite de la fenêtre twinkle:
+    <b>FISTO 52.1 -151.5</b>. On voit maintenant ce point au niveau du 
+    virage vers LMG sur la trajectoire de l'AF121ZL.
+    </p>
+<p> Annulez cette directe en envoyant l'ordre:
+    </p>
+<p>
+   <tt><b>CancelLastOrder Flight=6677</tt></b>
+   </p> 
+
+<p> Annuler l'ordre de pilotage au cap 090 en envoyant de nouveau l'ordre:
+    </p>
+<p>
+   <tt><b>CancelLastOrder Flight=6677</tt></b>
+   </p> 
+<p> La situation est rétablie, et puisque la trajectoire de cet avion
+    est affichée, on le constate directement à l'écran.
+    </p>
+<p>
+   Essayez d'autres ordres trouvés dans cette documentation et espionnez
+   ce qui se passe sur le bus. Si vous ne voulez pas écrire
+   explicitement le texte des messages, utilisez des applications qui
+   le font en servant d'interface, comme <tt><b>digipilot</tt></b> 
+   pour envoyer des ordres de pilotage et/ou <tt><b>prepatac</tt></b>
+   qui permet d'envoyer des ordres de préparation d'exercice, ou 
+   une application de votre cru, dans le langage de votre choix, qui 
+   dialogue sur le bus .....
+   </p>
+<p>
+
+<h3>Quelques conseils supplémentaires concernant Ivy</h3>
+
+<dt><b>Numéro de bus</b></dt>
+<dd>
+<p>
+   L'exemple ci-dessus montre des applications lancées sans indication
+   particulière de numéro de bus pour Ivy. Dans ce cas, c'est le port 2010
+   qui est utilisé. Du coup, si quelqu'un d'autre fait des essais 
+   comme vous sur le réseau, c'est la même valeur par défaut qui est 
+   utilisée et donc TOUTES les applications sont potentiellement 
+   connectées avec les conséquences qu'on peut facilement imaginer, 
+   comme par exemple plusieurs générateurs de trafic qui envoient des
+   plots, chacun envoyant des messages horaires (ClockEvent ....) qui
+   lui sont propres, mais auxquels les applications qui sont abonnées 
+   réagissent ......
+   </p>
+<p><b>conseil:</b> utilisez un numéro de bus explicite, en le spécifiant
+   sur la ligne de commande quand vous lancez vos applications
+   (par exemple <tt><b>-b :4567</tt></b>) et ainsi ne dialoguent entre eux
+   que les programmes souhaités ..... Mieux encore, fixez une fois pour
+   toutes la variable d'environnement <tt><b>IVYBUS</tt></b> et cette
+   valeur sera utilisée par défaut pour les applications que vous lancez.
+   </p>
+
+<dt><b>Filtrage des messages</b></dt>
+<dd>
+<p>
+   Au lieu de lancer <b><tt>ivyprobe '(.*)'</tt></b>, mettez une 
+   expression qui filtre ce qui vous interesse: Par exemple, si vous ne
+   voulez voir que les messages qui concernent le vol AF121ZL dont 
+   l'identifiant est 6677, lancez:
+   </p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<b><tt>ivyprobe '(.*6677.*)'</tt></b>
+</td></tr></table>
+
+
+<p>
+   Et vous obtiendrez au fil du temps quelque chose de similaire à:
+   </p>
+<tt>
+<b>PlnEvent</b> Flight=6677 Time=11:15:00 CallSign=AF121ZL AircraftType=A320 .......<br />
+<b>LayerEvent</b> Flight=6677 Layer=I Mode=In <br />
+<b>SectorEvent</b> Flight=6677 Sector_Out=-- Sector_In=TA'<br />
+<b>TrackMovedEvent</b> Flight=6677 ......  X=51.67 Y=-149.47 ......<br />
+<b>TrackMovedEvent</b> Flight=6677 ......  X=51.55 Y=-148.55 ......<br />
+<b>TrackMovedEvent</b> Flight=6677 ......  X=51.45 Y=-147.70 ......<br />
+<b>StripEvent</b> Flight=6677 Time=11:18:00 CallSign=<br />
+<b>TrackMovedEvent</b> Flight=6677 ......  X=51.67 Y=-149.47 ......<br />
+<b>TrackMovedEvent</b> Flight=6677 ......  X=51.55 Y=-148.55 ......<br />
+.................<br />
+<b>SectorEvent</b> Flight=6677 Sector_Out=TA Sector_In=X1<br />
+    </tt>
+
+
+<p>
+   ou si vous voulez avoir une interface graphique pour espionner, filtrer 
+   et envoyer des messages:
+   </p>
+
+<table class="ex"  width="100%" border="1"><tr><td>
+<b><tt>ivymon</tt></b>
+</td></tr></table>
+
+<hr />
+
+<a href="faq.html" target="the_frame">
+    Questions/Réponses</a><br />
+
+<hr />
+<!--------- modele -------->
+<table class="ex"  width="100%" border="1"><tr><td>
+<b><tt>  </tt></b>
+</td></tr></table>
+
+
+</td></tr></table>
+<!------------------- Fin partie centrale ------------------>
+</td></tr></table>
+
+</body>
+</html>
+
+

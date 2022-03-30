@@ -1,0 +1,11 @@
+pyrejeu (0.1.0-2) unstable; urgency=medium
+
+  * Fix debian package 
+
+ -- Mickaël Royer <mickael.royer@gmail.com>  Sun, 19 Feb 2017 15:39:57 +0100
+
+pyrejeu (0.1.0-1) unstable; urgency=low
+
+  * Initial release.
+
+ -- Mickaël Royer <mickael.royer@gmail.com>  Sat, 18 Feb 2017 13:47:37 +0100

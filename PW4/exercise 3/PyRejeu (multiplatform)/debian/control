@@ -1,0 +1,23 @@
+Source: pyrejeu
+Section: net
+Priority: extra
+Maintainer: Mickael Royer <mickael.royer@enac.fr>
+Build-Depends:
+ debhelper (>= 9),
+ python3-dev (>= 3.4.0-1),
+ dh-python
+Standards-Version: 3.9.2.0
+X-Python3-Version: >= 3.4
+Homepage: https://git.recherche.enac.fr/projects/pyrejeu
+Vcs-Git: git@git.recherche.enac.fr:pyrejeu.git
+Vcs-Browser: https://git.recherche.enac.fr/projects/pyrejeu/repository
+
+Package: pyrejeu
+Architecture: all
+Depends: ${misc:Depends}, ${python3:Depends},
+         lsb-base (>= 3.0-6), python3-sqlalchemy,
+         python3-ivy, python3-zmq,
+         python3-pika
+Description: Air traffic replay tool
+ PyRejeu is an application written in python whose the aim is to replay
+ Air Traffic.

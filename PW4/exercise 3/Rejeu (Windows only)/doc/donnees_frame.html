@@ -1,0 +1,868 @@
+
+<html>
+<!---------------------- Description du style -------------------->
+<head>
+<link rel="stylesheet" type="text/css"
+href="rejeu_style.css">
+</head>
+
+<!-------------------- Partie centrale ------------------------------->
+<body>
+
+<table border="0" cellpadding="0" cellspacing="1">
+<tr>
+
+<td width="90%" valign="top">
+<table width="90%" bgcolor="#FFFFFF" border="1" cellpadding="7" cellspacing="0"
+>
+<tr>
+<td>
+
+<hr />
+<!-------------------------- Generer les donnees -------------------->
+<a name="Générer les données">
+<a name="conv_ast">
+<h2>Générer les données de rejeu</h2>
+
+<h4> A partir d'enregistrements ASTERIX </h4>
+<p>La méthode "standard" pour préparer un fichier de données pour rejeu
+   consiste à enregistrer un fichier de données STR au format ASTERIX
+   catégorie 30: ce type de fichier contient les informations pistes et
+   des informations "mini plan de vol" où sont connus l'indicatif, les 
+   terrains de départ et d'arrivée, le type avion, ..... mais pas la route
+   du plan de vol, ni les informations issues du STPV comme les heures
+   enregistrées d'entrée et sortie de secteur ou d'impression des strips.
+   (Avec d'autres outils fournis par ailleurs, il est possible d'utiliser
+   comme source initiale de données des fichiers au format ELVIRA, MADREC, 
+   format LEGAL, TRAP_DATA de MASS, ..... Voir ci-dessous).</p>
+<p>Ensuite, si on souhaite disposer également des informations
+   secteur, passage balise, ..... il faut récupérer le fichier COURAGE
+   de la journée correspondant au trafic,
+   (mais ce n'est pas indispensable pour constituer un fichier de rejeu).
+   Ce sont normalement les informations "plan de vol effectivement réalisé"
+   qui sont prises en compte, avec d'une manière générale, tentative de 
+   correction des erreurs ou incohérences flagrantes. (La dure réalité
+   des données réelles ....). 
+   </p>
+
+<p>Puis il faut lancer la commande (qui peut prendre un certain temps ....):
+   </p>
+<table class="ex"  width="90%" border="1"><tr><td>
+<b><tt>conv_ast -enreg -dump fic.ast | dump_ast2rej -acc Reims -cour f_courage 
+       -bal f_balises -data f_data.txt -txt fic.txt -deb hdeb -fin hfin </tt></b>
+</td></tr></table>
+<p>Le programme <b><tt>conv_ast</tt></b> est celui de la division SUR, et il sait traiter
+   les différentes versions et évolutions du format asterix (format binaire
+   variable).</p>
+<p><b><tt>fic.ast</tt></b> est le fichier asterix qui a été enregistré.</p>
+<p>Ces données "dumpées" sont ensuite fournies en entrée au programme 
+   <b><tt>dump_ast2rej</tt></b>.
+    Si le fichier COURAGE correspondant n'est pas disponible, rejeu
+    permettra d'avoir une image radar, mais ne pourra evidemment pas fournir
+    tout ce qui concerne les plan de vol, impression de strips, secteurs
+    traversés, etc.
+   </p>
+<p>Le fichier <b><tt>f_balises</tt></b> à fournir est un fichier texte
+   avec sur chaque ligne le nom de la balise suivi des coordonnées Cautra4
+   de cette balise (exprimées en 1/8 NM)</p>
+<p>Ce programme génère un fichier de Rejeu:  
+   <b><tt>fic.txt</tt></b> 
+   </br> Ce fichier texte est auto documenté. Il présente vol par vol les
+   informations plan de vol puis toutes les positions piste connues.
+   Ensuite sont éventuellement présentes les informations "balises",
+   puis les paramètres de couches que rejeu utilisera, puis éventuellement
+   (si l'option <tt><b>-data f_data.txt</b></tt> est présente) les définitions de STACKS, 
+    ILS, SIDs et STARs utilisés pour jouer ce trafic.
+   </p>
+<p><b><tt>hdeb</tt></b> et <b><tt>hfin</tt></b> 
+    permettent d'indiquer qu'on ne veut garder que le trafic qui s'est
+   déroulé entre <b>hdeb</b> et <b>hfin</b> pour constituer le fichier de rejeu.
+   S'ils sont omis, toutes les données sont prises en compte.
+   </p>
+<p><b><tt>acc</tt></b>: Nom du centre correspondant au trafic 
+    (AIX, BORDEAUX, PARIS, REIMS, BREST), BORDEAUX étant la valeur prise
+    par défaut. Cette information permet à Rejeu de connaître les
+    couches à prendre en compte pour ce trafic. Les informations 
+    concernant ces couches seront indiquées en fin de fichier Rejeu
+    et pourront être éditées éventuellement par l'utilisateur en cas de besoin. 
+   </p>
+<p> Toutes les options ci-dessus sont facultatives. Lorsqu'une option
+   concernant un nom de fichier est omise, c'est <tt>/dev/null</tt> qui
+   est pris en compte.
+
+<p>Si un fichier COURAGE est fourni, 
+    ce sont normalement les informations "plan de vol effectivement réalisé"
+   qui sont prises en compte, avec d'une manière générale, tentative de
+   correction des erreurs ou incohérences flagrantes (La dure réalité
+   des données réelles ....).
+   En plus des informations récupérées,
+   les calculs suivant sont effectués pour renseigner au mieux le fichier 
+   de rejeu obtenu:
+   </p>
+<ul>
+   <li>  Heure réelle de passage des balises (Voir ci-dessous) 
+         </li>
+   <li>  TFL probable déduit du profil enregistré pour chaque secteur
+         traversé:
+         <ul>
+            <li> Si c'est un secteur terminal (AR, AO, TP, TE, OT, RT) 
+                 de la région parisienne, le TFL est le dernier niveau
+                 stable sur la trajectoire avant la dernière balise
+                 du secteur. 
+                 </li>
+            <li> Pour les autres secteurs, le TFL est le premier
+                 niveau stable après l'heure d'entrée dans le secteur.</li>
+         </ul>
+          Noter que rejeu ne connaissant pas la géographie de la 
+          sectorisation, le calcul est effectué en utilisant les heures 
+          d'entrée/sortie des secteurs fournis dans le fichier COURAGE et 
+          les heures de passage balise (recalculées). Les valeurs obtenues
+          par ces méthodes ne peuvent evidemment pas être exactes à 90%,
+          car les trajectoires enregistrées correspondent à du trafic
+          (réel) contrôlé. 
+         </li>
+</ul>
+
+<p>Pour pouvoir effectuer certains ordres de pilotage (comme des "directes"
+   sur une balise), il faut également récupérer le fichier des
+   balises en vigueur à la date du trafic. Ce n'est pas indipensable, 
+   si on ne souhaite pas donner de tels ordres, ni disposer d'informations
+   relatives aux passages balise plus précises que ce qui est connu dans 
+   le fichier COURAGE. Par contre, lorsque les 2 fichiers 
+   <b><tt>f_balises</tt></b> et <b><tt>f_cour</tt></b>
+   sont connus, l'application de création de fichier de "rejeu"
+   <b><tt>dump_ast2rej</tt></b> recalcule les passages balise 
+   réellement effectués grâce à la trajectoire enregistrée et à la
+   connaissance du PLN et des positions géographiques des balises 
+   et les qualifie: 
+   "vertical" (plot à moins de 2 NM) ou "travers" (2 NM ou plus))
+   </p>
+<!-------------------------- ELVIRA -------------------->
+<hr />
+<a name="elvira2mad">
+<h4> A partir d'enregistrements ELVIRA </h4>
+
+<table class="ex"  width="90%" border="1"><tr><td>
+<b><tt>elvira2mad -dump STRxxxxx -voie n| grep num:| elvira2rej  [options]  </tt></b>
+</td></tr></table>
+
+<p>   (avec  STRxxxxx: fichier binaire <b>elvira</b> enregistré)  </p>
+<p> Les options possibles sont: </p>
+
+<table >
+<tr>
+   <td>  <b><tt>-h[elp]</tt></b></td> 
+   <td>  : help: Liste des options possibles. </td></tr> 
+<tr>
+   <td>  <b><tt>-acc arg</tt></b></td>    
+   <td>  : Nom du centre correspondant au trafic (AIX, BORDEAUX, PARIS, REIMS, BREST) </td></tr> 
+<tr>
+   <td>  <b><tt>-cour file</tt></b></td>  
+   <td>  : fichier COURAGE à la date du trafic enregistré </td></tr> 
+<tr>
+   <td>  <b><tt>-txt file</tt></b></td>        
+   <td>  : fichier ASCII des vols et mouvements préparés (en sortie)</td></tr> 
+<tr>
+   <td>  <b><tt>-rej file</tt></b></td>        
+   <td>  : fichier binaire de rejeu des vols et mouvements préparés (en sortie) </td></tr> 
+<tr>
+   <td>  <b><tt>-bal file</tt></b></td>        
+   <td>  : fichier des balises à la date du trafic </td></tr> 
+<tr>
+   <td>  <b><tt>-deb arg</tt></b></td>   
+   <td>  : Heure de debut (xxx sec TU depuis 0h  ou hh:mm, ou hh:mm:ss)
+         des mouvements à conserver</td></tr> 
+<tr>
+   <td>  <b><tt>-fin arg</tt></b></td>
+   <td>  : Heure de fin (xxx sec TU depuis 0h  ou hh:mm, ou hh:mm:ss)
+         des mouvements à conserver</td></tr> 
+</table>
+<p> Toutes les options sont facultatives.
+<ul>
+   <li> La valeur par défaut pour les fichiers est /dev/null</li>
+   <li> La valeur par défaut est 00:00 pour <b>deb</b> et 23:59:59 pour <b>fin</b></li>
+   <li> La valeur par défaut pour <b>acc</b> est BORDEAUX.</li>
+</ul>
+
+
+<!-------------------------- ENREGISTREMENTS LEGAUX -------------------->
+<hr />
+
+<a name="leg2mad">
+<h4> A partir d'enregistrements LEGAUX </h4>
+
+
+<table class="ex"  width="90%" border="1"><tr><td>
+<b><tt>leg2mad  -dump STRxxxxx | grep visubsc | legal2rej [options]
+   </tt></b>
+</td></tr></table>
+
+<p>   (avec  STRxxxxx: fichier binaire "legal" enregistré)  </p>
+<p> Les options possibles pour <b>legal2rej</b> sont identiques
+à celles listées ci-dessus pour <b>elvira2rej</b></p>
+
+
+<!-------------------------- DONNEES MASS -------------------->
+<hr />
+
+<a name="trap2txt">
+<h4> A partir de simulations générées par MASS </h4>
+<p>
+De nombreux exercices de simulation existent avec le simulateur MASS, qui
+est capable de générer tous les plots de l'ensemble des vols utiles à
+la simulation. De même, MASS peut utiliser un fichier COURAGE d'une
+journée réelle de trafic et fournir toutes les informations de 
+simulation sous forme d'un fichier <b>TRAP</b>.
+Un tel fichier peut être converti au format rejeu. 
+</p>
+<p>Pour cela, il faut lancer la commande :
+   </p>
+<table class="ex"  width="90%" border="1"><tr><td>
+<b><tt> trap2txt fic.trap fic.txt [-b balises.txt] [-acc centre]
+   </tt></b>
+</td></tr></table>
+
+<table >
+<tr>
+   <td>  <b><tt>-h[elp]</tt></b></td> 
+   <td>  : help: Liste des options possibles. </td></tr> 
+<tr>
+   <td>  <b><tt>fic.trap</tt></b></td> 
+   <td>  : fichier Trap (généré par MASS) à convertir en texte style rejeu </td></tr> 
+<tr>
+   <td>  <b><tt>fic.txt</tt></b></td> 
+   <td>  : fichier texte de rejeu obtenu en sortie</td></tr> 
+<tr>
+   <td>  <b><tt>-bal file</tt></b></td> 
+   <td>  : facultatif - fichier balises à la date du trafic</td></tr> 
+<tr>
+   <td>  <b><tt>-acc centre</tt></b></td> 
+   <td>  : facultatif - Nom du centre correspondant au trafic (PARIS, BORDEAUX, REIMS, AIX, BREST)</td></tr> 
+<tr>
+</table>
+
+<!-------------------------- DONNEES ISSUES D'ELECTRA -------------------->
+<hr />
+
+<a name="electra2rej">
+<h4> A partir d'enregistrements de plots générés avec ELECTRA </h4>
+
+<p>
+De nombreux exercices de simulation existent avec le simulateur ELECTRA, qui
+est capable de générer tous les plots de l'ensemble des vols utiles à
+la simulation dans un fichier ".profil".
+Un tel fichier peut être converti au format rejeu. 
+</p>
+
+
+<table class="ex"  width="90%" border="1"><tr><td>
+<b><tt>electra2rej -pro fic.profil [-exp fic.exp] [-bal balises.txt] [-acc centre] fic.txt
+   </tt></b>
+</td></tr></table>
+
+<p>
+
+<table >
+<tr>
+   <td>  <b><tt>-h[elp]</tt></b></td>
+   <td>  : help: Liste des options possibles. </td></tr>
+<tr>
+   <td>  <b><tt> fic.profil</tt></b></td>
+   <td>  :  fichier profil Electra a convertir en texte style rejeu</td></tr>
+   <td>  <b><tt> fic.exp</tt></b></td>
+   <td>  :   fichier Exp (=PLN) Electra correspondant a fic.profil (facultatif, mais tres utile...)</td></tr>
+   <td>  <b><tt> -bal balises.txt</tt></b></td>
+   <td>  :   facultatif - fichier balises a la date du trafic</td></tr>
+   <td>  <b><tt> -acc centre</tt></b></td>
+   <td>  :   facultatif - Nom du centre correspondant au trafic (Paris, Bordeaux, Reims, Aix, Brest)</td></tr>
+   <td>  <b><tt> fic.txt</tt></b></td>
+   <td>  :   fichier texte de rejeu obtenu en sortie</td></tr>
+<tr>
+</table>
+</p>
+
+<!------------------------DONNEES ISSUES DE SCANSIM------------------------->
+<hr />
+
+<a name="scanrad2txt"></a>
+<p><b>A partir d'un dump "scanrad" de type .EXO </b></p>
+
+<p>
+De nombreux exercices de simulation existent avec le simulateur SCANSIM, qui
+est capable de générer tous les plots de l'ensemble des vols utiles à
+la simulation dans un fichier ".EXO".
+Un tel fichier peut être converti au format rejeu. 
+</p>
+
+<table class="ex"  width="90%" border="1"><tr><td>
+<b><tt>scanrad2txt fic.EXO fic.txt [-acc centre] [-b balises.txt]</tt></b><br />
+</td></tr></table>
+
+<ul>
+	<li> fic.EXO : fichier dump scanrad a convertir en texte style rejeu </li>
+	<li> fic.txt : fichier texte de rejeu obtenu en sortie </li>
+	<li> -b balises.txt : facultatif - fichier balises à la date du trafic </li>
+	<li> -acc centre : facultatif - Nom du centre correspondant au trafic (Paris, Bordeaux, Reims, Aix, Brest) </li>
+</ul>
+<!------------------------------------------------------------------------->
+<hr />
+
+
+<a name="txt2rej">
+<a name="rej2txt">
+<h4>Autres possibilités: conversion de format</h4>
+
+<p>Si on dispose d'un fichier texte généré par la méthode ci-dessus,
+   auquel on a apporté des modifications en l'éditant par exemple, on peut le 
+   transformer en fichier binaire de rejeu en faisant la commande:
+   </p>
+<table class="ex"  width="90%" border="1"><tr><td>
+<b><tt>txt2rej fic.txt fic.rej</tt></b>
+</td></tr></table>
+
+<p>De la même manière, un fichier binaire qui a pu être obtenu 
+   autrement (ordre de création demandé à rejeu après des 
+   modifs sur un fichier de référence, fichier obtenu à partir
+   d'autres données converties)
+   peut être facilement transformé en fichier texte:
+   </p>
+<table class="ex"  width="90%" border="1"><tr><td>
+<b><tt>rej2txt fic.rej fic.txt</tt></b>
+</td></tr></table>
+<p> <b> ATTENTION: Les fichiers de rejeu binaires "xxxx.rej" sont obsolètes à partir de la version V2.80
+	</b> </p>
+
+
+<a name="madrec2rej">
+<p>Par ailleurs, des convertisseurs avec d'autres formats sont disponibles :
+   </p>
+<p>Avec le format madrec utilsé par la division SUR, ce qui permet de
+   bénéficier de tous leurs outils de manipulation des données radar:
+   </p>
+<table class="ex"  width="90%" border="1"><tr><td>
+<b><tt>madrec2rej fic.mad [options]</tt></b><br />
+</td></tr></table>
+<p> Les options possibles pour <b>madrec2rej</b> sont identiques
+à celles listées ci-dessus pour <b>elvira2rej</b> avec une option
+spécifique supplémentaire:
+</p>
+
+<table >
+<tr>
+   <td>  <b><tt>-i[nter]</tt></b></td>
+   <td>  : Interpolation sur les positions X, Y fournies, pour obtenir
+         des plots aux heures "rondes" (en seconde). </td></tr>
+<tr>
+</table>
+
+<a name="rej2madrec">
+<p></p>
+<table class="ex"  width="90%" border="1"><tr><td>
+<b><tt>rej2madrec fic.[txt ou rej] fic.mad</tt></b>
+</td></tr></table>
+
+<table >
+<tr>
+   <td>  <b><tt>-h[elp]</tt></b></td>
+   <td>  : help: Liste des options possibles. </td></tr>
+<tr>
+   <td>  <b><tt> fic.[txt ou rej]</tt></b></td>
+   <td>  : fichier de rejeu en texte .txt ou binaire .rej à convertir
+         (l'extension .txt ou .rej indique la façon de lire le fichier 
+         d'origine)</td></tr>
+   <td>  <b><tt> fic.mad</tt></b></td>
+   <td>  : fichier binaire au format madrec obtenu. </td></tr>
+<tr>
+</table>
+
+
+
+<p>Idem avec des données exprimées en  XML: !! EN CHANTIER !!
+   </p>
+<table class="ex"  width="90%" border="1"><tr><td>
+<b><tt>xml2rej fic.xml fic.rej</tt></b><br />
+<b><tt>rej2xmlc fic.rej fic.xml</tt></b>
+</td></tr></table>
+  
+
+<!------------------------------------------------------------------------->
+<hr />
+
+<a name="cutrej">
+<p><b>Extraction d'une partie du trafic:</b></p>
+
+<p>Il peut être intéressant d'extraire le trafic relatif à une tranche 
+horaire, pour manipuler un fichier de données de taille plus modeste:
+</p>
+
+<table class="ex"  width="90%" border="1"><tr><td>
+<b><tt>cutrej org.rej dest.rej hdeb hfin</tt></b><br />
+</td></tr></table>
+
+<p>
+    On ne veut garder que le trafic qui s'est
+   déroulé entre <b><tt>hdeb</tt></b> et <b><tt>hfin</tt></b>
+    pour constituer le fichier de rejeu
+   <b><tt>dest.rej</tt></b> à partir du trafic contenu dans
+   <b><tt>org.rej</tt></b>.
+   </p>
+
+<a name="cuttxt">
+<table class="ex"  width="90%" border="1"><tr><td>
+<b><tt>cuttxt org.txt dest.txt hdeb hfin</tt></b><br />
+</td></tr></table>
+
+<p>
+   Idem cutrej, mais avec un fichier .txt
+   </p>
+
+<!------------------------------------------------------------------------->
+<hr />
+<a name="simu2txt"></a>
+<p><b>Transformation d'un fichier de "simu" en fichier de référence:</b></p>
+
+<p>
+Cette opération consiste à appliquer toutes les modifications de trafic
+contenues dans un fichier de simu au trafic enregistré pour en faire
+un nouveau fichier qui devient une référence. 
+L'historique des modifications est perdu et on ne peut plus faire de 
+différence entre les trajectoires réelles enregistrées et celles qui ont 
+été fabriquées par des ordres donnés a rejeu.
+</p>
+
+<table class="ex"  width="90%" border="1"><tr><td>
+<b><tt>simu2txt fic.simu fic.txt</tt></b><br />
+</td></tr></table>
+
+
+<table >
+<tr>
+   <td>  <b><tt>-h[elp]</tt></b></td>
+   <td>  : help: Liste des options possibles. </td></tr>
+<tr>
+   <td>  <b><tt> fic.simu</tt></b></td>
+   <td>  : fichier de simu origine </td></tr>
+   <td>  <b><tt> fic.txt</tt></b></td>
+   <td>  : fichier rejeu "texte" obtenu en appliquant les ordres
+           contenus dans le fichier simu (Le fichier de trafic de 
+           reference est indique dans le fichier de simu sur la première
+           ligne).  </td></tr>
+<tr>
+</table>
+
+<!------------------------------------------------------------------------->
+<hr />
+
+<a name="selflights"></a>
+<p><b>Selection de vols dans un fichier de rejeu:</b></p>
+
+<p>Cette commande permet de selectionner un ensemble de vols qui satisfont
+au critère exprimé dans <b><tt> condition</tt></b> pour créer un fichier
+de rejeu simplifié.
+</p>
+<table class="ex"  width="90%" border="1"><tr><td>
+<b><tt>selflights fic_org fic_dest condition</tt></b><br />
+</td></tr></table>
+
+
+<table >
+<tr>
+   <td>  <b><tt>-h[elp]</tt></b></td>
+   <td>  : Liste des options possibles. </td></tr>
+<tr>
+   <td>  <b><tt>-l[ist]</tt></b></td>
+   <td>  : Affiche les vols selectionnes. </td></tr>
+<tr>
+   <td>  <b><tt> fic_org</tt></b></td>
+   <td>  : fichier de rejeu d'origine (.rej ou .txt)</td></tr>
+   <td>  <b><tt> fic_dest</tt></b></td>
+   <td>  : fichier rejeu "texte" obtenu en ne gardant que les vols
+           de fic_org qui satisfont au critère fourni dans condition.
+           </td></tr>
+   <td>  <b><tt> condition</tt></b></td>
+   <td>  : Expression logique pour sélectionner des vols.
+           </td></tr>
+<tr>
+</table>
+
+<p>
+   Exemple: on ne veut garder que les vols Air France qui ont décollé 
+   de Blagnac (LFBO):
+	</p>
+<p>
+   <b><tt>selflights org.txt dest.txt "(CallSign=AF*) and (Dep=LFBO)" </tt></b>
+   </p>
+<p>
+   Voir l'ensemble des possibilités offertes dans l'ordre 
+   <a href="messages_frame.html#GetDataBaseInfos"><tt>GetDataBaseInfos</tt></a>
+   qui utilise exactement la même logique.</p>
+<p>
+	Attention: penser à protéger la condition pour que les caractères spéciaux ne soient pas interprétés par 
+	le shell qui lance la commande .........
+	</p>
+
+
+<!------------------------------------------------------------------------->
+<hr />
+
+<a name="selflights_v"></a>
+<p><b>Selection de vols dans un fichier de rejeu:</b></p>
+
+<table class="ex"  width="90%" border="1"><tr><td>
+<b><tt>selflights_v fic_org fic_dest Xref Yref Dist FL_Min FL_Max  selection</tt></b><br />
+</td></tr></table>
+
+<!------------------------------------------------------------------------->
+<hr />
+
+<a name="selflights_layer"></a>
+<p><b>Selection de vols dans un fichier de rejeu:</b></p>
+
+<table class="ex"  width="90%" border="1"><tr><td>
+<b><tt>selflights_layer fic_org fic_dest MinFl MaxFl</tt></b><br />
+</td></tr></table>
+
+<!------------------------------------------------------------------------->
+<hr />
+
+<a name="sel_xy_fl"></a>
+<p><b>Selection de vols dans un fichier de rejeu:</b></p>
+
+<table class="ex"  width="90%" border="1"><tr><td>
+<b><tt>sel_xy_fl fic_org fic_dest xmin ymin xmax ymax min_fl max_fl</tt></b><br />
+</td></tr></table>
+
+<!------------------------------------------------------------------------->
+<hr />
+
+<a name="paulette"></a>
+<h4>Autres Outils</h4>
+<p><b>Cadence un fichier de Rejeu à la seconde par interpolation linéaire</b></p>
+
+<table class="ex"  width="90%" border="1"><tr><td>
+<b><tt>paulette fic_org.txt fic_dest.txt</tt></b><br />
+</td></tr></table>
+
+<!------------------------------------------------------------------------->
+<hr />
+
+<a name="modulo"></a>
+<p><b>Crée un fichier de Rejeu avec des plots toutes les "x" secondes</b></p>
+
+<table class="ex"  width="90%" border="1"><tr><td>
+<b><tt>modulo -p x fic_org.txt fic_dest.txt</tt></b><br />
+</td></tr></table>
+
+<p> Le fichier origine <b><tt>fic_org.txt</tt></b> doit être cadencé à 1s 
+	(donc en principe issu de l'utilisation de 
+	<a href="donnees_frame.html#paulette" target="donnees_frame">
+    paulette</a>). 
+	</p>
+<p><b><tt>modulo</tt></b> selectionne  1 plot toutes 
+	les "<b>x</b>" secondes dans le fichier <b><tt>fic_org.txt</tt></b>
+	pour créer le fichier <b><tt>fic_dest.txt</tt></b>.
+	</p>
+<!------------------------------------------------------------------------->
+<hr />
+
+<a name="calc_tod"></a>
+<p><b>Calcul du Top Of Descent de chaque avion dans un fichier de Rejeu</b></p>
+
+<table class="ex"  width="90%" border="1"><tr><td>
+<b><tt>calc_tod fic_rejeu.txt fic_tod.txt</tt></b><br />
+</td></tr></table>
+
+<!------------------------------------------------------------------------->
+<hr />
+
+<a name="reset_route"></a>
+<p><b>Remise des vols sur leur route PLN</b></p>
+
+<table class="ex"  width="90%" border="1"><tr><td>
+<b><tt>reset_route fic_org.txt fic.simu sect1 sect2 ....</tt></b><br />
+</td></tr></table>
+
+<p> Les ordres de pilotage nécessaires pour remettre les avions sur leur route PLN
+  sont générés dans le fichier <b><tt>fic.simu</tt></b>.
+	</p>
+<p> <b><tt>reset_route</tt></b> ne modifie que les vols qui traversent au moins
+   l'un des secteurs mentionnés dans la liste des arguments <b><tt>sect1 sect2 .....</tt></b>.
+   Lorsqu'un vol traverse l'un de ces secteurs (et donc pour le premier rencontré),
+   <b><tt>reset_route</tt></b> le considère 10 minutes avant son entrée et le force 
+    à faire des directes sur les balises indiquées dans le plan de vol 
+    (et donc pour toute la suite du vol).
+	</p>
+<p>
+   Noter par contre que dans cette version d'utilitaire qui "décontrôle" des vols,
+   les profils verticaux sont conservés tels quels => un travail "manuel" sera nécessaire
+   pour annuler les montées ou descentes enregistrées suite aux ordres de contrôle subis.
+	</p>
+<p> Il existe d'autres outils expérimentaux comme <b><tt>uncontrol</tt></b> qui gèrent de manière
+   beaucoup plus subtile l'annulation des ordres de contrôle (maintien de directes issues des
+   secteurs précédents, mais annulation de celles initiées dans le secteur étudié, annulation
+   des changements de niveau, mais maintien des profils observés notamment en espace inférieur
+   pour les vols en montée, etc ...).
+	</p>
+<!------------------------------------------------------------------------->
+<hr />
+
+<a name="merge_data"></a>
+<p><b>Enrichissement d'un fichier de Rejeu avec des données STACK, SID, STAR, ILS, ...</b></p>
+
+<table class="ex"  width="90%" border="1"><tr><td>
+<b><tt>merge_data rej_org.txt rej_dest.txt [-d data.txt] [-b beacons.txt]</tt></b><br />
+</td></tr></table>
+
+<p> A partir de la V2.80, la liste des couches (avec les paramètres associés)
+    se trouve en fin de fichier de rejeu avec en supplément de manière facultative 
+    des définitions de SIDs/STARs/ILS et/ou STACKs utiles à la simulation en rapport
+	avec ce fichier.
+	</p>
+<p> <b><tt>merge_data</tt></b> permet:
+<ul>
+	<li> d'une part: de transformer un fichier de rejeu d'une version antérieure pour qu'il 
+			ait cette nouvelle structure. Dans ce cas lancer simplement la commande
+         sans indiquer de fichier <b><tt>data.txt</tt></b> ni <b><tt>beacons.txt</tt></b></li>
+	<li> d'autre part: d'enrichir un fichier éxistant avec des informations supplémentaires
+		(ou correctives) indiquées dans le fichier <b><tt>data.txt</tt></b>
+		et/ou <b><tt>beacons.txt</tt></b> pour ajouter ou remplacer des balises</li>
+</ul>
+
+<!------------------------------------------------------------------------->
+<hr />
+
+<a name="merge_txt"></a>
+<p><b>Fusionne 2 fichiers de Rejeu</b></p>
+
+<table class="ex"  width="90%" border="1"><tr><td>
+<b><tt>merge_txt rej_org1.txt rej_org2.txt rej_dest.txt</tt></b><br />
+</td></tr></table>
+
+
+<p> <b><tt>merge_txt</tt></b> permet de fusionner 2 fichiers de Rejeu 
+           <b><tt>rej_org1.txt</tt></b> et <b><tt>rej_org2.txt</tt></b> dans
+				<b><tt>rej_dest.txt</tt></b>.
+<ul>
+	<li> Les balises du 2ème fichier sont prises en compte 
+        (En cas de doublon avec le 1er fichier, la dernière lue est conservée) </li>
+	<li> Le centre (Aix, Bordeaux, ....) du 2ème fichier est ignoré </li>
+	<li> Les eventuels "Layers" du 2ème fichier sont ignorés </li>
+	<li> Les eventuels Sid/Star/Stacks du 2ème fichier sont ignorés </li>
+</ul>
+
+<!------------------------------------------------------------------------->
+<hr />
+
+<a name="pln2rej"></a>
+<p><b>Génère des plots à partir de Plans de Vol</b></p>
+
+<table class="ex"  width="90%" border="1"><tr><td>
+<b><tt> pln2rej -b balises.txt [-acc reims] -i pln.txt -txt rej_dest.txt [-r 4] [-data fic_data] [-perfo fic_perfo]</tt></b><br />
+</td></tr></table>
+
+
+<p> <b><tt>pln2rej</tt></b> permet de générer un fichier de Rejeu from scratch 
+      à partir de Plans de Vol (contenus dans <b><tt>pln.txt</tt></b>): résultat dans: 
+				<b><tt>rej_dest.txt</tt></b>.
+<ul>
+	<li> Il faut fournir un fichier de balises </li>
+	<li> Le centre (Aix, Bordeaux, Reims, ....) permet de connaitre les couches
+				(Par défaut: Bordeaux) </li>
+	<li> l'option <b><tt>-r</tt></b> facultative indique le temps en secondes 
+             entre 2 plots (8s par défaut)</li>
+	<li> Les eventuels Sid/Star/Stacks à prendre en compte sont fournis grâce à 
+				<b><tt>-data fic_data</tt></b>. 
+				Pourra être donné plus tard grâce à <a href="#merge_data"><tt>merge_data</tt></a> </li>
+	<li> On peut compléter les perfos connues de Rejeu (mode "merge") avec un 
+				fichier de perfos fourni: option facultative <b><tt>-perfo fic_perfo</tt></b> </li>
+</ul>
+<table class="txt" width="95%" border="1"><tr><td>
+<dl><dt><b>Infos pour générer des trajectoires dans un fichier de rejeu</b></dt><dd>
+
+<p><tt>
+<br /># Exemple PLN pour generation avec pln2rej 3 avions
+<br /># Un vol = 2 lignes
+<br /># Ligne 1= Infos Avion => Hdebut Callsign, Type, SSR, Dep, Arr, Rfl, coeff_perfos, Rvsm, Tcas, Adsb
+<br /># Ligne 2= Infos PLN =>  ((Premier_point avec FL) ou SID) Liste_Balises (eventuellement Star a la fin)
+<br /># avec Liste_Balises= { Nom_Balise (FL) }      FL facultatif
+<br /># Si un FL est fourni derriere un nom de balise, c'est une clearance de niveau sur cette balise
+<br />#	(le niveau pourra etre atteint avant, sur ou apres la balise)
+<br /># Si une telle clearance est fournie, l'avion restera à ce niveau jusqu'a nouvelle clearance
+<br /># Si aucune clearance de niveau sur aucune balise, l'avion monte au RFL (sauf si manifestement
+<br />#  il est proche de la destination et donc en approche)
+<br /># 
+<br /># Hdeb Callsign Type SSR Dep Arr Rfl Coeff_perfo Rvsm TCAS Adsb
+<br />10:00 SFA447 BE58 4734 LFBR LFBZ 90 1.02 TRUE TA_RA NO
+<br />#  {Beacon (FL)}		FL facultatif
+<br />TOU 50 TBO ORTEZ BIDAC LFBZ
+<br /># Premier plot vertical TOU FL 50, puis direct TBO, ORTEZ, BIDAC, LFBZ
+<br /># en montant au niveau de croisiere (ici FL 90)
+<br />#
+<br />10:10 SFA448 BE58 4747 LFBR LFBZ 90 0.95 TRUE TA_RA NO
+<br />TOU 50 TBO 60 ORTEZ 90 BIDAC LFBZ
+<br /># Premier plot vertical TOU FL 50, puis direct TBO, montee FL 60.
+<br /># A partir de TBO, montee 90 sur BIDAC et maintien du FL 90
+<br />#
+<br />10:02 AF343KQ A320 4732 LFBO LFBD 250 1.0 TRUE TA_RA NO
+<br />AGN 60 TBO 80 ORTEZ 100 BIDAC LFBZ 250 LFBD
+</p></tt>
+</dd> </dl>
+</td></tr></table>
+
+<!------------------------------ Informations connues de rejeu -------->
+<hr />
+<a name="Informations connues"></a>
+<h2>Les informations connues de rejeu</h2>
+
+<p> Rejeu connait des "vols" identifiés par un numéro unique (correspondant 
+    au champ <b><tt>Flight</tt></b> dans les messages échangés sur le bus).
+    Rejeu ayant été conçu pour pouvoir travailler à l'échelle de la journée,
+    les identifiants comme l'indicatif de l'avion ou le numéro de piste STR
+    ont été rejetés (le même avion fait plusieurs vols dans la journée, 
+    quelque fois même, à la file en faisant simplement un "touch and go".
+    Les numéros de piste STR sont re-attribués plusieurs fois dans une journée)
+    </p>
+
+
+<p>Chaque vol contient les informations suivantes: 
+<ul>
+  <li> Identifiant du vol </li>
+  <li> Heure du premier plot enregistré pour ce vol </li> 
+  <li> Heure du dernier plot enregistré </li> 
+  <li> Niveau de croisière </li> 
+  <li> Vitesse de croisière </li>
+  <li> Indicatif </li>
+  <li> Type de l'avion </li>
+  <li> Terrain de départ </li>
+  <li> Terrain d'arrivée </li>
+  <li> Code transpondeur </li>
+  <li> Equipement RVSM (TRUE, FALSE) </li>
+  <li> Equipement TCAS et nature (OFF, TA_ONLY, TA_RA)</li>
+  <li> Equipement ADSB et nature (NO, YES, OUT_ONLY) </li>
+  <li> Liste des plots enregistrés (voir ci-dessous). 
+       Environ un plot toutes les 8 secondes (4 secondes si STR en approche) </li>
+  <li> Liste des balises du plan de vol (Nom de la balise, heure de passage,
+       niveau, passage vertical ou travers) </li>
+  <li> Liste des secteurs traversés (Nom du secteur, heure d'entrée, 
+       heure de sortie, heure d'impression de strip pour le-dit secteur)
+       </li>
+  <li> Liste des alertes pour ce vol (filet de sauvegarde, MSAW)
+       </li>
+</ul>
+
+<p>A chaque plot correspondent les informations suivantes: </p>
+<ul>
+   <li>  Heure du plot </li>
+   <li>  Position du plot </li>
+   <li>  Vitesse </li>
+   <li>  Niveau </li>
+   <li>  Taux de montée/descente </li>
+   <li>  Tendance verticale (Up, Down, Stable, Unknown)</li> 
+</ul>
+
+<p>D'autres données sont prises en compte quand l'utilisateur a
+   souhaité renseigner les champs correspondants (soit grâce à des messages
+   sur le bus, soit grâce à des informations indiquées dans un fichier 
+   de simulation crée ou modifié par un outil de préparation d'exercice 
+   ou de démonstration.</p>
+<ul>
+   <li>Niveau de transfert pour chaque secteur</li>
+   <li>Fréquence associée à un secteur</li>
+   <li>Messages utilisateur "libres" à emettre à certaines heures</li>
+</ul>
+
+<p> Rejeu peut être amené à connaitre d'autres informations
+    qui lui ont été fournies lors de la préparation des
+    données (par exemple les balises, les Stacks, des SIDs et STARs, des ILS, ....).</p> 
+<p> Rejeu connaît aussi une définition des couches (fonction du centre 
+    dans lequel le trafic a été enregistré). 
+    Lorsqu'il émet un message de position
+    pour un avion (<a href="messages_frame.html#TrackMovedEvent">
+        <b>TrackMovedEvent</b></a>), rejeu calcule la liste des couches
+    dans lesquelles il faut visualiser ce plot. La présence calculée dans une couche
+    n'est pas uniquement liée à la présence "géométrique" actuelle dans le volume de la couche.
+    (on doit par exemple visualiser en anticipation dans une couche un avion qui va y entrer
+    dans un temps plus ou moins proche). 
+    </p>
+
+<hr />
+
+<!-------------------------- Format des donnees ----------------->
+<a name="Format des données">
+<h2>Format, unités des données numériques</h2>
+<em>(du point de vue des messages sur le bus): </em> 
+
+<table class="txt"  width="90%" border="1"><tr><td>
+<dl><dt><b>Heure: champs <tt>Time, Shift</tt></b></dt><dd>
+     Toutes les heures sont exprimées par rejeu sous la forme:
+     <tt>HH:MM</tt> ou <tt>HH:MM:SS</tt> (en heure TU). 
+     <br />Les applications
+     doivent donc être en mesure de comprendre indifféremment
+     l'une ou l'autre forme de ce format. 
+     <br />Rejeu, quant à lui, comprend
+     indifféremment ces 2 formes ainsi que l'heure exprimée en secondes
+     depuis 0h TU, mais il est recommandé pour la compatibilité entre
+     les autres applications (et par ailleurs pour les mises au point
+     necessitant d'espionner les messages sur le bus d'utiliser
+     uniquement les 2 premières formes indiquées).
+</dd></dl></td></tr></table>
+
+<table class="txt"  width="90%" border="1"><tr><td>
+<dl><dt><b>Positions des avions: champs <tt>X, Y</tt></b></dt><dd>
+     Les valeurs sont exprimées en NM, avec 2 chiffres après la
+     virgule. Les coordonnées sont en CAUTRA4.<br />
+     Si l'option <tt>-nocautra</tt> a été fournie sur la ligne de
+     commande, les informations de position sont données en coordonnées
+     Lat/Long exprimées en degrés avec 4 chiffres après la virgule.<br />
+     Warning: Implémentation actuelle trop simpliste et pas pour
+     tous les messages: a revoir.
+</dd></dl></td></tr></table>
+
+<table class="txt"  width="90%" border="1"><tr><td>
+<dl><dt><b>Vitesse des avions: champs <tt>Vx, Vy, GroundSpeed, 
+          Speed</tt></b></dt><dd>
+     Ces champs sont exprimées en KTS avec des valeurs entières.
+</dd></dl></td></tr></table>
+
+<table class="txt"  width="90%" border="1"><tr><td>
+<dl><dt><b>Niveaux de vol: champs <tt>Fl, Tfl, Afl, Rfl, Delta,
+     MinValidLevel, MaxValidLevel</tt></b></dt><dd>
+     Ce sont des valeurs entières (représentant des centaines de pieds)
+</dd></dl></td></tr></table>
+
+<table class="txt"  width="90%" border="1"><tr><td>
+<dl><dt><b>Taux de montée/descente: champs <tt>Rate</tt></b></dt><dd>
+     Valeurs entières positives ou négatives qui indiquent des
+     pieds/minutes.
+</dd></dl></td></tr></table>
+
+<table class="txt"  width="90%" border="1"><tr><td>
+<dl><dt><b>Cap, angle de virage: champs <tt>Heading, Angle, To</tt></b></dt><dd>
+     Valeurs entières positives exprimées en degrés (0 à 360 pour les caps,
+     éventuellement négatives pour les angles de virage)
+</dd></dl></td></tr></table>
+
+<hr />
+
+<!-------------------------- Préparation d'exercices------------->
+
+<a name="Création de situations">
+<h2>Création de situations</h2>
+
+<p> Exemple simple à écrire ..... </p>
+
+<hr />
+<!--------- modele -------->
+<table class="ex"  width="90%" border="1"><tr><td>
+<b><tt>  </tt></b>
+</td></tr></table>
+
+
+</td></tr></table>
+<!------------------- Fin partie centrale ------------------>
+</td></tr></table>
+
+</body>
+</html>
+
+

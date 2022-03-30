@@ -1,0 +1,68 @@
+
+API
+===
+
+The code of PyRejeu is organize as follow:
+ * the *utils* module contains functions used in all other modules
+ * the db folder contains all classes related to the interaction with the database
+ * the handlers folder contains all modules in charge of handle client requests
+
+Utils module
+------------
+
+.. automodule:: pyrejeu.utils
+   :members:
+
+Database
+--------
+
+Database connection
+~~~~~~~~~~~~~~~~~~~
+
+.. automodule:: pyrejeu.db.connection
+   :members:
+
+Database models
+~~~~~~~~~~~~~~~
+
+.. automodule:: pyrejeu.db.models
+   :members:
+
+Database importation
+~~~~~~~~~~~~~~~~~~~~
+
+.. automodule:: pyrejeu.db.importations
+   :members:
+
+Client handlers
+---------------
+
+Database handler
+~~~~~~~~~~~~~~~~
+
+.. automodule:: pyrejeu.handlers.database
+   :members:
+
+Flight handler
+~~~~~~~~~~~~~~
+
+.. automodule:: pyrejeu.handlers.flight
+   :members:
+
+Flight change handler
+~~~~~~~~~~~~~~~~~~~~~
+
+.. automodule:: pyrejeu.handlers.flight_change
+   :members:
+
+Pilot handler
+~~~~~~~~~~~~~~
+
+.. automodule:: pyrejeu.handlers.pilot
+   :members:
+
+Misc handler
+~~~~~~~~~~~~~~
+
+.. automodule:: pyrejeu.handlers.misc
+   :members:

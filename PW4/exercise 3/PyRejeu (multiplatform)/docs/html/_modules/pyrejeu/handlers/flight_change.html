@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pyrejeu.handlers.flight_change &#8212; PyRejeu 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="top" title="PyRejeu 0.1.0 documentation" href="../../../index.html" />
+    <link rel="up" title="pyrejeu" href="../../pyrejeu.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PyRejeu 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../../pyrejeu.html" accesskey="U">pyrejeu</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for pyrejeu.handlers.flight_change</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># PyRejeu, an air traffic replay tool</span>
+<span class="c1"># Copyright (C) 2017 Mickael Royer &lt;mickael.royer@enac.fr&gt;</span>
+<span class="c1">#</span>
+<span class="c1"># This program is free software; you can redistribute it and/or modify</span>
+<span class="c1"># it under the terms of the GNU General Public License as published by</span>
+<span class="c1"># the Free Software Foundation; either version 2 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># This program is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span>
+<span class="c1"># GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License along</span>
+<span class="c1"># with this program; if not, write to the Free Software Foundation, Inc.,</span>
+<span class="c1"># 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.</span>
+
+<span class="kn">from</span> <span class="nn">pyrejeu</span> <span class="k">import</span> <span class="n">rpc_decorator</span>
+<span class="kn">from</span> <span class="nn">pyrejeu.db.models</span> <span class="k">import</span> <span class="n">Cone</span>
+<span class="kn">from</span> <span class="nn">pyrejeu.db.models</span> <span class="k">import</span> <span class="n">FlightPlanBeacon</span>
+<span class="kn">from</span> <span class="nn">pyrejeu.db.models</span> <span class="k">import</span> <span class="n">Beacon</span>
+<span class="kn">from</span> <span class="nn">pyrejeu.handlers.base</span> <span class="k">import</span> <span class="n">BaseHandler</span>
+<span class="kn">from</span> <span class="nn">pyrejeu.utils</span> <span class="k">import</span> <span class="n">get_heading</span>
+<span class="kn">from</span> <span class="nn">pyrejeu.utils</span> <span class="k">import</span> <span class="n">dist</span>
+<span class="kn">from</span> <span class="nn">pyrejeu.utils</span> <span class="k">import</span> <span class="n">turn_orientation</span>
+<span class="kn">from</span> <span class="nn">pyrejeu.utils</span> <span class="k">import</span> <span class="n">turn</span>
+<span class="kn">from</span> <span class="nn">pyrejeu.utils</span> <span class="k">import</span> <span class="n">get_heading_to_beacon</span>
+
+
+<div class="viewcode-block" id="FlightChangeHandler"><a class="viewcode-back" href="../../../api.html#pyrejeu.handlers.flight_change.FlightChangeHandler">[docs]</a><span class="k">class</span> <span class="nc">FlightChangeHandler</span><span class="p">(</span><span class="n">BaseHandler</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;this class handles the commands requesting changes about a flight&quot;&quot;&quot;</span>
+    <span class="n">NAME</span> <span class="o">=</span> <span class="s2">&quot;flight_change&quot;</span>
+
+<div class="viewcode-block" id="FlightChangeHandler.subscribe"><a class="viewcode-back" href="../../../api.html#pyrejeu.handlers.flight_change.FlightChangeHandler.subscribe">[docs]</a>    <span class="k">def</span> <span class="nf">subscribe</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Subscribe to commands requesting a flight modification&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_subscriptions</span><span class="p">([</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;SetPln&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;callback&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">set_pln</span><span class="p">,</span>
+                <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Flight&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span><span class="p">},</span>
+                    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">},</span>
+                    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;List&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string_list&quot;</span><span class="p">},</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">])</span></div>
+
+    <span class="nd">@rpc_decorator</span><span class="p">(</span><span class="n">require_flight</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">set_pln</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">msg_name</span><span class="p">,</span> <span class="n">flight</span><span class="p">,</span> <span class="n">c_time</span><span class="p">,</span> <span class="n">b_list</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Change the pln of a flight (SetPln command)</span>
+
+<span class="sd">        :param session: the current sqlalchemy session</span>
+<span class="sd">        :param msg_name: not used</span>
+<span class="sd">        :param flight: selected flight</span>
+<span class="sd">        :param time: time at which the fpl modification is asked</span>
+<span class="sd">        :param b_list: new list of beacons for the flight plan</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">s_time</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_origin</span><span class="p">(</span><span class="n">c_time</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">s_time</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg_name</span><span class="p">,</span>
+                              <span class="s2">&quot;SetPln -- time option has wrong format&quot;</span><span class="p">)</span>
+
+        <span class="n">b_list</span> <span class="o">=</span> <span class="n">b_list</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+        <span class="n">beacons</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Beacon</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">Beacon</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">in_</span><span class="p">(</span><span class="n">b_list</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">b_list</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">beacons</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg_name</span><span class="p">,</span>
+                              <span class="s2">&quot;SetPln -- some beacons in List do not exist&quot;</span><span class="p">)</span>
+
+        <span class="c1"># construct the flight plan</span>
+        <span class="n">fpl_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_fpl</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">flight</span><span class="p">,</span> <span class="n">s_time</span><span class="p">,</span> <span class="n">event</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">fl</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">fpl_list</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">fpl_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;FL&quot;</span><span class="p">]</span> <span class="ow">or</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">beacon</span> <span class="ow">in</span> <span class="n">beacons</span><span class="p">:</span>
+            <span class="n">fpl_list</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                <span class="s2">&quot;beacon_name&quot;</span><span class="p">:</span> <span class="n">beacon</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="s2">&quot;beacon&quot;</span><span class="p">:</span> <span class="n">beacon</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(),</span>
+                <span class="s2">&quot;order&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">fpl_list</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;V_or_A&quot;</span><span class="p">:</span> <span class="s2">&quot;V&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;FL&quot;</span><span class="p">:</span> <span class="n">fl</span><span class="p">,</span>
+                <span class="s2">&quot;hour&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="s2">&quot;estimated_hour&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+                <span class="s2">&quot;flight_plan_id&quot;</span><span class="p">:</span> <span class="n">flight</span><span class="o">.</span><span class="n">flight_plan</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="n">flight</span><span class="o">.</span><span class="n">flight_plan</span><span class="o">.</span><span class="n">active_version</span><span class="o">+</span><span class="mi">1</span>
+            <span class="p">})</span>
+
+        <span class="c1"># modify the trajectory</span>
+        <span class="n">rate</span> <span class="o">=</span> <span class="mf">3.0</span>
+        <span class="n">b_idx</span><span class="p">,</span> <span class="n">c_idx</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">fpl_list</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">beacons</span><span class="p">),</span> <span class="mi">0</span>
+        <span class="n">c_heading</span><span class="p">,</span> <span class="n">t_heading</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+        <span class="n">list_cones</span><span class="p">,</span> <span class="n">p_cone</span><span class="p">,</span> <span class="n">inc_time</span> <span class="o">=</span> <span class="p">[],</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">8</span>
+
+        <span class="k">while</span> <span class="n">c_idx</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">flight</span><span class="o">.</span><span class="n">cones</span><span class="p">)</span> <span class="ow">or</span> <span class="n">b_idx</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">fpl_list</span><span class="p">)</span> <span class="ow">or</span> \
+                <span class="p">(</span><span class="n">list_cones</span> <span class="ow">and</span> <span class="p">(</span><span class="n">list_cones</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;hour&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">s_time</span> <span class="o">&lt;</span> <span class="mi">15</span><span class="o">*</span><span class="mi">60</span><span class="p">)):</span>
+            <span class="n">c_idx</span><span class="p">,</span> <span class="n">inc_time</span><span class="p">,</span> <span class="n">new_cone</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_cone</span><span class="p">(</span><span class="n">c_idx</span><span class="p">,</span> <span class="n">flight</span><span class="p">,</span>
+                                                         <span class="n">p_cone</span><span class="p">,</span> <span class="n">inc_time</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">new_cone</span><span class="p">[</span><span class="s2">&quot;hour&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">s_time</span> <span class="ow">and</span> <span class="n">p_cone</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">b_idx</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">fpl_list</span><span class="p">):</span>
+                    <span class="n">n_bn</span> <span class="o">=</span> <span class="n">fpl_list</span><span class="p">[</span><span class="n">b_idx</span><span class="p">]</span>
+                    <span class="n">dist_th</span> <span class="o">=</span> <span class="n">n_bn</span><span class="p">[</span><span class="s2">&quot;V_or_A&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;A&quot;</span> <span class="ow">and</span> <span class="mf">5.0</span> <span class="ow">or</span> <span class="mf">1.0</span>
+                    <span class="k">if</span> <span class="n">dist</span><span class="p">(</span><span class="n">p_cone</span><span class="p">,</span> <span class="n">n_bn</span><span class="p">[</span><span class="s2">&quot;beacon&quot;</span><span class="p">])</span> <span class="o">&lt;</span> <span class="n">dist_th</span><span class="p">:</span>
+                        <span class="c1"># go to the next beacon in the flight pln</span>
+                        <span class="n">n_bn</span><span class="p">[</span><span class="s2">&quot;hour&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_cone</span><span class="p">[</span><span class="s2">&quot;hour&quot;</span><span class="p">]</span>
+                        <span class="n">b_idx</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="k">if</span> <span class="n">b_idx</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">fpl_list</span><span class="p">):</span>
+                        <span class="n">b_dict</span> <span class="o">=</span> <span class="n">fpl_list</span><span class="p">[</span><span class="n">b_idx</span><span class="p">][</span><span class="s2">&quot;beacon&quot;</span><span class="p">]</span>
+                        <span class="n">t_heading</span> <span class="o">=</span> <span class="n">get_heading_to_beacon</span><span class="p">(</span><span class="n">p_cone</span><span class="p">,</span> <span class="n">b_dict</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">c_heading</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                            <span class="n">by</span> <span class="o">=</span> <span class="n">turn_orientation</span><span class="p">(</span><span class="n">c_heading</span><span class="p">,</span> <span class="n">t_heading</span><span class="p">)</span>
+                            <span class="n">rate</span> <span class="o">=</span> <span class="n">by</span> <span class="o">==</span> <span class="s2">&quot;Left&quot;</span> <span class="ow">and</span> <span class="o">-</span><span class="n">rate</span> <span class="ow">or</span> <span class="n">rate</span>
+                <span class="k">if</span> <span class="n">c_heading</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">c_heading</span> <span class="o">=</span> <span class="n">get_heading</span><span class="p">(</span><span class="n">p_cone</span><span class="p">[</span><span class="s2">&quot;vit_x&quot;</span><span class="p">],</span> <span class="n">p_cone</span><span class="p">[</span><span class="s2">&quot;vit_y&quot;</span><span class="p">])</span>
+                <span class="k">if</span> <span class="n">c_heading</span> <span class="o">!=</span> <span class="n">t_heading</span><span class="p">:</span>
+                    <span class="n">c_heading</span> <span class="o">=</span> <span class="n">turn</span><span class="p">(</span><span class="n">c_heading</span><span class="p">,</span> <span class="n">t_heading</span><span class="p">,</span> <span class="n">rate</span><span class="p">,</span> <span class="n">inc_time</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">update_cone</span><span class="p">(</span><span class="n">p_cone</span><span class="p">,</span> <span class="n">new_cone</span><span class="p">,</span> <span class="n">inc_time</span><span class="p">,</span> <span class="n">c_heading</span><span class="p">)</span>
+            <span class="n">list_cones</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_cone</span><span class="p">)</span>
+            <span class="n">p_cone</span> <span class="o">=</span> <span class="n">new_cone</span>
+
+        <span class="c1"># increment flight version and save</span>
+        <span class="n">session</span><span class="o">.</span><span class="n">bulk_insert_mappings</span><span class="p">(</span><span class="n">Cone</span><span class="p">,</span> <span class="n">list_cones</span><span class="p">)</span>
+        <span class="n">session</span><span class="o">.</span><span class="n">bulk_insert_mappings</span><span class="p">(</span><span class="n">FlightPlanBeacon</span><span class="p">,</span> <span class="n">fpl_list</span><span class="p">)</span>
+        <span class="n">flight</span><span class="o">.</span><span class="n">active_version</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">flight</span><span class="o">.</span><span class="n">flight_plan</span><span class="o">.</span><span class="n">active_version</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="c1"># send PlnEvent and TrajectoryEvent</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">send_pln_event</span><span class="p">(</span><span class="n">flight</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">send_event</span><span class="p">(</span><span class="s2">&quot;TrajectoryUpdateEvent&quot;</span><span class="p">,</span> <span class="p">[(</span><span class="s2">&quot;Flight&quot;</span><span class="p">,</span> <span class="n">flight</span><span class="o">.</span><span class="n">id</span><span class="p">)])</span></div>
+
+
+<span class="n">handler</span> <span class="o">=</span> <span class="n">FlightChangeHandler</span>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PyRejeu 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../../pyrejeu.html" >pyrejeu</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Mickael Royer.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

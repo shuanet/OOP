@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<param>
+    <baseMapFillColor>0x00000000</baseMapFillColor>
+    <baseMapStrokeColor>0x7d7d7dff</baseMapStrokeColor>
+    <baseMapStrokeWidth>1</baseMapStrokeWidth>
+    <beaconFillColor>0x999373ff</beaconFillColor>
+    <beaconSize>8</beaconSize>
+    <beaconStrokeColor>0x999373ff</beaconStrokeColor>
+    <beaconStrokeWidth>0</beaconStrokeWidth>
+    <beaconTextFillColor>0x999373ff</beaconTextFillColor>
+    <beaconTextOffsetX>0</beaconTextOffsetX>
+    <beaconTextOffsetY>0</beaconTextOffsetY>
+    <beaconsAreDisplayed>true</beaconsAreDisplayed>
+    <cometFillColor>0xe1cf0cff</cometFillColor>
+    <cometSize>12</cometSize>
+    <cometSizeReduction>2</cometSizeReduction>
+    <cometStrokeColor>0xe1cf0cff</cometStrokeColor>
+    <cometStrokeWidth>1</cometStrokeWidth>
+    <fileBaseMap>data_maps/france.xml</fileBaseMap>
+    <fileBeacons>data_maps/points.xml</fileBeacons>
+    <fileSectors>data_maps/sectors.xml</fileSectors>
+    <flightLevel>350</flightLevel>
+    <ivyBus></ivyBus>
+    <labelArrowStrokeColor>0xffffffff</labelArrowStrokeColor>
+    <labelFillColor>0xd1d1d1ff</labelFillColor>
+    <labelOffsetX>20</labelOffsetX>
+    <labelOffsetY>-20</labelOffsetY>
+    <labelStrokeWidth>1</labelStrokeWidth>
+    <menuBarSize>25</menuBarSize>
+    <sceneBackgroundColor>0x000000ff</sceneBackgroundColor>
+    <sectorFillColor>0x46464690</sectorFillColor>
+    <sectorStrokeColor>0x000000ff</sectorStrokeColor>
+    <sectorStrokeWidth>1</sectorStrokeWidth>
+    <sectorTextFillColor>0x000000ff</sectorTextFillColor>
+    <speedVectorColor>0xe1cf0cff</speedVectorColor>
+    <speedVectorStrokeWidth>1</speedVectorStrokeWidth>
+    <timeHorizon>6</timeHorizon>
+</param>

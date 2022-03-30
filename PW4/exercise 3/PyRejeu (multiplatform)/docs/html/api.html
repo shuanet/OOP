@@ -1,0 +1,934 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>API &#8212; PyRejeu 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="PyRejeu 0.1.0 documentation" href="index.html" />
+    <link rel="prev" title="Supported messages" href="messages.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="messages.html" title="Supported messages"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">PyRejeu 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="api">
+<h1>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt>The code of PyRejeu is organize as follow:</dt>
+<dd><ul class="first last simple">
+<li>the <em>utils</em> module contains functions used in all other modules</li>
+<li>the db folder contains all classes related to the interaction with the database</li>
+<li>the handlers folder contains all modules in charge of handle client requests</li>
+</ul>
+</dd>
+</dl>
+<div class="section" id="module-pyrejeu.utils">
+<span id="utils-module"></span><h2>Utils module<a class="headerlink" href="#module-pyrejeu.utils" title="Permalink to this headline">¶</a></h2>
+<p>This module contains some useful functions used in most of the class
+of RejeuTraffic</p>
+<dl class="function">
+<dt id="pyrejeu.utils.dist">
+<code class="descclassname">pyrejeu.utils.</code><code class="descname">dist</code><span class="sig-paren">(</span><em>A</em>, <em>B</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyrejeu/utils.html#dist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyrejeu.utils.dist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the distance between the point A and B.
+A and B are objects whose have the attributes pos_x ans pos_y</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the distance between A and B</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyrejeu.utils.get_gs">
+<code class="descclassname">pyrejeu.utils.</code><code class="descname">get_gs</code><span class="sig-paren">(</span><em>x_speed</em>, <em>y_speed</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyrejeu/utils.html#get_gs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyrejeu.utils.get_gs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the ground speed of an aircraft based on its speed vector</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x_speed</strong> &#8211; x component of the speed vector</li>
+<li><strong>y_speed</strong> &#8211; y component of the speed vector</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">ground speed of the aircraft</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyrejeu.utils.get_heading">
+<code class="descclassname">pyrejeu.utils.</code><code class="descname">get_heading</code><span class="sig-paren">(</span><em>x_speed</em>, <em>y_speed</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyrejeu/utils.html#get_heading"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyrejeu.utils.get_heading" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the heading of an aircraft based on its speed vector</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x_speed</strong> &#8211; x component of the speed vector</li>
+<li><strong>y_speed</strong> &#8211; y component of the speed vector</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">heading of the aircraft in radian</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyrejeu.utils.get_heading_to_beacon">
+<code class="descclassname">pyrejeu.utils.</code><code class="descname">get_heading_to_beacon</code><span class="sig-paren">(</span><em>cur_cone</em>, <em>beacon</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyrejeu/utils.html#get_heading_to_beacon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyrejeu.utils.get_heading_to_beacon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the heading to reach the beacon given as argument</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cur_cone</strong> &#8211; x component of the speed vector</li>
+<li><strong>y_speed</strong> &#8211; y component of the speed vector</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">heading to set in order to reach the beacon</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyrejeu.utils.log_traceback">
+<code class="descclassname">pyrejeu.utils.</code><code class="descname">log_traceback</code><span class="sig-paren">(</span><em>level='info'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyrejeu/utils.html#log_traceback"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyrejeu.utils.log_traceback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log the last exception that has been raised in the application</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>string</strong> &#8211; log level used for this traceback</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyrejeu.utils.min_dist_to_beacon">
+<code class="descclassname">pyrejeu.utils.</code><code class="descname">min_dist_to_beacon</code><span class="sig-paren">(</span><em>trajectory</em>, <em>beacon</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyrejeu/utils.html#min_dist_to_beacon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyrejeu.utils.min_dist_to_beacon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the minimum distance between a flight trajectory and a beacon</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>trajectory</strong> &#8211; a flight trajectory</li>
+<li><strong>beacon</strong> &#8211; the beacon object (with name and position)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a tuple (minimum distance, corresponding cone)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyrejeu.utils.modulo_min_max">
+<code class="descclassname">pyrejeu.utils.</code><code class="descname">modulo_min_max</code><span class="sig-paren">(</span><em>value</em>, <em>min_v</em>, <em>max_v</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyrejeu/utils.html#modulo_min_max"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyrejeu.utils.modulo_min_max" title="Permalink to this definition">¶</a></dt>
+<dd><p>Be sure that a value if between a minimum and a maximum</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>value</strong> &#8211; the value</li>
+<li><strong>min_v</strong> &#8211; the minimum value</li>
+<li><strong>max_v</strong> &#8211; the maximum value</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a value between min_v and max_v modulo (max_v-min_v)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyrejeu.utils.sec_to_str">
+<code class="descclassname">pyrejeu.utils.</code><code class="descname">sec_to_str</code><span class="sig-paren">(</span><em>nb_sec</em>, <em>seconds=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyrejeu/utils.html#sec_to_str"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyrejeu.utils.sec_to_str" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a number of seconds to a string following the format HH:MM[:SS]</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>nb_sec</strong> &#8211; number of second since the beginning of the day</li>
+<li><strong>seconds</strong> &#8211; set to True (the default) in order to return the seconds</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">string following the format HH:MM[:SS]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyrejeu.utils.str_to_sec">
+<code class="descclassname">pyrejeu.utils.</code><code class="descname">str_to_sec</code><span class="sig-paren">(</span><em>string</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyrejeu/utils.html#str_to_sec"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyrejeu.utils.str_to_sec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a string following the format HH:MM:SS to a number of seconds
+(since 00:00:00)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>string</strong> &#8211; string following the format HH:MM:SS</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the number of seconds since 00:00:00</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyrejeu.utils.turn">
+<code class="descclassname">pyrejeu.utils.</code><code class="descname">turn</code><span class="sig-paren">(</span><em>c_heading</em>, <em>t_heading</em>, <em>rate</em>, <em>inc_time</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyrejeu/utils.html#turn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyrejeu.utils.turn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Turn the aircraft based on the current/target heading and the turn rate</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>c_heading</strong> &#8211; current heading</li>
+<li><strong>t_heading</strong> &#8211; target heading</li>
+<li><strong>rate</strong> &#8211; turn rate</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">new heading</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyrejeu.utils.turn_orientation">
+<code class="descclassname">pyrejeu.utils.</code><code class="descname">turn_orientation</code><span class="sig-paren">(</span><em>c_heading</em>, <em>t_heading</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyrejeu/utils.html#turn_orientation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyrejeu.utils.turn_orientation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine the turn orientation to reach the target heading</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>c_heading</strong> &#8211; current heading</li>
+<li><strong>t_heading</strong> &#8211; target heading</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Left or Right according the best turn orientation</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="database">
+<h2>Database<a class="headerlink" href="#database" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-pyrejeu.db.connection">
+<span id="database-connection"></span><h3>Database connection<a class="headerlink" href="#module-pyrejeu.db.connection" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="pyrejeu.db.connection.DatabaseConnection">
+<em class="property">class </em><code class="descclassname">pyrejeu.db.connection.</code><code class="descname">DatabaseConnection</code><span class="sig-paren">(</span><em>file_path=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyrejeu/db/connection.html#DatabaseConnection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyrejeu.db.connection.DatabaseConnection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class used to connect to the Database</p>
+<dl class="method">
+<dt id="pyrejeu.db.connection.DatabaseConnection.get_engine">
+<code class="descname">get_engine</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyrejeu/db/connection.html#DatabaseConnection.get_engine"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyrejeu.db.connection.DatabaseConnection.get_engine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the active sqlalchemy engine</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrejeu.db.connection.DatabaseConnection.get_session">
+<code class="descname">get_session</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyrejeu/db/connection.html#DatabaseConnection.get_session"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyrejeu.db.connection.DatabaseConnection.get_session" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a sqlalchemy session object to use the ORM</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Session Object</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyrejeu.db.models">
+<span id="database-models"></span><h3>Database models<a class="headerlink" href="#module-pyrejeu.db.models" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="pyrejeu.db.models.Beacon">
+<em class="property">class </em><code class="descclassname">pyrejeu.db.models.</code><code class="descname">Beacon</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyrejeu/db/models.html#Beacon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyrejeu.db.models.Beacon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Beacon object</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="pyrejeu.db.models.Cone">
+<em class="property">class </em><code class="descclassname">pyrejeu.db.models.</code><code class="descname">Cone</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyrejeu/db/models.html#Cone"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyrejeu.db.models.Cone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cone object</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="pyrejeu.db.models.Flight">
+<em class="property">class </em><code class="descclassname">pyrejeu.db.models.</code><code class="descname">Flight</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyrejeu/db/models.html#Flight"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyrejeu.db.models.Flight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flight object</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="pyrejeu.db.models.FlightPlan">
+<em class="property">class </em><code class="descclassname">pyrejeu.db.models.</code><code class="descname">FlightPlan</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyrejeu/db/models.html#FlightPlan"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyrejeu.db.models.FlightPlan" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flight plan object</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="pyrejeu.db.models.MiscInfo">
+<em class="property">class </em><code class="descclassname">pyrejeu.db.models.</code><code class="descname">MiscInfo</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyrejeu/db/models.html#MiscInfo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyrejeu.db.models.MiscInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Table used to record misc informations from rejeu file</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyrejeu.db.importations">
+<span id="database-importation"></span><h3>Database importation<a class="headerlink" href="#module-pyrejeu.db.importations" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="pyrejeu.db.importations.RejeuImportation">
+<em class="property">class </em><code class="descclassname">pyrejeu.db.importations.</code><code class="descname">RejeuImportation</code><span class="sig-paren">(</span><em>bus</em>, <em>db_conn</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyrejeu/db/importations.html#RejeuImportation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyrejeu.db.importations.RejeuImportation" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class contains all the functions useful to import a file
+following the rejeu format in the database. The public function to import
+a file is import_file</p>
+<dl class="method">
+<dt id="pyrejeu.db.importations.RejeuImportation.import_file">
+<code class="descname">import_file</code><span class="sig-paren">(</span><em>filename</em>, <em>event=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyrejeu/db/importations.html#RejeuImportation.import_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyrejeu.db.importations.RejeuImportation.import_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function extract the trafic informations from the rejeu file
+and record them in the database
+:param filename: the path of the file we want to import</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="client-handlers">
+<h2>Client handlers<a class="headerlink" href="#client-handlers" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-pyrejeu.handlers.database">
+<span id="database-handler"></span><h3>Database handler<a class="headerlink" href="#module-pyrejeu.handlers.database" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="pyrejeu.handlers.database.DatabaseHandler">
+<em class="property">class </em><code class="descclassname">pyrejeu.handlers.database.</code><code class="descname">DatabaseHandler</code><span class="sig-paren">(</span><em>bus</em>, <em>db_conn</em>, <em>clock</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyrejeu/handlers/database.html#DatabaseHandler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyrejeu.handlers.database.DatabaseHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cette classe permet de gérer tous les requêtes demandant
+des informations contenues dans la base de donnée</p>
+<dl class="method">
+<dt id="pyrejeu.handlers.database.DatabaseHandler.get_all_beacons">
+<code class="descname">get_all_beacons</code><span class="sig-paren">(</span><em>msg_id</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrejeu.handlers.database.DatabaseHandler.get_all_beacons" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the position of all known beacons</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>session</strong> &#8211; the current sqlalchemy session</li>
+<li><strong>msg_name</strong> &#8211; the message identifier</li>
+<li><strong>r_type</strong> &#8211; the type of beacon Pilot|All</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrejeu.handlers.database.DatabaseHandler.get_beacons_infos">
+<code class="descname">get_beacons_infos</code><span class="sig-paren">(</span><em>msg_id</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrejeu.handlers.database.DatabaseHandler.get_beacons_infos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the position of beacons given in a list</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>session</strong> &#8211; the current sqlalchemy session</li>
+<li><strong>null_coord</strong> &#8211; the string to use for unknown beacon</li>
+<li><strong>b_list</strong> &#8211; the list of beacons</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrejeu.handlers.database.DatabaseHandler.get_current_flights">
+<code class="descname">get_current_flights</code><span class="sig-paren">(</span><em>msg_id</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrejeu.handlers.database.DatabaseHandler.get_current_flights" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the list of existing flights at the specified time</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>session</strong> &#8211; the current sqlalchemy session</li>
+<li><strong>msg_name</strong> &#8211; the message identifier</li>
+<li><strong>t_value</strong> &#8211; the specified time now|HH:MM:SS</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrejeu.handlers.database.DatabaseHandler.get_database_infos">
+<code class="descname">get_database_infos</code><span class="sig-paren">(</span><em>msg_id</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrejeu.handlers.database.DatabaseHandler.get_database_infos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return flights respecting some conditions</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>session</strong> &#8211; the current sqlalchemy session</li>
+<li><strong>msg_name</strong> &#8211; the message identifier</li>
+<li><strong>cond</strong> &#8211; the filter condition</li>
+<li><strong>select</strong> &#8211; the list of information to return</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrejeu.handlers.database.DatabaseHandler.set_new_beacons">
+<code class="descname">set_new_beacons</code><span class="sig-paren">(</span><em>msg_id</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrejeu.handlers.database.DatabaseHandler.set_new_beacons" title="Permalink to this definition">¶</a></dt>
+<dd><p>Record new beacons in the database (SetNewBeacons command)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>session</strong> &#8211; the current sqlalchemy session</li>
+<li><strong>b_list</strong> &#8211; list of beacons to add in the db</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrejeu.handlers.database.DatabaseHandler.subscribe">
+<code class="descname">subscribe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyrejeu/handlers/database.html#DatabaseHandler.subscribe"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyrejeu.handlers.database.DatabaseHandler.subscribe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subscribe to commands requesting database information</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrejeu.handlers.database.handler">
+<code class="descclassname">pyrejeu.handlers.database.</code><code class="descname">handler</code><a class="headerlink" href="#pyrejeu.handlers.database.handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#pyrejeu.handlers.database.DatabaseHandler" title="pyrejeu.handlers.database.DatabaseHandler"><code class="xref py py-class docutils literal"><span class="pre">DatabaseHandler</span></code></a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyrejeu.handlers.flight">
+<span id="flight-handler"></span><h3>Flight handler<a class="headerlink" href="#module-pyrejeu.handlers.flight" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="pyrejeu.handlers.flight.FlightHandler">
+<em class="property">class </em><code class="descclassname">pyrejeu.handlers.flight.</code><code class="descname">FlightHandler</code><span class="sig-paren">(</span><em>bus</em>, <em>db_conn</em>, <em>clock</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyrejeu/handlers/flight.html#FlightHandler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyrejeu.handlers.flight.FlightHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>this class handles the commands requesting information about a flight</p>
+<dl class="method">
+<dt id="pyrejeu.handlers.flight.FlightHandler.get_pln">
+<code class="descname">get_pln</code><span class="sig-paren">(</span><em>msg_id</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrejeu.handlers.flight.FlightHandler.get_pln" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the flight plan (GetPln command)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>session</strong> &#8211; the current sqlalchemy session</li>
+<li><strong>msg_name</strong> &#8211; the message identifier</li>
+<li><strong>flight</strong> &#8211; flight object</li>
+<li><strong>from_type</strong> &#8211; origin|now|time|beacon_name</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrejeu.handlers.flight.FlightHandler.get_position">
+<code class="descname">get_position</code><span class="sig-paren">(</span><em>msg_id</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrejeu.handlers.flight.FlightHandler.get_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the position of a flight at the given time (GetPosition command)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>session</strong> &#8211; the current sqlalchemy session</li>
+<li><strong>msg_name</strong> &#8211; the message identifier</li>
+<li><strong>flight</strong> &#8211; selected flight</li>
+<li><strong>time</strong> &#8211; time at which the position is requested</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrejeu.handlers.flight.FlightHandler.get_range">
+<code class="descname">get_range</code><span class="sig-paren">(</span><em>msg_id</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrejeu.handlers.flight.FlightHandler.get_range" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the time interval of a flight and its visibility (GetRange command)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>session</strong> &#8211; the current sqlalchemy session</li>
+<li><strong>msg_name</strong> &#8211; the message identifier</li>
+<li><strong>flight_id</strong> &#8211; id of the flight, ALL for all flight</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrejeu.handlers.flight.FlightHandler.get_track">
+<code class="descname">get_track</code><span class="sig-paren">(</span><em>msg_id</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrejeu.handlers.flight.FlightHandler.get_track" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the full track of a flight (GetTrack command)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>session</strong> &#8211; the current sqlalchemy session</li>
+<li><strong>msg_name</strong> &#8211; the message identifier</li>
+<li><strong>flight_id</strong> &#8211; id of the flight</li>
+<li><strong>from_type</strong> &#8211; origin|now|HH:MM:SS</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrejeu.handlers.flight.FlightHandler.get_trajectory">
+<code class="descname">get_trajectory</code><span class="sig-paren">(</span><em>msg_id</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrejeu.handlers.flight.FlightHandler.get_trajectory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the trajectory of a flight (GetTrajectory command)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>session</strong> &#8211; the current sqlalchemy session</li>
+<li><strong>msg_name</strong> &#8211; the message identifier</li>
+<li><strong>flight_id</strong> &#8211; id of the flight</li>
+<li><strong>from_type</strong> &#8211; origin|now|HH:MM:SS</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrejeu.handlers.flight.FlightHandler.subscribe">
+<code class="descname">subscribe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyrejeu/handlers/flight.html#FlightHandler.subscribe"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyrejeu.handlers.flight.FlightHandler.subscribe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subscribe to commands requesting a flight information</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrejeu.handlers.flight.handler">
+<code class="descclassname">pyrejeu.handlers.flight.</code><code class="descname">handler</code><a class="headerlink" href="#pyrejeu.handlers.flight.handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#pyrejeu.handlers.flight.FlightHandler" title="pyrejeu.handlers.flight.FlightHandler"><code class="xref py py-class docutils literal"><span class="pre">FlightHandler</span></code></a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyrejeu.handlers.flight_change">
+<span id="flight-change-handler"></span><h3>Flight change handler<a class="headerlink" href="#module-pyrejeu.handlers.flight_change" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="pyrejeu.handlers.flight_change.FlightChangeHandler">
+<em class="property">class </em><code class="descclassname">pyrejeu.handlers.flight_change.</code><code class="descname">FlightChangeHandler</code><span class="sig-paren">(</span><em>bus</em>, <em>db_conn</em>, <em>clock</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyrejeu/handlers/flight_change.html#FlightChangeHandler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyrejeu.handlers.flight_change.FlightChangeHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>this class handles the commands requesting changes about a flight</p>
+<dl class="method">
+<dt id="pyrejeu.handlers.flight_change.FlightChangeHandler.set_pln">
+<code class="descname">set_pln</code><span class="sig-paren">(</span><em>msg_id</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrejeu.handlers.flight_change.FlightChangeHandler.set_pln" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change the pln of a flight (SetPln command)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>session</strong> &#8211; the current sqlalchemy session</li>
+<li><strong>msg_name</strong> &#8211; not used</li>
+<li><strong>flight</strong> &#8211; selected flight</li>
+<li><strong>time</strong> &#8211; time at which the fpl modification is asked</li>
+<li><strong>b_list</strong> &#8211; new list of beacons for the flight plan</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrejeu.handlers.flight_change.FlightChangeHandler.subscribe">
+<code class="descname">subscribe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyrejeu/handlers/flight_change.html#FlightChangeHandler.subscribe"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyrejeu.handlers.flight_change.FlightChangeHandler.subscribe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subscribe to commands requesting a flight modification</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrejeu.handlers.flight_change.handler">
+<code class="descclassname">pyrejeu.handlers.flight_change.</code><code class="descname">handler</code><a class="headerlink" href="#pyrejeu.handlers.flight_change.handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#pyrejeu.handlers.flight_change.FlightChangeHandler" title="pyrejeu.handlers.flight_change.FlightChangeHandler"><code class="xref py py-class docutils literal"><span class="pre">FlightChangeHandler</span></code></a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyrejeu.handlers.pilot">
+<span id="pilot-handler"></span><h3>Pilot handler<a class="headerlink" href="#module-pyrejeu.handlers.pilot" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="pyrejeu.handlers.pilot.PilotHandler">
+<em class="property">class </em><code class="descclassname">pyrejeu.handlers.pilot.</code><code class="descname">PilotHandler</code><span class="sig-paren">(</span><em>bus</em>, <em>db_conn</em>, <em>clock</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyrejeu/handlers/pilot.html#PilotHandler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyrejeu.handlers.pilot.PilotHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class handle the trajectory modification required for a given
+flight</p>
+<dl class="method">
+<dt id="pyrejeu.handlers.pilot.PilotHandler.aircraft_direct">
+<code class="descname">aircraft_direct</code><span class="sig-paren">(</span><em>msg_id</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrejeu.handlers.pilot.PilotHandler.aircraft_direct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modify the heading of a flight to go directly to a beacon</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>session</strong> &#8211; the current sqlalchemy session</li>
+<li><strong>agent</strong> &#8211; id of the ivy agent that sends the order</li>
+<li><strong>flight</strong> &#8211; target flight</li>
+<li><strong>beacon</strong> &#8211; beacon we want to flight to</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">NONE</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrejeu.handlers.pilot.PilotHandler.aircraft_heading">
+<code class="descname">aircraft_heading</code><span class="sig-paren">(</span><em>msg_id</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrejeu.handlers.pilot.PilotHandler.aircraft_heading" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modify the heading of a flight</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>session</strong> &#8211; the current sqlalchemy session</li>
+<li><strong>agent</strong> &#8211; id of the ivy agent that sends the order</li>
+<li><strong>flight</strong> &#8211; target flight</li>
+<li><strong>heading</strong> &#8211; value of the new heading</li>
+<li><strong>by</strong> &#8211; direction of the turn (&#8220;None&#8221;, &#8220;Right&#8221; or &#8220;Left&#8221;)</li>
+<li><strong>rate</strong> &#8211; turn rate in °/sec</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">False if an error occurs</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrejeu.handlers.pilot.PilotHandler.aircraft_turn">
+<code class="descname">aircraft_turn</code><span class="sig-paren">(</span><em>msg_id</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrejeu.handlers.pilot.PilotHandler.aircraft_turn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modify the heading of a flight to make a turn of the number of
+degrees requested thanks to angle.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>session</strong> &#8211; the current sqlalchemy session</li>
+<li><strong>agent</strong> &#8211; id of the ivy agent that sends the order</li>
+<li><strong>flight</strong> &#8211; target flight</li>
+<li><strong>angle</strong> &#8211; value of the angle</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">False if an error occurs</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrejeu.handlers.pilot.PilotHandler.subscribe">
+<code class="descname">subscribe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyrejeu/handlers/pilot.html#PilotHandler.subscribe"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyrejeu.handlers.pilot.PilotHandler.subscribe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subscribe to commands requiring a flight pilot changes</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrejeu.handlers.pilot.handler">
+<code class="descclassname">pyrejeu.handlers.pilot.</code><code class="descname">handler</code><a class="headerlink" href="#pyrejeu.handlers.pilot.handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#pyrejeu.handlers.pilot.PilotHandler" title="pyrejeu.handlers.pilot.PilotHandler"><code class="xref py py-class docutils literal"><span class="pre">PilotHandler</span></code></a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyrejeu.handlers.misc">
+<span id="misc-handler"></span><h3>Misc handler<a class="headerlink" href="#module-pyrejeu.handlers.misc" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="pyrejeu.handlers.misc.MiscHandler">
+<em class="property">class </em><code class="descclassname">pyrejeu.handlers.misc.</code><code class="descname">MiscHandler</code><span class="sig-paren">(</span><em>bus</em>, <em>db_conn</em>, <em>clock</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyrejeu/handlers/misc.html#MiscHandler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyrejeu.handlers.misc.MiscHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>this class handles the misc commands</p>
+<dl class="method">
+<dt id="pyrejeu.handlers.misc.MiscHandler.cancel_last_order">
+<code class="descname">cancel_last_order</code><span class="sig-paren">(</span><em>msg_id</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrejeu.handlers.misc.MiscHandler.cancel_last_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cancel the last order given for the flight identified with &lt;flight_id&gt;</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>session</strong> &#8211; the current sqlalchemy session</li>
+<li><strong>flight</strong> &#8211; target flight</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrejeu.handlers.misc.MiscHandler.discard">
+<code class="descname">discard</code><span class="sig-paren">(</span><em>msg_id</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrejeu.handlers.misc.MiscHandler.discard" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disable a flight (meaning no events anymore for this flight)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>session</strong> &#8211; the current sqlalchemy session</li>
+<li><strong>flight</strong> &#8211; selected flight</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrejeu.handlers.misc.MiscHandler.discard_all">
+<code class="descname">discard_all</code><span class="sig-paren">(</span><em>msg_id</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrejeu.handlers.misc.MiscHandler.discard_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disable all the flight</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>session</strong> &#8211; the current sqlalchemy session</li>
+<li><strong>flight</strong> &#8211; selected flight</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrejeu.handlers.misc.MiscHandler.enable">
+<code class="descname">enable</code><span class="sig-paren">(</span><em>msg_id</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrejeu.handlers.misc.MiscHandler.enable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable a flight</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>session</strong> &#8211; the current sqlalchemy session</li>
+<li><strong>flight</strong> &#8211; selected flight</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrejeu.handlers.misc.MiscHandler.file_write">
+<code class="descname">file_write</code><span class="sig-paren">(</span><em>msg_id</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrejeu.handlers.misc.MiscHandler.file_write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save all the database data in a text file</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>session</strong> &#8211; the current sqlalchemy session</li>
+<li><strong>f_type</strong> &#8211; format of the output file (only dump supported)</li>
+<li><strong>f_name</strong> &#8211; name of the output file</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrejeu.handlers.misc.MiscHandler.subscribe">
+<code class="descname">subscribe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyrejeu/handlers/misc.html#MiscHandler.subscribe"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyrejeu.handlers.misc.MiscHandler.subscribe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subscribe to misc commands</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrejeu.handlers.misc.handler">
+<code class="descclassname">pyrejeu.handlers.misc.</code><code class="descname">handler</code><a class="headerlink" href="#pyrejeu.handlers.misc.handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#pyrejeu.handlers.misc.MiscHandler" title="pyrejeu.handlers.misc.MiscHandler"><code class="xref py py-class docutils literal"><span class="pre">MiscHandler</span></code></a></p>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">API</a><ul>
+<li><a class="reference internal" href="#module-pyrejeu.utils">Utils module</a></li>
+<li><a class="reference internal" href="#database">Database</a><ul>
+<li><a class="reference internal" href="#module-pyrejeu.db.connection">Database connection</a></li>
+<li><a class="reference internal" href="#module-pyrejeu.db.models">Database models</a></li>
+<li><a class="reference internal" href="#module-pyrejeu.db.importations">Database importation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#client-handlers">Client handlers</a><ul>
+<li><a class="reference internal" href="#module-pyrejeu.handlers.database">Database handler</a></li>
+<li><a class="reference internal" href="#module-pyrejeu.handlers.flight">Flight handler</a></li>
+<li><a class="reference internal" href="#module-pyrejeu.handlers.flight_change">Flight change handler</a></li>
+<li><a class="reference internal" href="#module-pyrejeu.handlers.pilot">Pilot handler</a></li>
+<li><a class="reference internal" href="#module-pyrejeu.handlers.misc">Misc handler</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="messages.html"
+                        title="previous chapter">Supported messages</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/api.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="messages.html" title="Supported messages"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">PyRejeu 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Mickael Royer.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>
