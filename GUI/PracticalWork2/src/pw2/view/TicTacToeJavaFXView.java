@@ -110,19 +110,19 @@ public class TicTacToeJavaFXView extends Application implements IBoardGameView {
 
         // Control bar
         HBox controlBar = new HBox();
-        VBox.getChildren().add(controlBar);
+        root.getChildren().add(controlBar);
         
         Button newB = new Button("New Game");
         Button quitB = new Button("Quit Game");
         ImageView nextPlayerIcon = new ImageView(VOID);
         
         double dim = VOID.getHeight();
-        newB.setPrefSize(dim);
-        quitB.setPrefSize(dim);
+        newB.setPrefHeight(dim);
+        quitB.setPrefHeight(dim);
         
-        HBox.getChildren().add(newB);
-        HBox.getChildren().add(nextPlayerIcon);
-        HBox.getChildren().add(quitB);
+        controlBar.getChildren().add(newB);
+        controlBar.getChildren().add(nextPlayerIcon);
+        controlBar.getChildren().add(quitB);
         
 
         // menus and shortcuts
