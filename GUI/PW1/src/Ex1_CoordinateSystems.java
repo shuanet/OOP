@@ -46,12 +46,12 @@ public class Ex1_CoordinateSystems extends Application {
                 // Demo for coordinate system conversion API only,
                 // There are better ways to get coordinates directly from an event...
                 Point2D coord_in_rect = new Point2D(event.getX(), event.getY());
+                System.out.println(coord_in_rect + " in rect");
                 
                 // Question 1.2:
                 // Use the conversion methods to convert coordinates from rect coord system
-                // to its parent, the scene, and the stage coordinate systems...
-                
-                System.out.println(coord_in_rect + " in rect");
+                // to its parent, the scene, and the stage coordinate systems...   
+                System.out.println(rect.localToParent(coord_in_rect) + " in parent");
             }
         });
 
