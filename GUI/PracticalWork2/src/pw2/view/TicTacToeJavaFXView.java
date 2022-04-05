@@ -41,7 +41,7 @@ public class TicTacToeJavaFXView extends Application implements IBoardGameView {
     private MenuItem menuItemNew, menuItemQuit;
 
     private VBox root;
-
+    
     // Resource retrieval: solution 1
     // The path to load resources is specified relative to the project root.
     // These resources will not be included in the jar when it is built.
@@ -62,7 +62,7 @@ public class TicTacToeJavaFXView extends Application implements IBoardGameView {
 //    private final Image CROSS = new Image(streamCross);
 //    private final Image CIRCLE = new Image(streamCircle);
 //    private final Image VOID = new Image(streamVoid);
-
+    
     /**
      * Constructor. 
      * By subscribing this view to the model (at the end of the constructor), 
@@ -109,7 +109,21 @@ public class TicTacToeJavaFXView extends Application implements IBoardGameView {
         // TODO...
 
         // Control bar
-        // TODO...
+        HBox controlBar = new HBox();
+        VBox.getChildren().add(controlBar);
+        
+        Button newB = new Button("New Game");
+        Button quitB = new Button("Quit Game");
+        ImageView nextPlayerIcon = new ImageView(VOID);
+        
+        double dim = VOID.getHeight();
+        newB.setPrefSize(dim);
+        quitB.setPrefSize(dim);
+        
+        HBox.getChildren().add(newB);
+        HBox.getChildren().add(nextPlayerIcon);
+        HBox.getChildren().add(quitB);
+        
 
         // menus and shortcuts
         // TODO...

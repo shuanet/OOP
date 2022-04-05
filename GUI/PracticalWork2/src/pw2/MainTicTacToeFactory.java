@@ -47,8 +47,8 @@ public abstract class MainTicTacToeFactory {
 
     public static void main(String[] args) {
         //launchTextView();
-        launchSwingView();
-        //launchJavaFXView();
+        //launchSwingView();
+        launchJavaFXView();
     }
 
 }
