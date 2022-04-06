@@ -110,8 +110,6 @@ public class TicTacToeJavaFXView extends Application implements IBoardGameView {
         menuItemNew = new MenuItem();
         menuItemQuit = new MenuItem();
         Menu menu = new Menu();
-        menu.getChildren().add(menuItemNew);
-        menu.getChildren().add(menuItemQuit);
         
         // Empty game board
         GridPane boardGame = new GridPane();
@@ -128,14 +126,13 @@ public class TicTacToeJavaFXView extends Application implements IBoardGameView {
         HBox controlBar = new HBox();
         root.getChildren().add(controlBar);
         
-        buttonNew = new Button("New Game");
-        buttonQuit = new Button("Quit Game");
-        
+        buttonNew = new Button("New\nGame");
+        buttonQuit = new Button("Quit\nGame");
         
         nextPlayer = new ImageView(VOID);
-        double dim = nextPlayer.getHeight();
-        buttonNew.setPrefHeight(dim);
-        buttonQuit.setPrefHeight(dim);
+        //double dim = nextPlayer.getScaleX();
+        //buttonNew.setPrefSize(dim, dim);
+        //buttonQuit.setPrefSize(dim, dim);
         
         controlBar.getChildren().add(buttonNew);
         controlBar.getChildren().add(nextPlayer);
@@ -163,14 +160,14 @@ public class TicTacToeJavaFXView extends Application implements IBoardGameView {
                 model.newGame();
             }
         });
-        buttonQuit.setOnaction(new EventHandler<ActionEvent>(){
+        buttonQuit.setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event){
                 System.out.println("BUTTON: Quit game");
                 exit();
             }
         });
-        squareViews.setOnMouseClicked(new EventHandler<MouseEvenet>(){
+        boardGame.setOnMouseClicked(new EventHandler<MouseEvent>(){
            @Override
            public void handle(MouseEvent event){
                int row = -1;
