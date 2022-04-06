@@ -1,5 +1,6 @@
 package pw2.view;
 
+import java.awt.Insets;
 import java.io.InputStream;
 import pw2.model.Player;
 import pw2.model.TicTacToeModel;
@@ -37,7 +38,7 @@ public class TicTacToeJavaFXView extends Application implements IBoardGameView {
 
     private final ImageView[][] squareViews;
     private ImageView nextPlayer;
-    private Button buttonNew, boutonQuit;
+    private Button buttonNew, buttonQuit;
     private MenuItem menuItemNew, menuItemQuit;
 
     private VBox root;
@@ -102,36 +103,98 @@ public class TicTacToeJavaFXView extends Application implements IBoardGameView {
      * Create the view and give it the ability to modify the model (controller aspect).
      */
     private void createView() {
-        // Board game
-        // TODO...
-
-        // Next player label and game control buttons
-        // TODO...
+        // Menus and shortcuts
+        HBox menuBox = new HBox();
+        root.getChildren().add(menuBox);
+        
+        menuItemNew = new MenuItem();
+        menuItemQuit = new MenuItem();
+        Menu menu = new Menu();
+        menu.getChildren().add(menuItemNew);
+        menu.getChildren().add(menuItemQuit);
+        
+        // Empty game board
+        GridPane boardGame = new GridPane();
+        
+        for(int i = 0; i < BOARD_SIZE; i++){
+            for(int j = 0; j < BOARD_SIZE; j++){
+                squareViews[i][j] = new ImageView(VOID);
+                boardGame.add(squareViews[i][j], i, j);
+            }
+        }
+        root.getChildren().add(boardGame);
 
         // Control bar
         HBox controlBar = new HBox();
         root.getChildren().add(controlBar);
         
-        Button newB = new Button("New Game");
-        Button quitB = new Button("Quit Game");
-        ImageView nextPlayerIcon = new ImageView(VOID);
+        buttonNew = new Button("New Game");
+        buttonQuit = new Button("Quit Game");
         
-        double dim = VOID.getHeight();
-        newB.setPrefHeight(dim);
-        quitB.setPrefHeight(dim);
         
-        controlBar.getChildren().add(newB);
-        controlBar.getChildren().add(nextPlayerIcon);
-        controlBar.getChildren().add(quitB);
+        nextPlayer = new ImageView(VOID);
+        double dim = nextPlayer.getHeight();
+        buttonNew.setPrefHeight(dim);
+        buttonQuit.setPrefHeight(dim);
         
-
-        // menus and shortcuts
-        // TODO...
+        controlBar.getChildren().add(buttonNew);
+        controlBar.getChildren().add(nextPlayer);
+        controlBar.getChildren().add(buttonQuit);
+        
+        // Next player label and game control buttons
+        menuItemNew.setOnAction(new EventHandler<ActionEvent>(){
+           @Override
+           public void handle(ActionEvent event){
+               System.out.println("MENU: New game");
+               model.newGame();
+           }
+        });
+        menuItemQuit.setOnAction(new EventHandler<ActionEvent>(){
+           @Override
+           public void handle(ActionEvent event){
+               System.out.println("MENU: New quit");
+               exit();
+           }
+        });
+        buttonNew.setOnAction(new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event){
+                System.out.println("BUTTON: New game");
+                model.newGame();
+            }
+        });
+        buttonQuit.setOnaction(new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event){
+                System.out.println("BUTTON: Quit game");
+                exit();
+            }
+        });
+        squareViews.setOnMouseClicked(new EventHandler<MouseEvenet>(){
+           @Override
+           public void handle(MouseEvent event){
+               int row = -1;
+               int column = -1; 
+               
+               for(int i = 0; i < BOARD_SIZE; i++){
+                   for(int j = 0; j < BOARD_SIZE; j++){
+                       if(squareViews[i][j] == event.getSource()){
+                           row = i;
+                           column = j;
+                           System.out.println("You clicked cell (" + row + ", " + column + ")");
+                       }
+                   }
+               }
+               if(row != -1 && column != -1){
+                   model.playMove(row, column);
+               }
+           }
+        });
     }
 
     @Override
     public void displayGame() {
-        // TODO...
+        
     }
 
     @Override
