@@ -1,6 +1,7 @@
 package javafxdragpanzoom.view.views;
 
 import javafx.scene.Group;
+import javafx.scene.shape.Line;
 
 /**
  * Grid which is translatable and whose scaling is homothetic.
