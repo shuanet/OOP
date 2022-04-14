@@ -13,6 +13,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafxdragpanzoom.managers.dragManager;
 import javafxdragpanzoom.managers.panManager;
+import javafxdragpanzoom.managers.zoomManager;
 import javafxdragpanzoom.view.views.TranslatableHomotheticPane;
 import javafxdragpanzoom.view.views.TranslatableHomotheticPaneGrid;
 import javafxdragpanzoom.view.views.TranslatableHomotheticPaneRect;
@@ -34,6 +35,7 @@ public class DragPanZoomApplication extends Application {
         panAndZoomPane.setLayoutY(100);
         root.getChildren().add(panAndZoomPane);
         panManager pM = new panManager(panAndZoomPane);
+        zoomManager zM = new zoomManager(panAndZoomPane);
         
         // Rectangle with drag
         TranslatableHomotheticPane rect = new TranslatableHomotheticPaneRect();

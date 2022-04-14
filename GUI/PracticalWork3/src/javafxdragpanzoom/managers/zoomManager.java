@@ -34,7 +34,7 @@ public class zoomManager {
         this.paneToZoom.addEventFilter(ScrollEvent.SCROLL_FINISHED, new EventHandler<ScrollEvent>(){
             @Override
             public void handle(ScrollEvent e){
-                paneToZoom.appendScale(scale, x, y);
+                paneToZoom.appendScale(scale);
                 e.consume();
             }
         });

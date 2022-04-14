@@ -53,13 +53,18 @@ public class TranslatableHomotheticPane extends Pane implements IHomothetic, ITr
 
     @Override
     public void appendScale(double deltaScale) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        try{
+            transforms.appendScale(this.getScale()*scale.get(), this.getScale()*scale.get());
+        }
+        catch(Exception e){
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
     }
 
     @Override
     public void appendScale(double deltaScale, double pivotX, double pivotY) {
         try{
-            this.transforms.
+            //transforms.appendScale(this.getScale()*scale.get(), this.getScale()*scale.get());
         }
         catch(Exception e){
             throw new UnsupportedOperationException("Not supported yet.");
@@ -70,8 +75,7 @@ public class TranslatableHomotheticPane extends Pane implements IHomothetic, ITr
     @Override
     public void translate(double dx, double dy) {
         try{
-            this.setTranslateX(this.getTranslateX() + dx);
-            this.setTranslateY(this.getTranslateX() + dy);
+            transforms.appendTranslation(dx, dy);
         }
         catch(Exception e){
             throw new UnsupportedOperationException("Not supported yet.");
