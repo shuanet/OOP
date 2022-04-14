@@ -3,13 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/shuanet/Desktop/OOP/GUI/PracticalWork3/src/javafxdragpanzoom/view/views/TranslatableHomotheticPaneRect.java</file>
-            <file>file:/home/shuanet/Desktop/OOP/GUI/PracticalWork3/src/javafxdragpanzoom/managers/panManager.java</file>
-            <file>file:/home/shuanet/Desktop/OOP/GUI/PracticalWork3/src/javafxdragpanzoom/view/views/TranslatableHomotheticPane.java</file>
-            <file>file:/home/shuanet/Desktop/OOP/GUI/PracticalWork3/src/javafxdragpanzoom/DragPanZoomApplication.java</file>
-            <file>file:/home/shuanet/Desktop/OOP/GUI/PracticalWork3/src/javafxdragpanzoom/view/controls/IHomothetic.java</file>
-            <file>file:/home/shuanet/Desktop/OOP/GUI/PracticalWork3/src/javafxdragpanzoom/view/views/TranslatableHomotheticPaneGrid.java</file>
-            <file>file:/home/shuanet/Desktop/OOP/GUI/PracticalWork3/src/javafxdragpanzoom/view/controls/ITranslatable.java</file>
+            <file>file:/C:/Users/Shuan/OneDrive/Escritorio/OOP/GUI/PracticalWork3/src/javafxdragpanzoom/managers/dragManager.java</file>
+            <file>file:/C:/Users/Shuan/OneDrive/Escritorio/OOP/GUI/PracticalWork3/src/javafxdragpanzoom/DragPanZoomApplication.java</file>
+            <file>file:/C:/Users/Shuan/OneDrive/Escritorio/OOP/GUI/PracticalWork3/src/javafxdragpanzoom/managers/panManager.java</file>
+            <file>file:/C:/Users/Shuan/OneDrive/Escritorio/OOP/GUI/PracticalWork3/src/javafxdragpanzoom/view/views/TranslatableHomotheticPane.java</file>
+            <file>file:/C:/Users/Shuan/OneDrive/Escritorio/OOP/GUI/PracticalWork3/src/javafxdragpanzoom/managers/zoomManager.java</file>
         </group>
     </open-files>
 </project-private>

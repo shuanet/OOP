@@ -5,8 +5,8 @@
  */
 package javafxdragpanzoom.managers;
 
-import java.awt.event.MouseEvent;
-import java.beans.EventHandler;
+import javafx.event.EventHandler;
+import javafx.scene.input.MouseEvent;
 import javafxdragpanzoom.view.views.TranslatableHomotheticPane;
 
 /**
@@ -14,24 +14,23 @@ import javafxdragpanzoom.view.views.TranslatableHomotheticPane;
  * @author shuanet
  */
 public class panManager {
-    private TranslatableHomotheticPane panToPan;
+    private TranslatableHomotheticPane paneToPan;
     private double x;
     private double y;
 
-    public panManager(TranslatableHomotheticPane panToPan) {
-        this.panToPan = panToPan;
-        panToPan.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>(){
+    public panManager(TranslatableHomotheticPane pane) {
+        this.paneToPan = pane;
+        this.paneToPan.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent e){
                 x = e.getX();
                 y = e.getY();
-                System.out.println(x + ", " + y);
             }
         });
-        panToPan.addEventFilter(MouseEvent.MOUSE_DRAGGED, new EventHandler<MouseEvent>(){
+        this.paneToPan.addEventHandler(MouseEvent.MOUSE_DRAGGED, new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent e){
-                panToPan.translate(e.getX() - x, e.getY() - y);
+                paneToPan.translate(e.getX() - x, e.getY() - y);
             }
         });
     }
