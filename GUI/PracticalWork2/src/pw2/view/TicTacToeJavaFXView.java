@@ -106,12 +106,14 @@ public class TicTacToeJavaFXView extends Application implements IBoardGameView {
      */
     private void createView() {
         // Menus and shortcuts
-        HBox menuBox = new HBox();
-        root.getChildren().add(menuBox);
-
-        menuItemNew = new MenuItem();
-        menuItemQuit = new MenuItem();
-        Menu menu = new Menu();
+        MenuBar menuBar = new MenuBar();
+        Menu menu = new Menu("Menu");
+        menuItemNew = new MenuItem("New Game");
+        menuItemQuit = new MenuItem("Quit");
+        
+        menu.getItems().addAll(menuItemNew, menuItemQuit);
+        menuBar.getMenus().add(menu);
+        root.getChildren().add(menuBar);
 
         // Empty game board
         GridPane boardGame = new GridPane();
