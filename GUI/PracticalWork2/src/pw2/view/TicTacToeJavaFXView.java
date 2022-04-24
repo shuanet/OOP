@@ -25,9 +25,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
- * JavaFX version of a tic-tac-toe game.  
- * Contrary to the Swing implementation, this class is not just a container 
- * but a complete application (inheriting from javafx.application.Application)
+ * JavaFX version of a tic-tac-toe game. Contrary to the Swing implementation,
+ * this class is not just a container but a complete application (inheriting
+ * from javafx.application.Application)
  *
  * @author saporito
  */
@@ -42,7 +42,7 @@ public class TicTacToeJavaFXView extends Application implements IBoardGameView {
     private MenuItem menuItemNew, menuItemQuit;
 
     private VBox root;
-    
+
     // Resource retrieval: solution 1
     // The path to load resources is specified relative to the project root.
     // These resources will not be included in the jar when it is built.
@@ -52,6 +52,8 @@ public class TicTacToeJavaFXView extends Application implements IBoardGameView {
     private final Image CROSS = new Image("file:resources/cross.jpg");
     private final Image CIRCLE = new Image("file:resources/circle.jpg");
     private final Image VOID = new Image("file:resources/void.jpg");
+
+    private final double d = VOID.getHeight();
     // Resource retrieval: solution 2
     // Solution 1 leaves the resources accessible in the jar folder.
     // If there is a need to lock them, place them in a directory 
@@ -63,12 +65,11 @@ public class TicTacToeJavaFXView extends Application implements IBoardGameView {
 //    private final Image CROSS = new Image(streamCross);
 //    private final Image CIRCLE = new Image(streamCircle);
 //    private final Image VOID = new Image(streamVoid);
-    
+
     /**
-     * Constructor. 
-     * By subscribing this view to the model (at the end of the constructor), 
-     * the latter will call the view for updates through the methods 
-     * specified in the {@link IBoardGameView} interface.
+     * Constructor. By subscribing this view to the model (at the end of the
+     * constructor), the latter will call the view for updates through the
+     * methods specified in the {@link IBoardGameView} interface.
      */
     public TicTacToeJavaFXView() {
         // Set up this instance
@@ -100,108 +101,130 @@ public class TicTacToeJavaFXView extends Application implements IBoardGameView {
     }
 
     /**
-     * Create the view and give it the ability to modify the model (controller aspect).
+     * Create the view and give it the ability to modify the model (controller
+     * aspect).
      */
     private void createView() {
         // Menus and shortcuts
         HBox menuBox = new HBox();
         root.getChildren().add(menuBox);
-        
+
         menuItemNew = new MenuItem();
         menuItemQuit = new MenuItem();
         Menu menu = new Menu();
-        
+
         // Empty game board
         GridPane boardGame = new GridPane();
-        
-        for(int i = 0; i < BOARD_SIZE; i++){
-            for(int j = 0; j < BOARD_SIZE; j++){
-                squareViews[i][j] = new ImageView(VOID);
-                boardGame.add(squareViews[i][j], i, j);
-            }
-        }
+
         root.getChildren().add(boardGame);
 
         // Control bar
         HBox controlBar = new HBox();
         root.getChildren().add(controlBar);
-        
+
         buttonNew = new Button("New\nGame");
+        buttonNew.setPrefSize(d, d);
         buttonQuit = new Button("Quit\nGame");
-        
-        nextPlayer = new ImageView(VOID);
-        //double dim = nextPlayer.getScaleX();
-        //buttonNew.setPrefSize(dim, dim);
-        //buttonQuit.setPrefSize(dim, dim);
-        
+        buttonQuit.setPrefSize(d, d);
+
+        nextPlayer = new ImageView(CROSS);
+
         controlBar.getChildren().add(buttonNew);
         controlBar.getChildren().add(nextPlayer);
         controlBar.getChildren().add(buttonQuit);
-        
+
         // Next player label and game control buttons
-        menuItemNew.setOnAction(new EventHandler<ActionEvent>(){
-           @Override
-           public void handle(ActionEvent event){
-               System.out.println("MENU: New game");
-               model.newGame();
-           }
-        });
-        menuItemQuit.setOnAction(new EventHandler<ActionEvent>(){
-           @Override
-           public void handle(ActionEvent event){
-               System.out.println("MENU: New quit");
-               exit();
-           }
-        });
-        buttonNew.setOnAction(new EventHandler<ActionEvent>(){
+        menuItemNew.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event){
+            public void handle(ActionEvent event) {
+                System.out.println("MENU: New game");
+                model.newGame();
+            }
+        });
+        menuItemQuit.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("MENU: Quit");
+                exit();
+            }
+        });
+        buttonNew.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
                 System.out.println("BUTTON: New game");
                 model.newGame();
             }
         });
-        buttonQuit.setOnAction(new EventHandler<ActionEvent>(){
+        buttonQuit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event){
+            public void handle(ActionEvent event) {
                 System.out.println("BUTTON: Quit game");
                 exit();
             }
         });
-        boardGame.setOnMouseClicked(new EventHandler<MouseEvent>(){
-           @Override
-           public void handle(MouseEvent event){
-               int row = -1;
-               int column = -1; 
-               
-               for(int i = 0; i < BOARD_SIZE; i++){
-                   for(int j = 0; j < BOARD_SIZE; j++){
-                       if(squareViews[i][j] == event.getSource()){
-                           row = i;
-                           column = j;
-                           System.out.println("You clicked cell (" + row + ", " + column + ")");
-                       }
-                   }
-               }
-               if(row != -1 && column != -1){
-                   model.playMove(row, column);
-               }
-           }
-        });
+        EventHandler<MouseEvent> mouseClicked = new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                int row = -1;
+                int column = -1;
+
+                for (int i = 0; i < BOARD_SIZE; i++) {
+                    for (int j = 0; j < BOARD_SIZE; j++) {
+                        if (squareViews[i][j] == event.getSource()) {
+                            row = i;
+                            column = j;
+                            //System.out.println("You clicked cell (" + row + ", " + column + ")");
+                            displayLastMove(row, column);
+                        }
+                    }
+                }
+                if (row != -1 && column != -1) {
+                    model.playMove(row, column);
+                }
+            }
+        };
+        for (int i = 0; i < BOARD_SIZE; i++) {
+            for (int j = 0; j < BOARD_SIZE; j++) {
+                squareViews[i][j] = new ImageView(VOID);
+                squareViews[i][j].setOnMouseClicked(mouseClicked);
+                boardGame.add(squareViews[i][j], i, j);
+            }
+        }
+    }
+
+    private void setIconFromJoueur(ImageView image, Player player) {
+        switch (player) {
+            case VOID:
+                image.setImage(VOID);
+                break;
+            case CROSS:
+                image.setImage(CROSS);
+                break;
+            case CIRCLE:
+                image.setImage(CIRCLE);
+                break;
+        }
     }
 
     @Override
     public void displayGame() {
-        
+
     }
 
     @Override
-    public void displayLastMove(int lig, int col) {
-        // TODO...
+    public void displayLastMove(int row, int col) {
+        // change the icon of the square that has just been played
+        setIconFromJoueur(squareViews[row][col], model.getPlayerOnSquare(row, col));
+        // change the next player icon
+        setIconFromJoueur(nextPlayer, model.getCurrentPlayer());
     }
 
     @Override
     public void displayError(String err) {
-        // TODO...
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("ERROR");
+        alert.setContentText(err);
+        alert.showAndWait();
     }
 
     @Override
@@ -215,7 +238,11 @@ public class TicTacToeJavaFXView extends Application implements IBoardGameView {
     }
 
     private void displayEndAndRestart(String message) {
-        // TODO...
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("GAME OVER");
+        alert.setContentText(message);
+        alert.showAndWait();
+        model.newGame();
     }
 
     @Override
