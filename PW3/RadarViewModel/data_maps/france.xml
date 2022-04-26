@@ -1,0 +1,1695 @@
+<map name="France">
+ <outline name="france mainland">
+  <vertex lat="51.082779" lon="2.516667" />
+  <vertex lat="51.072224" lon="2.477500" />
+  <vertex lat="51.062222" lon="2.437778" />
+  <vertex lat="51.053612" lon="2.395833" />
+  <vertex lat="51.052223" lon="2.348889" />
+  <vertex lat="51.053333" lon="2.308056" />
+  <vertex lat="51.043610" lon="2.267500" />
+  <vertex lat="51.037224" lon="2.223333" />
+  <vertex lat="51.027500" lon="2.182778" />
+  <vertex lat="51.017502" lon="2.143055" />
+  <vertex lat="51.009445" lon="2.103611" />
+  <vertex lat="51.008888" lon="2.051111" />
+  <vertex lat="51.003334" lon="2.005556" />
+  <vertex lat="50.996666" lon="1.961111" />
+  <vertex lat="50.993057" lon="1.925556" />
+  <vertex lat="50.980835" lon="1.888333" />
+  <vertex lat="50.974724" lon="1.843611" />
+  <vertex lat="50.963890" lon="1.804722" />
+  <vertex lat="50.954166" lon="1.764444" />
+  <vertex lat="50.939999" lon="1.730000" />
+  <vertex lat="50.922222" lon="1.700000" />
+  <vertex lat="50.901390" lon="1.673889" />
+  <vertex lat="50.883057" lon="1.644722" />
+  <vertex lat="50.874722" lon="1.602500" />
+  <vertex lat="50.856945" lon="1.578056" />
+  <vertex lat="50.830002" lon="1.590278" />
+  <vertex lat="50.801666" lon="1.600278" />
+  <vertex lat="50.769444" lon="1.600833" />
+  <vertex lat="50.738056" lon="1.588611" />
+  <vertex lat="50.712776" lon="1.568611" />
+  <vertex lat="50.680832" lon="1.565000" />
+  <vertex lat="50.651112" lon="1.571667" />
+  <vertex lat="50.619999" lon="1.576111" />
+  <vertex lat="50.587776" lon="1.576944" />
+  <vertex lat="50.561668" lon="1.590833" />
+  <vertex lat="50.540279" lon="1.601111" />
+  <vertex lat="50.523888" lon="1.577500" />
+  <vertex lat="50.489166" lon="1.574722" />
+  <vertex lat="50.454445" lon="1.572222" />
+  <vertex lat="50.421391" lon="1.564722" />
+  <vertex lat="50.393612" lon="1.566111" />
+  <vertex lat="50.380280" lon="1.602778" />
+  <vertex lat="50.370277" lon="1.585278" />
+  <vertex lat="50.356388" lon="1.550833" />
+  <vertex lat="50.321667" lon="1.543056" />
+  <vertex lat="50.288612" lon="1.534167" />
+  <vertex lat="50.264168" lon="1.551111" />
+  <vertex lat="50.252499" lon="1.583055" />
+  <vertex lat="50.238609" lon="1.606111" />
+  <vertex lat="50.218056" lon="1.630833" />
+  <vertex lat="50.208611" lon="1.657222" />
+  <vertex lat="50.193890" lon="1.670833" />
+  <vertex lat="50.189167" lon="1.634722" />
+  <vertex lat="50.201668" lon="1.598056" />
+  <vertex lat="50.218613" lon="1.566389" />
+  <vertex lat="50.211666" lon="1.525556" />
+  <vertex lat="50.192780" lon="1.497500" />
+  <vertex lat="50.166943" lon="1.478333" />
+  <vertex lat="50.134998" lon="1.466944" />
+  <vertex lat="50.109165" lon="1.447778" />
+  <vertex lat="50.089722" lon="1.420556" />
+  <vertex lat="50.073334" lon="1.389444" />
+  <vertex lat="50.057777" lon="1.356944" />
+  <vertex lat="50.041111" lon="1.325833" />
+  <vertex lat="50.022499" lon="1.297222" />
+  <vertex lat="50.004723" lon="1.268056" />
+  <vertex lat="49.986389" lon="1.239444" />
+  <vertex lat="49.971390" lon="1.206667" />
+  <vertex lat="49.960835" lon="1.167778" />
+  <vertex lat="49.948891" lon="1.131111" />
+  <vertex lat="49.936390" lon="1.095000" />
+  <vertex lat="49.924999" lon="1.056944" />
+  <vertex lat="49.919998" lon="1.011389" />
+  <vertex lat="49.919445" lon="0.959722" />
+  <vertex lat="49.906666" lon="0.925278" />
+  <vertex lat="49.897778" lon="0.884722" />
+  <vertex lat="49.891666" lon="0.840278" />
+  <vertex lat="49.880554" lon="0.802500" />
+  <vertex lat="49.873333" lon="0.759444" />
+  <vertex lat="49.875557" lon="0.706944" />
+  <vertex lat="49.868889" lon="0.662778" />
+  <vertex lat="49.860279" lon="0.621667" />
+  <vertex lat="49.851112" lon="0.581111" />
+  <vertex lat="49.836945" lon="0.547222" />
+  <vertex lat="49.821945" lon="0.514722" />
+  <vertex lat="49.806667" lon="0.481944" />
+  <vertex lat="49.794998" lon="0.445000" />
+  <vertex lat="49.785000" lon="0.408056" />
+  <vertex lat="49.773335" lon="0.378889" />
+  <vertex lat="49.754723" lon="0.350833" />
+  <vertex lat="49.744999" lon="0.311111" />
+  <vertex lat="49.735832" lon="0.270833" />
+  <vertex lat="49.723610" lon="0.234444" />
+  <vertex lat="49.710835" lon="0.198889" />
+  <vertex lat="49.691387" lon="0.173056" />
+  <vertex lat="49.661110" lon="0.160556" />
+  <vertex lat="49.630554" lon="0.148056" />
+  <vertex lat="49.603889" lon="0.130556" />
+  <vertex lat="49.579166" lon="0.110556" />
+  <vertex lat="49.553612" lon="0.091111" />
+  <vertex lat="49.526669" lon="0.074167" />
+  <vertex lat="49.504444" lon="0.093333" />
+  <vertex lat="49.484722" lon="0.119167" />
+  <vertex lat="49.477501" lon="0.161111" />
+  <vertex lat="49.466389" lon="0.189444" />
+  <vertex lat="49.470276" lon="0.210278" />
+  <vertex lat="49.458057" lon="0.249722" />
+  <vertex lat="49.453888" lon="0.302222" />
+  <vertex lat="49.454166" lon="0.353611" />
+  <vertex lat="49.460556" lon="0.397500" />
+  <vertex lat="49.470554" lon="0.436389" />
+  <vertex lat="49.481945" lon="0.473889" />
+  <vertex lat="49.480835" lon="0.484444" />
+  <vertex lat="49.463055" lon="0.455000" />
+  <vertex lat="49.450554" lon="0.419444" />
+  <vertex lat="49.441387" lon="0.379444" />
+  <vertex lat="49.435833" lon="0.334444" />
+  <vertex lat="49.431110" lon="0.288611" />
+  <vertex lat="49.427776" lon="0.240833" />
+  <vertex lat="49.420834" lon="0.206111" />
+  <vertex lat="49.413055" lon="0.164444" />
+  <vertex lat="49.400276" lon="0.128056" />
+  <vertex lat="49.381668" lon="0.101944" />
+  <vertex lat="49.358891" lon="0.079167" />
+  <vertex lat="49.346111" lon="0.043889" />
+  <vertex lat="49.332779" lon="0.009167" />
+  <vertex lat="49.319443" lon="-0.026389" />
+  <vertex lat="49.308613" lon="-0.064167" />
+  <vertex lat="49.299168" lon="-0.104167" />
+  <vertex lat="49.295277" lon="-0.151111" />
+  <vertex lat="49.289722" lon="-0.196111" />
+  <vertex lat="49.275276" lon="-0.218056" />
+  <vertex lat="49.284168" lon="-0.239444" />
+  <vertex lat="49.296391" lon="-0.271111" />
+  <vertex lat="49.307499" lon="-0.310556" />
+  <vertex lat="49.319443" lon="-0.349722" />
+  <vertex lat="49.332779" lon="-0.387222" />
+  <vertex lat="49.341389" lon="-0.429722" />
+  <vertex lat="49.341946" lon="-0.480278" />
+  <vertex lat="49.351387" lon="-0.524167" />
+  <vertex lat="49.347500" lon="-0.570556" />
+  <vertex lat="49.344166" lon="-0.615833" />
+  <vertex lat="49.350277" lon="-0.664444" />
+  <vertex lat="49.351387" lon="-0.718611" />
+  <vertex lat="49.356388" lon="-0.768611" />
+  <vertex lat="49.361389" lon="-0.820000" />
+  <vertex lat="49.368610" lon="-0.868056" />
+  <vertex lat="49.381390" lon="-0.906111" />
+  <vertex lat="49.395279" lon="-0.941667" />
+  <vertex lat="49.396111" lon="-0.995833" />
+  <vertex lat="49.391388" lon="-1.043333" />
+  <vertex lat="49.387779" lon="-1.084722" />
+  <vertex lat="49.368332" lon="-1.111389" />
+  <vertex lat="49.343613" lon="-1.112222" />
+  <vertex lat="49.350834" lon="-1.143333" />
+  <vertex lat="49.356388" lon="-1.166667" />
+  <vertex lat="49.364445" lon="-1.181944" />
+  <vertex lat="49.392776" lon="-1.171389" />
+  <vertex lat="49.418610" lon="-1.174444" />
+  <vertex lat="49.439167" lon="-1.198611" />
+  <vertex lat="49.457779" lon="-1.226389" />
+  <vertex lat="49.479721" lon="-1.248056" />
+  <vertex lat="49.502499" lon="-1.268611" />
+  <vertex lat="49.525002" lon="-1.289444" />
+  <vertex lat="49.551388" lon="-1.303889" />
+  <vertex lat="49.581665" lon="-1.296111" />
+  <vertex lat="49.589722" lon="-1.259167" />
+  <vertex lat="49.613335" lon="-1.243333" />
+  <vertex lat="49.630280" lon="-1.230556" />
+  <vertex lat="49.658611" lon="-1.241111" />
+  <vertex lat="49.680279" lon="-1.263889" />
+  <vertex lat="49.694168" lon="-1.281389" />
+  <vertex lat="49.701111" lon="-1.329722" />
+  <vertex lat="49.706944" lon="-1.380000" />
+  <vertex lat="49.702221" lon="-1.426111" />
+  <vertex lat="49.694721" lon="-1.468889" />
+  <vertex lat="49.670834" lon="-1.489722" />
+  <vertex lat="49.657501" lon="-1.525000" />
+  <vertex lat="49.659168" lon="-1.576389" />
+  <vertex lat="49.650002" lon="-1.614722" />
+  <vertex lat="49.658890" lon="-1.644167" />
+  <vertex lat="49.672501" lon="-1.675000" />
+  <vertex lat="49.680279" lon="-1.715278" />
+  <vertex lat="49.683056" lon="-1.763056" />
+  <vertex lat="49.688332" lon="-1.808056" />
+  <vertex lat="49.708889" lon="-1.831111" />
+  <vertex lat="49.708889" lon="-1.870000" />
+  <vertex lat="49.720001" lon="-1.901667" />
+  <vertex lat="49.723888" lon="-1.941667" />
+  <vertex lat="49.693611" lon="-1.938611" />
+  <vertex lat="49.671112" lon="-1.929722" />
+  <vertex lat="49.663055" lon="-1.883889" />
+  <vertex lat="49.646111" lon="-1.853611" />
+  <vertex lat="49.617222" lon="-1.843333" />
+  <vertex lat="49.586388" lon="-1.838056" />
+  <vertex lat="49.560001" lon="-1.855278" />
+  <vertex lat="49.540279" lon="-1.881667" />
+  <vertex lat="49.515278" lon="-1.870833" />
+  <vertex lat="49.496113" lon="-1.844444" />
+  <vertex lat="49.466389" lon="-1.835556" />
+  <vertex lat="49.441666" lon="-1.818889" />
+  <vertex lat="49.406666" lon="-1.818889" />
+  <vertex lat="49.377777" lon="-1.812222" />
+  <vertex lat="49.381668" lon="-1.773889" />
+  <vertex lat="49.363609" lon="-1.757222" />
+  <vertex lat="49.342777" lon="-1.733889" />
+  <vertex lat="49.340279" lon="-1.708055" />
+  <vertex lat="49.341667" lon="-1.693889" />
+  <vertex lat="49.326946" lon="-1.702778" />
+  <vertex lat="49.304443" lon="-1.692222" />
+  <vertex lat="49.289444" lon="-1.667500" />
+  <vertex lat="49.270000" lon="-1.662222" />
+  <vertex lat="49.243332" lon="-1.648333" />
+  <vertex lat="49.218056" lon="-1.632500" />
+  <vertex lat="49.234165" lon="-1.610833" />
+  <vertex lat="49.225555" lon="-1.568889" />
+  <vertex lat="49.220001" lon="-1.567778" />
+  <vertex lat="49.218887" lon="-1.608611" />
+  <vertex lat="49.187778" lon="-1.604445" />
+  <vertex lat="49.156387" lon="-1.598889" />
+  <vertex lat="49.146389" lon="-1.578056" />
+  <vertex lat="49.132778" lon="-1.595556" />
+  <vertex lat="49.104443" lon="-1.608333" />
+  <vertex lat="49.079445" lon="-1.597500" />
+  <vertex lat="49.056389" lon="-1.599444" />
+  <vertex lat="49.026112" lon="-1.592500" />
+  <vertex lat="49.012501" lon="-1.575556" />
+  <vertex lat="49.035557" lon="-1.553889" />
+  <vertex lat="49.030556" lon="-1.511667" />
+  <vertex lat="49.030834" lon="-1.530556" />
+  <vertex lat="49.011665" lon="-1.555833" />
+  <vertex lat="48.979721" lon="-1.558889" />
+  <vertex lat="48.948612" lon="-1.556111" />
+  <vertex lat="48.926388" lon="-1.547222" />
+  <vertex lat="48.922779" lon="-1.561944" />
+  <vertex lat="48.891388" lon="-1.568333" />
+  <vertex lat="48.859165" lon="-1.577500" />
+  <vertex lat="48.841110" lon="-1.605556" />
+  <vertex lat="48.831665" lon="-1.574444" />
+  <vertex lat="48.802776" lon="-1.564444" />
+  <vertex lat="48.769722" lon="-1.561667" />
+  <vertex lat="48.740276" lon="-1.553333" />
+  <vertex lat="48.725277" lon="-1.520000" />
+  <vertex lat="48.704445" lon="-1.509444" />
+  <vertex lat="48.684723" lon="-1.484167" />
+  <vertex lat="48.673611" lon="-1.445833" />
+  <vertex lat="48.670834" lon="-1.423889" />
+  <vertex lat="48.659721" lon="-1.393056" />
+  <vertex lat="48.646111" lon="-1.356667" />
+  <vertex lat="48.644722" lon="-1.387500" />
+  <vertex lat="48.642502" lon="-1.435556" />
+  <vertex lat="48.631943" lon="-1.470833" />
+  <vertex lat="48.633335" lon="-1.511667" />
+  <vertex lat="48.639721" lon="-1.559722" />
+  <vertex lat="48.633057" lon="-1.600556" />
+  <vertex lat="48.617779" lon="-1.633056" />
+  <vertex lat="48.613609" lon="-1.679722" />
+  <vertex lat="48.611111" lon="-1.729167" />
+  <vertex lat="48.605000" lon="-1.767222" />
+  <vertex lat="48.610554" lon="-1.812222" />
+  <vertex lat="48.623333" lon="-1.849444" />
+  <vertex lat="48.647221" lon="-1.867500" />
+  <vertex lat="48.674721" lon="-1.857500" />
+  <vertex lat="48.695835" lon="-1.842500" />
+  <vertex lat="48.703888" lon="-1.861111" />
+  <vertex lat="48.694168" lon="-1.899444" />
+  <vertex lat="48.696110" lon="-1.937500" />
+  <vertex lat="48.687500" lon="-1.953333" />
+  <vertex lat="48.680832" lon="-1.987778" />
+  <vertex lat="48.660557" lon="-2.006111" />
+  <vertex lat="48.645000" lon="-2.024722" />
+  <vertex lat="48.621387" lon="-2.016389" />
+  <vertex lat="48.599724" lon="-1.998889" />
+  <vertex lat="48.590557" lon="-1.966389" />
+  <vertex lat="48.575832" lon="-1.966111" />
+  <vertex lat="48.569721" lon="-1.977500" />
+  <vertex lat="48.550835" lon="-1.956944" />
+  <vertex lat="48.533611" lon="-1.941944" />
+  <vertex lat="48.515556" lon="-1.969444" />
+  <vertex lat="48.531113" lon="-1.973889" />
+  <vertex lat="48.554165" lon="-1.991944" />
+  <vertex lat="48.576668" lon="-2.002778" />
+  <vertex lat="48.597778" lon="-2.021111" />
+  <vertex lat="48.626389" lon="-2.028333" />
+  <vertex lat="48.644165" lon="-2.051667" />
+  <vertex lat="48.642223" lon="-2.097778" />
+  <vertex lat="48.637501" lon="-2.133333" />
+  <vertex lat="48.619167" lon="-2.137778" />
+  <vertex lat="48.615555" lon="-2.139167" />
+  <vertex lat="48.605278" lon="-2.165833" />
+  <vertex lat="48.582222" lon="-2.166667" />
+  <vertex lat="48.598888" lon="-2.185555" />
+  <vertex lat="48.593334" lon="-2.195000" />
+  <vertex lat="48.585278" lon="-2.211389" />
+  <vertex lat="48.611389" lon="-2.226111" />
+  <vertex lat="48.633335" lon="-2.241667" />
+  <vertex lat="48.645832" lon="-2.258889" />
+  <vertex lat="48.630280" lon="-2.290555" />
+  <vertex lat="48.614166" lon="-2.317222" />
+  <vertex lat="48.635277" lon="-2.317222" />
+  <vertex lat="48.658333" lon="-2.295833" />
+  <vertex lat="48.674168" lon="-2.303056" />
+  <vertex lat="48.691113" lon="-2.319167" />
+  <vertex lat="48.668056" lon="-2.340278" />
+  <vertex lat="48.656113" lon="-2.376389" />
+  <vertex lat="48.638054" lon="-2.404722" />
+  <vertex lat="48.653610" lon="-2.431389" />
+  <vertex lat="48.648335" lon="-2.476944" />
+  <vertex lat="48.633057" lon="-2.462778" />
+  <vertex lat="48.615276" lon="-2.490833" />
+  <vertex lat="48.599724" lon="-2.522500" />
+  <vertex lat="48.590832" lon="-2.559167" />
+  <vertex lat="48.570557" lon="-2.583889" />
+  <vertex lat="48.549721" lon="-2.608056" />
+  <vertex lat="48.530834" lon="-2.635000" />
+  <vertex lat="48.537498" lon="-2.674444" />
+  <vertex lat="48.507500" lon="-2.682222" />
+  <vertex lat="48.518333" lon="-2.701389" />
+  <vertex lat="48.533611" lon="-2.730833" />
+  <vertex lat="48.554722" lon="-2.716389" />
+  <vertex lat="48.566944" lon="-2.754167" />
+  <vertex lat="48.585556" lon="-2.780000" />
+  <vertex lat="48.597500" lon="-2.817778" />
+  <vertex lat="48.623890" lon="-2.817500" />
+  <vertex lat="48.654999" lon="-2.824445" />
+  <vertex lat="48.673889" lon="-2.851111" />
+  <vertex lat="48.686668" lon="-2.887778" />
+  <vertex lat="48.707500" lon="-2.910000" />
+  <vertex lat="48.726112" lon="-2.937222" />
+  <vertex lat="48.747223" lon="-2.939445" />
+  <vertex lat="48.768890" lon="-2.948611" />
+  <vertex lat="48.766666" lon="-2.979722" />
+  <vertex lat="48.775002" lon="-3.023611" />
+  <vertex lat="48.785000" lon="-3.033333" />
+  <vertex lat="48.799168" lon="-3.023056" />
+  <vertex lat="48.817223" lon="-3.009167" />
+  <vertex lat="48.821388" lon="-3.047500" />
+  <vertex lat="48.813889" lon="-3.076944" />
+  <vertex lat="48.785000" lon="-3.089722" />
+  <vertex lat="48.763611" lon="-3.113333" />
+  <vertex lat="48.769722" lon="-3.119167" />
+  <vertex lat="48.790279" lon="-3.094167" />
+  <vertex lat="48.819168" lon="-3.081667" />
+  <vertex lat="48.842499" lon="-3.083611" />
+  <vertex lat="48.868610" lon="-3.083889" />
+  <vertex lat="48.866665" lon="-3.113611" />
+  <vertex lat="48.856110" lon="-3.146667" />
+  <vertex lat="48.843334" lon="-3.170278" />
+  <vertex lat="48.821110" lon="-3.192500" />
+  <vertex lat="48.803055" lon="-3.220833" />
+  <vertex lat="48.810276" lon="-3.217222" />
+  <vertex lat="48.840000" lon="-3.206111" />
+  <vertex lat="48.866665" lon="-3.212778" />
+  <vertex lat="48.857777" lon="-3.243056" />
+  <vertex lat="48.839722" lon="-3.267222" />
+  <vertex lat="48.838333" lon="-3.299722" />
+  <vertex lat="48.830833" lon="-3.339167" />
+  <vertex lat="48.821945" lon="-3.380000" />
+  <vertex lat="48.804165" lon="-3.408611" />
+  <vertex lat="48.816113" lon="-3.426111" />
+  <vertex lat="48.823055" lon="-3.453611" />
+  <vertex lat="48.839722" lon="-3.479722" />
+  <vertex lat="48.831390" lon="-3.503056" />
+  <vertex lat="48.826111" lon="-3.527500" />
+  <vertex lat="48.807499" lon="-3.536389" />
+  <vertex lat="48.796391" lon="-3.571667" />
+  <vertex lat="48.766945" lon="-3.580555" />
+  <vertex lat="48.754166" lon="-3.550833" />
+  <vertex lat="48.735832" lon="-3.540555" />
+  <vertex lat="48.730278" lon="-3.581111" />
+  <vertex lat="48.697777" lon="-3.579167" />
+  <vertex lat="48.675835" lon="-3.583055" />
+  <vertex lat="48.688057" lon="-3.611944" />
+  <vertex lat="48.686390" lon="-3.646111" />
+  <vertex lat="48.697498" lon="-3.658333" />
+  <vertex lat="48.700279" lon="-3.698333" />
+  <vertex lat="48.713612" lon="-3.733611" />
+  <vertex lat="48.710835" lon="-3.778056" />
+  <vertex lat="48.726112" lon="-3.810555" />
+  <vertex lat="48.716667" lon="-3.830555" />
+  <vertex lat="48.691666" lon="-3.846111" />
+  <vertex lat="48.670277" lon="-3.846389" />
+  <vertex lat="48.674446" lon="-3.856389" />
+  <vertex lat="48.651943" lon="-3.847778" />
+  <vertex lat="48.633057" lon="-3.855833" />
+  <vertex lat="48.648056" lon="-3.888056" />
+  <vertex lat="48.670277" lon="-3.899722" />
+  <vertex lat="48.674721" lon="-3.922500" />
+  <vertex lat="48.656113" lon="-3.949445" />
+  <vertex lat="48.676388" lon="-3.950000" />
+  <vertex lat="48.698891" lon="-3.963611" />
+  <vertex lat="48.725555" lon="-3.968055" />
+  <vertex lat="48.722778" lon="-3.993611" />
+  <vertex lat="48.713333" lon="-4.030278" />
+  <vertex lat="48.693054" lon="-4.052500" />
+  <vertex lat="48.685555" lon="-4.068611" />
+  <vertex lat="48.693054" lon="-4.098055" />
+  <vertex lat="48.691387" lon="-4.141944" />
+  <vertex lat="48.684444" lon="-4.180833" />
+  <vertex lat="48.667778" lon="-4.211111" />
+  <vertex lat="48.652500" lon="-4.193056" />
+  <vertex lat="48.651669" lon="-4.231111" />
+  <vertex lat="48.646389" lon="-4.276389" />
+  <vertex lat="48.635555" lon="-4.307778" />
+  <vertex lat="48.660000" lon="-4.295833" />
+  <vertex lat="48.674721" lon="-4.326667" />
+  <vertex lat="48.668056" lon="-4.365833" />
+  <vertex lat="48.655556" lon="-4.402222" />
+  <vertex lat="48.645000" lon="-4.416389" />
+  <vertex lat="48.637222" lon="-4.432500" />
+  <vertex lat="48.630554" lon="-4.462778" />
+  <vertex lat="48.628887" lon="-4.506667" />
+  <vertex lat="48.635277" lon="-4.541667" />
+  <vertex lat="48.617500" lon="-4.563611" />
+  <vertex lat="48.603333" lon="-4.545278" />
+  <vertex lat="48.595001" lon="-4.558055" />
+  <vertex lat="48.607498" lon="-4.589722" />
+  <vertex lat="48.584446" lon="-4.607500" />
+  <vertex lat="48.566666" lon="-4.584445" />
+  <vertex lat="48.570000" lon="-4.600278" />
+  <vertex lat="48.578335" lon="-4.636667" />
+  <vertex lat="48.570835" lon="-4.673333" />
+  <vertex lat="48.563057" lon="-4.704167" />
+  <vertex lat="48.558887" lon="-4.728889" />
+  <vertex lat="48.536110" lon="-4.748889" />
+  <vertex lat="48.514999" lon="-4.772222" />
+  <vertex lat="48.488056" lon="-4.769444" />
+  <vertex lat="48.470276" lon="-4.749166" />
+  <vertex lat="48.459167" lon="-4.775000" />
+  <vertex lat="48.434723" lon="-4.783889" />
+  <vertex lat="48.410000" lon="-4.780278" />
+  <vertex lat="48.388332" lon="-4.762222" />
+  <vertex lat="48.370277" lon="-4.784722" />
+  <vertex lat="48.343887" lon="-4.771111" />
+  <vertex lat="48.335835" lon="-4.736111" />
+  <vertex lat="48.341389" lon="-4.694167" />
+  <vertex lat="48.359444" lon="-4.669445" />
+  <vertex lat="48.348888" lon="-4.630000" />
+  <vertex lat="48.348331" lon="-4.590000" />
+  <vertex lat="48.360279" lon="-4.553333" />
+  <vertex lat="48.370277" lon="-4.513611" />
+  <vertex lat="48.383057" lon="-4.478333" />
+  <vertex lat="48.392502" lon="-4.438056" />
+  <vertex lat="48.399166" lon="-4.393889" />
+  <vertex lat="48.408054" lon="-4.352778" />
+  <vertex lat="48.419998" lon="-4.315834" />
+  <vertex lat="48.419724" lon="-4.298056" />
+  <vertex lat="48.404999" lon="-4.330833" />
+  <vertex lat="48.394165" lon="-4.369167" />
+  <vertex lat="48.381943" lon="-4.405278" />
+  <vertex lat="48.364445" lon="-4.434166" />
+  <vertex lat="48.337223" lon="-4.447222" />
+  <vertex lat="48.336945" lon="-4.423889" />
+  <vertex lat="48.335278" lon="-4.405556" />
+  <vertex lat="48.331665" lon="-4.373333" />
+  <vertex lat="48.348610" lon="-4.346667" />
+  <vertex lat="48.354721" lon="-4.320278" />
+  <vertex lat="48.355278" lon="-4.299445" />
+  <vertex lat="48.356388" lon="-4.278889" />
+  <vertex lat="48.340279" lon="-4.304167" />
+  <vertex lat="48.322777" lon="-4.324722" />
+  <vertex lat="48.318611" lon="-4.287778" />
+  <vertex lat="48.311668" lon="-4.260556" />
+  <vertex lat="48.311668" lon="-4.233611" />
+  <vertex lat="48.300835" lon="-4.214722" />
+  <vertex lat="48.296112" lon="-4.200555" />
+  <vertex lat="48.293056" lon="-4.243333" />
+  <vertex lat="48.286945" lon="-4.279722" />
+  <vertex lat="48.298054" lon="-4.273334" />
+  <vertex lat="48.296665" lon="-4.322222" />
+  <vertex lat="48.286110" lon="-4.361111" />
+  <vertex lat="48.282223" lon="-4.403889" />
+  <vertex lat="48.298611" lon="-4.431389" />
+  <vertex lat="48.291389" lon="-4.474722" />
+  <vertex lat="48.295555" lon="-4.506389" />
+  <vertex lat="48.291389" lon="-4.535278" />
+  <vertex lat="48.311668" lon="-4.545556" />
+  <vertex lat="48.338055" lon="-4.531389" />
+  <vertex lat="48.334167" lon="-4.563611" />
+  <vertex lat="48.311111" lon="-4.578611" />
+  <vertex lat="48.283611" lon="-4.579444" />
+  <vertex lat="48.286388" lon="-4.617222" />
+  <vertex lat="48.261944" lon="-4.620555" />
+  <vertex lat="48.256390" lon="-4.588333" />
+  <vertex lat="48.257221" lon="-4.546667" />
+  <vertex lat="48.237221" lon="-4.563611" />
+  <vertex lat="48.211113" lon="-4.550000" />
+  <vertex lat="48.181946" lon="-4.553611" />
+  <vertex lat="48.182499" lon="-4.533056" />
+  <vertex lat="48.203335" lon="-4.509167" />
+  <vertex lat="48.229168" lon="-4.493889" />
+  <vertex lat="48.242500" lon="-4.461945" />
+  <vertex lat="48.234165" lon="-4.427222" />
+  <vertex lat="48.222778" lon="-4.397500" />
+  <vertex lat="48.210835" lon="-4.368055" />
+  <vertex lat="48.209721" lon="-4.325278" />
+  <vertex lat="48.189724" lon="-4.300278" />
+  <vertex lat="48.162224" lon="-4.287500" />
+  <vertex lat="48.135555" lon="-4.277500" />
+  <vertex lat="48.108334" lon="-4.288055" />
+  <vertex lat="48.103333" lon="-4.319722" />
+  <vertex lat="48.113335" lon="-4.360000" />
+  <vertex lat="48.107224" lon="-4.404444" />
+  <vertex lat="48.100555" lon="-4.448611" />
+  <vertex lat="48.089722" lon="-4.486389" />
+  <vertex lat="48.086945" lon="-4.533611" />
+  <vertex lat="48.080833" lon="-4.573056" />
+  <vertex lat="48.073612" lon="-4.613611" />
+  <vertex lat="48.073612" lon="-4.662222" />
+  <vertex lat="48.069168" lon="-4.702500" />
+  <vertex lat="48.044998" lon="-4.714722" />
+  <vertex lat="48.036667" lon="-4.700555" />
+  <vertex lat="48.026943" lon="-4.659167" />
+  <vertex lat="48.022778" lon="-4.623889" />
+  <vertex lat="48.010555" lon="-4.587222" />
+  <vertex lat="48.009724" lon="-4.551111" />
+  <vertex lat="48.016945" lon="-4.525556" />
+  <vertex lat="48.003887" lon="-4.491667" />
+  <vertex lat="47.986389" lon="-4.462778" />
+  <vertex lat="47.970001" lon="-4.432500" />
+  <vertex lat="47.950001" lon="-4.409444" />
+  <vertex lat="47.927776" lon="-4.388333" />
+  <vertex lat="47.904446" lon="-4.369444" />
+  <vertex lat="47.878613" lon="-4.353889" />
+  <vertex lat="47.849445" lon="-4.343333" />
+  <vertex lat="47.830833" lon="-4.366944" />
+  <vertex lat="47.804165" lon="-4.366389" />
+  <vertex lat="47.801666" lon="-4.323056" />
+  <vertex lat="47.798889" lon="-4.284444" />
+  <vertex lat="47.798054" lon="-4.240833" />
+  <vertex lat="47.803333" lon="-4.195000" />
+  <vertex lat="47.820278" lon="-4.165278" />
+  <vertex lat="47.838612" lon="-4.171389" />
+  <vertex lat="47.853611" lon="-4.187222" />
+  <vertex lat="47.881390" lon="-4.182778" />
+  <vertex lat="47.862778" lon="-4.158889" />
+  <vertex lat="47.864445" lon="-4.132222" />
+  <vertex lat="47.880001" lon="-4.122778" />
+  <vertex lat="47.902500" lon="-4.143055" />
+  <vertex lat="47.914722" lon="-4.135278" />
+  <vertex lat="47.889446" lon="-4.119167" />
+  <vertex lat="47.873611" lon="-4.096389" />
+  <vertex lat="47.871944" lon="-4.059722" />
+  <vertex lat="47.853611" lon="-4.038055" />
+  <vertex lat="47.863609" lon="-4.008333" />
+  <vertex lat="47.849998" lon="-4.027222" />
+  <vertex lat="47.859165" lon="-3.987222" />
+  <vertex lat="47.885555" lon="-3.982778" />
+  <vertex lat="47.902500" lon="-3.973333" />
+  <vertex lat="47.889446" lon="-3.944444" />
+  <vertex lat="47.872223" lon="-3.916111" />
+  <vertex lat="47.854721" lon="-3.908611" />
+  <vertex lat="47.836388" lon="-3.891111" />
+  <vertex lat="47.817780" lon="-3.864444" />
+  <vertex lat="47.793610" lon="-3.847778" />
+  <vertex lat="47.799168" lon="-3.812222" />
+  <vertex lat="47.794167" lon="-3.766944" />
+  <vertex lat="47.808613" lon="-3.734444" />
+  <vertex lat="47.799999" lon="-3.708611" />
+  <vertex lat="47.785000" lon="-3.677500" />
+  <vertex lat="47.779724" lon="-3.638333" />
+  <vertex lat="47.775002" lon="-3.589722" />
+  <vertex lat="47.768612" lon="-3.545000" />
+  <vertex lat="47.762501" lon="-3.516944" />
+  <vertex lat="47.740555" lon="-3.495278" />
+  <vertex lat="47.716667" lon="-3.476944" />
+  <vertex lat="47.700554" lon="-3.446667" />
+  <vertex lat="47.704445" lon="-3.402222" />
+  <vertex lat="47.716946" lon="-3.366945" />
+  <vertex lat="47.734165" lon="-3.394444" />
+  <vertex lat="47.736389" lon="-3.356945" />
+  <vertex lat="47.752499" lon="-3.326944" />
+  <vertex lat="47.770279" lon="-3.301389" />
+  <vertex lat="47.775276" lon="-3.284167" />
+  <vertex lat="47.751110" lon="-3.303333" />
+  <vertex lat="47.733612" lon="-3.331389" />
+  <vertex lat="47.713333" lon="-3.350833" />
+  <vertex lat="47.709721" lon="-3.329722" />
+  <vertex lat="47.699165" lon="-3.290278" />
+  <vertex lat="47.694443" lon="-3.303333" />
+  <vertex lat="47.698055" lon="-3.343889" />
+  <vertex lat="47.694168" lon="-3.333611" />
+  <vertex lat="47.687222" lon="-3.293611" />
+  <vertex lat="47.678055" lon="-3.265000" />
+  <vertex lat="47.661667" lon="-3.234722" />
+  <vertex lat="47.660557" lon="-3.210833" />
+  <vertex lat="47.683887" lon="-3.196111" />
+  <vertex lat="47.692780" lon="-3.187500" />
+  <vertex lat="47.705002" lon="-3.163889" />
+  <vertex lat="47.735279" lon="-3.168611" />
+  <vertex lat="47.746944" lon="-3.178333" />
+  <vertex lat="47.744999" lon="-3.146389" />
+  <vertex lat="47.732777" lon="-3.139167" />
+  <vertex lat="47.727222" lon="-3.116945" />
+  <vertex lat="47.698334" lon="-3.112500" />
+  <vertex lat="47.688610" lon="-3.148889" />
+  <vertex lat="47.678333" lon="-3.185555" />
+  <vertex lat="47.656113" lon="-3.198611" />
+  <vertex lat="47.630833" lon="-3.193611" />
+  <vertex lat="47.615555" lon="-3.162222" />
+  <vertex lat="47.593887" lon="-3.140000" />
+  <vertex lat="47.563889" lon="-3.131944" />
+  <vertex lat="47.532776" lon="-3.140833" />
+  <vertex lat="47.507500" lon="-3.143055" />
+  <vertex lat="47.478054" lon="-3.133889" />
+  <vertex lat="47.472221" lon="-3.099722" />
+  <vertex lat="47.486389" lon="-3.101111" />
+  <vertex lat="47.508335" lon="-3.119444" />
+  <vertex lat="47.533611" lon="-3.128611" />
+  <vertex lat="47.567780" lon="-3.123333" />
+  <vertex lat="47.596390" lon="-3.127222" />
+  <vertex lat="47.587223" lon="-3.095278" />
+  <vertex lat="47.571945" lon="-3.091389" />
+  <vertex lat="47.580002" lon="-3.050000" />
+  <vertex lat="47.580555" lon="-3.019444" />
+  <vertex lat="47.608055" lon="-3.015833" />
+  <vertex lat="47.579445" lon="-3.005556" />
+  <vertex lat="47.585278" lon="-2.993056" />
+  <vertex lat="47.580276" lon="-2.971667" />
+  <vertex lat="47.569721" lon="-2.954722" />
+  <vertex lat="47.568333" lon="-2.935555" />
+  <vertex lat="47.589169" lon="-2.958611" />
+  <vertex lat="47.615555" lon="-2.961111" />
+  <vertex lat="47.641109" lon="-2.970000" />
+  <vertex lat="47.650833" lon="-2.965278" />
+  <vertex lat="47.631943" lon="-2.939167" />
+  <vertex lat="47.610001" lon="-2.941944" />
+  <vertex lat="47.604721" lon="-2.926111" />
+  <vertex lat="47.597500" lon="-2.913611" />
+  <vertex lat="47.596390" lon="-2.882222" />
+  <vertex lat="47.605278" lon="-2.855556" />
+  <vertex lat="47.624722" lon="-2.842778" />
+  <vertex lat="47.625832" lon="-2.800000" />
+  <vertex lat="47.637222" lon="-2.785556" />
+  <vertex lat="47.638611" lon="-2.757778" />
+  <vertex lat="47.621113" lon="-2.736667" />
+  <vertex lat="47.626945" lon="-2.766667" />
+  <vertex lat="47.611946" lon="-2.747222" />
+  <vertex lat="47.598057" lon="-2.712778" />
+  <vertex lat="47.607777" lon="-2.706111" />
+  <vertex lat="47.619999" lon="-2.695000" />
+  <vertex lat="47.637222" lon="-2.698056" />
+  <vertex lat="47.613056" lon="-2.680556" />
+  <vertex lat="47.588333" lon="-2.699167" />
+  <vertex lat="47.571110" lon="-2.718055" />
+  <vertex lat="47.550278" lon="-2.732222" />
+  <vertex lat="47.547501" lon="-2.763611" />
+  <vertex lat="47.549999" lon="-2.794722" />
+  <vertex lat="47.555832" lon="-2.813889" />
+  <vertex lat="47.550556" lon="-2.841944" />
+  <vertex lat="47.558887" lon="-2.861111" />
+  <vertex lat="47.564999" lon="-2.898056" />
+  <vertex lat="47.548611" lon="-2.903056" />
+  <vertex lat="47.538612" lon="-2.873889" />
+  <vertex lat="47.519722" lon="-2.847222" />
+  <vertex lat="47.496113" lon="-2.828333" />
+  <vertex lat="47.490555" lon="-2.788889" />
+  <vertex lat="47.502224" lon="-2.753056" />
+  <vertex lat="47.506111" lon="-2.708611" />
+  <vertex lat="47.501389" lon="-2.673889" />
+  <vertex lat="47.527222" lon="-2.667500" />
+  <vertex lat="47.521667" lon="-2.623889" />
+  <vertex lat="47.538887" lon="-2.628611" />
+  <vertex lat="47.541668" lon="-2.588611" />
+  <vertex lat="47.535557" lon="-2.584167" />
+  <vertex lat="47.517776" lon="-2.610556" />
+  <vertex lat="47.511665" lon="-2.611667" />
+  <vertex lat="47.519165" lon="-2.572500" />
+  <vertex lat="47.527222" lon="-2.532778" />
+  <vertex lat="47.521389" lon="-2.493889" />
+  <vertex lat="47.511391" lon="-2.453056" />
+  <vertex lat="47.503056" lon="-2.411111" />
+  <vertex lat="47.504723" lon="-2.376111" />
+  <vertex lat="47.502224" lon="-2.385556" />
+  <vertex lat="47.499443" lon="-2.422778" />
+  <vertex lat="47.496666" lon="-2.464444" />
+  <vertex lat="47.485001" lon="-2.490278" />
+  <vertex lat="47.457222" lon="-2.487500" />
+  <vertex lat="47.452499" lon="-2.459445" />
+  <vertex lat="47.432499" lon="-2.449167" />
+  <vertex lat="47.423332" lon="-2.417500" />
+  <vertex lat="47.408054" lon="-2.392778" />
+  <vertex lat="47.409721" lon="-2.422500" />
+  <vertex lat="47.399445" lon="-2.440556" />
+  <vertex lat="47.417500" lon="-2.466667" />
+  <vertex lat="47.402500" lon="-2.498055" />
+  <vertex lat="47.386112" lon="-2.527500" />
+  <vertex lat="47.373890" lon="-2.544445" />
+  <vertex lat="47.360554" lon="-2.511111" />
+  <vertex lat="47.333611" lon="-2.499167" />
+  <vertex lat="47.327221" lon="-2.486944" />
+  <vertex lat="47.334721" lon="-2.477778" />
+  <vertex lat="47.319168" lon="-2.446667" />
+  <vertex lat="47.293888" lon="-2.439445" />
+  <vertex lat="47.288612" lon="-2.478889" />
+  <vertex lat="47.302776" lon="-2.510278" />
+  <vertex lat="47.296665" lon="-2.540278" />
+  <vertex lat="47.285278" lon="-2.501945" />
+  <vertex lat="47.274723" lon="-2.470556" />
+  <vertex lat="47.262501" lon="-2.433611" />
+  <vertex lat="47.281944" lon="-2.416111" />
+  <vertex lat="47.279724" lon="-2.370278" />
+  <vertex lat="47.263889" lon="-2.339167" />
+  <vertex lat="47.246666" lon="-2.310833" />
+  <vertex lat="47.241665" lon="-2.273333" />
+  <vertex lat="47.258610" lon="-2.244722" />
+  <vertex lat="47.270557" lon="-2.209167" />
+  <vertex lat="47.288334" lon="-2.181667" />
+  <vertex lat="47.310001" lon="-2.159167" />
+  <vertex lat="47.310833" lon="-2.118056" />
+  <vertex lat="47.311390" lon="-2.067500" />
+  <vertex lat="47.320278" lon="-2.028056" />
+  <vertex lat="47.311668" lon="-1.986944" />
+  <vertex lat="47.296391" lon="-1.955278" />
+  <vertex lat="47.295834" lon="-1.917500" />
+  <vertex lat="47.284721" lon="-1.880000" />
+  <vertex lat="47.267223" lon="-1.851944" />
+  <vertex lat="47.247501" lon="-1.827222" />
+  <vertex lat="47.228333" lon="-1.801667" />
+  <vertex lat="47.215832" lon="-1.763056" />
+  <vertex lat="47.207779" lon="-1.735000" />
+  <vertex lat="47.209446" lon="-1.785278" />
+  <vertex lat="47.223610" lon="-1.818889" />
+  <vertex lat="47.237499" lon="-1.852778" />
+  <vertex lat="47.248611" lon="-1.891667" />
+  <vertex lat="47.266666" lon="-1.919167" />
+  <vertex lat="47.275276" lon="-1.906389" />
+  <vertex lat="47.283333" lon="-1.940278" />
+  <vertex lat="47.279446" lon="-1.958055" />
+  <vertex lat="47.284168" lon="-2.002778" />
+  <vertex lat="47.293610" lon="-2.033056" />
+  <vertex lat="47.282223" lon="-2.068889" />
+  <vertex lat="47.279167" lon="-2.116389" />
+  <vertex lat="47.272221" lon="-2.156111" />
+  <vertex lat="47.243057" lon="-2.166945" />
+  <vertex lat="47.218613" lon="-2.162500" />
+  <vertex lat="47.188332" lon="-2.155555" />
+  <vertex lat="47.160831" lon="-2.170278" />
+  <vertex lat="47.154999" lon="-2.212778" />
+  <vertex lat="47.138611" lon="-2.241945" />
+  <vertex lat="47.126945" lon="-2.205833" />
+  <vertex lat="47.123611" lon="-2.161944" />
+  <vertex lat="47.118332" lon="-2.115278" />
+  <vertex lat="47.106388" lon="-2.077778" />
+  <vertex lat="47.092499" lon="-2.045278" />
+  <vertex lat="47.074444" lon="-2.017778" />
+  <vertex lat="47.052776" lon="-1.996944" />
+  <vertex lat="47.029167" lon="-1.988611" />
+  <vertex lat="47.011391" lon="-2.016389" />
+  <vertex lat="46.985279" lon="-2.032778" />
+  <vertex lat="46.954723" lon="-2.042500" />
+  <vertex lat="46.945278" lon="-2.080000" />
+  <vertex lat="46.922779" lon="-2.101944" />
+  <vertex lat="46.905556" lon="-2.120278" />
+  <vertex lat="46.879723" lon="-2.131944" />
+  <vertex lat="46.845833" lon="-2.132500" />
+  <vertex lat="46.821110" lon="-2.117222" />
+  <vertex lat="46.802776" lon="-2.090000" />
+  <vertex lat="46.786945" lon="-2.058889" />
+  <vertex lat="46.772221" lon="-2.025833" />
+  <vertex lat="46.754166" lon="-1.998333" />
+  <vertex lat="46.732224" lon="-1.978056" />
+  <vertex lat="46.706112" lon="-1.964722" />
+  <vertex lat="46.695835" lon="-1.923611" />
+  <vertex lat="46.672779" lon="-1.904444" />
+  <vertex lat="46.654167" lon="-1.891111" />
+  <vertex lat="46.637779" lon="-1.860556" />
+  <vertex lat="46.611946" lon="-1.847778" />
+  <vertex lat="46.593887" lon="-1.825000" />
+  <vertex lat="46.569721" lon="-1.823056" />
+  <vertex lat="46.539165" lon="-1.817778" />
+  <vertex lat="46.510555" lon="-1.809167" />
+  <vertex lat="46.485279" lon="-1.794722" />
+  <vertex lat="46.506943" lon="-1.789167" />
+  <vertex lat="46.518890" lon="-1.776667" />
+  <vertex lat="46.492779" lon="-1.763611" />
+  <vertex lat="46.479168" lon="-1.728889" />
+  <vertex lat="46.462776" lon="-1.698611" />
+  <vertex lat="46.448891" lon="-1.664167" />
+  <vertex lat="46.453056" lon="-1.628889" />
+  <vertex lat="46.431110" lon="-1.630556" />
+  <vertex lat="46.421944" lon="-1.596667" />
+  <vertex lat="46.421665" lon="-1.547500" />
+  <vertex lat="46.416668" lon="-1.501389" />
+  <vertex lat="46.398335" lon="-1.474722" />
+  <vertex lat="46.372223" lon="-1.462222" />
+  <vertex lat="46.343613" lon="-1.453611" />
+  <vertex lat="46.340000" lon="-1.415556" />
+  <vertex lat="46.343887" lon="-1.381111" />
+  <vertex lat="46.343613" lon="-1.344444" />
+  <vertex lat="46.325001" lon="-1.318611" />
+  <vertex lat="46.323891" lon="-1.296944" />
+  <vertex lat="46.317223" lon="-1.280556" />
+  <vertex lat="46.297222" lon="-1.257500" />
+  <vertex lat="46.277779" lon="-1.232778" />
+  <vertex lat="46.286110" lon="-1.219444" />
+  <vertex lat="46.314724" lon="-1.207778" />
+  <vertex lat="46.325832" lon="-1.172778" />
+  <vertex lat="46.318890" lon="-1.132778" />
+  <vertex lat="46.298889" lon="-1.110556" />
+  <vertex lat="46.272221" lon="-1.099444" />
+  <vertex lat="46.253056" lon="-1.123611" />
+  <vertex lat="46.237778" lon="-1.153889" />
+  <vertex lat="46.223057" lon="-1.184444" />
+  <vertex lat="46.199165" lon="-1.186667" />
+  <vertex lat="46.176388" lon="-1.208055" />
+  <vertex lat="46.152779" lon="-1.193611" />
+  <vertex lat="46.155277" lon="-1.152222" />
+  <vertex lat="46.133888" lon="-1.135556" />
+  <vertex lat="46.115002" lon="-1.127778" />
+  <vertex lat="46.100277" lon="-1.103611" />
+  <vertex lat="46.074165" lon="-1.091111" />
+  <vertex lat="46.050835" lon="-1.073333" />
+  <vertex lat="46.029999" lon="-1.051389" />
+  <vertex lat="46.004444" lon="-1.062500" />
+  <vertex lat="46.009445" lon="-1.097500" />
+  <vertex lat="45.993889" lon="-1.104445" />
+  <vertex lat="45.974998" lon="-1.080278" />
+  <vertex lat="45.952778" lon="-1.083055" />
+  <vertex lat="45.929443" lon="-1.073889" />
+  <vertex lat="45.901390" lon="-1.070833" />
+  <vertex lat="45.900002" lon="-1.108889" />
+  <vertex lat="45.879444" lon="-1.123056" />
+  <vertex lat="45.871113" lon="-1.146667" />
+  <vertex lat="45.843887" lon="-1.139167" />
+  <vertex lat="45.814724" lon="-1.131667" />
+  <vertex lat="45.792221" lon="-1.112500" />
+  <vertex lat="45.771667" lon="-1.089444" />
+  <vertex lat="45.754723" lon="-1.060278" />
+  <vertex lat="45.739445" lon="-1.028333" />
+  <vertex lat="45.722221" lon="-1.000000" />
+  <vertex lat="45.721668" lon="-1.003333" />
+  <vertex lat="45.732777" lon="-1.042500" />
+  <vertex lat="45.748055" lon="-1.074444" />
+  <vertex lat="45.763611" lon="-1.105833" />
+  <vertex lat="45.785278" lon="-1.126111" />
+  <vertex lat="45.802223" lon="-1.150556" />
+  <vertex lat="45.799721" lon="-1.190556" />
+  <vertex lat="45.790833" lon="-1.228056" />
+  <vertex lat="45.759167" lon="-1.234167" />
+  <vertex lat="45.725555" lon="-1.237778" />
+  <vertex lat="45.700554" lon="-1.241389" />
+  <vertex lat="45.707500" lon="-1.210278" />
+  <vertex lat="45.694721" lon="-1.174167" />
+  <vertex lat="45.675835" lon="-1.148333" />
+  <vertex lat="45.665554" lon="-1.114444" />
+  <vertex lat="45.652779" lon="-1.078333" />
+  <vertex lat="45.633888" lon="-1.053056" />
+  <vertex lat="45.620277" lon="-1.018889" />
+  <vertex lat="45.603333" lon="-0.989722" />
+  <vertex lat="45.575832" lon="-0.979444" />
+  <vertex lat="45.559723" lon="-0.949167" />
+  <vertex lat="45.552502" lon="-0.907500" />
+  <vertex lat="45.535278" lon="-0.879444" />
+  <vertex lat="45.518055" lon="-0.851389" />
+  <vertex lat="45.498611" lon="-0.826667" />
+  <vertex lat="45.480835" lon="-0.799167" />
+  <vertex lat="45.459999" lon="-0.777500" />
+  <vertex lat="45.436390" lon="-0.760278" />
+  <vertex lat="45.412224" lon="-0.744444" />
+  <vertex lat="45.385277" lon="-0.733333" />
+  <vertex lat="45.359444" lon="-0.720556" />
+  <vertex lat="45.331390" lon="-0.711111" />
+  <vertex lat="45.303333" lon="-0.702500" />
+  <vertex lat="45.273613" lon="-0.696111" />
+  <vertex lat="45.242779" lon="-0.692500" />
+  <vertex lat="45.212223" lon="-0.687222" />
+  <vertex lat="45.183334" lon="-0.680278" />
+  <vertex lat="45.152222" lon="-0.676389" />
+  <vertex lat="45.123055" lon="-0.669167" />
+  <vertex lat="45.097221" lon="-0.656389" />
+  <vertex lat="45.073891" lon="-0.639167" />
+  <vertex lat="45.055279" lon="-0.613611" />
+  <vertex lat="45.042500" lon="-0.576389" />
+  <vertex lat="45.034443" lon="-0.531944" />
+  <vertex lat="45.018055" lon="-0.505278" />
+  <vertex lat="44.997501" lon="-0.496389" />
+  <vertex lat="45.014446" lon="-0.524722" />
+  <vertex lat="45.023613" lon="-0.567500" />
+  <vertex lat="45.016388" lon="-0.583056" />
+  <vertex lat="44.999443" lon="-0.554444" />
+  <vertex lat="44.974445" lon="-0.540278" />
+  <vertex lat="44.940556" lon="-0.544444" />
+  <vertex lat="44.910278" lon="-0.539444" />
+  <vertex lat="44.895279" lon="-0.546944" />
+  <vertex lat="44.922222" lon="-0.557500" />
+  <vertex lat="44.954166" lon="-0.559722" />
+  <vertex lat="44.985832" lon="-0.561389" />
+  <vertex lat="45.004723" lon="-0.586111" />
+  <vertex lat="45.020557" lon="-0.616944" />
+  <vertex lat="45.037777" lon="-0.644722" />
+  <vertex lat="45.058056" lon="-0.667778" />
+  <vertex lat="45.080276" lon="-0.686944" />
+  <vertex lat="45.103611" lon="-0.704444" />
+  <vertex lat="45.129444" lon="-0.715833" />
+  <vertex lat="45.158890" lon="-0.722500" />
+  <vertex lat="45.188332" lon="-0.728889" />
+  <vertex lat="45.220001" lon="-0.731667" />
+  <vertex lat="45.248890" lon="-0.738889" />
+  <vertex lat="45.274723" lon="-0.751944" />
+  <vertex lat="45.303055" lon="-0.760833" />
+  <vertex lat="45.326389" lon="-0.776667" />
+  <vertex lat="45.349998" lon="-0.793889" />
+  <vertex lat="45.370834" lon="-0.815556" />
+  <vertex lat="45.388611" lon="-0.843056" />
+  <vertex lat="45.404724" lon="-0.873333" />
+  <vertex lat="45.426109" lon="-0.894167" />
+  <vertex lat="45.446667" lon="-0.916667" />
+  <vertex lat="45.461945" lon="-0.948611" />
+  <vertex lat="45.471943" lon="-0.989444" />
+  <vertex lat="45.488335" lon="-1.011944" />
+  <vertex lat="45.506668" lon="-1.038056" />
+  <vertex lat="45.526112" lon="-1.062500" />
+  <vertex lat="45.556946" lon="-1.053333" />
+  <vertex lat="45.567223" lon="-1.078056" />
+  <vertex lat="45.545277" lon="-1.101111" />
+  <vertex lat="45.520000" lon="-1.119444" />
+  <vertex lat="45.496666" lon="-1.140000" />
+  <vertex lat="45.464722" lon="-1.140556" />
+  <vertex lat="45.430832" lon="-1.149167" />
+  <vertex lat="45.395557" lon="-1.152222" />
+  <vertex lat="45.362499" lon="-1.152222" />
+  <vertex lat="45.329723" lon="-1.151111" />
+  <vertex lat="45.294724" lon="-1.155556" />
+  <vertex lat="45.259167" lon="-1.160833" />
+  <vertex lat="45.224724" lon="-1.166111" />
+  <vertex lat="45.191387" lon="-1.174722" />
+  <vertex lat="45.159443" lon="-1.185556" />
+  <vertex lat="45.126667" lon="-1.194722" />
+  <vertex lat="45.091110" lon="-1.200278" />
+  <vertex lat="45.055557" lon="-1.205278" />
+  <vertex lat="45.020832" lon="-1.208055" />
+  <vertex lat="44.986111" lon="-1.211667" />
+  <vertex lat="44.951111" lon="-1.218889" />
+  <vertex lat="44.915833" lon="-1.224167" />
+  <vertex lat="44.880280" lon="-1.229167" />
+  <vertex lat="44.845276" lon="-1.233611" />
+  <vertex lat="44.809166" lon="-1.239444" />
+  <vertex lat="44.774445" lon="-1.246667" />
+  <vertex lat="44.738335" lon="-1.251111" />
+  <vertex lat="44.703335" lon="-1.256944" />
+  <vertex lat="44.668335" lon="-1.262778" />
+  <vertex lat="44.635555" lon="-1.261667" />
+  <vertex lat="44.638054" lon="-1.248889" />
+  <vertex lat="44.669724" lon="-1.248889" />
+  <vertex lat="44.698612" lon="-1.235000" />
+  <vertex lat="44.721943" lon="-1.214722" />
+  <vertex lat="44.742779" lon="-1.191667" />
+  <vertex lat="44.771667" lon="-1.177778" />
+  <vertex lat="44.766388" lon="-1.143611" />
+  <vertex lat="44.748611" lon="-1.116111" />
+  <vertex lat="44.728889" lon="-1.092778" />
+  <vertex lat="44.712502" lon="-1.063611" />
+  <vertex lat="44.692501" lon="-1.056111" />
+  <vertex lat="44.670555" lon="-1.039444" />
+  <vertex lat="44.657223" lon="-1.068333" />
+  <vertex lat="44.653332" lon="-1.108333" />
+  <vertex lat="44.654724" lon="-1.147778" />
+  <vertex lat="44.665554" lon="-1.180833" />
+  <vertex lat="44.644165" lon="-1.203611" />
+  <vertex lat="44.613888" lon="-1.214444" />
+  <vertex lat="44.585278" lon="-1.228333" />
+  <vertex lat="44.563057" lon="-1.249722" />
+  <vertex lat="44.537498" lon="-1.254722" />
+  <vertex lat="44.509445" lon="-1.245833" />
+  <vertex lat="44.475555" lon="-1.249444" />
+  <vertex lat="44.440277" lon="-1.255833" />
+  <vertex lat="44.405556" lon="-1.261111" />
+  <vertex lat="44.373611" lon="-1.271111" />
+  <vertex lat="44.339169" lon="-1.277500" />
+  <vertex lat="44.305000" lon="-1.281944" />
+  <vertex lat="44.270832" lon="-1.286111" />
+  <vertex lat="44.238888" lon="-1.296667" />
+  <vertex lat="44.205002" lon="-1.304722" />
+  <vertex lat="44.171665" lon="-1.313333" />
+  <vertex lat="44.137222" lon="-1.320833" />
+  <vertex lat="44.102779" lon="-1.328056" />
+  <vertex lat="44.072224" lon="-1.338889" />
+  <vertex lat="44.039444" lon="-1.348056" />
+  <vertex lat="44.005554" lon="-1.356111" />
+  <vertex lat="43.972500" lon="-1.365556" />
+  <vertex lat="43.937500" lon="-1.369722" />
+  <vertex lat="43.903889" lon="-1.378056" />
+  <vertex lat="43.873611" lon="-1.390000" />
+  <vertex lat="43.843056" lon="-1.402222" />
+  <vertex lat="43.811111" lon="-1.412222" />
+  <vertex lat="43.778332" lon="-1.416945" />
+  <vertex lat="43.746944" lon="-1.427778" />
+  <vertex lat="43.712223" lon="-1.434444" />
+  <vertex lat="43.680279" lon="-1.444722" />
+  <vertex lat="43.647778" lon="-1.454722" />
+  <vertex lat="43.615833" lon="-1.464722" />
+  <vertex lat="43.584446" lon="-1.475278" />
+  <vertex lat="43.555000" lon="-1.488333" />
+  <vertex lat="43.528610" lon="-1.505000" />
+  <vertex lat="43.509724" lon="-1.530278" />
+  <vertex lat="43.492779" lon="-1.557778" />
+  <vertex lat="43.466946" lon="-1.574722" />
+  <vertex lat="43.444443" lon="-1.595833" />
+  <vertex lat="43.428055" lon="-1.623333" />
+  <vertex lat="43.416111" lon="-1.655833" />
+  <vertex lat="43.407776" lon="-1.692500" />
+  <vertex lat="43.403332" lon="-1.733611" />
+  <vertex lat="43.300" lon="-1.720" />
+  <vertex lat="43.280" lon="-1.640" />
+  <vertex lat="43.230" lon="-1.620" />
+  <vertex lat="43.230" lon="-1.570" />
+  <vertex lat="43.260" lon="-1.490" />
+  <vertex lat="43.250" lon="-1.480" />
+  <vertex lat="43.220" lon="-1.380" />
+  <vertex lat="43.090" lon="-1.420" />
+  <vertex lat="43.070" lon="-1.480" />
+  <vertex lat="43.020" lon="-1.430" />
+  <vertex lat="43.010" lon="-1.350" />
+  <vertex lat="43.100" lon="-1.320" />
+  <vertex lat="43.090" lon="-1.300" />
+  <vertex lat="43.050" lon="-1.290" />
+  <vertex lat="43.030" lon="-1.260" />
+  <vertex lat="43.030" lon="-1.200" />
+  <vertex lat="42.990" lon="-1.120" />
+  <vertex lat="43.000" lon="-1.070" />
+  <vertex lat="42.920" lon="-0.940" />
+  <vertex lat="42.930" lon="-0.820" />
+  <vertex lat="42.950" lon="-0.760" />
+  <vertex lat="42.930" lon="-0.730" />
+  <vertex lat="42.880" lon="-0.730" />
+  <vertex lat="42.860" lon="-0.680" />
+  <vertex lat="42.760" lon="-0.550" />
+  <vertex lat="42.810" lon="-0.500" />
+  <vertex lat="42.790" lon="-0.420" />
+  <vertex lat="42.830" lon="-0.290" />
+  <vertex lat="42.770" lon="-0.150" />
+  <vertex lat="42.770" lon="-0.120" />
+  <vertex lat="42.710" lon="-0.070" />
+  <vertex lat="42.690" lon="-0.020" />
+  <vertex lat="42.670" lon=" 0.010" />
+  <vertex lat="42.720" lon=" 0.230" />
+  <vertex lat="42.720" lon=" 0.230" />
+  <vertex lat="42.710" lon=" 0.270" />
+  <vertex lat="42.660" lon=" 0.330" />
+  <vertex lat="42.670" lon=" 0.360" />
+  <vertex lat="42.690" lon=" 0.360" />
+  <vertex lat="42.700" lon=" 0.410" />
+  <vertex lat="42.680" lon=" 0.440" />
+  <vertex lat="42.670" lon=" 0.530" />
+  <vertex lat="42.680" lon=" 0.540" />
+  <vertex lat="42.680" lon=" 0.670" />
+  <vertex lat="42.660" lon=" 0.720" />
+  <vertex lat="42.670" lon=" 0.740" />
+  <vertex lat="42.770" lon=" 0.680" />
+  <vertex lat="42.840" lon=" 0.700" />
+  <vertex lat="42.820" lon=" 0.860" />
+  <vertex lat="42.770" lon=" 0.950" />
+  <vertex lat="42.790" lon=" 0.970" />
+  <vertex lat="42.770" lon=" 1.050" />
+  <vertex lat="42.760" lon=" 1.080" />
+  <vertex lat="42.760" lon=" 1.090" />
+  <vertex lat="42.690" lon=" 1.180" />
+  <vertex lat="42.700" lon=" 1.270" />
+  <vertex lat="42.690" lon=" 1.270" />
+  <vertex lat="42.710" lon=" 1.360" />
+  <vertex lat="42.700" lon=" 1.360" />
+  <vertex lat="42.580" lon=" 1.460" />
+  <vertex lat="42.590" lon=" 1.500" />
+  <vertex lat="42.620" lon=" 1.500" />
+  <vertex lat="42.610" lon=" 1.620" />
+  <vertex lat="42.620" lon=" 1.620" />
+  <vertex lat="42.590" lon=" 1.740" />
+  <vertex lat="42.570" lon=" 1.730" />
+  <vertex lat="42.570" lon=" 1.730" />
+  <vertex lat="42.550" lon=" 1.780" />
+  <vertex lat="42.550" lon=" 1.790" />
+  <vertex lat="42.560" lon=" 1.830" />
+  <vertex lat="42.490" lon=" 1.800" />
+  <vertex lat="42.430" lon=" 1.890" />
+  <vertex lat="42.420" lon=" 1.940" />
+  <vertex lat="42.360" lon=" 1.970" />
+  <vertex lat="42.340" lon=" 2.030" />
+  <vertex lat="42.350" lon=" 2.040" />
+  <vertex lat="42.420" lon=" 2.250" />
+  <vertex lat="42.380" lon=" 2.410" />
+  <vertex lat="42.320" lon=" 2.510" />
+  <vertex lat="42.330" lon=" 2.610" />
+  <vertex lat="42.320" lon=" 2.710" />
+  <vertex lat="42.390" lon=" 2.740" />
+  <vertex lat="42.390" lon=" 2.850" />
+  <vertex lat="42.430" lon=" 2.910" />
+  <vertex lat="42.450" lon=" 3.050" />
+  <vertex lat="42.450" lon=" 3.050" />
+  <vertex lat="42.410" lon=" 3.100" />
+  <vertex lat="42.399" lon=" 3.164" />
+  <vertex lat="42.449722" lon="3.211667" />
+  <vertex lat="42.472221" lon="3.193889" />
+  <vertex lat="42.493889" lon="3.174444" />
+  <vertex lat="42.516388" lon="3.156667" />
+  <vertex lat="42.532223" lon="3.128056" />
+  <vertex lat="42.549721" lon="3.100833" />
+  <vertex lat="42.576946" lon="3.092222" />
+  <vertex lat="42.607224" lon="3.088333" />
+  <vertex lat="42.635834" lon="3.083889" />
+  <vertex lat="42.664444" lon="3.077222" />
+  <vertex lat="42.671665" lon="3.050555" />
+  <vertex lat="42.695557" lon="3.057500" />
+  <vertex lat="42.675835" lon="3.079167" />
+  <vertex lat="42.706665" lon="3.085556" />
+  <vertex lat="42.735001" lon="3.088333" />
+  <vertex lat="42.768890" lon="3.091944" />
+  <vertex lat="42.797501" lon="3.085278" />
+  <vertex lat="42.810276" lon="3.050833" />
+  <vertex lat="42.817501" lon="3.011945" />
+  <vertex lat="42.841667" lon="2.997500" />
+  <vertex lat="42.861389" lon="3.021111" />
+  <vertex lat="42.879723" lon="3.046389" />
+  <vertex lat="42.912224" lon="3.054722" />
+  <vertex lat="42.904999" lon="3.092222" />
+  <vertex lat="42.927776" lon="3.097222" />
+  <vertex lat="42.942501" lon="3.064722" />
+  <vertex lat="42.967224" lon="3.051111" />
+  <vertex lat="42.987221" lon="3.075000" />
+  <vertex lat="42.965000" lon="3.067778" />
+  <vertex lat="42.950832" lon="3.086111" />
+  <vertex lat="42.977501" lon="3.103333" />
+  <vertex lat="43.011944" lon="3.109444" />
+  <vertex lat="43.037777" lon="3.127500" />
+  <vertex lat="43.067501" lon="3.135278" />
+  <vertex lat="43.072224" lon="3.100833" />
+  <vertex lat="43.102779" lon="3.097778" />
+  <vertex lat="43.123333" lon="3.109167" />
+  <vertex lat="43.114445" lon="3.138889" />
+  <vertex lat="43.097221" lon="3.114167" />
+  <vertex lat="43.078056" lon="3.136667" />
+  <vertex lat="43.100555" lon="3.156945" />
+  <vertex lat="43.120834" lon="3.178333" />
+  <vertex lat="43.143055" lon="3.200278" />
+  <vertex lat="43.166111" lon="3.221111" />
+  <vertex lat="43.188610" lon="3.239444" />
+  <vertex lat="43.212776" lon="3.259167" />
+  <vertex lat="43.223057" lon="3.290555" />
+  <vertex lat="43.238609" lon="3.318889" />
+  <vertex lat="43.252499" lon="3.349167" />
+  <vertex lat="43.270832" lon="3.375000" />
+  <vertex lat="43.286388" lon="3.403889" />
+  <vertex lat="43.292778" lon="3.441389" />
+  <vertex lat="43.289722" lon="3.478333" />
+  <vertex lat="43.286945" lon="3.521667" />
+  <vertex lat="43.313057" lon="3.539722" />
+  <vertex lat="43.333611" lon="3.561944" />
+  <vertex lat="43.352501" lon="3.587222" />
+  <vertex lat="43.374443" lon="3.609444" />
+  <vertex lat="43.390835" lon="3.637222" />
+  <vertex lat="43.402222" lon="3.669722" />
+  <vertex lat="43.409443" lon="3.706667" />
+  <vertex lat="43.428055" lon="3.732500" />
+  <vertex lat="43.441666" lon="3.763056" />
+  <vertex lat="43.455833" lon="3.793056" />
+  <vertex lat="43.471390" lon="3.821389" />
+  <vertex lat="43.490833" lon="3.846389" />
+  <vertex lat="43.508888" lon="3.872222" />
+  <vertex lat="43.525002" lon="3.900278" />
+  <vertex lat="43.541668" lon="3.927778" />
+  <vertex lat="43.553055" lon="3.926389" />
+  <vertex lat="43.538887" lon="3.896389" />
+  <vertex lat="43.518612" lon="3.872500" />
+  <vertex lat="43.502499" lon="3.844445" />
+  <vertex lat="43.483334" lon="3.819722" />
+  <vertex lat="43.466667" lon="3.792222" />
+  <vertex lat="43.451389" lon="3.763333" />
+  <vertex lat="43.441113" lon="3.729722" />
+  <vertex lat="43.447498" lon="3.714444" />
+  <vertex lat="43.456944" lon="3.749167" />
+  <vertex lat="43.469723" lon="3.780278" />
+  <vertex lat="43.488609" lon="3.805556" />
+  <vertex lat="43.518333" lon="3.818056" />
+  <vertex lat="43.524445" lon="3.855833" />
+  <vertex lat="43.542221" lon="3.876667" />
+  <vertex lat="43.559444" lon="3.903611" />
+  <vertex lat="43.568890" lon="3.938333" />
+  <vertex lat="43.579166" lon="3.972222" />
+  <vertex lat="43.593056" lon="4.002222" />
+  <vertex lat="43.600277" lon="4.039166" />
+  <vertex lat="43.605556" lon="4.075555" />
+  <vertex lat="43.599167" lon="4.090833" />
+  <vertex lat="43.582500" lon="4.066389" />
+  <vertex lat="43.577499" lon="4.027500" />
+  <vertex lat="43.570835" lon="3.990000" />
+  <vertex lat="43.561668" lon="3.955278" />
+  <vertex lat="43.564999" lon="3.985000" />
+  <vertex lat="43.569443" lon="4.024445" />
+  <vertex lat="43.571388" lon="4.066389" />
+  <vertex lat="43.563332" lon="4.112778" />
+  <vertex lat="43.545555" lon="4.138055" />
+  <vertex lat="43.518055" lon="4.146389" />
+  <vertex lat="43.490833" lon="4.155278" />
+  <vertex lat="43.475555" lon="4.185833" />
+  <vertex lat="43.468334" lon="4.228889" />
+  <vertex lat="43.467499" lon="4.273334" />
+  <vertex lat="43.464722" lon="4.320000" />
+  <vertex lat="43.456944" lon="4.366944" />
+  <vertex lat="43.454445" lon="4.408611" />
+  <vertex lat="43.459167" lon="4.446667" />
+  <vertex lat="43.461388" lon="4.488333" />
+  <vertex lat="43.457500" lon="4.533333" />
+  <vertex lat="43.446110" lon="4.573056" />
+  <vertex lat="43.427776" lon="4.599167" />
+  <vertex lat="43.400833" lon="4.583889" />
+  <vertex lat="43.376667" lon="4.573611" />
+  <vertex lat="43.361111" lon="4.605000" />
+  <vertex lat="43.359165" lon="4.650556" />
+  <vertex lat="43.358055" lon="4.695000" />
+  <vertex lat="43.358055" lon="4.738611" />
+  <vertex lat="43.355556" lon="4.784722" />
+  <vertex lat="43.362778" lon="4.820833" />
+  <vertex lat="43.385277" lon="4.802778" />
+  <vertex lat="43.399723" lon="4.769166" />
+  <vertex lat="43.416389" lon="4.740000" />
+  <vertex lat="43.440556" lon="4.725278" />
+  <vertex lat="43.474998" lon="4.733611" />
+  <vertex lat="43.505554" lon="4.731389" />
+  <vertex lat="43.532501" lon="4.722500" />
+  <vertex lat="43.555557" lon="4.705555" />
+  <vertex lat="43.576389" lon="4.699722" />
+  <vertex lat="43.555832" lon="4.721667" />
+  <vertex lat="43.533333" lon="4.739444" />
+  <vertex lat="43.506390" lon="4.748889" />
+  <vertex lat="43.473057" lon="4.745278" />
+  <vertex lat="43.438057" lon="4.738611" />
+  <vertex lat="43.416389" lon="4.758333" />
+  <vertex lat="43.401112" lon="4.790555" />
+  <vertex lat="43.385555" lon="4.821944" />
+  <vertex lat="43.373611" lon="4.853055" />
+  <vertex lat="43.386665" lon="4.867778" />
+  <vertex lat="43.406113" lon="4.846667" />
+  <vertex lat="43.423054" lon="4.873889" />
+  <vertex lat="43.431946" lon="4.908889" />
+  <vertex lat="43.426666" lon="4.946667" />
+  <vertex lat="43.415279" lon="4.973889" />
+  <vertex lat="43.415279" lon="5.005278" />
+  <vertex lat="43.421112" lon="5.041945" />
+  <vertex lat="43.437778" lon="5.060833" />
+  <vertex lat="43.468056" lon="5.058055" />
+  <vertex lat="43.481945" lon="5.026111" />
+  <vertex lat="43.505280" lon="5.010278" />
+  <vertex lat="43.530834" lon="5.021667" />
+  <vertex lat="43.555832" lon="5.029167" />
+  <vertex lat="43.536388" lon="5.053056" />
+  <vertex lat="43.534443" lon="5.091111" />
+  <vertex lat="43.521389" lon="5.120000" />
+  <vertex lat="43.498890" lon="5.119444" />
+  <vertex lat="43.482224" lon="5.148611" />
+  <vertex lat="43.482498" lon="5.180833" />
+  <vertex lat="43.495834" lon="5.211667" />
+  <vertex lat="43.476665" lon="5.226666" />
+  <vertex lat="43.456944" lon="5.212778" />
+  <vertex lat="43.435276" lon="5.189445" />
+  <vertex lat="43.423054" lon="5.158889" />
+  <vertex lat="43.418056" lon="5.123611" />
+  <vertex lat="43.416389" lon="5.081666" />
+  <vertex lat="43.411388" lon="5.043334" />
+  <vertex lat="43.397499" lon="5.013055" />
+  <vertex lat="43.369720" lon="5.012500" />
+  <vertex lat="43.348331" lon="5.033056" />
+  <vertex lat="43.340557" lon="5.071944" />
+  <vertex lat="43.340557" lon="5.112222" />
+  <vertex lat="43.338890" lon="5.154722" />
+  <vertex lat="43.341946" lon="5.190000" />
+  <vertex lat="43.340832" lon="5.230000" />
+  <vertex lat="43.351112" lon="5.263333" />
+  <vertex lat="43.362221" lon="5.296111" />
+  <vertex lat="43.360554" lon="5.333611" />
+  <vertex lat="43.340000" lon="5.355278" />
+  <vertex lat="43.310833" lon="5.360000" />
+  <vertex lat="43.286667" lon="5.353889" />
+  <vertex lat="43.263889" lon="5.370000" />
+  <vertex lat="43.238609" lon="5.350833" />
+  <vertex lat="43.218887" lon="5.372778" />
+  <vertex lat="43.216110" lon="5.418611" />
+  <vertex lat="43.214443" lon="5.454722" />
+  <vertex lat="43.210556" lon="5.487500" />
+  <vertex lat="43.213890" lon="5.524167" />
+  <vertex lat="43.210556" lon="5.551944" />
+  <vertex lat="43.189999" lon="5.573611" />
+  <vertex lat="43.176945" lon="5.607222" />
+  <vertex lat="43.191666" lon="5.636667" />
+  <vertex lat="43.189167" lon="5.681944" />
+  <vertex lat="43.167221" lon="5.690278" />
+  <vertex lat="43.153057" lon="5.718611" />
+  <vertex lat="43.142776" lon="5.751667" />
+  <vertex lat="43.134724" lon="5.777778" />
+  <vertex lat="43.123055" lon="5.804722" />
+  <vertex lat="43.109444" lon="5.798056" />
+  <vertex lat="43.091110" lon="5.773611" />
+  <vertex lat="43.081390" lon="5.803056" />
+  <vertex lat="43.062222" lon="5.827222" />
+  <vertex lat="43.059166" lon="5.869167" />
+  <vertex lat="43.083332" lon="5.889444" />
+  <vertex lat="43.082222" lon="5.925000" />
+  <vertex lat="43.093887" lon="5.913889" />
+  <vertex lat="43.112221" lon="5.890555" />
+  <vertex lat="43.125000" lon="5.902222" />
+  <vertex lat="43.131668" lon="5.937778" />
+  <vertex lat="43.112499" lon="5.941945" />
+  <vertex lat="43.111668" lon="5.978055" />
+  <vertex lat="43.115555" lon="6.017222" />
+  <vertex lat="43.100555" lon="6.034444" />
+  <vertex lat="43.104443" lon="6.072500" />
+  <vertex lat="43.097500" lon="6.115278" />
+  <vertex lat="43.070278" lon="6.123611" />
+  <vertex lat="43.062778" lon="6.087778" />
+  <vertex lat="43.051945" lon="6.100833" />
+  <vertex lat="43.054165" lon="6.141667" />
+  <vertex lat="43.055557" lon="6.178889" />
+  <vertex lat="43.074722" lon="6.157778" />
+  <vertex lat="43.106945" lon="6.161389" />
+  <vertex lat="43.127777" lon="6.184722" />
+  <vertex lat="43.127224" lon="6.228055" />
+  <vertex lat="43.134445" lon="6.263055" />
+  <vertex lat="43.123611" lon="6.303056" />
+  <vertex lat="43.102222" lon="6.323056" />
+  <vertex lat="43.092499" lon="6.355556" />
+  <vertex lat="43.109444" lon="6.366389" />
+  <vertex lat="43.137779" lon="6.361945" />
+  <vertex lat="43.154446" lon="6.389444" />
+  <vertex lat="43.159168" lon="6.424445" />
+  <vertex lat="43.168335" lon="6.458333" />
+  <vertex lat="43.169724" lon="6.499722" />
+  <vertex lat="43.188610" lon="6.525278" />
+  <vertex lat="43.201389" lon="6.556111" />
+  <vertex lat="43.191666" lon="6.597222" />
+  <vertex lat="43.168888" lon="6.612778" />
+  <vertex lat="43.184166" lon="6.639167" />
+  <vertex lat="43.208057" lon="6.651667" />
+  <vertex lat="43.218334" lon="6.683889" />
+  <vertex lat="43.235279" lon="6.660278" />
+  <vertex lat="43.258888" lon="6.681389" />
+  <vertex lat="43.280834" lon="6.694445" />
+  <vertex lat="43.283054" lon="6.658056" />
+  <vertex lat="43.281944" lon="6.618611" />
+  <vertex lat="43.287498" lon="6.585556" />
+  <vertex lat="43.299999" lon="6.616944" />
+  <vertex lat="43.310001" lon="6.650556" />
+  <vertex lat="43.329445" lon="6.668056" />
+  <vertex lat="43.350555" lon="6.686111" />
+  <vertex lat="43.362221" lon="6.718056" />
+  <vertex lat="43.392776" lon="6.729722" />
+  <vertex lat="43.425278" lon="6.737500" />
+  <vertex lat="43.431389" lon="6.769444" />
+  <vertex lat="43.422779" lon="6.801667" />
+  <vertex lat="43.423332" lon="6.844167" />
+  <vertex lat="43.433613" lon="6.875278" />
+  <vertex lat="43.451389" lon="6.899722" />
+  <vertex lat="43.470276" lon="6.924167" />
+  <vertex lat="43.497223" lon="6.941945" />
+  <vertex lat="43.519165" lon="6.950833" />
+  <vertex lat="43.542221" lon="6.963056" />
+  <vertex lat="43.553890" lon="6.995278" />
+  <vertex lat="43.555000" lon="7.033611" />
+  <vertex lat="43.568333" lon="7.064445" />
+  <vertex lat="43.575554" lon="7.100555" />
+  <vertex lat="43.560833" lon="7.128056" />
+  <vertex lat="43.590279" lon="7.134444" />
+  <vertex lat="43.620834" lon="7.132778" />
+  <vertex lat="43.650276" lon="7.145555" />
+  <vertex lat="43.666668" lon="7.173611" />
+  <vertex lat="43.671112" lon="7.212222" />
+  <vertex lat="43.695557" lon="7.232778" />
+  <vertex lat="43.701389" lon="7.269444" />
+  <vertex lat="43.705833" lon="7.308333" />
+  <vertex lat="43.692223" lon="7.321667" />
+  <vertex lat="43.703335" lon="7.344444" />
+  <vertex lat="43.722221" lon="7.351666" />
+  <vertex lat="43.726112" lon="7.389167" />
+  <vertex lat="43.739166" lon="7.420556" />
+  <vertex lat="43.758057" lon="7.446111" />
+  <vertex lat="43.767223" lon="7.478611" />
+  <vertex lat="43.787777" lon="7.497500" />
+  <vertex lat="43.880" lon=" 7.540" />
+  <vertex lat="43.970" lon=" 7.670" />
+  <vertex lat="44.070" lon=" 7.740" />
+  <vertex lat="44.130" lon=" 7.660" />
+  <vertex lat="44.090" lon=" 7.450" />
+  <vertex lat="44.120" lon=" 7.220" />
+  <vertex lat="44.210" lon=" 7.030" />
+  <vertex lat="44.280" lon=" 7.030" />
+  <vertex lat="44.380" lon=" 6.930" />
+  <vertex lat="44.430" lon=" 6.960" />
+  <vertex lat="44.490" lon=" 6.900" />
+  <vertex lat="44.530" lon=" 6.910" />
+  <vertex lat="44.620" lon=" 7.000" />
+  <vertex lat="44.660" lon=" 7.000" />
+  <vertex lat="44.690" lon=" 7.060" />
+  <vertex lat="44.670" lon=" 7.120" />
+  <vertex lat="44.830" lon=" 7.010" />
+  <vertex lat="44.850" lon=" 6.960" />
+  <vertex lat="44.850" lon=" 6.880" />
+  <vertex lat="44.840" lon=" 6.880" />
+  <vertex lat="44.920" lon=" 6.740" />
+  <vertex lat="44.970" lon=" 6.750" />
+  <vertex lat="45.000" lon=" 6.780" />
+  <vertex lat="45.020" lon=" 6.760" />
+  <vertex lat="45.030" lon=" 6.680" />
+  <vertex lat="45.110" lon=" 6.650" />
+  <vertex lat="45.150" lon=" 6.780" />
+  <vertex lat="45.130" lon=" 6.840" />
+  <vertex lat="45.230" lon=" 7.140" />
+  <vertex lat="45.290" lon=" 7.130" />
+  <vertex lat="45.400" lon=" 7.190" />
+  <vertex lat="45.490" lon=" 7.050" />
+  <vertex lat="45.580" lon=" 7.000" />
+  <vertex lat="45.630" lon=" 6.980" />
+  <vertex lat="45.630" lon=" 6.980" />
+  <vertex lat="45.630" lon=" 6.980" />
+  <vertex lat="45.630" lon=" 6.950" />
+  <vertex lat="45.680" lon=" 6.860" />
+  <vertex lat="45.760" lon=" 6.810" />
+  <vertex lat="45.810" lon=" 6.850" />
+  <vertex lat="45.880" lon=" 7.010" />
+  <vertex lat="45.960" lon=" 7.030" />
+  <vertex lat="46.010" lon=" 6.990" />
+  <vertex lat="46.050" lon=" 6.920" />
+  <vertex lat="46.030" lon=" 6.900" />
+  <vertex lat="46.030" lon=" 6.900" />
+  <vertex lat="46.050" lon=" 6.860" />
+  <vertex lat="46.100" lon=" 6.880" />
+  <vertex lat="46.100" lon=" 6.880" />
+  <vertex lat="46.190" lon=" 6.800" />
+  <vertex lat="46.300" lon=" 6.860" />
+  <vertex lat="46.350" lon=" 6.770" />
+  <vertex lat="46.390" lon=" 6.790" />
+  <vertex lat="46.400" lon=" 6.650" />
+  <vertex lat="46.380" lon=" 6.580" />
+  <vertex lat="46.390" lon=" 6.520" />
+  <vertex lat="46.390" lon=" 6.470" />
+  <vertex lat="46.360" lon=" 6.460" />
+  <vertex lat="46.340" lon=" 6.360" />
+  <vertex lat="46.350" lon=" 6.330" />
+  <vertex lat="46.320" lon=" 6.270" />
+  <vertex lat="46.250" lon=" 6.230" />
+  <vertex lat="46.250" lon=" 6.310" />
+  <vertex lat="46.200" lon=" 6.300" />
+  <vertex lat="46.150" lon=" 6.140" />
+  <vertex lat="46.150" lon=" 6.070" />
+  <vertex lat="46.140" lon=" 6.010" />
+  <vertex lat="46.140" lon=" 6.010" />
+  <vertex lat="46.190" lon=" 5.980" />
+  <vertex lat="46.250" lon=" 6.120" />
+  <vertex lat="46.300" lon=" 6.080" />
+  <vertex lat="46.370" lon=" 6.130" />
+  <vertex lat="46.410" lon=" 6.060" />
+  <vertex lat="46.420" lon=" 6.060" />
+  <vertex lat="46.470" lon=" 6.060" />
+  <vertex lat="46.540" lon=" 6.140" />
+  <vertex lat="46.590" lon=" 6.130" />
+  <vertex lat="46.590" lon=" 6.120" />
+  <vertex lat="46.680" lon=" 6.230" />
+  <vertex lat="46.770" lon=" 6.420" />
+  <vertex lat="46.900" lon=" 6.450" />
+  <vertex lat="46.940" lon=" 6.430" />
+  <vertex lat="46.980" lon=" 6.500" />
+  <vertex lat="46.980" lon=" 6.500" />
+  <vertex lat="47.000" lon=" 6.660" />
+  <vertex lat="47.080" lon=" 6.700" />
+  <vertex lat="47.090" lon=" 6.700" />
+  <vertex lat="47.150" lon=" 6.840" />
+  <vertex lat="47.330" lon=" 6.990" />
+  <vertex lat="47.330" lon=" 7.030" />
+  <vertex lat="47.360" lon=" 7.050" />
+  <vertex lat="47.370" lon=" 6.920" />
+  <vertex lat="47.440" lon=" 6.980" />
+  <vertex lat="47.490" lon=" 6.980" />
+  <vertex lat="47.490" lon=" 7.140" />
+  <vertex lat="47.450" lon=" 7.160" />
+  <vertex lat="47.460" lon=" 7.410" />
+  <vertex lat="47.590" lon=" 7.580" />
+  <vertex lat="47.590" lon=" 7.670" />
+  <vertex lat="47.600" lon=" 7.670" />
+  <vertex lat="47.610" lon=" 7.670" />
+  <vertex lat="47.620" lon=" 7.580" />
+  <vertex lat="47.710" lon=" 7.550" />
+  <vertex lat="47.770" lon=" 7.560" />
+  <vertex lat="47.780" lon=" 7.540" />
+  <vertex lat="47.840" lon=" 7.580" />
+  <vertex lat="47.850" lon=" 7.570" />
+  <vertex lat="47.970" lon=" 7.610" />
+  <vertex lat="48.140" lon=" 7.580" />
+  <vertex lat="48.190" lon=" 7.650" />
+  <vertex lat="48.290" lon=" 7.690" />
+  <vertex lat="48.320" lon=" 7.740" />
+  <vertex lat="48.510" lon=" 7.810" />
+  <vertex lat="48.520" lon=" 7.810" />
+  <vertex lat="48.610" lon=" 7.820" />
+  <vertex lat="48.700" lon=" 7.920" />
+  <vertex lat="48.750" lon=" 7.930" />
+  <vertex lat="48.750" lon=" 7.930" />
+  <vertex lat="48.810" lon=" 8.050" />
+  <vertex lat="48.910" lon=" 8.110" />
+  <vertex lat="48.980" lon=" 8.200" />
+  <vertex lat="49.060" lon=" 7.910" />
+  <vertex lat="49.050" lon=" 7.880" />
+  <vertex lat="49.050" lon=" 7.880" />
+  <vertex lat="49.070" lon=" 7.790" />
+  <vertex lat="49.050" lon=" 7.750" />
+  <vertex lat="49.070" lon=" 7.650" />
+  <vertex lat="49.100" lon=" 7.620" />
+  <vertex lat="49.140" lon=" 7.490" />
+  <vertex lat="49.180" lon=" 7.470" />
+  <vertex lat="49.170" lon=" 7.350" />
+  <vertex lat="49.170" lon=" 7.350" />
+  <vertex lat="49.140" lon=" 7.340" />
+  <vertex lat="49.110" lon=" 7.280" />
+  <vertex lat="49.130" lon=" 7.070" />
+  <vertex lat="49.220" lon=" 7.020" />
+  <vertex lat="49.230" lon=" 6.930" />
+  <vertex lat="49.230" lon=" 6.930" />
+  <vertex lat="49.170" lon=" 6.840" />
+  <vertex lat="49.190" lon=" 6.720" />
+  <vertex lat="49.380" lon=" 6.590" />
+  <vertex lat="49.460" lon=" 6.430" />
+  <vertex lat="49.460" lon=" 6.350" />
+  <vertex lat="49.500" lon=" 6.190" />
+  <vertex lat="49.450" lon=" 6.080" />
+  <vertex lat="49.450" lon=" 6.010" />
+  <vertex lat="49.480" lon=" 5.950" />
+  <vertex lat="49.500" lon=" 5.850" />
+  <vertex lat="49.530" lon=" 5.860" />
+  <vertex lat="49.530" lon=" 5.860" />
+  <vertex lat="49.550" lon=" 5.810" />
+  <vertex lat="49.520" lon=" 5.510" />
+  <vertex lat="49.510" lon=" 5.520" />
+  <vertex lat="49.600" lon=" 5.470" />
+  <vertex lat="49.620" lon=" 5.410" />
+  <vertex lat="49.620" lon=" 5.400" />
+  <vertex lat="49.630" lon=" 5.350" />
+  <vertex lat="49.700" lon=" 5.290" />
+  <vertex lat="49.710" lon=" 5.190" />
+  <vertex lat="49.780" lon=" 5.110" />
+  <vertex lat="49.800" lon=" 5.010" />
+  <vertex lat="49.800" lon=" 4.960" />
+  <vertex lat="49.800" lon=" 4.970" />
+  <vertex lat="49.820" lon=" 4.870" />
+  <vertex lat="49.820" lon=" 4.870" />
+  <vertex lat="49.910" lon=" 4.900" />
+  <vertex lat="49.950" lon=" 4.870" />
+  <vertex lat="49.970" lon=" 4.810" />
+  <vertex lat="50.150" lon=" 4.880" />
+  <vertex lat="50.160" lon=" 4.820" />
+  <vertex lat="50.150" lon=" 4.820" />
+  <vertex lat="50.090" lon=" 4.700" />
+  <vertex lat="50.020" lon=" 4.660" />
+  <vertex lat="50.020" lon=" 4.660" />
+  <vertex lat="49.950" lon=" 4.430" />
+  <vertex lat="49.960" lon=" 4.440" />
+  <vertex lat="49.960" lon=" 4.440" />
+  <vertex lat="49.980" lon=" 4.300" />
+  <vertex lat="49.980" lon=" 4.220" />
+  <vertex lat="50.000" lon=" 4.150" />
+  <vertex lat="50.000" lon=" 4.160" />
+  <vertex lat="50.100" lon=" 4.230" />
+  <vertex lat="50.160" lon=" 4.130" />
+  <vertex lat="50.160" lon=" 4.130" />
+  <vertex lat="50.230" lon=" 4.140" />
+  <vertex lat="50.240" lon=" 4.140" />
+  <vertex lat="50.350" lon=" 4.030" />
+  <vertex lat="50.340" lon=" 4.000" />
+  <vertex lat="50.360" lon=" 3.790" />
+  <vertex lat="50.330" lon=" 3.740" />
+  <vertex lat="50.340" lon=" 3.700" />
+  <vertex lat="50.450" lon=" 3.680" />
+  <vertex lat="50.490" lon=" 3.610" />
+  <vertex lat="50.490" lon=" 3.530" />
+  <vertex lat="50.530" lon=" 3.560" />
+  <vertex lat="50.540" lon=" 3.500" />
+  <vertex lat="50.510" lon=" 3.430" />
+  <vertex lat="50.510" lon=" 3.430" />
+  <vertex lat="50.500" lon=" 3.320" />
+  <vertex lat="50.710" lon=" 3.260" />
+  <vertex lat="50.810" lon=" 3.150" />
+  <vertex lat="50.770" lon=" 3.010" />
+  <vertex lat="50.720" lon=" 2.930" />
+  <vertex lat="50.720" lon=" 2.930" />
+  <vertex lat="50.720" lon=" 2.800" />
+  <vertex lat="50.810" lon=" 2.760" />
+  <vertex lat="50.830" lon=" 2.700" />
+  <vertex lat="50.830" lon=" 2.610" />
+  <vertex lat="50.900" lon=" 2.590" />
+  <vertex lat="50.960" lon=" 2.630" />
+  <vertex lat="50.960" lon=" 2.630" />
+  <vertex lat="51.082" lon=" 2.514" />
+  <vertex lat="51.082779" lon="2.516667" />
+ </outline>
+
+ <outline name="corsica">
+  <vertex lat="42.972" lon=" 9.300" />
+  <vertex lat="42.896" lon=" 9.314" />
+  <vertex lat="42.889" lon=" 9.267" />
+  <vertex lat="42.793" lon=" 9.271" />
+  <vertex lat="42.796" lon=" 9.285" />
+  <vertex lat="42.655" lon=" 9.276" />
+  <vertex lat="42.696" lon=" 9.164" />
+  <vertex lat="42.707" lon=" 9.068" />
+  <vertex lat="42.656" lon=" 9.003" />
+  <vertex lat="42.647" lon=" 9.002" />
+  <vertex lat="42.587" lon=" 8.791" />
+  <vertex lat="42.459" lon=" 8.612" />
+  <vertex lat="42.455" lon=" 8.630" />
+  <vertex lat="42.417" lon=" 8.627" />
+  <vertex lat="42.369" lon=" 8.531" />
+  <vertex lat="42.311" lon=" 8.534" />
+  <vertex lat="42.315" lon=" 8.592" />
+  <vertex lat="42.260" lon=" 8.677" />
+  <vertex lat="42.247" lon=" 8.659" />
+  <vertex lat="42.229" lon=" 8.540" />
+  <vertex lat="42.136" lon=" 8.542" />
+  <vertex lat="42.084" lon=" 8.673" />
+  <vertex lat="42.028" lon=" 8.706" />
+  <vertex lat="41.917" lon=" 8.567" />
+  <vertex lat="41.879" lon=" 8.593" />
+  <vertex lat="41.907" lon=" 8.725" />
+  <vertex lat="41.881" lon=" 8.769" />
+  <vertex lat="41.843" lon=" 8.729" />
+  <vertex lat="41.808" lon=" 8.740" />
+  <vertex lat="41.784" lon=" 8.693" />
+  <vertex lat="41.744" lon=" 8.683" />
+  <vertex lat="41.725" lon=" 8.632" />
+  <vertex lat="41.661" lon=" 8.886" />
+  <vertex lat="41.605" lon=" 8.787" />
+  <vertex lat="41.600" lon=" 8.750" />
+  <vertex lat="41.549" lon=" 8.744" />
+  <vertex lat="41.507" lon=" 8.865" />
+  <vertex lat="41.447" lon=" 9.048" />
+  <vertex lat="41.356" lon=" 9.070" />
+  <vertex lat="41.341" lon=" 9.156" />
+  <vertex lat="41.377" lon=" 9.222" />
+  <vertex lat="41.409" lon=" 9.199" />
+  <vertex lat="41.459" lon=" 9.265" />
+  <vertex lat="41.507" lon=" 9.265" />
+  <vertex lat="41.528" lon=" 9.324" />
+  <vertex lat="41.660" lon=" 9.344" />
+  <vertex lat="41.723" lon=" 9.388" />
+  <vertex lat="41.755" lon=" 9.384" />
+  <vertex lat="41.771" lon=" 9.357" />
+  <vertex lat="41.915" lon=" 9.396" />
+  <vertex lat="42.128" lon=" 9.514" />
+  <vertex lat="42.528" lon=" 9.505" />
+  <vertex lat="42.628" lon=" 9.433" />
+  <vertex lat="42.760" lon=" 9.446" />
+  <vertex lat="42.779" lon=" 9.464" />
+  <vertex lat="43.004" lon=" 9.400" />
+  <vertex lat="42.972" lon=" 9.300" />
+ </outline>
+
+ <outline name="re">
+  <vertex lat="46.240" lon="-1.570" />
+  <vertex lat="46.190" lon="-1.510" />
+  <vertex lat="46.190" lon="-1.460" />
+  <vertex lat="46.140" lon="-1.290" />
+  <vertex lat="46.160" lon="-1.250" />
+  <vertex lat="46.200" lon="-1.330" />
+  <vertex lat="46.210" lon="-1.440" />
+  <vertex lat="46.230" lon="-1.440" />
+  <vertex lat="46.220" lon="-1.480" />
+  <vertex lat="46.240" lon="-1.540" />
+  <vertex lat="46.250" lon="-1.500" />
+  <vertex lat="46.250" lon="-1.500" />
+  <vertex lat="46.240" lon="-1.580" />
+ </outline>
+
+ <outline name="oleron">
+  <vertex lat="46.040" lon="-1.400" />
+  <vertex lat="45.990" lon="-1.310" />
+  <vertex lat="45.970" lon="-1.230" />
+  <vertex lat="45.930" lon="-1.220" />
+  <vertex lat="45.900" lon="-1.190" />
+  <vertex lat="45.870" lon="-1.200" />
+  <vertex lat="45.860" lon="-1.210" />
+  <vertex lat="45.820" lon="-1.190" />
+  <vertex lat="45.820" lon="-1.210" />
+  <vertex lat="45.870" lon="-1.240" />
+  <vertex lat="45.950" lon="-1.370" />
+  <vertex lat="46.040" lon="-1.400" />
+ </outline>
+
+ <outline name="ouessant">
+  <vertex lat="48.500" lon="-5.080" />
+  <vertex lat="48.490" lon="-5.090" />
+  <vertex lat="48.470" lon="-5.150" />
+  <vertex lat="48.470" lon="-5.120" />
+  <vertex lat="48.460" lon="-5.110" />
+  <vertex lat="48.470" lon="-5.100" />
+  <vertex lat="48.490" lon="-5.040" />
+  <vertex lat="48.500" lon="-5.080" />
+ </outline>
+
+</map>
