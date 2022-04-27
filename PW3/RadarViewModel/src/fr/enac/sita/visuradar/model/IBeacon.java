@@ -7,7 +7,7 @@ package fr.enac.sita.visuradar.model;
  *
  * @author Shuan
  */
-public interface IBeacon {
+public interface IBeacon extends IPoint{
     public String getCode();
     public String getType();
 }

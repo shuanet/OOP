@@ -8,12 +8,11 @@ import fr.enac.sita.visuradar.data.cartoxanthane.CartographyManagerXanthane;
 import fr.enac.sita.visuradar.model.Airspace;
 import fr.enac.sita.visuradar.model.IBaseMap;
 import fr.enac.sita.visuradar.view.BaseMapView;
+import fr.enac.sita.visuradar.view.BeaconView;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -25,18 +24,22 @@ public class buildMap extends Application {
     @Override
     public void start(Stage primaryStage) {
         Group root = new Group();
-        Pane mapPane = new Pane();
-        root.getChildren().add(mapPane);
-                
+        root.setStyle("-fx-background-color: black;");
+               
         CartographyManagerXanthane cartography = new CartographyManagerXanthane();
         Airspace myAirspace = new Airspace(cartography);
-        IBaseMap baseMap = cartography.loadBaseMap();
+        //System.out.println(myAirspace.getBeaconsByNameMap());
         
-        mapPane.getChildren().add(new BaseMapView(baseMap));
-        for ..
-        BeaconView beaconsView = new BeaconView(myAirspace.getBeaconsByNameMap().get(i));
-                
-        Scene scene = new Scene(root, 600, 800);
+        IBaseMap baseMap = cartography.loadBaseMap();
+        BaseMapView BMV = new BaseMapView(baseMap);
+        BeaconView BV = new BeaconView(myAirspace.getBeaconsByNameMap());
+        
+        root.getChildren().add(BMV);
+        root.getChildren().add(BV);
+        
+        BMV.setLayoutX(700); BMV.setLayoutY(500);
+        BV.setLayoutX(700); BV.setLayoutY(500);
+        Scene scene = new Scene(root, 1500, 920, Color.BLACK);
         
         primaryStage.setTitle("Interactive Map");
         primaryStage.setScene(scene);
