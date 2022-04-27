@@ -5,6 +5,9 @@
 package test;
 
 import fr.enac.sita.visuradar.data.cartoxanthane.CartographyManagerXanthane;
+import fr.enac.sita.visuradar.manager.dragManager;
+import fr.enac.sita.visuradar.manager.panManager;
+import fr.enac.sita.visuradar.manager.zoomManager;
 import fr.enac.sita.visuradar.model.Airspace;
 import fr.enac.sita.visuradar.model.IBaseMap;
 import fr.enac.sita.visuradar.view.BaseMapView;
@@ -13,6 +16,7 @@ import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 /**
@@ -28,17 +32,24 @@ public class buildMap extends Application {
                
         CartographyManagerXanthane cartography = new CartographyManagerXanthane();
         Airspace myAirspace = new Airspace(cartography);
-        //System.out.println(myAirspace.getBeaconsByNameMap());
         
         IBaseMap baseMap = cartography.loadBaseMap();
         BaseMapView BMV = new BaseMapView(baseMap);
         BeaconView BV = new BeaconView(myAirspace.getBeaconsByNameMap());
         
-        root.getChildren().add(BMV);
-        root.getChildren().add(BV);
+        panManager pM = new panManager(BMV);
+        dragManager dM = new dragManager(BMV);
+        zoomManager zM = new zoomManager(BMV);
         
-        BMV.setLayoutX(700); BMV.setLayoutY(500);
-        BV.setLayoutX(700); BV.setLayoutY(500);
+        // SELF TRAFFIC
+        Circle me = new Circle();
+        me.setFill(Color.YELLOW);
+        
+        root.getChildren().add(BMV);
+        BMV.getChildren().add(BV);
+        
+        BMV.setLayoutX(root.getLayoutX()/2); BMV.setLayoutY(root.getLayoutY()/2);
+        BV.setLayoutX(root.getLayoutX()/2); BV.setLayoutY(root.getLayoutY()/2);
         Scene scene = new Scene(root, 1500, 920, Color.BLACK);
         
         primaryStage.setTitle("Interactive Map");
