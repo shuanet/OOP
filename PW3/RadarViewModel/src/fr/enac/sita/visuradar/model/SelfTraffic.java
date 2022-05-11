@@ -53,7 +53,7 @@ public class SelfTraffic extends Point{
 
     @Override
     public String toString() {
-        return "SelfTraffic{" + "callSign=" + callSign + ", flightNum=" + flightNum + ", ssr=" + ssr + ", sector=" + sector + ", vX=" + vX + ", vY=" + vY + ", FL=" + FL + ", VR=" + VR + ", GS=" + GS + ", hdg=" + hdg + ", tendency=" + tendency + ", time=" + time + '}';
+        return "callSign=" + callSign + "\t flightNum=" + flightNum + "\t nssr=" + ssr + "\t sector=" + sector + "\t vX=" + vX + "\t vY=" + vY + "\t FL=" + FL + "\t VR=" + VR + "\t GS=" + GS + "\t hdg=" + hdg + "\t tendency=" + tendency + "\t time=" + time;
     }
     
 }
