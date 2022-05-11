@@ -1,7 +1,6 @@
 package pw4_ivyrejeu;
 
 import pw4_ivyrejeu.communication.Ex3Question3_CommunicationManager;
-import fr.dgac.ivy.IvyException;
 
 public class Ex3Question3_IvyRejeuApplication {
 

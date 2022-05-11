@@ -14,9 +14,9 @@ public class Point implements IPoint{
     private DoubleProperty x = new SimpleDoubleProperty();
     private DoubleProperty y = new SimpleDoubleProperty();
 
-    public Point(DoubleProperty x, DoubleProperty y) {
-        this.x = x;
-        this.y = y;
+    public Point(double x, double y) {
+        this.x.set(x);
+        this.y.set(y);
     }
     public Point(Point otherP){
         this.setX(otherP.getX());
