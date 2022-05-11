@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package fr.enac.sita.visuradar.model;
-import java.util.*;
 
 /**
  *
@@ -20,6 +19,7 @@ public class Comet {
     public Comet(Point firstPoint) {
         this.p1 = this.p2 = this.p3 = this.p4 = this.p5 = firstPoint;
     }
+    
     public void addCoordinates(Point nextPoint){
         this.p1.set(nextPoint);
         this.p2.set(this.p1);
