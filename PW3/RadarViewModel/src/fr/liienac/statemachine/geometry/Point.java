@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2016 Stéphane Conversy - ENAC - All rights Reserved
  */
-package fr.enac.sita.visuradar.stateMachine.geometry;
+package fr.liienac.statemachine.geometry;
 
 public class Point {
 

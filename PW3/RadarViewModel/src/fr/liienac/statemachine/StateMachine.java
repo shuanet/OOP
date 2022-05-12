@@ -9,7 +9,7 @@
  *     added debug mode
  *     modified first state initialization (now passes by it's enter method)
  */
-package fr.enac.sita.visuradar.stateMachine;
+package fr.liienac.statemachine;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;

@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Stéphane Conversy - ENAC - All rights Reserved
  */
-package fr.enac.sita.visuradar.stateMachine.event;
+package fr.liienac.statemachine.event;
 
-import fr.enac.sita.visuradar.stateMachine.geometry.Point;
+import fr.liienac.statemachine.geometry.Point;
 
 public class PositionalEvent<Item> extends Event {
 
